@@ -233,6 +233,7 @@
     openssh.enable = true;
     hypridle.enable = true;
     gnome.gnome-keyring.enable = true;
+    getty.autologinUser = "jay"; # login automatically on console
   };
 
   # Open ports in the firewall.
