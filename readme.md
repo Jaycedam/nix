@@ -2,14 +2,8 @@
 
 Work in progress.
 
-## Symlink to /etc/nixos
-
-```bash
-
-```
-
 ## Apply NixOS configuration
 
 ```bash
-sudo nixos-rebuild switch
+curl -fsSL https://raw.githubusercontent.com/jaycedam/nix/master/install.sh | bash
 ```
