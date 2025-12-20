@@ -1,0 +1,86 @@
+{ pkgs, ... }: {
+  programs = {
+    fzf.enable = true;
+    zoxide.enable = true;
+    bat.enable = true;
+    btop.enable = true;
+    eza.enable = true;
+    fastfetch.enable = true;
+  };
+
+  home.packages = with pkgs; [
+    # cli
+    bluetui
+    brightnessctl
+    ddcutil
+    exfatprogs
+    fd
+    ffmpeg
+    fwupd
+    grim
+    imagemagick
+    impala
+    jq
+    libnotify
+    nh
+    parallel
+    playerctl
+    pstree
+    ripgrep
+    slurp
+    stow
+    tldr
+    trash-cli
+    tree
+    unrar
+    wiremix
+    wl-clipboard
+    yt-dlp
+    adw-gtk3
+    adwaita-icon-theme
+    bibata-cursors
+    kdePackages.breeze
+    kdePackages.breeze-icons
+    kdePackages.qt6ct
+    libsForQt5.qt5ct
+    papirus-icon-theme
+
+    # fonts
+    dejavu_fonts
+    font-awesome
+    jetbrains-mono
+    liberation_ttf
+    nerd-fonts.symbols-only
+    noto-fonts
+    noto-fonts-cjk-sans
+    noto-fonts-color-emoji
+
+    # desktop
+    anki
+    ente-auth
+    ente-desktop
+    freetube
+    nicotine-plus
+    gimp
+    jellyfin-desktop
+    libreoffice
+    localsend
+    moonlight-qt
+    mpris-notifier
+    mpv
+    nautilus
+    nirius
+    nwg-look
+    openrgb
+    pavucontrol
+    seahorse
+    signal-desktop
+    swayidle
+    stasis
+    transmission_4-gtk
+    zed-editor
+    lollypop
+    strawberry
+    kopuz
+  ];
+}
