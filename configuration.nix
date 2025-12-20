@@ -7,7 +7,7 @@
 {
   imports = [
     # Include the results of the hardware scan.
-    ./hardware-configuration.nix
+    "/etc/nixos/hardware-configuration.nix"
   ];
 
   # Bootloader.
@@ -217,7 +217,6 @@
     fish.enable = true;
     steam = {
       enable = true;
-      remotePlay = true;
     };
   };
 
