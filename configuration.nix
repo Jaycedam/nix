@@ -120,7 +120,6 @@
     brave
 
     ### gaming ###
-    steam
     gamemode
     gamescope
     # dolphin-emu
@@ -216,6 +215,10 @@
 
     waybar.enable = true;
     fish.enable = true;
+    steam = {
+      enable = true;
+      remotePlay = true;
+    };
   };
 
   # enable extra xdg-portal-hyprland and gtk for file picker
