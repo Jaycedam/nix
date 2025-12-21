@@ -4,10 +4,7 @@ Work in progress.
 
 ## Apply NixOS configuration
 
-> [!WARNING]
-> This will overwrite your current configuration. Make sure you have a backup.
-
-This will clone the repository, symlink the configuration.nix file from this repo to /etc/nixos and then rebuild the system.
+This will clone the repository and generate the system using flakes, it will use the hostname by default to see which modules to load.
 
 ```bash
 curl -fsSL https://raw.githubusercontent.com/jaycedam/nix/master/install.sh | bash
@@ -19,4 +16,4 @@ By default, the nix repo will be cloned to ~/dev/nix. You can modify the files d
 
 ## Tips
 
-- Rebuild the system with `sudo nixos-rebuild switch`.
+- Rebuild the system on ~/dev/nix with `sudo nixos-rebuild switch --flake .`.
