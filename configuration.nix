@@ -36,7 +36,10 @@
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
   # Enable networking
-  networking.networkmanager.enable = true;
+  networking.networkmanager = {
+    enable = true;
+    wifi.backend = "iwd";
+  };
 
   # Set your time zone.
   time.timeZone = "America/Santiago";
@@ -108,6 +111,9 @@
     kanata
     fastfetch
     sunshine
+
+    # network
+    iwd
 
     # desktop
     signal-desktop
