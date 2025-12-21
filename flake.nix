@@ -1,5 +1,5 @@
 {
-  description = "My first flake!";
+  description = "Main flake";
 
   inputs = {
     # use the following for unstable:
@@ -19,8 +19,8 @@
         nixos = lib.nixosSystem {
           system = "x86_64-linux";
           modules = [
-            ./hardware-configuration.nix
-            ./default.nix
+            ./hosts/nixos/hardware-configuration.nix
+            ./hosts/nixos/default.nix
           ];
         };
       };
