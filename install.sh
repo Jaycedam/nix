@@ -2,9 +2,7 @@
 set -e
 
 REPO_URL="https://github.com/jaycedam/nix.git"
-TARGET_DIR="$HOME/dev/nix"
-SOURCE="$TARGET_DIR/configuration.nix"
-NIXOS_CONFIG="/etc/nixos/configuration.nix"
+REPO_DIR="$HOME/dev/nix"
 
 # Colors
 YELLOW='\033[1;33m'
@@ -26,32 +24,20 @@ while true; do
     kill -0 "$$" || exit
 done 2>/dev/null &
 
-if [ -d "$TARGET_DIR" ]; then
-    echo -e "$ARROW Directory $TARGET_DIR already exists. ${YELLOW}Skipping...${NC}"
+if [ -d "$REPO_DIR" ]; then
+    echo -e "$ARROW Directory $REPO_DIR already exists. ${YELLOW}Skipping...${NC}"
 else
-    echo -e "$ARROW Cloning repository $REPO_URL to $TARGET_DIR..."
-    git clone "$REPO_URL" "$TARGET_DIR" || {
+    echo -e "$ARROW Cloning repository $REPO_URL to $REPO_DIR..."
+    git clone "$REPO_URL" "$REPO_DIR" || {
         echo -e "$ARROW ${RED}Error:${NC} Failed to clone repository!"
         exit 1
     }
 fi
 
-cd "$TARGET_DIR"
-
-echo -e "$ARROW Checking for configuration.nix..."
-if [ ! -f "$SOURCE" ]; then
-    echo -e "$ARROW ${RED}Error:${NC} configuration.nix not found in repository"
-    exit 1
-fi
-
-if [ -L "$NIXOS_CONFIG" ] && [ "$(readlink -f "$NIXOS_CONFIG")" = "$SOURCE" ]; then
-    echo -e "$ARROW configuration.nix already symlinked. ${YELLOW}Skipping...${NC}"
-else
-    echo -e "$ARROW Creating symlink for configuration.nix..."
-    sudo ln -sfv "$SOURCE" "$NIXOS_CONFIG"
-fi
+cd "$REPO_DIR"
 
 echo -e "$ARROW Rebuilding NixOS configuration..."
-sudo nixos-rebuild switch
+sudo NIX_CONFIG="experimental-features = nix-command flakes" \
+    nixos-rebuild switch --flake .
 
 echo -e "$ARROW ${GREEN}Done!${NC} Reboot to apply all changes."

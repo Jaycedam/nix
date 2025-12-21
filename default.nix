@@ -5,20 +5,6 @@
 { config, pkgs, ... }:
 
 {
-  imports = [
-    # Include the results of the hardware scan.
-    "/etc/nixos/hardware-configuration.nix"
-  ];
-
-  nixpkgs.overlays = [
-    # neovim nightly
-    (import (
-      builtins.fetchTarball {
-        url = "https://github.com/nix-community/neovim-nightly-overlay/archive/master.tar.gz";
-      }
-    ))
-  ];
-
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -30,10 +16,6 @@
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
   networking.hostName = "nixos"; # Define your hostname.
-
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
   # Enable networking
   networking.networkmanager = {
@@ -79,7 +61,7 @@
       "wheel"
     ];
     shell = pkgs.fish;
-    packages = with pkgs; [ ];
+    # packages = with pkgs; [ ];
   };
 
   # Allow unfree packages
@@ -249,12 +231,6 @@
     gnome.gnome-keyring.enable = true;
     getty.autologinUser = "jay"; # login automatically on console
   };
-
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
