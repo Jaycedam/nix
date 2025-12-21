@@ -88,6 +88,7 @@
     ### cli ###
     impala # wifi tui selector
     btop
+    wl-clipboard
     fzf
     trash-cli
     tldr
@@ -98,14 +99,13 @@
     yazi
     bat
     fd
-    kanata
     jq
-    # imagemagick
-    # typst
+    imagemagick
     lsfg-vk
     grim
     slurp
     fwupd
+    kanata
     fastfetch
     sunshine
 
@@ -115,15 +115,16 @@
     mpv
     libreoffice-fresh
     transmission_4-gtk
-    # cryptomator
-    # ente-desktop-bin
-    # grayjay
+    cryptomator
+    ente-desktop
+    grayjay
     localsend
     xfce.thunar
+    nautilus
 
     # terminal emulators
     kitty
-    # ghostty
+    ghostty
 
     ### browser ###
     brave
@@ -131,17 +132,20 @@
     ### gaming ###
     gamemode
     gamescope
-    # dolphin-emu
-    # shadps4
-    # gopher64
+    dolphin-emu
+    shadps4
+    gopher64
     heroic
     protonplus
-    # pcsx2
+    pcsx2
 
     # gtk themes
-    graphite-gtk-theme
+    rose-pine-gtk-theme
+    kanagawa-gtk-theme
+    material-black-colors
 
     ### hyprland and utilities ###
+    seahorse
     hyprpaper
     hyprpolkitagent
     dunst
@@ -159,7 +163,7 @@
     nodejs_24
     docker
     docker-compose
-    # android-tools
+    android-tools
     gh
     # ai
     opencode
@@ -167,7 +171,7 @@
     # editors
     neovim
     helix
-    # zed-editor
+    zed-editor
     # languages
     go
 
@@ -209,11 +213,6 @@
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
-  # programs.mtr.enable = true;
-  # programs.gnupg.agent = {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  # };
   programs = {
     hyprland = {
       enable = true;
