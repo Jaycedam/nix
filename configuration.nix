@@ -10,6 +10,15 @@
     "/etc/nixos/hardware-configuration.nix"
   ];
 
+  nixpkgs.overlays = [
+    # neovim nightly
+    (import (
+      builtins.fetchTarball {
+        url = "https://github.com/nix-community/neovim-nightly-overlay/archive/master.tar.gz";
+      }
+    ))
+  ];
+
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
