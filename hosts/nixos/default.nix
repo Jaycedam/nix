@@ -12,24 +12,6 @@
 
   networking.hostName = "nixos"; # Define your hostname.
 
-  # Enable networking
-  networking.networkmanager = {
-    enable = true;
-    wifi.backend = "iwd";
-  };
-
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.jay = {
-    isNormalUser = true;
-    description = "Jay";
-    extraGroups = [
-      "networkmanager"
-      "wheel"
-    ];
-    shell = pkgs.fish;
-    # packages = with pkgs; [ ];
-  };
-
   services.getty.autologinUser = "jay"; # login automatically on console
 
   # This value determines the NixOS release from which the default

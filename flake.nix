@@ -22,9 +22,10 @@
             ./global/keyboard-layout.nix
             ./global/apps-services.nix
             ./global/locale.nix
+            ./global/options.nix
             # host specific configuration
-            ./hosts/nixos/hardware-configuration.nix
             ./hosts/nixos/default.nix
+            ./hosts/nixos/hardware-configuration.nix
           ];
         };
       };
