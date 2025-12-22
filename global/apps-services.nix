@@ -7,6 +7,7 @@
   # global system packages
   environment.systemPackages = with pkgs; [
     ### cli ###
+    tree
     impala # wifi tui selector
     btop
     wl-clipboard

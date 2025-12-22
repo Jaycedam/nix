@@ -2,11 +2,7 @@
   description = "Main flake";
 
   inputs = {
-    # use the following for unstable:
     nixpkgs.url = "nixpkgs/nixos-unstable";
-
-    # or any branch you want:
-    # nixpkgs.url = "nixpkgs/{BRANCH-NAME}";
   };
 
   outputs =
@@ -23,6 +19,7 @@
             ./global/apps-services.nix
             ./global/locale.nix
             ./global/options.nix
+            ./global/scripts.nix
             # host specific configuration
             ./hosts/nixos/default.nix
             ./hosts/nixos/hardware-configuration.nix
