@@ -30,9 +30,6 @@
     fastfetch
     sunshine
 
-    # network
-    iwd
-
     # desktop
     signal-desktop
     gimp
