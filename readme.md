@@ -4,7 +4,7 @@ Work in progress.
 
 ## Apply NixOS configuration
 
-This will clone the repository and generate the system using flakes, it will use the hostname by default to see which modules to load.
+This will clone the repository to **~/dev/nix** and generate the system using flakes, it will use the hostname by default to see which modules to load.
 
 ```bash
 nix-shell -p git --run "curl -fsSL https://raw.githubusercontent.com/jaycedam/nix/master/install.sh | bash"
@@ -16,4 +16,4 @@ By default, the nix repo will be cloned to ~/dev/nix. You can modify the files d
 
 ## Tips
 
-- Rebuild the system on ~/dev/nix with `sudo nixos-rebuild switch --flake .`.
+- Rebuild the system with `sudo nixos-rebuild switch --flake $HOME/dev/nix`
