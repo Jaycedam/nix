@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-set -e
 
 REPO_URL="https://github.com/jaycedam/nix.git"
 REPO_DIR="$HOME/dev/nix"
@@ -34,10 +33,10 @@ else
     }
 fi
 
-cd "$REPO_DIR"
+cd "$REPO_DIR" || exit
 
 echo -e "$ARROW Rebuilding NixOS configuration..."
 sudo NIX_CONFIG="experimental-features = nix-command flakes" \
     nixos-rebuild switch --flake .
 
-echo -e "$ARROW ${GREEN}Done!${NC} Reboot to apply all changes."
+echo -e "${ARROW} ${GREEN}Done!${NC} Reboot to apply all changes."

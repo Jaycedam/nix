@@ -7,7 +7,7 @@ Work in progress.
 This will clone the repository and generate the system using flakes, it will use the hostname by default to see which modules to load.
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/jaycedam/nix/master/install.sh | bash
+nix-shell -p git --run "curl -fsSL https://raw.githubusercontent.com/jaycedam/nix/master/install.sh | bash"
 ```
 
 ## Updating NixOS configuration
