@@ -77,6 +77,7 @@ in
     pavucontrol
     rofi
     nwg-look
+    rose-pine-hyprcursor
 
     ### dev ###
     # tools
