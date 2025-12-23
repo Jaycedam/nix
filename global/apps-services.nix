@@ -5,9 +5,6 @@ let
 in
 
 {
-  # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
-
   # global system packages
   environment.systemPackages = with pkgs; [
     ### cli ###
