@@ -1,4 +1,8 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
+
+let
+  systemBin = "/run/current-system/sw/bin";
+in
 
 {
   # Allow unfree packages
@@ -12,6 +16,7 @@
     btop
     wl-clipboard
     fzf
+    pstree
     trash-cli
     tldr
     tmux
@@ -142,11 +147,17 @@
       xwayland.enable = true;
     };
     hyprlock.enable = true;
-
     waybar.enable = true;
     fish.enable = true;
     steam = {
       enable = true;
+    };
+  };
+
+  # without this, waybar on-click scripts don't work, since it can't access the nixos path
+  systemd.user.services.waybar = {
+    serviceConfig = {
+      Environment = "PATH=${systemBin}";
     };
   };
 
@@ -164,4 +175,5 @@
       xdg-desktop-portal-gtk
     ];
   };
+
 }
