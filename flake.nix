@@ -1,12 +1,22 @@
 {
   description = "Main flake";
 
+  nixConfig = {
+    extra-substituters = [
+      "https://nix-community.cachix.org"
+    ];
+    extra-trusted-public-keys = [
+      "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+    ];
+  };
+
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-unstable";
+    neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
   };
 
   outputs =
-    { nixpkgs, ... }:
+    { nixpkgs, neovim-nightly-overlay, ... }:
     let
       lib = nixpkgs.lib;
     in
@@ -24,6 +34,7 @@
             ./hosts/nixos/default.nix
             ./hosts/nixos/hardware-configuration.nix
           ];
+          specialArgs = { overlays = [ neovim-nightly-overlay.overlays.default ]; };
         };
       };
     };
