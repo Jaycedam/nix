@@ -12,8 +12,6 @@
 
   networking.hostName = "nixos"; # Define your hostname.
 
-  services.getty.autologinUser = "jay"; # login automatically on console
-
   # base16 automatic theming
   stylix = {
     enable = true;
@@ -21,9 +19,9 @@
     base16Scheme = "${pkgs.base16-schemes}/share/themes/rose-pine.yaml";
     fonts = {
       sizes = {
-        applications = 12;
+        applications = 14;
         desktop = 10;
-        terminal = 14;
+        # terminal = 14;
       };
     };
     opacity = {
@@ -36,6 +34,7 @@
 
   environment.systemPackages = with pkgs; [
     ### cli ###
+    playerctl
     impala # wifi tui selector
     wl-clipboard
     # gaming
@@ -44,7 +43,6 @@
     seahorse
     hyprpaper
     hyprpolkitagent
-    udiskie
     pavucontrol
     rofi
   ];
@@ -61,6 +59,8 @@
   };
 
   services = {
+    getty.autologinUser = "jay"; # login automatically on console
+    udisks2.enable = true; # this is necessary for udiskie to work
     hypridle.enable = true;
     gnome.gnome-keyring.enable = true;
     sunshine = {
