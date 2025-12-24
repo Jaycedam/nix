@@ -1,7 +1,7 @@
 { ... }:
 {
   # big configurations will be loaded from ./programs
-  import = [
+  imports = [
     ./programs/hyprland.nix
     ./programs/waybar.nix
   ];
