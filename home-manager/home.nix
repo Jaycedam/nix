@@ -13,6 +13,36 @@
     bat = {
       enable = true;
     };
+    hyprlock = {
+      enable = true;
+      settings = {
+        general = {
+          hide_cursor = true;
+          ignore_empty_input = true;
+        };
+
+        animations = {
+          enabled = true;
+          fade_in = {
+            duration = 300;
+            bezier = "easeOutQuint";
+          };
+          fade_out = {
+            duration = 300;
+            bezier = "easeOutQuint";
+          };
+        };
+
+        # background = [
+        #   {
+        #     path = "screenshot";
+        #     blur_passes = 3;
+        #     blur_size = 8;
+        #   }
+        # ];
+
+      };
+    };
     btop = {
       enable = true;
     };
@@ -90,31 +120,30 @@
       systemd.enable = true;
       settings = {
         mainBar = {
-          layer = "bottom";
-          position = "top";
-          modules-left = [
+          "layer" = "bottom";
+          "position" = "top";
+          "modules-left" = [
             "group/systray"
             "hyprland/window"
           ];
-          modules-center = [ "hyprland/workspaces" ];
-          modules-right = [
+          "modules-center" = [ "hyprland/workspaces" ];
+          "modules-right" = [
             "group/pc"
             "clock"
           ];
           "group/systray" = {
-            orientation = "inherit";
-            modules = [
+            "orientation" = "inherit";
+            "modules" = [
               "custom/power"
               "idle_inhibitor"
               "tray"
             ];
           };
           "group/pc" = {
-            orientation = "inherit";
-            modules = [
+            "orientation" = "inherit";
+            "modules" = [
               "network"
               "pulseaudio"
-              "bluetooth"
             ];
           };
           "hyprland/workspaces" = {
@@ -169,20 +198,6 @@
             ];
             "tooltip" = true;
           };
-          "cpu" = {
-            "format" = "{icon} {usage}%";
-            "format-icons" = [ "" ];
-            "interval" = 10;
-            "tooltip" = true;
-            "on-click" = "kitty -e btop";
-          };
-          "memory" = {
-            "format" = "{icon} {percentage}%";
-            "format-icons" = [ "" ];
-            "interval" = 10;
-            "tooltip" = true;
-            "on-click" = "kitty -e btop";
-          };
           "pulseaudio" = {
             "format" = "{icon}{volume}%";
             "format-muted" = " 󰖁 0% ";
@@ -200,7 +215,7 @@
               ];
             };
             "on-click" = "pavucontrol -t 3";
-            "on-click-right" = "pactl -- set-sink-mute 0 toggle";
+            "on-click-right" = "pactl --set-sink-mute 0 toggle";
           };
           "idle_inhibitor" = {
             "format" = " {icon} ";
@@ -211,7 +226,7 @@
           };
           "clock" = {
             "interval" = 1;
-            "format" = "  {=%A; %b %d  %H=%M} ";
+            "format" = "  {:%a %b %d %H:%M} ";
           };
           "tray" = {
             "icon-size" = 12;
@@ -243,7 +258,7 @@
       };
       style = lib.mkAfter ''
         window#waybar {
-        background-color: rgba(0, 0, 0, 0); /* Transparent bar */
+        background-color: rgba(0, 0, 0, 0);
         }
 
         #workspaces,
@@ -253,7 +268,6 @@
         #network,
         #systray,
         #pc,
-        #resources,
         #bluetooth,
         #battery,
         #pulseaudio,
@@ -261,11 +275,9 @@
         #custom-temperature,
         #memory,
         #custom-power,
-        #idle_inhibitor,
-        #cpu,
-        #memory,
-        #cpu {
+        #idle_inhibitor {
         border-radius: 10px;
+        margin: 0 5px;
         }
 
         #workspaces,
@@ -273,7 +285,6 @@
         #clock,
         #systray,
         #pc,
-        #resources,
         #bluetooth {
         background-color: @base01;
         margin-top: 5px;
