@@ -24,10 +24,26 @@
       plugins = with pkgs.vimPlugins; [
         nvim-treesitter.withAllGrammars
         supermaven-nvim
+        which-key-nvim
+        gitsigns-nvim
+        {
+          plugin = nvim-lint;
+          type = "lua";
+          config = "${builtins.readFile ../programs/nvim/plugins/linter.lua}";
+        }
         {
           plugin = fzf-lua;
           type = "lua";
           config = "${builtins.readFile ../programs/nvim/plugins/fzf.lua}";
+        }
+        {
+          plugin = mini-nvim;
+          type = "lua";
+          config = ''
+            require("mini.pairs").setup()
+            require("mini.icons").setup()
+            require("mini.surround").setup()
+          '';
         }
         {
           plugin = nvim-lspconfig;

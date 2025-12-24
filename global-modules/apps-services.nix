@@ -1,16 +1,9 @@
-{ pkgs, config, ... }:
-
-let
-  systemBin = "/run/current-system/sw/bin";
-in
-
+{ pkgs, ... }:
 {
   # global system packages
   environment.systemPackages = with pkgs; [
     ### cli ###
     tree
-    impala # wifi tui selector
-    wl-clipboard
     pstree
     trash-cli
     tldr
@@ -20,7 +13,6 @@ in
     fd
     jq
     imagemagick
-    lsfg-vk
     grim
     slurp
     fwupd
@@ -37,7 +29,6 @@ in
     ente-desktop
     grayjay
     localsend
-    xfce.thunar
     nautilus
 
     ### browser ###
@@ -52,21 +43,6 @@ in
     heroic
     protonplus
     pcsx2
-
-    # gtk themes
-    rose-pine-gtk-theme
-    kanagawa-gtk-theme
-    material-black-colors
-
-    ### hyprland and utilities ###
-    seahorse
-    hyprpaper
-    hyprpolkitagent
-    udiskie
-    pavucontrol
-    rofi
-    nwg-look
-    rose-pine-hyprcursor
 
     ### dev ###
     # tools
@@ -120,15 +96,7 @@ in
     jetbrains-mono
   ];
 
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
   programs = {
-    hyprland = {
-      enable = true;
-      withUWSM = true;
-      xwayland.enable = true;
-    };
-    hyprlock.enable = true;
     fish.enable = true;
     steam = {
       enable = true;
@@ -137,21 +105,5 @@ in
 
   services = {
     openssh.enable = true;
-    hypridle.enable = true;
-    gnome.gnome-keyring.enable = true;
-    sunshine = {
-      enable = true;
-      openFirewall = true;
-    };
   };
-
-  # enable extra xdg-portal-hyprland and gtk for file picker
-  xdg.portal = {
-    enable = true;
-    extraPortals = with pkgs; [
-      xdg-desktop-portal-hyprland
-      xdg-desktop-portal-gtk
-    ];
-  };
-
 }
