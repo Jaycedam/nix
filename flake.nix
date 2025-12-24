@@ -15,6 +15,10 @@
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    stylix = {
+      url = "github:nix-community/stylix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -22,6 +26,7 @@
       nixpkgs,
       neovim-nightly-overlay,
       home-manager,
+      stylix,
       ...
     }:
     let
@@ -37,6 +42,8 @@
             ./global/locale.nix
             ./global/options.nix
             ./global/scripts.nix
+            # themes
+            stylix.nixosModules.stylix
             # host specific configuration
             ./hosts/nixos/default.nix
             ./hosts/nixos/hardware-configuration.nix
@@ -45,8 +52,8 @@
             {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
-              home-manager.users.jay = ./home-manager/home.nix;
               home-manager.backupFileExtension = "backup";
+              home-manager.users.jay = ./home-manager/home.nix;
             }
 
           ];

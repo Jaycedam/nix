@@ -16,6 +16,26 @@
 
   services.getty.autologinUser = "jay"; # login automatically on console
 
+  # base16 automatic theming
+  stylix = {
+    enable = true;
+    polarity = "dark";
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/rose-pine.yaml";
+    fonts = {
+      sizes = {
+        applications = 12;
+        desktop = 10;
+        terminal = 14;
+      };
+    };
+    opacity = {
+      applications = 0.8;
+      desktop = 0.8;
+      popups = 0.8;
+      terminal = 0.8;
+    };
+  };
+
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
   # on your system were taken. It‘s perfectly fine and recommended to leave
