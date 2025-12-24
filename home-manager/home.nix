@@ -1,4 +1,9 @@
-{ config, pkgs, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 
 {
   home.username = "jay";
@@ -68,15 +73,215 @@
         cursor_trail = 1;
       };
     };
+    lazygit = {
+      enable = true;
+      enableFishIntegration = true;
+    };
     ghostty = {
       enable = true;
       settings = {
         mouse-hide-while-typing = "true";
       };
     };
+    waybar = {
+      enable = true;
+      systemd.enable = true;
+      settings = {
+        mainBar = {
+          layer = "bottom";
+          position = "top";
+          modules-left = [
+            "group/systray"
+            "hyprland/window"
+          ];
+          modules-center = [ "hyprland/workspaces" ];
+          modules-right = [
+            "group/pc"
+            "clock"
+          ];
+          "group/systray" = {
+            orientation = "inherit";
+            modules = [
+              "custom/power"
+              "idle_inhibitor"
+              "tray"
+            ];
+          };
+          "group/pc" = {
+            orientation = "inherit";
+            modules = [
+              "network"
+              "pulseaudio"
+              "bluetooth"
+            ];
+          };
+          "hyprland/workspaces" = {
+            "format" = "{icon}";
+            "format-icons" = {
+              "active" = "";
+              "persistent" = "";
+              "empty" = "";
+            };
+            "persistent-workspaces" = {
+              "*" = 5;
+            };
+          };
+          "custom/power" = {
+            "format" = "  ";
+            "on-click" = "rofi-power-menu";
+          };
+          "network" = {
+            "format-wifi" = "  ";
+            "format-ethernet" = " Wired";
+            "tooltip-format" = "{essid} 󰅧 {bandwidthUpBytes} 󰅢 {bandwidthDownBytes}";
+            "format-linked" = "󱘖 {ifname} (No IP)";
+            "format-disconnected" = " Disconnected";
+            "interval" = 3;
+            "on-click" = "kitty --class 'wifi-tui' impala";
+          };
+          "hyprland/language" = {
+            "format" = "{long}";
+            # "format-en"= "AMERICA; HELL YEAH!";
+            "keyboard-name" = "at-translated-set-2-keyboard";
+          };
+          "hyprland/window" = {
+            "format" = "{title}";
+            "max-length" = 50;
+            "icon" = true;
+            "icon-size" = 16;
+          };
+          "battery" = {
+            "states" = {
+              "warning" = 30;
+              "critical" = 15;
+            };
+            "format" = "{icon} {capacity}%";
+            "format-charging" = " {capacity}%";
+            "interval" = 1;
+            "format-icons" = [
+              ""
+              ""
+              ""
+              ""
+              ""
+            ];
+            "tooltip" = true;
+          };
+          "cpu" = {
+            "format" = "{icon} {usage}%";
+            "format-icons" = [ "" ];
+            "interval" = 10;
+            "tooltip" = true;
+            "on-click" = "kitty -e btop";
+          };
+          "memory" = {
+            "format" = "{icon} {percentage}%";
+            "format-icons" = [ "" ];
+            "interval" = 10;
+            "tooltip" = true;
+            "on-click" = "kitty -e btop";
+          };
+          "pulseaudio" = {
+            "format" = "{icon}{volume}%";
+            "format-muted" = " 󰖁 0% ";
+            "format-icons" = {
+              "headphone" = "  ";
+              "hands-free" = "  ";
+              "headset" = "  ";
+              "phone" = "  ";
+              "portable" = "  ";
+              "car" = "  ";
+              "default" = [
+                "  "
+                "  "
+                "   "
+              ];
+            };
+            "on-click" = "pavucontrol -t 3";
+            "on-click-right" = "pactl -- set-sink-mute 0 toggle";
+          };
+          "idle_inhibitor" = {
+            "format" = " {icon} ";
+            "format-icons" = {
+              "activated" = "";
+              "deactivated" = "";
+            };
+          };
+          "clock" = {
+            "interval" = 1;
+            "format" = "  {=%A; %b %d  %H=%M} ";
+          };
+          "tray" = {
+            "icon-size" = 12;
+            "spacing" = 6;
+          };
+          "backlight" = {
+            "device" = "intel_backlight";
+            "format" = "{icon}{percent}% ";
+            "format-icons" = [
+              " 󰃞 "
+              " 󰃝 "
+              " 󰃟 "
+              " 󰃠 "
+            ];
+          };
+          "bluetooth" = {
+            "format" = " {status}";
+            "format-no-controller" = "";
+            "format-connected" = " {device_alias}";
+            "format-connected-battery" = " {device_alias}{device_battery_percentage}%";
+            "tooltip-format" = "{controller_alias}\t{controller_address}\n\n{num_connections} connected";
+            "tooltip-format-connected" =
+              "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}";
+            "tooltip-format-enumerate-connected" = "{device_alias}\t{device_address}";
+            "tooltip-format-enumerate-connected-battery" =
+              "{device_alias}\t{device_address}\t{device_battery_percentage}%";
+          };
+        };
+      };
+      style = lib.mkAfter ''
+        window#waybar {
+        background-color: rgba(0, 0, 0, 0); /* Transparent bar */
+        }
+
+        #workspaces,
+        #window,
+        #tray,
+        #clock,
+        #network,
+        #systray,
+        #pc,
+        #resources,
+        #bluetooth,
+        #battery,
+        #pulseaudio,
+        #backlight,
+        #custom-temperature,
+        #memory,
+        #custom-power,
+        #idle_inhibitor,
+        #cpu,
+        #memory,
+        #cpu {
+        border-radius: 10px;
+        }
+
+        #workspaces,
+        #window,
+        #clock,
+        #systray,
+        #pc,
+        #resources,
+        #bluetooth {
+        background-color: @base01;
+        margin-top: 4px;
+        }
+      '';
+    };
     opencode.enable = true;
     rofi = {
       enable = true;
+      # todo= increase font and remove table cells
     };
   };
 

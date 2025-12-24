@@ -131,19 +131,18 @@ in
       xwayland.enable = true;
     };
     hyprlock.enable = true;
-    waybar.enable = true;
     fish.enable = true;
     steam = {
       enable = true;
     };
   };
 
-  # without this, waybar on-click scripts don't work, since it can't access the nixos path
-  systemd.user.services.waybar = {
-    serviceConfig = {
-      Environment = "PATH=${systemBin}";
-    };
-  };
+  # # without this, waybar on-click scripts don't work, since it can't access the nixos path
+  # systemd.user.services.waybar = {
+  #   serviceConfig = {
+  #     Environment = "PATH=${systemBin}";
+  #   };
+  # };
 
   services = {
     openssh.enable = true;
