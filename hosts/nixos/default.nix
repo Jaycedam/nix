@@ -34,6 +34,50 @@
     };
   };
 
+  environment.systemPackages = with pkgs; [
+    ### cli ###
+    impala # wifi tui selector
+    wl-clipboard
+    # gaming
+    lsfg-vk # lossless scaling on linux
+    ### hyprland and utilities ###
+    seahorse
+    hyprpaper
+    hyprpolkitagent
+    udiskie
+    pavucontrol
+    rofi
+  ];
+
+  # Some programs need SUID wrappers, can be configured further or are
+  # started in user sessions.
+  programs = {
+    hyprland = {
+      enable = true;
+      withUWSM = true;
+      xwayland.enable = true;
+    };
+    hyprlock.enable = true;
+  };
+
+  services = {
+    hypridle.enable = true;
+    gnome.gnome-keyring.enable = true;
+    sunshine = {
+      enable = true;
+      openFirewall = true;
+    };
+  };
+
+  # enable extra xdg-portal-hyprland and gtk for file picker
+  xdg.portal = {
+    enable = true;
+    extraPortals = with pkgs; [
+      xdg-desktop-portal-hyprland
+      xdg-desktop-portal-gtk
+    ];
+  };
+
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
   # on your system were taken. It‘s perfectly fine and recommended to leave
