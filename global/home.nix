@@ -4,7 +4,6 @@
   lib,
   ...
 }:
-
 {
   home.username = "jay";
   home.homeDirectory = "/home/jay";
@@ -19,20 +18,36 @@
       viAlias = true;
       vimAlias = true;
       extraLuaConfig = ''
-      ${builtins.readFile ./nvim/config/options.lua}
-      ${builtins.readFile ./nvim/config/keymaps.lua}
-      ${builtins.readFile ./nvim/config/autocmd.lua}
+        ${builtins.readFile ../programs/nvim/config/options.lua}
+        ${builtins.readFile ../programs/nvim/config/keymaps.lua}
+        ${builtins.readFile ../programs/nvim/config/autocmd.lua}
       '';
+      # todo: use var for the whole builtins function
       plugins = with pkgs.vimPlugins; [
-         {
-           plugin = fzf-lua;
-           type = "lua";
+        nvim-treesitter.withAllGrammars
+        supermaven-nvim
+        {
+          plugin = fzf-lua;
+          type = "lua";
+          config = "${builtins.readFile ../programs/nvim/plugins/fzf.lua}";
         }
-         {
-           plugin = nvim-lspconfig;
-           type = "lua";
-         }
+        {
+          plugin = nvim-lspconfig;
+          type = "lua";
+          config = "${builtins.readFile ../programs/nvim/plugins/lsp.lua}";
+        }
+        {
+          plugin = conform-nvim;
+          type = "lua";
+          config = "${builtins.readFile ../programs/nvim/plugins/formatter.lua}";
+        }
       ];
+    };
+    wayland.windowManager.hyprland = {
+      enable = true;
+      package = null;
+      portalPackage = null;
+      extraConfig = "${builtins.readFile ../programs/hypr/hyprland.conf}";
     };
     hyprlock = {
       enable = true;
@@ -61,7 +76,6 @@
         #     blur_size = 8;
         #   }
         # ];
-
       };
     };
     btop = {
@@ -93,19 +107,14 @@
       terminal = "screen-256color";
       extraConfig = ''
         set -g renumber-windows on
-
-        # Set popup border style to "rounded"
         set -g popup-border-lines "rounded"
 
-        # Open windows/panes on the same directory
         bind '"' split-window -v -c "#{pane_current_path}"
         bind % split-window -h -c "#{pane_current_path}"
         bind c new-window -c "#{pane_current_path}"
 
-        # Reload config
         bind r source-file "$HOME/.config/tmux/tmux.conf" \; display-message "Config reloaded..."
 
-        #------------------------ Popups --------------------------
         # Session manager
         bind k run-shell '~/.config/tmux/scripts/session.sh > /dev/null 2>&1 || true'
         # lazygit
