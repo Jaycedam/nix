@@ -41,6 +41,8 @@
       mouse = true;
       terminal = "screen-256color";
       extraConfig = ''
+        set -g renumber-windows on
+
         # Set popup border style to "rounded"
         set -g popup-border-lines "rounded"
 
@@ -274,7 +276,7 @@
         #resources,
         #bluetooth {
         background-color: @base01;
-        margin-top: 4px;
+        margin-top: 5px;
         }
       '';
     };
