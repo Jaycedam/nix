@@ -57,9 +57,7 @@
         }
       ];
     };
-    btop = {
-      enable = true;
-    };
+    btop.enable = true;
     fish = {
       enable = true;
       shellAbbrs = {

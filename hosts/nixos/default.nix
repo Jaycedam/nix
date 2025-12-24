@@ -16,6 +16,7 @@
   stylix = {
     enable = true;
     polarity = "dark";
+    # https://tinted-theming.github.io/tinted-gallery/
     base16Scheme = "${pkgs.base16-schemes}/share/themes/rose-pine.yaml";
     fonts = {
       sizes = {
