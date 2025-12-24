@@ -13,6 +13,27 @@
     bat = {
       enable = true;
     };
+    neovim = {
+      enable = true;
+      defaultEditor = true;
+      viAlias = true;
+      vimAlias = true;
+      extraLuaConfig = ''
+      ${builtins.readFile ./nvim/config/options.lua}
+      ${builtins.readFile ./nvim/config/keymaps.lua}
+      ${builtins.readFile ./nvim/config/autocmd.lua}
+      '';
+      plugins = with pkgs.vimPlugins; [
+         {
+           plugin = fzf-lua;
+           type = "lua";
+        }
+         {
+           plugin = nvim-lspconfig;
+           type = "lua";
+         }
+      ];
+    };
     hyprlock = {
       enable = true;
       settings = {
