@@ -51,7 +51,12 @@
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.backupFileExtension = "backup";
-              home-manager.users.jay = ./home-manager/home.nix;
+              home-manager.users.jay = {
+                imports = [
+                  ./global/home.nix
+                  ./hosts/nixos/home.nix
+                ];
+              };
             }
 
           ];

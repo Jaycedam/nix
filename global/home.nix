@@ -114,4 +114,7 @@
   # enable theming
   qt.enable = true;
   gtk.enable = true;
+
+  # don't change this
+  home.stateVersion = "25.11";
 }
