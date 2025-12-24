@@ -26,7 +26,6 @@ in
     fwupd
     kanata
     fastfetch
-    sunshine
 
     # desktop
     signal-desktop
@@ -81,7 +80,6 @@ in
     android-tools
     gh
     # editors
-    neovim
     zed-editor
     # languages
     go
@@ -137,17 +135,14 @@ in
     };
   };
 
-  # # without this, waybar on-click scripts don't work, since it can't access the nixos path
-  # systemd.user.services.waybar = {
-  #   serviceConfig = {
-  #     Environment = "PATH=${systemBin}";
-  #   };
-  # };
-
   services = {
     openssh.enable = true;
     hypridle.enable = true;
     gnome.gnome-keyring.enable = true;
+    sunshine = {
+      enable = true;
+      openFirewall = true;
+    };
   };
 
   # enable extra xdg-portal-hyprland and gtk for file picker

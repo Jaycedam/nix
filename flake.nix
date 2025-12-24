@@ -12,7 +12,6 @@
 
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-unstable";
-    neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     stylix = {
@@ -24,7 +23,6 @@
   outputs =
     {
       nixpkgs,
-      neovim-nightly-overlay,
       home-manager,
       stylix,
       ...
@@ -57,9 +55,6 @@
             }
 
           ];
-          specialArgs = {
-            overlays = [ neovim-nightly-overlay.overlays.default ];
-          };
         };
       };
     };
