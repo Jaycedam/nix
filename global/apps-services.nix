@@ -10,18 +10,13 @@ in
     ### cli ###
     tree
     impala # wifi tui selector
-    btop
     wl-clipboard
-    fzf
     pstree
     trash-cli
     tldr
-    tmux
     ripgrep
     zoxide
     yt-dlp
-    yazi
-    bat
     fd
     jq
     imagemagick
@@ -46,10 +41,6 @@ in
     xfce.thunar
     nautilus
 
-    # terminal emulators
-    kitty
-    ghostty
-
     ### browser ###
     brave
 
@@ -72,7 +63,6 @@ in
     seahorse
     hyprpaper
     hyprpolkitagent
-    dunst
     udiskie
     pavucontrol
     rofi
@@ -90,12 +80,8 @@ in
     docker-compose
     android-tools
     gh
-    # ai
-    opencode
-    gemini-cli
     # editors
     neovim
-    helix
     zed-editor
     # languages
     go
