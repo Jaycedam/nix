@@ -35,13 +35,13 @@
         nixos = lib.nixosSystem {
           system = "x86_64-linux";
           modules = [
+            # modules
             ./modules/common/system/default.nix
             ./modules/nixos/system/default.nix
-            # themes
-            stylix.nixosModules.stylix
             # host specific configuration
             ./hosts/nixos/default.nix
-            ./hosts/nixos/hardware-configuration.nix
+            # base16 global themes
+            stylix.nixosModules.stylix
             # home manager
             home-manager.nixosModules.home-manager
             {

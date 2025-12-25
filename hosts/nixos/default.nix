@@ -1,5 +1,9 @@
 { ... }:
 {
+  imports = [
+    ./hardware-configuration.nix
+  ];
+
   boot.initrd.luks.devices."luks-9b198792-4f79-44e0-a9d0-d9cdbbaa08fb".device =
     "/dev/disk/by-uuid/9b198792-4f79-44e0-a9d0-d9cdbbaa08fb";
 
