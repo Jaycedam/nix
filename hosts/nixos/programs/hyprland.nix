@@ -15,6 +15,20 @@
 
       monitor = "HDMI-A-1, 1920x1080@72, auto, 1";
 
+      animations = {
+        enabled = true;
+        bezier = [
+          "quart, 0.25, 1, 0.5, 1"
+        ];
+        animation = [
+          "windows, 1, 3, quart, slide"
+          "border, 1, 3, quart"
+          "borderangle, 1, 3, quart"
+          "fade, 1, 3, quart"
+          "workspaces, 1, 3, quart"
+        ];
+      };
+
       layerrule = [
         "blur,rofi"
         "blur,waybar"
@@ -39,7 +53,7 @@
         blur = {
           enabled = true;
           size = 10;
-          passes = 3;
+          passes = 1;
         };
       };
 
