@@ -46,8 +46,8 @@
     hyprpolkitagent
     pavucontrol
     rofi
-    bibata-cursors
     nautilus
+    rose-pine-hyprcursor
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
