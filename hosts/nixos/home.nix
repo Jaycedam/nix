@@ -37,9 +37,8 @@
     hyprpaper = {
       enable = true;
       settings = {
-        preload = "~/.config/wallpapers/wallpaper.jpg";
-        wallpaper = ", ~/.config/wallpapers/wallpaper.jpg";
-
+        preload = "../../wallpapers/1.jpg";
+        wallpaper = ", ../../wallpapers/1.jpg";
       };
     };
     hypridle = {

@@ -42,7 +42,6 @@
     lsfg-vk # lossless scaling on linux
     ### hyprland and utilities ###
     seahorse
-    hyprpaper
     hyprpolkitagent
     pavucontrol
     rofi
