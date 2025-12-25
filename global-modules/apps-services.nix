@@ -27,7 +27,6 @@
     ente-desktop
     grayjay
     localsend
-    nautilus
 
     ### browser ###
     brave
