@@ -7,6 +7,16 @@
   home.homeDirectory = "/home/jay";
 
   programs = {
+    git = {
+      enable = true;
+      settings = {
+        user = {
+          name = "Jaycedam";
+          email = "45575946+Jaycedam@users.noreply.github.com";
+        };
+        credential.helper = "!${pkgs.gh}/bin/gh auth git-credential";
+      };
+    };
     bat = {
       enable = true;
     };

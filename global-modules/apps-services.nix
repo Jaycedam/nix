@@ -8,7 +8,6 @@
     trash-cli
     tldr
     ripgrep
-    zoxide
     yt-dlp
     fd
     jq
@@ -16,7 +15,6 @@
     grim
     slurp
     fwupd
-    kanata
     fastfetch
 
     # desktop
@@ -46,7 +44,6 @@
 
     ### dev ###
     # tools
-    git
     bun
     tree-sitter
     lazygit
@@ -98,6 +95,10 @@
 
   programs = {
     fish.enable = true;
+    zoxide = {
+      enable = true;
+      enableFishIntegration = true;
+    };
     steam = {
       enable = true;
     };
