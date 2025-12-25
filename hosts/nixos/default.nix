@@ -1,7 +1,5 @@
-{ pkgs, overlays, ... }:
+{ pkgs, ... }:
 {
-  nixpkgs.overlays = overlays;
-
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -14,7 +12,107 @@
 
   networking.hostName = "nixos"; # Define your hostname.
 
-  services.getty.autologinUser = "jay"; # login automatically on console
+  # base16 automatic theming
+  stylix = {
+    enable = true;
+    polarity = "dark";
+    # https://tinted-theming.github.io/tinted-gallery/
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/rose-pine.yaml";
+    fonts = {
+      sizes = {
+        applications = 12;
+        desktop = 10;
+        terminal = 14;
+      };
+    };
+    opacity = {
+      applications = 0.8;
+      desktop = 0.8;
+      popups = 0.8;
+      terminal = 0.8;
+    };
+  };
+
+  environment.systemPackages = with pkgs; [
+    ### cli ###
+    playerctl
+    impala # wifi tui selector
+    wl-clipboard
+    # gaming
+    lsfg-vk # lossless scaling on linux
+    ### hyprland and utilities ###
+    seahorse
+    hyprpaper
+    hyprpolkitagent
+    pavucontrol
+    rofi
+  ];
+
+  # Some programs need SUID wrappers, can be configured further or are
+  # started in user sessions.
+  programs = {
+    hyprland = {
+      enable = true;
+      withUWSM = true;
+      xwayland.enable = true;
+    };
+    hyprlock.enable = true;
+  };
+
+  services = {
+    keyd = {
+      enable = true;
+      # remaps are based on colemak-dh,
+      # but the config is on qwerty so some combos won't make much sense
+      keyboards.default.settings = {
+        main = {
+          a = "overloadt(alt, a, 200)";
+          s = "overloadt(meta, s, 200)";
+          d = "overloadt(shift, d, 200)";
+          f = "overloadt(control, f, 200)";
+          j = "overloadt(control, j, 200)";
+          k = "overloadt(shift, k, 200)";
+          l = "overloadt(meta, l, 200)";
+          ";" = "overloadt(alt, ;, 200)";
+
+          space = "overloadt(nav_layer, space, 200)";
+        };
+
+        nav_layer = {
+          h = "left";
+          j = "down";
+          k = " up";
+          l = "right";
+          # forward word
+          w = "C-right";
+          # backward word
+          t = "C-left";
+          i = "backspace";
+          ";" = "enter";
+        };
+      };
+    };
+    getty = {
+      autologinOnce = true;
+      autologinUser = "jay"; # login automatically on console
+    };
+    udisks2.enable = true; # this is necessary for udiskie to work
+    hypridle.enable = true;
+    gnome.gnome-keyring.enable = true;
+    sunshine = {
+      enable = true;
+      openFirewall = true;
+    };
+  };
+
+  # enable extra xdg-portal-hyprland and gtk for file picker
+  xdg.portal = {
+    enable = true;
+    extraPortals = with pkgs; [
+      xdg-desktop-portal-hyprland
+      xdg-desktop-portal-gtk
+    ];
+  };
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

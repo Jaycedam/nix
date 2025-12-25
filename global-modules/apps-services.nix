@@ -1,37 +1,21 @@
-{ pkgs, config, ... }:
-
-let
-  systemBin = "/run/current-system/sw/bin";
-in
-
+{ pkgs, ... }:
 {
   # global system packages
   environment.systemPackages = with pkgs; [
     ### cli ###
     tree
-    impala # wifi tui selector
-    btop
-    wl-clipboard
-    fzf
     pstree
     trash-cli
     tldr
-    tmux
     ripgrep
-    zoxide
     yt-dlp
-    yazi
-    bat
     fd
     jq
     imagemagick
-    lsfg-vk
     grim
     slurp
     fwupd
-    kanata
     fastfetch
-    sunshine
 
     # desktop
     signal-desktop
@@ -43,12 +27,7 @@ in
     ente-desktop
     grayjay
     localsend
-    xfce.thunar
     nautilus
-
-    # terminal emulators
-    kitty
-    ghostty
 
     ### browser ###
     brave
@@ -63,25 +42,8 @@ in
     protonplus
     pcsx2
 
-    # gtk themes
-    rose-pine-gtk-theme
-    kanagawa-gtk-theme
-    material-black-colors
-
-    ### hyprland and utilities ###
-    seahorse
-    hyprpaper
-    hyprpolkitagent
-    dunst
-    udiskie
-    pavucontrol
-    rofi
-    nwg-look
-    rose-pine-hyprcursor
-
     ### dev ###
     # tools
-    git
     bun
     tree-sitter
     lazygit
@@ -90,12 +52,7 @@ in
     docker-compose
     android-tools
     gh
-    # ai
-    opencode
-    gemini-cli
     # editors
-    neovim
-    helix
     zed-editor
     # languages
     go
@@ -136,42 +93,18 @@ in
     jetbrains-mono
   ];
 
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
   programs = {
-    hyprland = {
-      enable = true;
-      withUWSM = true;
-      xwayland.enable = true;
-    };
-    hyprlock.enable = true;
-    waybar.enable = true;
     fish.enable = true;
+    zoxide = {
+      enable = true;
+      enableFishIntegration = true;
+    };
     steam = {
       enable = true;
     };
   };
 
-  # without this, waybar on-click scripts don't work, since it can't access the nixos path
-  systemd.user.services.waybar = {
-    serviceConfig = {
-      Environment = "PATH=${systemBin}";
-    };
-  };
-
   services = {
     openssh.enable = true;
-    hypridle.enable = true;
-    gnome.gnome-keyring.enable = true;
   };
-
-  # enable extra xdg-portal-hyprland and gtk for file picker
-  xdg.portal = {
-    enable = true;
-    extraPortals = with pkgs; [
-      xdg-desktop-portal-hyprland
-      xdg-desktop-portal-gtk
-    ];
-  };
-
 }
