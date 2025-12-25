@@ -29,16 +29,21 @@
   };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.jay = {
-    isNormalUser = true;
-    description = "Jay";
-    extraGroups = [
-      "networkmanager"
-      "wheel"
-    ];
-    shell = pkgs.fish;
-    # packages = with pkgs; [ ];
+  users = {
+    users.jay = {
+      isNormalUser = true;
+      description = "Jay";
+      extraGroups = [
+        "networkmanager"
+        "wheel"
+        "i2c" # required by ddcutil to control monitor brightness
+      ];
+      shell = pkgs.fish;
+      # packages = with pkgs; [ ];
+    };
   };
+
+  hardware.i2c.enable = true;
 
   # Enable networking
   networking.wireless.iwd.enable = true;
