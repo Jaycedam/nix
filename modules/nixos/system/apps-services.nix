@@ -14,7 +14,8 @@
     hyprpolkitagent
     pavucontrol
     nautilus
-    rose-pine-hyprcursor
+    # themes
+    bibata-cursors
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
