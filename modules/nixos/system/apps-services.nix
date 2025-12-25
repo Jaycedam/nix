@@ -3,6 +3,8 @@
   environment.systemPackages = with pkgs; [
     ### cli ###
     playerctl
+    brightnessctl
+    ddcutil
     impala # wifi tui selector
     wl-clipboard
     # gaming
