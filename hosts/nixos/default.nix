@@ -60,6 +60,38 @@
   };
 
   services = {
+    keyd = {
+      enable = true;
+      # remaps are based on colemak-dh,
+      # but the config is on qwerty so some combos won't make much sense
+      keyboards.default.settings = {
+        main = {
+          a = "overloadt(alt, a, 200)";
+          s = "overloadt(meta, s, 200)";
+          d = "overloadt(shift, d, 200)";
+          f = "overloadt(control, f, 200)";
+          j = "overloadt(control, j, 200)";
+          k = "overloadt(shift, k, 200)";
+          l = "overloadt(meta, l, 200)";
+          ";" = "overloadt(alt, ;, 200)";
+
+          space = "overloadt(nav_layer, space, 200)";
+        };
+
+        nav_layer = {
+          h = "left";
+          j = "down";
+          k = " up";
+          l = "right";
+          # forward word
+          w = "C-right";
+          # backward word
+          t = "C-left";
+          i = "backspace";
+          ";" = "enter";
+        };
+      };
+    };
     getty.autologinUser = "jay"; # login automatically on console
     udisks2.enable = true; # this is necessary for udiskie to work
     hypridle.enable = true;
