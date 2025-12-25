@@ -20,9 +20,9 @@
     base16Scheme = "${pkgs.base16-schemes}/share/themes/rose-pine.yaml";
     fonts = {
       sizes = {
-        applications = 14;
+        applications = 12;
         desktop = 10;
-        # terminal = 14;
+        terminal = 14;
       };
     };
     opacity = {
