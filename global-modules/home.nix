@@ -70,6 +70,9 @@
     btop.enable = true;
     fish = {
       enable = true;
+      interactiveShellInit = ''
+        set fish_greeting ""
+      '';
       loginShellInit = ''
         # autostart hyprland on tty1 
         if status is-login
