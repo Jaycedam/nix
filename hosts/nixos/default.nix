@@ -98,7 +98,6 @@
       autologinUser = "jay"; # login automatically on console
     };
     udisks2.enable = true; # this is necessary for udiskie to work
-    hypridle.enable = true;
     gnome.gnome-keyring.enable = true;
     sunshine = {
       enable = true;
