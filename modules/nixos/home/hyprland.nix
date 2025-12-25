@@ -13,8 +13,6 @@
       "$browser" = "brave";
       "$launch" = "launch-or-focus";
 
-      monitor = "HDMI-A-1, 1920x1080@72, auto, 1";
-
       animations = {
         enabled = true;
         bezier = [

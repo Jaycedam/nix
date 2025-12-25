@@ -9,6 +9,11 @@
 
   networking.hostName = "nixos"; # Define your hostname.
 
+  # Host-specific Hyprland monitor config
+  home-manager.users.jay.wayland.windowManager.hyprland.settings.monitor = [
+    "HDMI-A-1,1920x1080@72,auto,1"
+  ];
+
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
   # on your system were taken. It‘s perfectly fine and recommended to leave
