@@ -2,8 +2,8 @@
 {
   # big configurations will be loaded from ./programs
   imports = [
-    ./programs/hyprland.nix
-    ./programs/waybar.nix
+    ./hyprland.nix
+    ./waybar.nix
   ];
   programs = {
     rofi = {

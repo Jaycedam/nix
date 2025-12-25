@@ -9,9 +9,9 @@
   # large configs go to ./programs/
   # consider move them all?
   imports = [
-    ./programs/neovim/neovim.nix
-    ./programs/helix.nix
-    ./programs/tmux.nix
+    ./neovim/default.nix
+    ./helix.nix
+    ./tmux.nix
   ];
 
   programs = {
