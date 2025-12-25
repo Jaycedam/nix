@@ -47,7 +47,7 @@
       shellAbbrs = {
         v = "nvim";
         n = "nvim";
-        h = "helix";
+        h = "hx";
         ll = "ls -lA";
       };
     };
