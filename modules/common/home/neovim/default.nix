@@ -13,9 +13,13 @@
     # todo: use var for the whole builtins function
     plugins = with pkgs.vimPlugins; [
       nvim-treesitter.withAllGrammars
-      supermaven-nvim
       which-key-nvim
       gitsigns-nvim
+      {
+        plugin = supermaven-nvim;
+        type = "lua";
+        config = "require('supermaven-nvim').setup({})";
+      }
       {
         plugin = nvim-lint;
         type = "lua";
