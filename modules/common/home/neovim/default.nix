@@ -37,6 +37,13 @@
           require("mini.pairs").setup()
           require("mini.icons").setup()
           require("mini.surround").setup()
+          require("mini.statusline").setup()
+
+          require("mini.files").setup()
+          vim.keymap.set("n", "<leader>e", function()
+          require("mini.files").open(vim.loop.cwd(), true)
+          end, { desc = "Open mini.files (cwd)" })
+
         '';
       }
       {
