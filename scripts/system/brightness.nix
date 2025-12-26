@@ -1,6 +1,6 @@
 { pkgs, ... }:
 
-pkgs.writeShellScriptBin "hypr-brightness" ''
+pkgs.writeShellScriptBin "brightness" ''
   if [ "$#" -ne 1 ] || { [ "$1" != "up" ] && [ "$1" != "down" ]; }; then
       echo "Usage: $0 up|down"
       exit 1
