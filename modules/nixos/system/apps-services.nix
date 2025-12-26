@@ -20,6 +20,9 @@
     hyprpolkitagent
     pavucontrol
     wiremix
+    # keyring
+    kdePackages.kwallet
+    kdePackages.kwallet-pam
     # desktop
     kdePackages.dolphin
     gimp
@@ -35,12 +38,12 @@
       withUWSM = true;
       xwayland.enable = true;
     };
+
     steam = {
       enable = true;
       extraCompatPackages = with pkgs; [
         proton-ge-bin
       ];
-
     };
   };
 
@@ -112,12 +115,14 @@
       autologinOnce = true;
       autologinUser = "jay"; # login automatically on console
     };
+
     udisks2.enable = true; # this is necessary for udiskie to work
-    gnome.gnome-keyring.enable = true;
+
     sunshine = {
       enable = true;
       openFirewall = true;
     };
+
     openssh = {
       enable = true;
       startWhenNeeded = true;
