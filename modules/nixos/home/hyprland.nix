@@ -140,6 +140,9 @@
       windowrule = [
         "workspace 1, class:brave-browser"
         "workspace 2, class:kitty"
+        # pin gnome-keyring
+        "pin, class:^(gcr-prompter)$"
+        "stayfocused, class:^(gcr-prompter)$"
       ];
 
     };
