@@ -4,25 +4,24 @@
     ### cli ###
     grim
     slurp
-    fwupd
+    fwupd # upgrade firmware
     playerctl
     brightnessctl
-    ddcutil
+    ddcutil # ext monitor brightness
     impala # wifi tui selector
     wl-clipboard
     # gaming
     lsfg-vk # lossless scaling on linux
     gamemode
-    protonplus
     gamescope
     pcsx2
     shadps4 # no darwin release yet
     ### hyprland and utilities ###
-    seahorse
     hyprpolkitagent
     pavucontrol
-    nautilus
+    wiremix
     # desktop
+    kdePackages.dolphin
     gimp
     transmission_4-gtk
     libreoffice-fresh
