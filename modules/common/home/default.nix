@@ -4,7 +4,6 @@
 }:
 {
   home.username = "jay";
-  home.homeDirectory = "/home/jay";
 
   # large configs go to ./programs/
   # consider move them all?
@@ -33,16 +32,6 @@
       enable = true;
       interactiveShellInit = ''
         set fish_greeting ""
-      '';
-      loginShellInit = ''
-        # autostart hyprland on tty1 
-        if status is-login
-            if test -z "$DISPLAY" -a (tty) = /dev/tty1
-                if uwsm check may-start
-                    uwsm start default
-                end
-            end
-        end
       '';
       shellAbbrs = {
         v = "nvim";
@@ -77,10 +66,6 @@
     };
     opencode.enable = true;
   };
-
-  # enable theming
-  qt.enable = true;
-  gtk.enable = true;
 
   # don't change this
   home.stateVersion = "25.11";

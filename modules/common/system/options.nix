@@ -7,6 +7,7 @@
       "nix-command"
       "flakes"
     ];
-    auto-optimise-store = true;
   };
+  # Automatically run the nix store optimiser at a specific time.
+  nix.optimise.automatic = true;
 }

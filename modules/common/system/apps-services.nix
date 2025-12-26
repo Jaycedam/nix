@@ -12,17 +12,11 @@
     fd
     jq
     imagemagick
-    grim
-    slurp
-    fwupd
     fastfetch
 
     # desktop
     signal-desktop
-    gimp
     mpv
-    libreoffice-fresh
-    transmission_4-gtk
     cryptomator
     ente-desktop
     grayjay
@@ -32,14 +26,9 @@
     brave
 
     ### gaming ###
-    gamemode
-    gamescope
     dolphin-emu
-    shadps4
     gopher64
     heroic
-    protonplus
-    pcsx2
 
     ### dev ###
     # tools
@@ -97,9 +86,6 @@
     zoxide = {
       enable = true;
       enableFishIntegration = true;
-    };
-    steam = {
-      enable = true;
     };
   };
 

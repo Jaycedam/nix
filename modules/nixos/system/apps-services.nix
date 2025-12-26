@@ -2,6 +2,9 @@
 {
   environment.systemPackages = with pkgs; [
     ### cli ###
+    grim
+    slurp
+    fwupd
     playerctl
     brightnessctl
     ddcutil
@@ -9,11 +12,20 @@
     wl-clipboard
     # gaming
     lsfg-vk # lossless scaling on linux
+    gamemode
+    protonplus
+    gamescope
+    pcsx2
+    shadps4 # no darwin release yet
     ### hyprland and utilities ###
     seahorse
     hyprpolkitagent
     pavucontrol
     nautilus
+    # desktop
+    gimp
+    transmission_4-gtk
+    libreoffice-fresh
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -23,6 +35,9 @@
       enable = true;
       withUWSM = true;
       xwayland.enable = true;
+    };
+    steam = {
+      enable = true;
     };
   };
 
