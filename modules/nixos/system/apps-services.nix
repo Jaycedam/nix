@@ -42,6 +42,12 @@
   };
 
   services = {
+    # Power management with profiles
+    tuned = {
+      enable = true;
+      settings.dynamic_tuning = true;
+    };
+
     keyd = {
       enable = true;
       # remaps are based on colemak-dh,
