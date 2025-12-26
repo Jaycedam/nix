@@ -7,6 +7,13 @@
   # Use latest kernel.
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
+  # Automatic garbage collection (generations)
+  nix.gc = {
+    automatic = true;
+    dates = "weekly";
+    options = "--delete-older-than 7d";
+  };
+
   # base16 automatic theming
   stylix = {
     enable = true;
