@@ -103,7 +103,4 @@
     };
   };
 
-  services = {
-    openssh.enable = true;
-  };
 }

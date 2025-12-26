@@ -14,8 +14,6 @@
     hyprpolkitagent
     pavucontrol
     nautilus
-    # themes
-    bibata-cursors
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -95,6 +93,10 @@
     sunshine = {
       enable = true;
       openFirewall = true;
+    };
+    openssh = {
+      enable = true;
+      startWhenNeeded = true;
     };
   };
 
