@@ -14,6 +14,16 @@
     "HDMI-A-1,1920x1080@72,auto,1"
   ];
 
+  # other ssd/hdd mounts
+  fileSystems."/mnt/ssd" = {
+    device = "/dev/disk/by-uuid/208fa710-4554-4c04-9b2a-a7dd49cc4181";
+    fsType = "ext4";
+    options = [
+      "noatime"
+      "discard"
+    ];
+  };
+
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
   # on your system were taken. It‘s perfectly fine and recommended to leave
