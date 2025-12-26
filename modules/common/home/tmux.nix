@@ -22,7 +22,7 @@
       bind r source-file "$HOME/.config/tmux/tmux.conf" \; display-message "Config reloaded..."
 
       # Session manager
-      bind k run-shell 'tmux-sessions > /dev/null 2>&1 || true'
+      bind k display-popup -w 90% -h 90% -E tmux-sessions
       # lazygit
       bind g display-popup -d "#{pane_current_path}" -w 90% -h 90% -E lazygit
       # ai
