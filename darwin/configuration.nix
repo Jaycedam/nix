@@ -1,5 +1,32 @@
 { pkgs, ... }:
 {
+  nixpkgs.hostPlatform = "aarch64-darwin";
+  nixpkgs.config.allowUnfree = true;
+  users.users.jay = {
+    name = "jay";
+    home = "/Users/jay";
+    shell = pkgs.fish;
+  };
+
+  stylix = {
+    enable = true;
+    polarity = "dark";
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/rose-pine.yaml";
+    fonts = {
+      sizes = {
+        applications = 12;
+        desktop = 10;
+        terminal = 14;
+      };
+    };
+    opacity = {
+      applications = 0.8;
+      desktop = 0.8;
+      popups = 0.8;
+      terminal = 0.8;
+    };
+  };
+
   environment.systemPackages = with pkgs; [
     ### cli ###
     pstree
@@ -18,7 +45,7 @@
 
     signal-desktop-bin
     mpv
-    ente-desktop
+    #ente-desktop #broken on darwin
     localsend
 
     ### browser ###
@@ -67,13 +94,10 @@
 
   ];
 
-  services = {
-    openssh.enable = true;
-  };
-
   fonts.packages = with pkgs; [
     font-awesome
     jetbrains-mono
   ];
 
+  system.stateVersion = 6;
 }

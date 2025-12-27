@@ -28,11 +28,10 @@
     {
       darwinConfigurations = {
         darwin = nix-darwin.lib.darwinSystem {
-          nixpkgs.hostPlatform = "aarch64-darwin";
           modules = [
-            ./configuration.nix
             # base16 global themes
             stylix.darwinModules.stylix
+            ./configuration.nix
             # home manager
             home-manager.darwinModules.home-manager
             {

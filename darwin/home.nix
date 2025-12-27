@@ -4,12 +4,7 @@
 }:
 {
   # home-manager configuration
-  home = {
-    username = "jay";
-    homeDirectory = "/Users/jay";
-    # don't change this
-    stateVersion = "25.11";
-  };
+  home.stateVersion = "25.11";
 
   # large configs go to separate files
   imports = [
@@ -64,6 +59,7 @@
     };
     ghostty = {
       enable = true;
+      package = pkgs.ghostty-bin;
       settings = {
         mouse-hide-while-typing = "true";
       };
