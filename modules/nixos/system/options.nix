@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 {
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -6,6 +6,40 @@
 
   # Use latest kernel.
   boot.kernelPackages = pkgs.linuxPackages_latest;
+
+  # silent boot with animation
+  boot = {
+
+    plymouth = {
+      enable = true;
+      theme = lib.mkForce "connect";
+      themePackages = with pkgs; [
+        # By default we would install all themes
+        (adi1090x-plymouth-themes.override {
+          selected_themes = [ "connect" ];
+        })
+      ];
+    };
+
+    # Enable "Silent boot"
+    consoleLogLevel = 0;
+    initrd.verbose = false;
+    initrd.systemd.enable = true; # luks gui support
+    kernelParams = [
+      "quiet"
+      "splash"
+      "boot.shell_on_fail"
+      "udev.log_priority=3"
+      "rd.udev.log_level=3"
+      "rd.systemd.show_status=false"
+    ];
+    # Hide the OS choice for bootloaders.
+    # It's still possible to open the bootloader list by pressing any key
+    # It will just not appear on screen unless a key is pressed
+    loader.timeout = 1;
+  };
+
+  # start hyprland on tty1
 
   # Automatic garbage collection (generations)
   nix.gc = {
