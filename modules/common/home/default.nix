@@ -60,25 +60,26 @@
         # possible future actions: open_url
 
         ## tabs
-        "ctrl+b>w" = "select_tab";
-        "ctrl+b>x" = "close_tab";
-        "ctrl+b>n>" = "next_tab";
-        "ctrl+b>p" = "previous_tab";
-        "ctrl+b>N>" = "move_tab_forward";
-        "ctrl+b>P" = "move_tab_backward";
-        "ctrl+b>comma" = "set_tab_title";
-        "ctrl+b>c" = "new_tab_with_cwd";
-        "ctrl+b>t" = "toggle_tab";
+        "ctrl+t>w" = "select_tab";
+        "ctrl+t>x" = "close_tab";
+        "ctrl+t>n>" = "next_tab";
+        "ctrl+t>p" = "previous_tab";
+        "ctrl+t>N>" = "move_tab_forward";
+        "ctrl+t>P" = "move_tab_backward";
+        "ctrl+t>comma" = "set_tab_title";
+        "ctrl+t>c" = "new_tab_with_cwd";
+        "ctrl+t>t" = "toggle_tab";
 
         ## windows (splits)
-        "ctrl+b>s" = "new_window_with_cwd";
+        "ctrl+t>s" = "new_window_with_cwd";
 
         ## actions
-        "ctrl+b>[" = "show_scrollback";
-        "ctrl+b>r" = "load_config_file";
+        "ctrl+t>[" = "show_scrollback";
+        "ctrl+t>r" = "load_config_file";
 
         # custom lauch commands
-        "ctrl+b>g" = "launch --cwd=current --type=tab 'lazygit'";
+        "ctrl+t>g" = "launch --cwd=current --type=tab 'lazygit'";
+        "ctrl+t>a" = "launch --cwd=current --type=tab 'opencode'";
       };
     };
     lazygit = {
