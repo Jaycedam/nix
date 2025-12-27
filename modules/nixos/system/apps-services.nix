@@ -23,6 +23,7 @@
     # keyring
     kdePackages.kwallet
     kdePackages.kwallet-pam
+    kdePackages.kwalletmanager
     # desktop
     kdePackages.dolphin
     gimp
