@@ -29,11 +29,85 @@
     gimp
     transmission_4-gtk
     libreoffice-fresh
+
+    ### cli ###
+    tree
+    pstree
+    trash-cli
+    tldr
+    ripgrep
+    yt-dlp
+    fd
+    jq
+    imagemagick
+    fastfetch
+
+    # desktop
+    signal-desktop
+    mpv
+    cryptomator
+    ente-desktop
+    grayjay
+    localsend
+
+    ### browser ###
+    brave
+
+    ### gaming ###
+    dolphin-emu
+    gopher64
+    heroic
+
+    ### dev ###
+    # tools
+    bun
+    tree-sitter
+    lazygit
+    nodejs_24
+    docker
+    docker-compose
+    android-tools
+    gh
+    # editors
+    zed-editor
+    # languages
+    go
+
+    # lsp
+    nil # nix
+    pyright
+    vscode-langservers-extracted
+    typescript-language-server
+    rust-analyzer
+    astro-language-server
+    gopls
+    bash-language-server
+    marksman
+    tailwindcss-language-server
+    yaml-language-server
+    lua-language-server
+    taplo
+    # formatters
+    nixfmt
+    prettier
+    ruff
+    djlint
+    shfmt
+    stylua
+    black
+    # linters
+    eslint
+    shellcheck
+
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   programs = {
+    zoxide = {
+      enable = true;
+      enableFishIntegration = true;
+    };
     hyprland = {
       enable = true;
       withUWSM = true;
@@ -41,16 +115,19 @@
     };
 
     # start hyprland on tty1
-    fish.loginShellInit = ''
-      # autostart hyprland on tty1 
-      if status is-login
-          if test -z "$DISPLAY" -a (tty) = "/dev/tty1"
-            if uwsm check may-start >/dev/null
-              exec uwsm start default >/dev/null
+    fish = {
+      enable = true;
+      loginShellInit = ''
+        # autostart hyprland on tty1 
+        if status is-login
+            if test -z "$DISPLAY" -a (tty) = "/dev/tty1"
+              if uwsm check may-start >/dev/null
+                exec uwsm start default >/dev/null
+              end
             end
-          end
-      end
-    '';
+        end
+      '';
+    };
 
     steam = {
       enable = true;
@@ -141,6 +218,15 @@
       startWhenNeeded = true;
     };
   };
+
+  fonts.packages = with pkgs; [
+    noto-fonts
+    noto-fonts-cjk-sans
+    noto-fonts-color-emoji
+    liberation_ttf # replacements for the MS fonts: Times New Roman, Arial, and Courier New.
+    font-awesome
+    jetbrains-mono
+  ];
 
   # enable extra xdg-portal-hyprland and gtk for file picker
   xdg.portal = {

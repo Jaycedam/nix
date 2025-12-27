@@ -35,11 +35,9 @@
     {
       nixosConfigurations = {
         nixos = lib.nixosSystem {
-          system = "x86_64-linux";
           modules = [
             # modules
-            ./modules/common/system/default.nix
-            ./modules/nixos/system/default.nix
+            ./modules/default.nix
             # host specific configuration
             ./hosts/nixos/default.nix
             # base16 global themes
@@ -52,8 +50,7 @@
               home-manager.backupFileExtension = "backup";
               home-manager.users.jay = {
                 imports = [
-                  ./modules/common/home/default.nix
-                  ./modules/nixos/home/default.nix
+                  ./home/default.nix
                 ];
               };
             }
