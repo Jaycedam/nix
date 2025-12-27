@@ -8,6 +8,20 @@
     shell = pkgs.fish;
   };
 
+
+  programs.fish = {
+    enable = true;
+    interactiveShellInit = ''
+      set fish_greeting ""
+    '';
+    shellAbbrs = {
+      v = "nvim";
+      n = "nvim";
+      h = "hx";
+      ll = "ls -lA";
+    };
+  };
+
   stylix = {
     enable = true;
     polarity = "dark";

@@ -33,18 +33,6 @@
       enable = true;
     };
     btop.enable = true;
-    fish = {
-      enable = true;
-      interactiveShellInit = ''
-        set fish_greeting ""
-      '';
-      shellAbbrs = {
-        v = "nvim";
-        n = "nvim";
-        h = "hx";
-        ll = "ls -lA";
-      };
-    };
     fzf = {
       enable = true;
       enableFishIntegration = true;
