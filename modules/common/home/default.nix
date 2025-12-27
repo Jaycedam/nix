@@ -80,6 +80,7 @@
         # custom lauch commands
         "ctrl+t>g" = "launch --cwd=current --type=tab 'lazygit'";
         "ctrl+t>a" = "launch --cwd=current --type=tab 'opencode'";
+        "ctrl+t>b" = "launch 'gh browse > /dev/null'";
       };
     };
     lazygit = {
