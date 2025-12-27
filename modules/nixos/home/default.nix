@@ -12,19 +12,6 @@
       enable = true;
       # todo= increase font and remove table cells
     };
-    # regular fish settings are on modules/common/home, this is just specific to nixos
-    fish = {
-      loginShellInit = ''
-        # autostart hyprland on tty1 
-        if status is-login
-            if test -z "$DISPLAY" -a (tty) = /dev/tty1
-                if uwsm check may-start
-                    uwsm start default
-                end
-            end
-        end
-      '';
-    };
     hyprlock = {
       enable = true;
       settings = {
@@ -126,4 +113,5 @@
   # enable theming
   qt.enable = true;
   gtk.enable = true;
+
 }

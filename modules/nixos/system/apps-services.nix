@@ -39,6 +39,18 @@
       xwayland.enable = true;
     };
 
+    # start hyprland on tty1
+    fish.loginShellInit = ''
+      # autostart hyprland on tty1 
+      if status is-login
+          if test -z "$DISPLAY" -a (tty) = "/dev/tty1"
+            if uwsm check may-start >/dev/null
+              exec uwsm start default >/dev/null
+            end
+          end
+      end
+    '';
+
     steam = {
       enable = true;
       extraCompatPackages = with pkgs; [
