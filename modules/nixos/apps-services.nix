@@ -25,6 +25,7 @@
     kdePackages.kwallet-pam
     kdePackages.kwalletmanager
     # desktop
+    proton-pass
     kdePackages.dolphin
     gimp
     transmission_4-gtk

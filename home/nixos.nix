@@ -117,6 +117,7 @@
       };
     };
     opencode.enable = true;
+    gemini-cli.enable = true;
   };
 
 }
