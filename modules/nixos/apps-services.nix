@@ -67,7 +67,6 @@
     docker
     docker-compose
     android-tools
-    gh
     # editors
     zed-editor
     # languages

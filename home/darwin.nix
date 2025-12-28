@@ -22,8 +22,11 @@
           name = "Jaycedam";
           email = "45575946+Jaycedam@users.noreply.github.com";
         };
-        credential.helper = "!${pkgs.gh}/bin/gh auth git-credential";
       };
+    };
+    gh = {
+      enable = true;
+      gitCredentialHelper.enable = true; # Defaults to github.com and gist.github.com
     };
     zoxide = {
       enable = true;
