@@ -8,10 +8,10 @@
 
   # large configs go to separate files
   imports = [
-    ../home/neovim/default.nix
-    ../home/helix.nix
-    ../home/tmux.nix
-    ../home/kitty.nix
+    ./config/neovim/default.nix
+    ./config/helix.nix
+    ./config/tmux.nix
+    ./config/kitty.nix
   ];
 
   programs = {
@@ -33,6 +33,7 @@
       enable = true;
     };
     btop.enable = true;
+    fish.enable = true;
     fzf = {
       enable = true;
       enableFishIntegration = true;

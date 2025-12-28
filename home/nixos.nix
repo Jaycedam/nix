@@ -26,14 +26,14 @@
 
   # large configs go to separate files
   imports = [
-    ./hyprland.nix
-    ./waybar.nix
-    ./hyprlock.nix
-    ./hypridle.nix
-    ./neovim/default.nix
-    ./helix.nix
-    ./tmux.nix
-    ./kitty.nix
+    ./config/hyprland.nix
+    ./config/waybar.nix
+    ./config/hyprlock.nix
+    ./config/hypridle.nix
+    ./config/neovim/default.nix
+    ./config/helix.nix
+    ./config/tmux.nix
+    ./config/kitty.nix
   ];
 
   services = {

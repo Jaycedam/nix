@@ -1,11 +1,30 @@
 { pkgs, ... }:
 {
+  nix.settings = {
+    experimental-features = [
+      "nix-command"
+      "flakes"
+    ];
+  };
+
   nixpkgs.hostPlatform = "aarch64-darwin";
   nixpkgs.config.allowUnfree = true;
   users.users.jay = {
     name = "jay";
     home = "/Users/jay";
-    shell = pkgs.fish;
+  };
+
+  programs.fish = {
+    enable = true;
+    interactiveShellInit = ''
+      set fish_greeting ""
+    '';
+    shellAbbrs = {
+      v = "nvim";
+      n = "nvim";
+      h = "hx";
+      ll = "ls -lA";
+    };
   };
 
   system = {
@@ -24,8 +43,8 @@
         AppleIconAppearanceTheme = "RegularDark";
         AppleInterfaceStyle = "Dark";
         NSAutomaticSpellingCorrectionEnabled = false;
-        # InitialKeyRepeat = 2;
-        # KeyRepeat = 25;
+        InitialKeyRepeat = 15;
+        KeyRepeat = 2;
       };
       WindowManager.EnableStandardClickToShowDesktop = false;
       finder = {
@@ -64,19 +83,6 @@
     # dns = [ "1.1.1.1" "1.0.0.1" ];
   };
 
-  programs.fish = {
-    enable = true;
-    interactiveShellInit = ''
-      set fish_greeting ""
-    '';
-    shellAbbrs = {
-      v = "nvim";
-      n = "nvim";
-      h = "hx";
-      ll = "ls -lA";
-    };
-  };
-
   services = {
     aerospace = {
       enable = true;
@@ -84,48 +90,33 @@
         on-focused-monitor-changed = [ "move-mouse monitor-lazy-center" ];
         on-window-detected = [
           {
-            "if" = {
-              app-name-regex-substring = "Brave Browser|Safari|Zen|Google Chrome|Chromium|Vivaldi|Firefox";
-            };
+            "if".app-name-regex-substring = "Brave Browser|Safari|Zen|Google Chrome|Chromium|Vivaldi|Firefox";
             run = [ "move-node-to-workspace 1" ];
           }
 
           {
-            "if" = {
-              app-name-regex-substring = "Ghostty|Kitty|Alacritty";
-            };
+            "if".app-name-regex-substring = "Ghostty|Kitty|Alacritty";
             run = [ "move-node-to-workspace 2" ];
           }
 
           {
-            "if" = {
-              app-name-regex-substring = "Mail|Calendar";
-            };
+            "if".app-name-regex-substring = "Mail|Calendar";
             run = [ "move-node-to-workspace 3" ];
           }
 
           {
-            "if" = {
-              app-name-regex-substring = "WhatsApp|Signal";
-            };
+            "if".app-name-regex-substring = "WhatsApp|Signal";
             run = [ "move-node-to-workspace 4" ];
           }
 
           {
-            "if" = {
-              app-name-regex-substring = "Spotify|Apple Music";
-            };
+            "if".app-name-regex-substring = "Spotify|Apple Music";
             run = [ "move-node-to-workspace 5" ];
           }
 
           {
-            "if" = {
-              app-name-regex-substring = "Steam Helper|Heroic";
-            };
-            run = [
-              "layout tiling"
-              "move-node-to-workspace 6"
-            ];
+            "if".app-name-regex-substring = "Steam Helper|Heroic";
+            run = [ "move-node-to-workspace 6" ];
           }
         ];
 
@@ -197,7 +188,7 @@
 
           # App shortcuts
           "alt-f" = "exec-and-forget open -a Kitty";
-          "alt-t" = "exec-and-forget open -a \"Brave Browser\"";
+          "alt-t" = "exec-and-forget open -a 'Brave Browser'";
 
           # Workspace navigation
           "alt-tab" = "workspace-back-and-forth";
@@ -233,6 +224,9 @@
 
   environment.systemPackages = with pkgs; [
     ### cli ###
+    kanata
+    karabiner-dk
+    tree
     pstree
     trash-cli
     tldr
@@ -296,6 +290,7 @@
     eslint
     shellcheck
 
+    (import ../../scripts/tmux/sessions.nix { inherit pkgs; })
   ];
 
   fonts.packages = with pkgs; [

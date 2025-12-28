@@ -1,5 +1,21 @@
 {
-  description = "NixOS configuration";
+  description = "Main flake configuration for NixOS, nix-darwin, and home-manager";
+
+  inputs = {
+    nixpkgs.url = "nixpkgs/nixos-25.11";
+    home-manager = {
+      url = "github:nix-community/home-manager/release-25.11";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    nix-darwin = {
+      url = "github:nix-darwin/nix-darwin/nix-darwin-25.11";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    stylix = {
+      url = "github:nix-community/stylix/release-25.11";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+  };
 
   nixConfig = {
     extra-substituters = [
@@ -10,21 +26,10 @@
     ];
   };
 
-  inputs = {
-    nixpkgs.url = "nixpkgs/nixos-25.11";
-    home-manager = {
-      url = "github:nix-community/home-manager/release-25.11";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    stylix = {
-      url = "github:nix-community/stylix/release-25.11";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-  };
-
   outputs =
     {
       nixpkgs,
+      nix-darwin,
       home-manager,
       stylix,
       ...
@@ -37,7 +42,7 @@
         nixos = lib.nixosSystem {
           modules = [
             # modules
-            ./modules/default.nix
+            ./modules/nixos/default.nix
             # host specific configuration
             ./hosts/nixos/default.nix
             # base16 global themes
@@ -50,7 +55,7 @@
               home-manager.backupFileExtension = "backup";
               home-manager.users.jay = {
                 imports = [
-                  ./home/default.nix
+                  ./home/nixos.nix
                 ];
               };
             }
@@ -58,5 +63,29 @@
           ];
         };
       };
+
+      darwinConfigurations = {
+        darwin = nix-darwin.lib.darwinSystem {
+          modules = [
+            # base16 global themes
+            stylix.darwinModules.stylix
+            ./modules/darwin/default.nix
+            # home manager
+            home-manager.darwinModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.backupFileExtension = "backup";
+              home-manager.users.jay = {
+                imports = [
+                  ./home/darwin.nix
+                ];
+              };
+            }
+
+          ];
+        };
+      };
+
     };
 }

@@ -1,4 +1,4 @@
-{ ... }:
+{ pkgs, ... }:
 {
   programs.kitty = {
     enable = true;
@@ -6,6 +6,9 @@
     shellIntegration.enableFishIntegration = true;
     settings = {
       cursor_trail = 1;
+      shell = "${pkgs.fish}/bin/fish";
+      background_blur = 64;
+
     };
     keybindings = {
       # tmux like keybinds https://sw.kovidgoyal.net/kitty/actions/
