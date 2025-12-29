@@ -8,6 +8,7 @@
       cursor_trail = 1;
       shell = "${pkgs.fish}/bin/fish";
       background_blur = 64;
+      tab_bar_edge = "top";
 
     };
     keybindings = {

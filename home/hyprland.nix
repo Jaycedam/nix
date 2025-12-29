@@ -35,8 +35,8 @@
       ];
 
       general = {
-        gaps_in = 5;
-        gaps_out = 5;
+        gaps_in = 8;
+        gaps_out = 8;
         resize_on_border = true;
       };
       ecosystem = {
@@ -51,7 +51,7 @@
         blur = {
           enabled = true;
           size = 10;
-          passes = 1;
+          passes = 2;
         };
       };
 

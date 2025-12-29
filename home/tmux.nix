@@ -3,6 +3,7 @@
   programs.tmux = {
     enable = true;
     prefix = "C-t";
+    newSession = true;
     reverseSplit = true;
     baseIndex = 1;
     escapeTime = 0;
@@ -12,8 +13,12 @@
     mouse = true;
     terminal = "screen-256color";
     extraConfig = ''
+      set -g status-position top
+
       set -g renumber-windows on
       set -g popup-border-lines "rounded"
+
+      set -g status-right ""
 
       bind '"' split-window -v -c "#{pane_current_path}"
       bind % split-window -h -c "#{pane_current_path}"

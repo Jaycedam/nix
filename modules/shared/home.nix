@@ -1,19 +1,11 @@
+{ pkgs, ... }:
 {
-  pkgs,
-  ...
-}:
-{
-  # home-manager configuration
-  home.stateVersion = "25.11";
-
-  # large configs go to separate files
   imports = [
-    ./config/neovim/default.nix
-    ./config/helix.nix
-    ./config/tmux.nix
-    ./config/kitty.nix
+    ../../home/neovim/default.nix
+    ../../home/helix.nix
+    ../../home/tmux.nix
+    ../../home/kitty.nix
   ];
-
   programs = {
     git = {
       enable = true;

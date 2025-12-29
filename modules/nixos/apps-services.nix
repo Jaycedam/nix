@@ -25,89 +25,24 @@
     kdePackages.kwallet-pam
     kdePackages.kwalletmanager
     # desktop
-    proton-pass
+    proton-pass # no darwin release yet
     kdePackages.dolphin
-    gimp
-    transmission_4-gtk
+    gimp # no darwin release yet
     libreoffice-fresh
-
-    ### cli ###
-    tree
-    pstree
-    trash-cli
-    tldr
-    ripgrep
-    yt-dlp
-    fd
-    jq
-    imagemagick
-    fastfetch
 
     # desktop
     signal-desktop
-    mpv
     cryptomator
     ente-desktop
     grayjay
-    localsend
-
-    ### browser ###
-    brave
 
     ### gaming ###
-    dolphin-emu
-    gopher64
     heroic
-
-    ### dev ###
-    # tools
-    bun
-    tree-sitter
-    lazygit
-    nodejs_24
-    docker
-    docker-compose
-    android-tools
-    # editors
-    zed-editor
-    # languages
-    go
-
-    # lsp
-    nil # nix
-    pyright
-    vscode-langservers-extracted
-    typescript-language-server
-    rust-analyzer
-    astro-language-server
-    gopls
-    bash-language-server
-    marksman
-    tailwindcss-language-server
-    yaml-language-server
-    lua-language-server
-    taplo
-    # formatters
-    nixfmt
-    prettier
-    ruff
-    djlint
-    shfmt
-    stylua
-    black
-    # linters
-    eslint
-    shellcheck
-
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   programs = {
-    zoxide = {
-      enable = true;
-      enableFishIntegration = true;
-    };
     hyprland = {
       enable = true;
       withUWSM = true;
@@ -116,6 +51,7 @@
 
     # start hyprland on tty1
     fish = {
+      # enabled again just in case, it's enabled on shared module
       enable = true;
       loginShellInit = ''
         # autostart hyprland on tty1 
@@ -218,15 +154,6 @@
       startWhenNeeded = true;
     };
   };
-
-  fonts.packages = with pkgs; [
-    noto-fonts
-    noto-fonts-cjk-sans
-    noto-fonts-color-emoji
-    liberation_ttf # replacements for the MS fonts: Times New Roman, Arial, and Courier New.
-    font-awesome
-    jetbrains-mono
-  ];
 
   # enable extra xdg-portal-hyprland and gtk for file picker
   xdg.portal = {
