@@ -1,8 +1,7 @@
 { ... }:
 {
   programs.aerospace = {
-    enable = true;
-    launchd.enable = true;
+    launchd.enable = true; # this replaces enable = true
     userSettings = {
       on-focused-monitor-changed = [ "move-mouse monitor-lazy-center" ];
       on-window-detected = [
