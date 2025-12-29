@@ -2,6 +2,10 @@
 {
   nixpkgs.hostPlatform = "aarch64-darwin";
 
+  imports = [
+    ./system.nix
+  ];
+
   users.users.jay = {
     name = "jay";
     home = "/Users/jay";
