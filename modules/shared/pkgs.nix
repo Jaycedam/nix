@@ -22,9 +22,11 @@
     imagemagick
     fastfetch
     mpv
+    bitwarden-cli
 
     # desktop
     transmission_4
+    bitwarden-desktop
     #ente-desktop #broken on darwin
 
     localsend
