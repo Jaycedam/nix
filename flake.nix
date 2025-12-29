@@ -41,10 +41,11 @@
       nixosConfigurations = {
         nixos = lib.nixosSystem {
           modules = [
-            # modules
-            ./modules/nixos/default.nix
             # host specific configuration
             ./hosts/nixos/default.nix
+            # modules
+            ./modules/shared/default.nix
+            ./modules/nixos/default.nix
             # base16 global themes
             stylix.nixosModules.stylix
             # home manager
@@ -55,7 +56,8 @@
               home-manager.backupFileExtension = "backup";
               home-manager.users.jay = {
                 imports = [
-                  ./home/nixos.nix
+                  ./modules/shared/home.nix
+                  ./modules/nixos/home.nix
                 ];
               };
             }
@@ -69,6 +71,7 @@
           modules = [
             # base16 global themes
             stylix.darwinModules.stylix
+            ./modules/shared/default.nix
             ./modules/darwin/default.nix
             # home manager
             home-manager.darwinModules.home-manager
@@ -78,7 +81,8 @@
               home-manager.backupFileExtension = "backup";
               home-manager.users.jay = {
                 imports = [
-                  ./home/darwin.nix
+                  ./modules/shared/home.nix
+                  ./modules/darwin/home.nix
                 ];
               };
             }

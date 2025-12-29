@@ -1,16 +1,5 @@
 { pkgs, lib, ... }:
 {
-  nixpkgs.config.allowUnfree = true;
-
-  nix.settings = {
-    experimental-features = [
-      "nix-command"
-      "flakes"
-    ];
-  };
-  # Automatically run the nix store optimiser at a specific time.
-  nix.optimise.automatic = true;
-
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -20,7 +9,6 @@
 
   # silent boot with animation
   boot = {
-
     plymouth = {
       enable = true;
       theme = lib.mkForce "connect";
@@ -48,36 +36,6 @@
     # It's still possible to open the bootloader list by pressing any key
     # It will just not appear on screen unless a key is pressed
     loader.timeout = 1;
-  };
-
-  # start hyprland on tty1
-
-  # Automatic garbage collection (generations)
-  nix.gc = {
-    automatic = true;
-    dates = "weekly";
-    options = "--delete-older-than 7d";
-  };
-
-  # base16 automatic theming
-  stylix = {
-    enable = true;
-    polarity = "dark";
-    # https://tinted-theming.github.io/tinted-gallery/
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/rose-pine.yaml";
-    fonts = {
-      sizes = {
-        applications = 12;
-        desktop = 10;
-        terminal = 14;
-      };
-    };
-    opacity = {
-      applications = 0.9;
-      desktop = 0.9;
-      popups = 0.9;
-      terminal = 0.9;
-    };
   };
 
   security.pam.services.login.kwallet = {
