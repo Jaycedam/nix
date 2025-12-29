@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ ... }:
 {
   imports = [
     ../../home/neovim/default.nix
@@ -6,7 +6,13 @@
     ../../home/tmux.nix
     ../../home/kitty.nix
   ];
+
   programs = {
+    btop.enable = true;
+    fish.enable = true;
+    opencode.enable = true;
+    gemini-cli.enable = true;
+
     git = {
       enable = true;
       settings = {
@@ -16,38 +22,42 @@
         };
       };
     };
+
     gh = {
       enable = true;
       gitCredentialHelper.enable = true; # Defaults to github.com and gist.github.com
     };
+
     zoxide = {
       enable = true;
       enableFishIntegration = true;
     };
+
     bat = {
       enable = true;
     };
-    btop.enable = true;
-    fish.enable = true;
+
     fzf = {
       enable = true;
       enableFishIntegration = true;
     };
+
     yazi = {
       enable = true;
       enableFishIntegration = true;
     };
+
     lazygit = {
       enable = true;
       enableFishIntegration = true;
     };
+
     ghostty = {
       enable = true;
       settings = {
         mouse-hide-while-typing = "true";
       };
     };
-    opencode.enable = true;
-    gemini-cli.enable = true;
+
   };
 }

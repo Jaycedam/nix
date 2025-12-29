@@ -3,9 +3,6 @@
   ...
 }:
 {
-  # home-manager configuration
-  home.stateVersion = "25.11";
-
   # large configs go to separate files
   imports = [
     ../../home/aerospace.nix
@@ -15,7 +12,7 @@
     ghostty = {
       # just in case, it's enabled on shared module
       enable = true;
-      package = pkgs.ghostty-bin;
+      package = pkgs.ghostty-bin; # override for the darwin only version
     };
   };
   services = {
@@ -24,4 +21,6 @@
     };
   };
 
+  # home-manager configuration
+  home.stateVersion = "25.11";
 }

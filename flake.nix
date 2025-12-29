@@ -71,6 +71,7 @@
           modules = [
             # base16 global themes
             stylix.darwinModules.stylix
+            # modules
             ./modules/shared/default.nix
             ./modules/darwin/default.nix
             # home manager
