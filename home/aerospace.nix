@@ -61,7 +61,7 @@
         "alt-k" = "focus up";
         "alt-l" = "focus right";
 
-        "alt-e" = "fullscreen";
+        "alt-e" = "macos-native-fullscreen";
         "alt-shift-e" = "layout floating tiling";
         "alt-shift-s" = "reload-config";
 

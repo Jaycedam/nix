@@ -9,6 +9,7 @@
       shell = "${pkgs.fish}/bin/fish";
       background_blur = 64;
       tab_bar_edge = "top";
+      hide_window_decorations = "titlebar-only"; # darwin only option
 
     };
     keybindings = {
