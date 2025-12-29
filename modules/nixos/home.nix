@@ -37,8 +37,8 @@
     hyprpaper = {
       enable = true;
       settings = {
-        preload = "${../wallpapers/1.jpg}";
-        wallpaper = ", ${../wallpapers/1.jpg}";
+        preload = "${../../wallpapers/1.jpg}";
+        wallpaper = ", ${../../wallpapers/1.jpg}";
       };
     };
     dunst = {

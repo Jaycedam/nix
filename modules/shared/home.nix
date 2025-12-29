@@ -43,7 +43,6 @@
     };
     ghostty = {
       enable = true;
-      package = pkgs.ghostty-bin;
       settings = {
         mouse-hide-while-typing = "true";
       };
