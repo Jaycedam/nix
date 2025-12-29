@@ -29,7 +29,7 @@
 
     localsend
     # gaming
-    dolphin-emu
+    # dolphin-emu # broken on darwin
     gopher64
 
     ### browser ###

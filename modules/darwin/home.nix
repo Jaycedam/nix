@@ -12,13 +12,15 @@
   ];
 
   programs = {
-    jankyborders = {
-      enable = true;
-    };
     ghostty = {
       # just in case, it's enabled on shared module
       enable = true;
       package = pkgs.ghostty-bin;
+    };
+  };
+  services = {
+    jankyborders = {
+      enable = true;
     };
   };
 

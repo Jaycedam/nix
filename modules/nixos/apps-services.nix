@@ -15,6 +15,7 @@
     gamemode
     gamescope
     pcsx2
+    dolphin-emu
     shadps4 # no darwin release yet
     ### hyprland and utilities ###
     hyprpolkitagent
