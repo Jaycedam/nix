@@ -28,6 +28,11 @@
         desktop = 10;
         terminal = 14;
       };
+
+      monospace = {
+        package = pkgs.jetbrains-mono;
+        name = "JetBrains Mono";
+      };
     };
     opacity = {
       applications = 0.9;
