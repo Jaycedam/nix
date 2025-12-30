@@ -46,6 +46,7 @@
         inner.vertical = 8;
       };
 
+      # these make sense on colemak-dh bindings
       mode.main.binding = {
         # Layout commands
         "alt-period" = "layout tiles horizontal vertical";
@@ -57,14 +58,13 @@
         "alt-up" = "focus up";
         "alt-right" = "focus right";
 
-        "alt-h" = "focus left";
-        "alt-j" = "focus down";
-        "alt-k" = "focus up";
-        "alt-l" = "focus right";
+        "alt-m" = "focus left";
+        "alt-y" = "focus down";
+        "alt-n" = "focus up";
+        "alt-u" = "focus right";
 
         "alt-e" = "macos-native-fullscreen";
         "alt-shift-e" = "layout floating tiling";
-        "alt-shift-s" = "reload-config";
 
         # Move nodes
         "alt-shift-left" = "move left";
@@ -72,10 +72,10 @@
         "alt-shift-up" = "move up";
         "alt-shift-right" = "move right";
 
-        "alt-shift-h" = "move left";
-        "alt-shift-j" = "move down";
-        "alt-shift-k" = "move up";
-        "alt-shift-l" = "move right";
+        "alt-shift-m" = "move left";
+        "alt-shift-y" = "move down";
+        "alt-shift-n" = "move up";
+        "alt-shift-u" = "move right";
 
         # Resize
         "alt-minus" = "resize smart -50";
