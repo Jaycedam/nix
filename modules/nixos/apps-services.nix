@@ -150,10 +150,7 @@
       openFirewall = true;
     };
 
-    openssh = {
-      enable = true;
-      startWhenNeeded = true;
-    };
+    openssh.startWhenNeeded = true;
   };
 
   # enable extra xdg-portal-hyprland and gtk for file picker
