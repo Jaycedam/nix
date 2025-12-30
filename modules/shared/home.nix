@@ -59,5 +59,15 @@
       };
     };
 
+    alacritty = {
+      enable = true;
+      settings = {
+        window = {
+          decorations = "Buttonless";
+          blur = true;
+        };
+      };
+    };
+
   };
 }
