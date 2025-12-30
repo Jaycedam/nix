@@ -1,4 +1,4 @@
-{ ... }:
+{ pkgs, ... }:
 {
   imports = [
     ../../home/neovim/default.nix
@@ -67,6 +67,8 @@
       enable = true;
       settings = {
         mouse-hide-while-typing = "true";
+        font-size = "14";
+        background-blur = "true";
       };
     };
 
@@ -77,8 +79,11 @@
           decorations = "Buttonless";
           blur = true;
         };
+        terminal = {
+          shell = "${pkgs.fish}/bin/fish";
+        };
       };
-    };
 
+    };
   };
 }
