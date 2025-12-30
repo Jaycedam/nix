@@ -9,7 +9,18 @@
 
   programs = {
     btop.enable = true;
-    fish.enable = true;
+    fish = {
+      enable = true;
+      interactiveShellInit = ''
+        set fish_greeting ""
+      '';
+      shellAbbrs = {
+        v = "nvim";
+        n = "nvim";
+        h = "hx";
+        ll = "ls -lA";
+      };
+    };
     opencode.enable = true;
     gemini-cli.enable = true;
 

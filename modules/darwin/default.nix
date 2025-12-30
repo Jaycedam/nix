@@ -9,6 +9,7 @@
   users.users.jay = {
     name = "jay";
     home = "/Users/jay";
+    shell = pkgs.fish; # currently not working
   };
 
   networking = {
