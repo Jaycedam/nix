@@ -104,7 +104,7 @@
         "alt-shift-9" = "move-node-to-workspace 9 --focus-follows-window";
 
         # App shortcuts
-        "alt-f" = "exec-and-forget open -a Kitty";
+        "alt-f" = "exec-and-forget open -a Alacritty";
         "alt-t" = "exec-and-forget open -a 'Brave Browser'";
 
         # Workspace navigation
