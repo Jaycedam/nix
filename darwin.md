@@ -27,13 +27,13 @@ sudo mv /etc/bashrc /etc/bashrc.before-nix-darwin
 
 4. Use nix-darwin:
 
-### For first time setup you need to use nix run to add nix-darwin to the path:
+For first time setup you need to use nix run to add nix-darwin to the path:
 
 ```sh
 sudo nix --extra-experimental-features "nix-command flakes" run nix-darwin/nix-darwin-25.11#darwin-rebuild -- switch --flake ~/dev/nix#darwin
 ```
 
-### After you can just run:
+### After the initial run, you can just run:
 
 ```sh
 sudo darwin-rebuild switch --flake ~/dev/nix/darwin#darwin
