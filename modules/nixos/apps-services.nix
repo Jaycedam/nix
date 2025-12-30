@@ -50,21 +50,17 @@
       xwayland.enable = true;
     };
 
-    # start hyprland on tty1
-    fish = {
-      # enabled again just in case, it's enabled on shared module
-      enable = true;
-      loginShellInit = ''
-        # autostart hyprland on tty1 
-        if status is-login
-            if test -z "$DISPLAY" -a (tty) = "/dev/tty1"
-              if uwsm check may-start >/dev/null
-                exec uwsm start default >/dev/null
-              end
+    # override for nixos: start hyprland on tty1
+    fish.loginShellInit = ''
+      # autostart hyprland on tty1 
+      if status is-login
+          if test -z "$DISPLAY" -a (tty) = "/dev/tty1"
+            if uwsm check may-start >/dev/null
+              exec uwsm start default >/dev/null
             end
-        end
-      '';
-    };
+          end
+      end
+    '';
 
     steam = {
       enable = true;

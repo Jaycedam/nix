@@ -44,18 +44,16 @@
   };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users = {
-    users.jay = {
-      isNormalUser = true;
-      description = "Jay";
-      extraGroups = [
-        "networkmanager"
-        "wheel"
-        "i2c" # allow ddcutil control
-      ];
-      shell = pkgs.fish;
-      # packages = with pkgs; [ ];
-    };
+  users.users.jay = {
+    isNormalUser = true;
+    description = "Jay";
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+      "i2c" # allow ddcutil control
+    ];
+    shell = pkgs.fish;
+    # packages = with pkgs; [ ];
   };
 
   # Required for ddcutil to control ext monitor brightness
