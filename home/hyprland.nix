@@ -66,7 +66,6 @@
       input = {
         kb_layout = "us";
         kb_variant = "colemak_dh_iso";
-        kb_options = "caps:swapescape";
       };
 
       bindm = [
