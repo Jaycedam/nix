@@ -149,7 +149,7 @@
     };
     style = lib.mkAfter ''
       * {
-        font-family: JetBrains Mono, Symbols Nerd Font;
+        font-family: JetBrains Mono, Font Awesome
       }
 
         window#waybar {

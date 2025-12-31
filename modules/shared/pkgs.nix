@@ -6,7 +6,7 @@
     noto-fonts-color-emoji
     liberation_ttf # replacements for the MS fonts: Times New Roman, Arial, and Courier New.
     jetbrains-mono
-    nerd-fonts.symbols-only
+    font-awesome
   ];
 
   environment.systemPackages = with pkgs; [
