@@ -59,6 +59,14 @@
           user
           ;
       };
+      nixosNiriProfile = import ./profiles/nixos-niri.nix {
+        inherit
+          nixpkgs
+          home-manager
+          stylix
+          user
+          ;
+      };
       darwinProfile = import ./profiles/darwin.nix {
         inherit
           nixpkgs
@@ -78,6 +86,14 @@
           specialArgs = { inherit user; };
           # host module is hw specific so we add it outside the profile
           modules = [ ./hosts/nixos/default.nix ] ++ nixosHyprlandProfile;
+        };
+      };
+
+      nixosConfigurations = {
+        nixos-niri = lib.nixosSystem {
+          specialArgs = { inherit user; };
+          # host module is hw specific so we add it outside the profile
+          modules = [ ./hosts/nixos/default.nix ] ++ nixosNiriProfile;
         };
       };
 
