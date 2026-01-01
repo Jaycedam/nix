@@ -51,7 +51,7 @@
     let
       lib = nixpkgs.lib;
       user = "jay";
-      nixosHyprlandProfile = import ./profile/nixos-hyprland.nix {
+      nixosHyprlandProfile = import ./profiles/nixos-hyprland.nix {
         inherit
           nixpkgs
           home-manager
@@ -59,7 +59,7 @@
           user
           ;
       };
-      darwinProfile = import ./profile/darwin.nix {
+      darwinProfile = import ./profiles/darwin.nix {
         inherit
           nixpkgs
           home-manager
