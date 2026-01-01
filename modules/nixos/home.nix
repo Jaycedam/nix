@@ -1,5 +1,6 @@
 {
   pkgs,
+  user,
   ...
 }:
 {
@@ -40,8 +41,8 @@
 
   # home-manager configuration
   home = {
-    username = "jay";
-    homeDirectory = "/home/jay";
+    username = user;
+    homeDirectory = "/home/${user}";
     pointerCursor = {
       enable = true;
       package = pkgs.bibata-cursors;

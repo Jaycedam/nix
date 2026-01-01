@@ -1,8 +1,18 @@
-{ nixpkgs, home-manager, stylix, nix-darwin, nix-homebrew, homebrew-core, homebrew-cask }:
+{
+  nixpkgs,
+  home-manager,
+  stylix,
+  nix-darwin,
+  nix-homebrew,
+  homebrew-core,
+  homebrew-cask,
+  user,
+}:
 
 {
   darwinConfigurations = {
     darwin = nix-darwin.lib.darwinSystem {
+      specialArgs = { inherit user; };
       modules = [
         # base16 global themes
         stylix.darwinModules.stylix
@@ -17,7 +27,8 @@
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
           home-manager.backupFileExtension = "backup";
-          home-manager.users.jay = {
+          home-manager.extraSpecialArgs = { inherit user; };
+          home-manager.users.${user} = {
             imports = [
               ../modules/shared/home.nix
               ../modules/darwin/home.nix
@@ -31,7 +42,7 @@
             # Install Homebrew under the default prefix
             enable = true;
             enableRosetta = true;
-            user = "jay";
+            user = user;
             # Optional: Declarative tap management
             taps = {
               "homebrew/homebrew-core" = homebrew-core;

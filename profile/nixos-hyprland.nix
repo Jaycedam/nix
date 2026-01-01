@@ -2,6 +2,7 @@
   nixpkgs,
   home-manager,
   stylix,
+  user,
 }:
 
 [
@@ -21,7 +22,8 @@
     home-manager.useGlobalPkgs = true;
     home-manager.useUserPackages = true;
     home-manager.backupFileExtension = "backup";
-    home-manager.users.jay = {
+    home-manager.extraSpecialArgs = { inherit user; };
+    home-manager.users.${user} = {
       imports = [
         ../modules/shared/home.nix
         ../modules/nixos/home.nix
@@ -35,4 +37,3 @@
     };
   }
 ]
-

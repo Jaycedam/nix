@@ -1,7 +1,7 @@
-{ ... }:
+{ user, ... }:
 {
   system = {
-    primaryUser = "jay";
+    primaryUser = user;
     keyboard = {
       enableKeyMapping = true;
       remapCapsLockToEscape = true;

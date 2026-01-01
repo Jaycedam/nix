@@ -50,8 +50,14 @@
     }:
     let
       lib = nixpkgs.lib;
+      user = "jay";
       nixosHyprlandProfile = import ./profile/nixos-hyprland.nix {
-        inherit nixpkgs home-manager stylix;
+        inherit
+          nixpkgs
+          home-manager
+          stylix
+          user
+          ;
       };
       darwinProfile = import ./profile/darwin.nix {
         inherit
@@ -62,12 +68,15 @@
           nix-homebrew
           homebrew-core
           homebrew-cask
+          user
           ;
       };
     in
     {
       nixosConfigurations = {
-        nixos = lib.nixosSystem {
+        nixos-hyprland = lib.nixosSystem {
+          specialArgs = { inherit user; };
+          # host module is hw specific so we add it outside the profile
           modules = [ ./hosts/nixos/default.nix ] ++ nixosHyprlandProfile;
         };
       };

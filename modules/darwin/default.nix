@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, user, ... }:
 {
   nixpkgs.hostPlatform = "aarch64-darwin";
 
@@ -7,9 +7,9 @@
     ./homebrew.nix
   ];
 
-  users.users.jay = {
-    name = "jay";
-    home = "/Users/jay";
+  users.users.${user} = {
+    name = user;
+    home = "/Users/${user}";
     shell = pkgs.fish; # currently not working
   };
 

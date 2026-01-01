@@ -1,4 +1,4 @@
-{ ... }:
+{ user, ... }:
 {
   imports = [
     ./hardware-configuration.nix
@@ -10,7 +10,7 @@
   networking.hostName = "nixos"; # Define your hostname.
 
   # Host-specific Hyprland monitor config
-  home-manager.users.jay.wayland.windowManager.hyprland.settings.monitor = [
+  home-manager.users.${user}.wayland.windowManager.hyprland.settings.monitor = [
     "HDMI-A-1,1920x1080@72,auto,1"
   ];
 
