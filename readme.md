@@ -26,20 +26,25 @@ WIP.
 A draft is available in [here](./darwin.md).
 It will be moved to the main script when it's finished.
 
-## Tips
+## Commands
 
-Nix darwin commands use the same syntax as nixos commands, just replace nixos with darwin. eg: **nixos-rebuild** to **darwin-rebuild**.
+> [!NOTE]
+> Nix darwin commands use the same syntax as nixos commands, just replace nixos with darwin. eg: **nixos-rebuild** to **darwin-rebuild**.
 
 ### Update
 
 ```sh
-sudo nix flake update
+nix flake update
 ```
+
+Then run the rebuild command.
 
 ### Rebuild
 
-Use the correct #host, options: #nixos, #darwin.
+Use the correct #host, options: #nixos-hyprland, #darwin.
+
+Check the [flake.nix](./flake.nix) file for available hosts.
 
 ```sh
-sudo nixos-rebuild switch --flake $HOME/dev/nix#nixos
+sudo nixos-rebuild switch --flake $HOME/dev/nix#nixos-hyprland
 ```
