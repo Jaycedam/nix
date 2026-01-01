@@ -30,7 +30,7 @@ pkgs.writeShellScriptBin "rofi-power-menu" ''
                   systemctl poweroff
                   ;;
               logout)
-                  uwsm stop
+                   command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch exit
                   ;;
               esac
               break

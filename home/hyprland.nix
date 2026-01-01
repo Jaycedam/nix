@@ -9,7 +9,7 @@
       "$mod" = "SUPER";
       "$terminal" = "kitty";
       "$fileManager" = "$terminal --class 'file-manager' -e fish -c yazi";
-      "$menu" = "rofi -show drun --run-command 'uwsm app -- \${cmd}'";
+      "$menu" = "rofi -show drun";
       "$browser" = "brave";
       "$launch" = "launch-or-focus";
 
@@ -95,7 +95,7 @@
       bind = [
         "$mod, T, exec, $launch $terminal"
         "$mod, Q, killactive"
-        "$mod SHIFT, Q, exec, uwsm stop"
+        "$mod SHIFT, Q, exec, command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch exit"
         "$mod, E, exec, $fileManager"
         "$mod, B, exec, $launch $browser"
         "$mod, SPACE, exec, $menu"

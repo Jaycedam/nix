@@ -7,7 +7,7 @@ pkgs.writeShellScriptBin "launch-or-focus" ''
   fi
 
   WINDOW_PATTERN="$1"
-  LAUNCH_COMMAND="''${2:- "uwsm app -- $WINDOW_PATTERN & exit 0"}"
+   LAUNCH_COMMAND="''${2:- "$WINDOW_PATTERN & exit 0"}"
   WINDOW_ADDRESS=$(hyprctl clients -j | jq -r --arg p "$WINDOW_PATTERN" '.[]|select((.class|test("\\b" + $p + "\\b";"i")) or (.title|test("\\b" + $p + "\\b";"i")))|.address' | head -n1)
 
   if [[ -n $WINDOW_ADDRESS ]]; then
