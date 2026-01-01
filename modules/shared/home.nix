@@ -37,7 +37,6 @@
       };
     };
     opencode.enable = true;
-    gemini-cli.enable = true;
 
     git = {
       enable = true;
