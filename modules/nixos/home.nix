@@ -9,10 +9,14 @@
       enable = true;
       # todo= increase font and remove table cells
     };
+    foot = {
+      enable = true;
+    };
   };
 
   services = {
     udiskie.enable = true;
+    polkit-gnome.enable = true;
     hyprpaper = {
       enable = true;
       settings = {

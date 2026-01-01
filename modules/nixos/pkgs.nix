@@ -34,9 +34,6 @@
 
     ### gaming ###
     heroic
-
-    # wayland compositor utils
-    # kdePackages.polkit-kde-agent-1 # sudo for gui apps
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
