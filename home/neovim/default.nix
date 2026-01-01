@@ -15,6 +15,7 @@
       nvim-treesitter.withAllGrammars
       which-key-nvim
       gitsigns-nvim
+      render-markdown-nvim
       {
         plugin = supermaven-nvim;
         type = "lua";
