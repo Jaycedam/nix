@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, user, ... }:
 {
   environment.systemPackages = with pkgs; [
     ### cli ###
@@ -117,7 +117,7 @@
     };
     getty = {
       autologinOnce = true;
-      autologinUser = "jay"; # login automatically on console
+      autologinUser = user; # login automatically on console
     };
 
     udisks2.enable = true; # this is necessary for udiskie to work

@@ -1,4 +1,9 @@
-{ pkgs, lib, ... }:
+{
+  pkgs,
+  lib,
+  user,
+  ...
+}:
 {
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -38,13 +43,24 @@
     loader.timeout = 1;
   };
 
+  # Configure keymap in X11
+  services.xserver.xkb = {
+    layout = "us";
+    variant = "colemak_dh_iso";
+  };
+
+  console = {
+    useXkbConfig = true;
+    earlySetup = true;
+  };
+
   security.pam.services.login.kwallet = {
     enable = true;
     forceRun = true; # PAM module for KWallet will forcefully run even if no graphical session is detected
   };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.jay = {
+  users.users.${user} = {
     isNormalUser = true;
     description = "Jay";
     extraGroups = [
@@ -54,6 +70,24 @@
     ];
     shell = pkgs.fish;
     # packages = with pkgs; [ ];
+  };
+
+  # Set your time zone.
+  time.timeZone = "America/Santiago";
+
+  # Select internationalisation properties.
+  i18n.defaultLocale = "en_US.UTF-8";
+
+  i18n.extraLocaleSettings = {
+    LC_ADDRESS = "es_CL.UTF-8";
+    LC_IDENTIFICATION = "es_CL.UTF-8";
+    LC_MEASUREMENT = "es_CL.UTF-8";
+    LC_MONETARY = "es_CL.UTF-8";
+    LC_NAME = "es_CL.UTF-8";
+    LC_NUMERIC = "es_CL.UTF-8";
+    LC_PAPER = "es_CL.UTF-8";
+    LC_TELEPHONE = "es_CL.UTF-8";
+    LC_TIME = "es_CL.UTF-8";
   };
 
   # Required for ddcutil to control ext monitor brightness
