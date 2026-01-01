@@ -62,7 +62,6 @@
       "wheel"
       "i2c" # allow ddcutil control
     ];
-    shell = pkgs.fish;
     # packages = with pkgs; [ ];
   };
 
