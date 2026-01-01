@@ -35,6 +35,6 @@ fi
 
 echo -e "$ARROW Rebuilding NixOS configuration..."
 sudo NIX_CONFIG="experimental-features = nix-command flakes" \
-    nixos-rebuild switch --flake "$REPO_DIR"#nixos-hyprland
+    nixos-rebuild switch --flake "$REPO_DIR"#nixos-niri
 
 echo -e "${ARROW} ${GREEN}Done!${NC} Reboot to apply all changes."

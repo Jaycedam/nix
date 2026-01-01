@@ -9,8 +9,8 @@ Same for macOS, except it uses kanata instead of keyd, it also needs manual inte
 ## Main programs
 
 - Shared: fish shell, kitty, neovim, tmux
-- NixOS: hyprland, waybar, rofi, keyd
-- Darwin: aerospace (wm), kanata
+- NixOS: hyprland/niri, waybar, rofi, keyd
+- Darwin: aerospace(wm), kanata
 
 ## Apply NixOS configuration
 
@@ -41,7 +41,7 @@ Then run the rebuild command.
 
 ### Rebuild
 
-Use the correct #host, options: #nixos-hyprland, #darwin.
+Use the correct #host, options: #nixos-hyprland, #nixos-niri, #darwin.
 
 Check the [flake.nix](./flake.nix) file for available hosts.
 
