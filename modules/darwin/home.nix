@@ -1,4 +1,5 @@
 {
+  config,
   pkgs,
   ...
 }:
@@ -19,6 +20,8 @@
     };
   };
 
-  # home-manager configuration
+  # manual kanata config symlink, since we don't have a home-manager module for it
+  home.file."${config.xdg.configHome}/kanata/config.kbd".source = ../../home/kanata.kbd;
+
   home.stateVersion = "25.11";
 }
