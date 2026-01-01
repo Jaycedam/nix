@@ -54,11 +54,6 @@
     earlySetup = true;
   };
 
-  security.pam.services.login.kwallet = {
-    enable = true;
-    forceRun = true; # PAM module for KWallet will forcefully run even if no graphical session is detected
-  };
-
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.${user} = {
     isNormalUser = true;

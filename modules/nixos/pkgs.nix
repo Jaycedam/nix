@@ -19,13 +19,9 @@
     shadps4 # no darwin release yet
     pavucontrol
     wiremix
-    # keyring
-    kdePackages.kwallet
-    kdePackages.kwallet-pam
-    kdePackages.kwalletmanager
     # desktop
     proton-pass # no darwin release yet
-    kdePackages.dolphin
+    nautilus # needed by niri
     gimp # no darwin release yet
     libreoffice-fresh
 
@@ -34,9 +30,13 @@
     cryptomator
     ente-desktop
     grayjay
+    seahorse # gnome keyring manager
 
     ### gaming ###
     heroic
+
+    # wayland compositor utils
+    # kdePackages.polkit-kde-agent-1 # sudo for gui apps
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -51,6 +51,7 @@
   };
 
   services = {
+    gnome.gnome-keyring.enable = true;
     # Power management with profiles
     tuned = {
       enable = true;
