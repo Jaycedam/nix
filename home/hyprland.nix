@@ -27,13 +27,6 @@
         ];
       };
 
-      layerrule = [
-        "blur,rofi"
-        "blur,waybar"
-        "blur,notifications"
-        "ignorezero,waybar"
-      ];
-
       general = {
         gaps_in = 8;
         gaps_out = 8;
@@ -136,12 +129,19 @@
         )
       );
 
+      layerrule = [
+        "blur on, match:class  rofi"
+        "blur on, match:class waybar"
+        "blur on, match:class notifications"
+        "ignore_alpha 0, match:class waybar"
+      ];
+
       windowrule = [
-        "workspace 1, class:brave-browser"
-        "workspace 2, class:kitty"
+        "workspace 1, match:class brave-browser"
+        "workspace 2, match:class kitty"
         # pin gnome-keyring
-        "pin, class:^(gcr-prompter)$"
-        "stayfocused, class:^(gcr-prompter)$"
+        "pin on, match:class gcr-prompter"
+        "stay_focused on, match:class gcr-prompter"
       ];
 
     };

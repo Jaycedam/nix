@@ -23,6 +23,9 @@
         preload = "${../../wallpapers/1.jpg}";
         wallpaper = ", ${../../wallpapers/1.jpg}";
       };
+
+      # 0.8 future syntax
+      # settings.wallpaper.path = "${../../wallpapers/1.jpg}";
     };
 
     dunst = {
