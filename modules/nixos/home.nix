@@ -3,15 +3,6 @@
   ...
 }:
 {
-
-  # large configs go to separate files
-  imports = [
-    ../../home/hyprland.nix
-    ../../home/waybar.nix
-    ../../home/hyprlock.nix
-    ../../home/hypridle.nix
-  ];
-
   programs = {
     rofi = {
       enable = true;

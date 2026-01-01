@@ -17,8 +17,6 @@
     pcsx2
     dolphin-emu
     shadps4 # no darwin release yet
-    ### hyprland and utilities ###
-    hyprpolkitagent
     pavucontrol
     wiremix
     # keyring
@@ -44,12 +42,6 @@
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   programs = {
-    hyprland = {
-      enable = true;
-      withUWSM = true;
-      xwayland.enable = true;
-    };
-
     steam = {
       enable = true;
       extraCompatPackages = with pkgs; [
@@ -137,14 +129,4 @@
 
     openssh.startWhenNeeded = true;
   };
-
-  # enable extra xdg-portal-hyprland and gtk for file picker
-  xdg.portal = {
-    enable = true;
-    extraPortals = with pkgs; [
-      xdg-desktop-portal-hyprland
-      xdg-desktop-portal-gtk
-    ];
-  };
-
 }
