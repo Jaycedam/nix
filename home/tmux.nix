@@ -19,7 +19,12 @@
       set -g renumber-windows on
       set -g popup-border-lines "rounded"
 
+      set -g status-justify absolute-centre
       set -g status-right ""
+
+      setw -g window-status-current-format [#I] #W #{?window_zoomed_flag, ,}"
+      # Style for other windows in the status bar
+      set -g status-left " #S #{?client_prefix,#[bg=default]#[fg=blue] ,#[bg=default]#[fg=default]}"
 
       bind '"' split-window -v -c "#{pane_current_path}"
       bind % split-window -h -c "#{pane_current_path}"

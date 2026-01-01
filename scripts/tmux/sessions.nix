@@ -12,7 +12,7 @@ pkgs.writeShellScriptBin "tmux-sessions" ''
    session_name=$(basename "$selection" | tr . _)
 
    if ! tmux has-session -t "$session_name" 2>/dev/null; then
-       tmux new-session -d -s "$session_name" -c "$selection" -n "" "nvim"
+       tmux new-session -d -s "$session_name" -c "$selection" -n " " "nvim"
        tmux new-window -d -t "$session_name" -c "$selection"
    fi
 
