@@ -87,9 +87,7 @@
           # host module is hw specific so we add it outside the profile
           modules = [ ./hosts/nixos/default.nix ] ++ nixosHyprlandProfile;
         };
-      };
 
-      nixosConfigurations = {
         nixos-niri = lib.nixosSystem {
           specialArgs = { inherit user; };
           # host module is hw specific so we add it outside the profile
