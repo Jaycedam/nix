@@ -30,7 +30,7 @@
         ../modules/nixos/home.nix
 
         # niri and utils config
-        # ../home/niri/default.nix
+        ../home/niri/default.nix
         ../home/waybar/waybar.nix
         ../home/waybar/waybar-niri.nix
         ../home/hyprlock.nix

@@ -39,8 +39,8 @@ input {
 output "HDMI-A-1" {
     // The format is "<width>x<height>" or "<width>x<height>@<refresh rate>".
     // If the refresh rate is omitted, niri will pick the highest refresh rate for the resolution.
-    // `niri msg outputs` 
-    mode "1920x1080@72"
+    // `niri msg outputs`
+    mode "1920x1080"
     scale 1
 }
 
