@@ -38,6 +38,15 @@
           frame_width = 1;
           corner_radius = 5;
         };
+        urgency_low = {
+          highlight = "#ffffff";
+        };
+        urgency_normal = {
+          highlight = "#ffffff";
+        };
+        urgency_high = {
+          highlight = "#ffffff";
+        };
       };
     };
   };

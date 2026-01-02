@@ -10,6 +10,7 @@
     ddcutil # ext monitor brightness
     impala # wifi tui selector
     wl-clipboard
+    libnotify
     # gaming
     lsfg-vk # lossless scaling on linux
     gamemode
