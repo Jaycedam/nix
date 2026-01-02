@@ -16,10 +16,4 @@
       xdg-desktop-portal-gnome # required for screencasting support
     ];
   };
-
-  environment.loginShellInit = ''
-    if [ -z "$DISPLAY" ] && [ "$(tty)" = "/dev/tty1" ]; then
-        exec niri-session &>/dev/null
-    fi   
-  '';
 }
