@@ -7,12 +7,6 @@
       mainBar = {
         "layer" = "bottom";
         "position" = "bottom";
-
-        "modules-left" = [
-          "group/actions"
-          "hyprland/window"
-        ];
-        "modules-center" = [ "hyprland/workspaces" ];
         "modules-right" = [
           "tray"
           "group/system"
@@ -38,22 +32,11 @@
           ];
         };
 
-        "hyprland/workspaces" = {
-          "format" = "{icon}";
-          "format-icons" = {
-            "active" = "";
-            "persistent" = "";
-            "empty" = "";
-          };
-          "persistent-workspaces" = {
-            "*" = 5;
-          };
-        };
-
         "custom/power" = {
           "format" = "  ";
           "on-click" = "rofi-power-menu";
         };
+
         "network" = {
           "format-wifi" = "  ";
           "format-ethernet" = " Wired";
@@ -63,16 +46,7 @@
           "interval" = 3;
           "on-click" = "kitty --class 'wifi-tui' nmtui";
         };
-        "hyprland/language" = {
-          "format" = "{short}";
-          "keyboard-name" = "at-translated-set-2-keyboard";
-        };
-        "hyprland/window" = {
-          "format" = "{title}";
-          "max-length" = 50;
-          "icon" = true;
-          "icon-size" = 16;
-        };
+
         "battery" = {
           "states" = {
             "warning" = 30;

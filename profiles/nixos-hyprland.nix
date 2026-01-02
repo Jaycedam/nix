@@ -30,7 +30,8 @@
 
         # Hyprland config
         ../home/hyprland.nix
-        ../home/waybar.nix
+        ../home/waybar/waybar.nix
+        ../home/waybar/waybar-hypr.nix
         ../home/hyprlock.nix
         ../home/hypridle.nix
       ];
