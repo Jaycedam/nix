@@ -28,7 +28,7 @@
         ../modules/shared/home.nix
         ../modules/nixos/home.nix
 
-        # Hyprland config
+        # hyprland and utils config
         ../home/hyprland.nix
         ../home/waybar/waybar.nix
         ../home/waybar/waybar-hypr.nix

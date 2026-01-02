@@ -3,6 +3,7 @@
   home-manager,
   stylix,
   user,
+  ...
 }:
 
 [
@@ -28,7 +29,8 @@
         ../modules/shared/home.nix
         ../modules/nixos/home.nix
 
-        # utils config
+        # niri and utils config
+        # ../home/niri/default.nix
         ../home/waybar/waybar.nix
         ../home/waybar/waybar-niri.nix
         ../home/hyprlock.nix
