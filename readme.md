@@ -14,7 +14,7 @@ Same for macOS, except it uses kanata instead of keyd, it also needs manual inte
 
 ## Apply NixOS configuration
 
-This will clone the repository to **~/dev/nix** and generate the system using flakes. It loads #nixos automatically, I will modify the installation when I add other hosts like nix-darwin.
+This will clone the repository to **~/dev/nix** and generate the system using flakes. It loads #nixos-niri automatically, I will modify the installation when I add other hosts like nix-darwin.
 
 ```bash
 nix-shell -p git --run "curl -fsSL https://raw.githubusercontent.com/jaycedam/nix/master/install.sh | bash"
@@ -46,5 +46,5 @@ Use the correct #host, options: #nixos-hyprland, #nixos-niri, #darwin.
 Check the [flake.nix](./flake.nix) file for available hosts.
 
 ```sh
-sudo nixos-rebuild switch --flake $HOME/dev/nix#nixos-hyprland
+sudo nixos-rebuild switch --flake $HOME/dev/nix#nixos-niri
 ```
