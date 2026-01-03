@@ -7,7 +7,6 @@
     fwupd # upgrade firmware
     playerctl
     brightnessctl
-    ddcutil # ext monitor brightness
     impala # wifi tui selector
     wl-clipboard
     libnotify
@@ -40,6 +39,14 @@
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   programs = {
+    dms-shell = {
+      enable = true;
+      enableSystemMonitoring = false;
+      enableDynamicTheming = false;
+      enableClipboard = false;
+      enableCalendarEvents = false;
+    };
+
     steam = {
       enable = true;
       extraCompatPackages = with pkgs; [
@@ -50,11 +57,6 @@
 
   services = {
     gnome.gnome-keyring.enable = true;
-    # Power management with profiles
-    tuned = {
-      enable = true;
-      settings.dynamic_tuning = true;
-    };
 
     keyd = {
       enable = true;
