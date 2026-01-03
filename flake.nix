@@ -98,9 +98,7 @@
       darwinConfigurations = {
         darwin = nix-darwin.lib.darwinSystem {
           specialArgs = { inherit user; };
-          modules = [
-            darwinProfile
-          ];
+          modules = [ ] ++ darwinProfile;
         };
       };
     };
