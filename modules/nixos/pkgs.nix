@@ -29,7 +29,7 @@
     signal-desktop
     cryptomator
     ente-desktop
-    grayjay
+    # grayjay
     seahorse # gnome keyring manager
 
     ### gaming ###
@@ -49,6 +49,7 @@
 
     steam = {
       enable = true;
+      protontricks.enable = true;
       extraCompatPackages = with pkgs; [
         proton-ge-bin
       ];
