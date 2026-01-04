@@ -29,7 +29,6 @@
     bitwarden-desktop
     #ente-desktop #broken on darwin
 
-    localsend
     # gaming
     # dolphin-emu # broken on darwin
     gopher64

@@ -38,6 +38,7 @@
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   programs = {
+    localsend.enable = true; # it's installed here to enable the firewall automatically
     steam = {
       enable = true;
       protontricks.enable = true;

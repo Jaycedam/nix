@@ -24,6 +24,7 @@
     karabiner-dk
     libreoffice-bin
     signal-desktop-bin
+    localsend
   ];
 
   programs.fish.enable = true;
