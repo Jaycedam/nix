@@ -31,7 +31,10 @@
 
         # niri and utils config
         ../home/niri/default.nix
-        ../home/dms-shell/default.nix
+        ../home/waybar/waybar.nix
+        ../home/waybar/waybar-niri.nix
+        ../home/hyprlock.nix
+        ../home/hypridle.nix
       ];
     };
   }

@@ -31,7 +31,10 @@
 
         # hyprland and utils config
         ../home/hyprland.nix
-        ../home/dms-shell/default.nix
+        ../home/waybar/waybar.nix
+        ../home/waybar/waybar-hypr.nix
+        ../home/hyprlock.nix
+        ../home/hypridle.nix
       ];
     };
   }

@@ -10,6 +10,7 @@
     impala # wifi tui selector
     wl-clipboard
     libnotify
+    ddcutil # ext monitor brightness
     # gaming
     lsfg-vk # lossless scaling on linux
     gamemode
@@ -24,8 +25,6 @@
     nautilus # needed by niri
     gimp # no darwin release yet
     libreoffice-fresh
-
-    # desktop
     signal-desktop
     cryptomator
     ente-desktop
@@ -39,14 +38,6 @@
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   programs = {
-    dms-shell = {
-      enable = true;
-      enableSystemMonitoring = false;
-      enableDynamicTheming = false;
-      enableClipboard = false;
-      enableCalendarEvents = false;
-    };
-
     steam = {
       enable = true;
       protontricks.enable = true;
@@ -58,6 +49,12 @@
 
   services = {
     gnome.gnome-keyring.enable = true;
+
+    # Power management with profiles
+    tuned = {
+      enable = true;
+      settings.dynamic_tuning = true;
+    };
 
     keyd = {
       enable = true;

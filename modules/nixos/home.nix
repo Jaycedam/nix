@@ -17,6 +17,38 @@
   services = {
     udiskie.enable = true;
     polkit-gnome.enable = true;
+
+    dunst = {
+      enable = true;
+      settings = {
+        global = {
+          width = "(200,300)";
+          offset = "(10,10)";
+          origin = "top-right";
+          frame_width = 1;
+          corner_radius = 5;
+        };
+        urgency_low = {
+          highlight = "#ffffff";
+        };
+        urgency_normal = {
+          highlight = "#ffffff";
+        };
+        urgency_high = {
+          highlight = "#ffffff";
+        };
+      };
+    };
+
+    hyprpaper = {
+      enable = true;
+      settings = {
+        wallpaper = {
+          monitor = "";
+          path = "${../../wallpapers/1.jpg}";
+        };
+      };
+    };
   };
 
   # enable theming
