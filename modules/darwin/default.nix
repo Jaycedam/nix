@@ -26,5 +26,7 @@
     signal-desktop-bin
   ];
 
+  programs.fish.enable = true;
+
   system.stateVersion = 6;
 }
