@@ -5,5 +5,6 @@
     (import ../../scripts/rofi/power-menu.nix { inherit pkgs; })
     (import ../../scripts/hypr/launch-or-focus.nix { inherit pkgs; })
     (import ../../scripts/system/brightness.nix { inherit pkgs; })
+    (import ../../scripts/system/volume.nix { inherit pkgs; })
   ];
 }

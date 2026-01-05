@@ -135,7 +135,7 @@ binds {
     // Open/close the Overview: a zoomed-out view of workspaces and windows.
     // You can also move the mouse into the top-left hot corner,
     // or do a four-finger swipe up on a touchpad.
-    Mod+Shift+O repeat=false { toggle-overview; }
+    Mod+O repeat=false { toggle-overview; }
     Mod+Q repeat=false { close-window; }
 
     Mod+Left  { focus-column-left; }
@@ -300,10 +300,10 @@ binds {
 
     // volume keys mappings for PipeWire & WirePlumber. "-l 1.0" limits the volume to 100%.
     // Using spawn-sh allows to pass multiple arguments together with the command.
-    XF86AudioRaiseVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1+ -l 1.0"; }
-    XF86AudioLowerVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1-"; }
-    XF86AudioMute        allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"; }
-    XF86AudioMicMute     allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"; }
+    XF86AudioRaiseVolume allow-when-locked=true { spawn-sh "volume up"; }
+    XF86AudioLowerVolume allow-when-locked=true { spawn-sh "volume down"; }
+    XF86AudioMute        allow-when-locked=true { spawn-sh "volume mute"; }
+    XF86AudioMicMute     allow-when-locked=true { spawn-sh "volume micmute"; }
 
     // media keys mapping using playerctl.
     XF86AudioPlay        allow-when-locked=true { spawn-sh "playerctl play-pause"; }

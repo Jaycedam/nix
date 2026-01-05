@@ -65,13 +65,13 @@ pkgs.writeShellScriptBin "brightness" ''
   # OSD feedback
   if command -v notify-send >/dev/null; then
   	if [ -n "$last_percent" ]; then
-  		notify-send -r 9999 -h int:value:''${last_percent} "Brightness"
+  		notify-send -t 2000 -r 9999 -h int:value:''${last_percent} "Brightness"
   	fi
   	if [ "$external_failed" = "true" ]; then
-  		notify-send -r 9998 "Brightness Error" "Failed to adjust external monitor brightness"
+  		notify-send "Brightness Error" "Failed to adjust external monitor brightness"
   	fi
   	if [ "$internal_failed" = "true" ]; then
-  		notify-send -r 9998 "Brightness Error" "Failed to adjust internal display brightness"
+  		notify-send "Brightness Error" "Failed to adjust internal display brightness"
   	fi
   fi
 ''

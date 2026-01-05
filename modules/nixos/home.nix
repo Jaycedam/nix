@@ -22,7 +22,7 @@
       enable = true;
       settings = {
         global = {
-          width = "(200,300)";
+          width = "300";
           offset = "(10,10)";
           origin = "top-right";
           frame_width = 1;
