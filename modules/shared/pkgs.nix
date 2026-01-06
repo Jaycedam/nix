@@ -50,28 +50,6 @@
     # languages
     go
 
-    # lsp
-    nil # nix
-    pyright
-    vscode-langservers-extracted
-    typescript-language-server
-    rust-analyzer
-    astro-language-server
-    gopls
-    bash-language-server
-    marksman
-    tailwindcss-language-server
-    yaml-language-server
-    lua-language-server
-    taplo
-    # formatters
-    nixfmt
-    prettier
-    ruff
-    djlint
-    shfmt
-    stylua
-    black
     # linters
     eslint
     shellcheck
