@@ -28,7 +28,7 @@
   # snacks.nvim
   ## pickers and explorer
   {
-    action = "<cmd>lua Snacks.explore()<CR>";
+    action = "<cmd>lua Snacks.explorer()<CR>";
     mode = "n";
     key = "<leader>e";
     options = {
@@ -124,7 +124,7 @@
   {
     action = "<cmd>lua Snacks.lazygit()<CR>";
     mode = "n";
-    key = "<leader>g";
+    key = "<leader>G";
     options = {
       silent = true;
       desc = "Lazygit";
@@ -132,25 +132,25 @@
   }
   ## lsp
   {
-    action = "<cmd>lua Snacks.lsp_definitions()<CR>";
+    action = "<cmd>lua Snacks.picker.lsp_definitions()<CR>";
     mode = "n";
-    key = "<leader>d";
+    key = "<leader>gd";
     options = {
       silent = true;
       desc = "LSP definitions";
     };
   }
   {
-    action = "<cmd>lua Snacks.lsp_declarations()<CR>";
+    action = "<cmd>lua Snacks.picker.lsp_declarations()<CR>";
     mode = "n";
-    key = "<leader>D";
+    key = "<leader>gD";
     options = {
       silent = true;
       desc = "LSP declarations";
     };
   }
   {
-    action = "<cmd>lua Snacks.lsp_references()<CR>";
+    action = "<cmd>lua Snacks.picker.lsp_references()<CR>";
     mode = "n";
     key = "<leader>r";
     options = {
@@ -159,7 +159,7 @@
     };
   }
   {
-    action = "<cmd>lua Snacks.lsp_implementations()<CR>";
+    action = "<cmd>lua Snacks.picker.lsp_implementations()<CR>";
     mode = "n";
     key = "<leader>i";
     options = {
@@ -168,7 +168,7 @@
     };
   }
   {
-    action = "<cmd>lua Snacks.lsp_type_definitions()<CR>";
+    action = "<cmd>lua Snacks.picker.lsp_type_definitions()<CR>";
     mode = "n";
     key = "<leader>t";
     options = {
@@ -177,7 +177,7 @@
     };
   }
   {
-    action = "<cmd>lua Snacks.lsp_symbols()<CR>";
+    action = "<cmd>lua Snacks.picker.lsp_symbols()<CR>";
     mode = "n";
     key = "<leader>s";
     options = {
@@ -186,7 +186,7 @@
     };
   }
   {
-    action = "<cmd>lua Snacks.lsp_workspace_symbols()<CR>";
+    action = "<cmd>lua Snacks.picker.lsp_workspace_symbols()<CR>";
     mode = "n";
     key = "<leader>S";
     options = {
@@ -224,7 +224,7 @@
   }
   {
     action = "<cmd>lua Snacks.gitbrowse()<CR>";
-    key = "<leader>gb";
+    key = "<leader>B";
     mode = [
       "n"
       "v"
