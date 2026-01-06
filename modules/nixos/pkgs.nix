@@ -90,17 +90,6 @@
           space = "overloadt(nav_layer, space, 200)";
         };
 
-        fn = {
-          f1 = "f1";
-          f2 = "f2";
-          f7 = "f7";
-          f8 = "f8";
-          f9 = "f9";
-          f10 = "f10";
-          f11 = "f11";
-          f12 = "f12";
-        };
-
         nav_layer = {
           h = "left";
           j = "down";
@@ -112,6 +101,15 @@
           t = "C-left";
           i = "backspace";
           ";" = "enter";
+
+          f1 = "f1";
+          f2 = "f2";
+          f7 = "f7";
+          f8 = "f8";
+          f9 = "f9";
+          f10 = "f10";
+          f11 = "f11";
+          f12 = "f12";
         };
       };
     };
