@@ -2,7 +2,6 @@
 {
   imports = [
     ../../home/nixvim.nix
-    ../../home/helix.nix
     ../../home/tmux.nix
     ../../home/kitty.nix
   ];
