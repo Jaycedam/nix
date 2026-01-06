@@ -1,7 +1,7 @@
 { pkgs, ... }:
 {
   imports = [
-    ../../home/nixvim.nix
+    ../../home/nixvim/default.nix
     ../../home/tmux.nix
     ../../home/kitty.nix
   ];
