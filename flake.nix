@@ -3,13 +3,19 @@
 
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-unstable";
+
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
     stylix = {
       url = "github:nix-community/stylix";
       inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    nixvim = {
+      url = "github:nix-community/nixvim";
     };
 
     # Darwin specific inputs
@@ -42,6 +48,7 @@
       nixpkgs,
       home-manager,
       stylix,
+      nixvim,
       nix-darwin,
       nix-homebrew,
       homebrew-core,
@@ -57,6 +64,7 @@
           home-manager
           stylix
           user
+          nixvim
           ;
       };
       nixosNiriProfile = import ./profiles/nixos-niri.nix {
@@ -65,6 +73,7 @@
           home-manager
           stylix
           user
+          nixvim
           ;
       };
       darwinProfile = import ./profiles/darwin.nix {
@@ -77,6 +86,7 @@
           homebrew-core
           homebrew-cask
           user
+          nixvim
           ;
       };
     in
