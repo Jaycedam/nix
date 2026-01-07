@@ -92,9 +92,6 @@
           decorations = "Buttonless";
           blur = true;
         };
-        terminal = {
-          shell = "${pkgs.fish}/bin/fish";
-        };
       };
 
     };

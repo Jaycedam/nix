@@ -10,6 +10,7 @@
   users.users.${user} = {
     name = user;
     home = "/Users/${user}";
+    shell = pkgs.fish;
   };
 
   networking = {
@@ -26,8 +27,6 @@
     signal-desktop-bin
     localsend
   ];
-
-  programs.fish.enable = true;
 
   system.stateVersion = 6;
 }

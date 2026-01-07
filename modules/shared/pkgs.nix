@@ -57,6 +57,8 @@
     (import ../../scripts/tmux/sessions.nix { inherit pkgs; })
   ];
 
+  programs.fish.enable = true;
+
   services.openssh.enable = true;
 
 }
