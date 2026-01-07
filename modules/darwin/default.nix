@@ -26,6 +26,7 @@
     libreoffice-bin
     signal-desktop-bin
     localsend
+    moonlight-qt
   ];
 
   system.stateVersion = 6;
