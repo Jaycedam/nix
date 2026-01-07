@@ -128,9 +128,11 @@ binds {
     // shows a list of important hotkeys.
     Mod+Shift+Slash { show-hotkey-overlay; }
 
-    Mod+T hotkey-overlay-title="Open a Terminal: kitty" { spawn "kitty"; }
-    Mod+B hotkey-overlay-title="Open a Browser: brave" { spawn "brave"; }
-    Mod+Space hotkey-overlay-title="Run an Application: rofi" { spawn-sh "rofi -show drun"; }
+    Mod+T hotkey-overlay-title="Open kitty" { spawn "kitty"; }
+    Mod+N hotkey-overlay-title="Open neovim" { spawn-sh "kitty --class 'nvim' -e fish -c \"nvim -c 'lua Snacks.picker.projects()'\""; }
+    Mod+E hotkey-overlay-title="Open yazi" { spawn-sh "kitty --class 'yazi' -e fish -c yazi"; }
+    Mod+B hotkey-overlay-title="Open brave browser" { spawn "brave"; }
+    Mod+Space hotkey-overlay-title="Search apps (rofi)" { spawn-sh "rofi -show drun"; }
 
     // Open/close the Overview: a zoomed-out view of workspaces and windows.
     // You can also move the mouse into the top-left hot corner,
