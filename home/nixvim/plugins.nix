@@ -7,6 +7,9 @@
   colorizer.enable = true;
   flash.enable = true;
   mini-icons.enable = true;
+  mini-statusline.enable = true;
+  mini-surround.enable = true;
+  mini-pairs.enable = true;
 
   snacks = {
     enable = true;
