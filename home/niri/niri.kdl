@@ -23,11 +23,16 @@ input {
     }
 
     // Uncomment this to make the mouse warp to the center of newly focused windows.
-    warp-mouse-to-focus
+    // warp-mouse-to-focus
 
     // Focus windows and outputs automatically when moving the mouse into them.
     // Setting max-scroll-amount="0%" makes it work only on windows already fully on screen.
-    focus-follows-mouse max-scroll-amount="30%"
+    focus-follows-mouse max-scroll-amount="0%"
+}
+
+cursor {
+    // hide-when-typing
+    hide-after-inactive-ms 5000
 }
 
 // You can configure outputs by their name, which you can find
@@ -59,7 +64,7 @@ layout {
         // Proportion sets the width as a fraction of the output width, taking gaps into account.
         // For example, you can perfectly fit four windows sized "proportion 0.25" on an output.
         // The default preset widths are 1/3, 1/2 and 2/3 of the output.
-        proportion 0.6
+        proportion 0.5
         proportion 0.8
     }
 
@@ -103,8 +108,13 @@ screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
 // Open the Firefox picture-in-picture player as floating by default.
 window-rule {
     match app-id=r#"firefox$"# title="^Picture-in-Picture$"
+    match app-id=r#"zen-beta$"# title="^Picture-in-Picture$"
     match title="^Picture in picture$" // brave pip doesn't set app-id
     open-floating true
+    default-floating-position x=16 y=16 relative-to="top-right"
+    default-column-width { fixed 480; }
+    default-window-height { fixed 270; }
+    open-focused false
 }
 
 // Example: block out apps from screen capture.
@@ -129,9 +139,9 @@ binds {
     Mod+Shift+Slash { show-hotkey-overlay; }
 
     Mod+T hotkey-overlay-title="Open kitty" { spawn "kitty"; }
-    Mod+N hotkey-overlay-title="Open neovim" { spawn-sh "kitty --class 'nvim' -e fish -c \"nvim -c 'lua Snacks.picker.projects()'\""; }
+    Mod+N hotkey-overlay-title="Open neovim" { spawn-sh "kitty --class 'nvim' --title 'Neovim' -e fish -c \"nvim -c 'lua Snacks.picker.projects()'\""; }
     Mod+E hotkey-overlay-title="Open yazi" { spawn-sh "kitty --class 'yazi' -e fish -c yazi"; }
-    Mod+B hotkey-overlay-title="Open brave browser" { spawn "brave"; }
+    Mod+B hotkey-overlay-title="Open browser" { spawn "zen"; }
     Mod+Space hotkey-overlay-title="Search apps (rofi)" { spawn-sh "rofi -show drun"; }
 
     // Open/close the Overview: a zoomed-out view of workspaces and windows.
