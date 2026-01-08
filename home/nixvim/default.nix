@@ -12,8 +12,19 @@
     globals = {
       mapleader = " ";
     };
-    plugins = import ./plugins.nix { inherit nixvim pkgs; };
-    keymaps = import ./keymaps.nix;
-    opts = import ./opts.nix;
+
+    imports = [
+      # plugins and their keymaps
+      ./plugins/default.nix
+      ./plugins/conform.nix
+      ./plugins/lint.nix
+      ./plugins/flash.nix
+      ./plugins/snacks.nix
+      (import ./plugins/lsp.nix { inherit pkgs; })
+
+      # general keymaps
+      ./keymaps.nix
+      ./opts.nix
+    ];
   };
 }
