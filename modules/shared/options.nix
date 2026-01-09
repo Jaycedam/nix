@@ -13,12 +13,6 @@
     ];
   };
 
-  # Automatic garbage collection (generations)
-  nix.gc.automatic = true;
-
-  # Automatically run the nix store optimiser at a specific time.
-  nix.optimise.automatic = true;
-
   nixpkgs.config.allowUnfree = true;
 
   # base16 automatic theming

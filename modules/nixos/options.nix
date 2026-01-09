@@ -12,6 +12,12 @@
   # Use latest kernel.
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
+  # Automatic garbage collection (generations)
+  nix.gc.automatic = true;
+
+  # Automatically run the nix store optimiser at a specific time.
+  nix.optimise.automatic = true;
+
   # silent boot with animation
   boot = {
     plymouth = {
