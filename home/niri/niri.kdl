@@ -141,7 +141,7 @@ binds {
     Mod+T hotkey-overlay-title="Open kitty" { spawn "kitty"; }
     Mod+N hotkey-overlay-title="Open neovim" { spawn-sh "kitty --class 'nvim' --title 'Neovim' -e fish -c \"nvim -c 'lua Snacks.picker.projects()'\""; }
     Mod+E hotkey-overlay-title="Open yazi" { spawn-sh "kitty --class 'yazi' -e fish -c yazi"; }
-    Mod+B hotkey-overlay-title="Open browser" { spawn "zen"; }
+    Mod+B hotkey-overlay-title="Open browser" { spawn "brave"; }
     Mod+Space hotkey-overlay-title="Search apps (rofi)" { spawn-sh "rofi -show drun"; }
 
     // Open/close the Overview: a zoomed-out view of workspaces and windows.

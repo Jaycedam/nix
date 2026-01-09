@@ -105,7 +105,7 @@
 
         # App shortcuts
         "alt-f" = "exec-and-forget open -a Kitty";
-        "alt-t" = "exec-and-forget open -a 'Zen Browser (Beta)'";
+        "alt-t" = "exec-and-forget open -a 'Brave Browser'";
 
         # Workspace navigation
         "alt-tab" = "workspace-back-and-forth";

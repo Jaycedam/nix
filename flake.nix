@@ -18,12 +18,6 @@
       url = "github:nix-community/nixvim";
     };
 
-    zen-browser = {
-      url = "github:0xc000022070/zen-browser-flake";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.home-manager.follows = "home-manager";
-    };
-
     # Darwin specific inputs
     nix-darwin = {
       url = "github:nix-darwin/nix-darwin";
@@ -59,7 +53,6 @@
       nix-homebrew,
       homebrew-core,
       homebrew-cask,
-      zen-browser,
       ...
     }:
     let
@@ -72,7 +65,6 @@
           stylix
           user
           nixvim
-          zen-browser
           ;
       };
       nixosNiriProfile = import ./profiles/nixos-niri.nix {
@@ -82,7 +74,6 @@
           stylix
           user
           nixvim
-          zen-browser
           ;
       };
       darwinProfile = import ./profiles/darwin.nix {
@@ -96,7 +87,6 @@
           homebrew-cask
           user
           nixvim
-          zen-browser
           ;
       };
     in

@@ -4,7 +4,6 @@
   stylix,
   user,
   nixvim,
-  zen-browser,
   ...
 }:
 
@@ -25,7 +24,7 @@
     home-manager.useGlobalPkgs = true;
     home-manager.useUserPackages = true;
     home-manager.backupFileExtension = "backup";
-    home-manager.extraSpecialArgs = { inherit user nixvim zen-browser; };
+    home-manager.extraSpecialArgs = { inherit user nixvim; };
     home-manager.users.${user} = {
       imports = [
         ../modules/shared/home.nix
