@@ -29,5 +29,8 @@
     moonlight-qt
   ];
 
+  # let determinate nix manage nix-darwin
+  nix.enable = false;
+
   system.stateVersion = 6;
 }
