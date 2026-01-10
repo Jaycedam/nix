@@ -23,9 +23,10 @@
     fastfetch
     mpv
     bitwarden-cli
+    ffmpeg
 
     # desktop
-    transmission_4
+    transmission_4-gtk
     bitwarden-desktop
     #ente-desktop #broken on darwin
 
