@@ -7,6 +7,7 @@
   imports = [
     ../../home/rofi.nix
     ../../home/dunst.nix
+    ../../home/beets.nix
   ];
 
   programs = {
@@ -33,6 +34,9 @@
   # enable theming
   qt.enable = true;
   gtk.enable = true;
+
+  # autocreate user dirs
+  xdg.userDirs.enable = true;
 
   # home-manager configuration
   home = {
