@@ -8,9 +8,11 @@
     ../../home/rofi.nix
     ../../home/dunst.nix
     ../../home/beets.nix
+    ../../home/mpd.nix
   ];
 
   programs = {
+    rmpc.enable = true;
     foot = {
       enable = true;
     };
