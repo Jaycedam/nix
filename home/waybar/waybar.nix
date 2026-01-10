@@ -8,7 +8,7 @@
         "layer" = "top";
         "position" = "bottom";
         "modules-right" = [
-          "tray"
+          "mpris"
           "group/system"
           "clock"
         ];
@@ -32,6 +32,25 @@
           ];
         };
 
+        "mpris" = {
+          "format" = "{player_icon} {dynamic}";
+          "format-paused" = "{status_icon} {dynamic}";
+          "dynamic-order" = [
+            "title"
+            "artist"
+          ];
+          "title-len" = 20;
+          "artist-len" = 10;
+          "player-icons" = {
+            "default" = "▶";
+            "mpv" = "🎵";
+            "mpd" = "🎵";
+          };
+          "status-icons" = {
+            "paused" = "⏸";
+          };
+        };
+
         "custom/power" = {
           "format" = "  ";
           "on-click" = "rofi-power-menu";
@@ -44,7 +63,7 @@
           "format-linked" = "󱘖 {ifname} (No IP)";
           "format-disconnected" = " Disconnected";
           "interval" = 3;
-          "on-click" = "kitty --class 'wifi-tui' nmtui";
+          "on-click" = "kitty --class 'impala' impala";
         };
 
         "battery" = {
@@ -138,13 +157,14 @@
         color: @base0D;
         }
 
-        #system, #actions,#clock, #tray, #window, #workspaces {
+        #system, #mpris, #actions,#clock, #tray, #window, #workspaces {
         border-radius: 10px;
         background-color: @base00;
         margin: 0 8px;
         }
 
         #workspaces,
+        #mpris,
         #system, #actions,
         #window,
         #tray,
@@ -162,6 +182,7 @@
         }
 
         #workspaces,
+        #mpris,
         #system, #actions,
         #window,
         #tray,

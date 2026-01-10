@@ -5,7 +5,10 @@
       "group/actions"
       "niri/window"
     ];
-    "modules-center" = [ "niri/workspaces" ];
+    "modules-center" = [
+      "niri/workspaces"
+      "tray"
+    ];
 
     "niri/workspaces" = {
       "format" = "{icon}";
