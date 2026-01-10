@@ -50,6 +50,8 @@
 
   services = {
     gnome.gnome-keyring.enable = true;
+    # gnome virtual filesystem for nautilus and other gnome apps
+    gvfs.enable = true;
 
     # Power management with profiles
     tuned = {
