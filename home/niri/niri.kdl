@@ -1,3 +1,6 @@
+workspace "browser"
+workspace "dev"
+
 input {
     mod-key "Alt"
 
@@ -131,6 +134,23 @@ window-rule {
     // rounded corners
     geometry-corner-radius 12
     clip-to-geometry true
+}
+
+// browser workspace apps
+window-rule {
+    match app-id=r#"brave-browser"#
+    open-focused true
+    open-on-workspace "browser"
+}
+// dev workspace apps
+window-rule {
+    match app-id=r#"nvim"#
+    match app-id=r#"kitty"#
+    match app-id=r#"Alacritty"#
+    match app-id=r#"com.mitchellh.ghostty"#
+
+    open-focused true
+    open-on-workspace "dev"
 }
 
 binds {
