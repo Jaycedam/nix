@@ -1,10 +1,14 @@
-{ pkgs, ... }:
+{ ... }:
 {
   imports = [
     ../../home/nixvim/default.nix
     ../../home/tmux.nix
     ../../home/kitty.nix
   ];
+
+  home.sessionVariables = {
+    EDITOR = "nvim";
+  };
 
   programs = {
     btop.enable = true;
