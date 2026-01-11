@@ -20,7 +20,6 @@
     shadps4 # no darwin release yet
     pavucontrol
     wiremix
-    kdePackages.audiotube
     # desktop
     proton-pass # no darwin release yet
     nautilus # needed by niri

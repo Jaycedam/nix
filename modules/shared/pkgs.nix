@@ -47,8 +47,6 @@
     docker
     docker-compose
     android-tools
-    # editors
-    zed-editor
     # languages
     go
 
