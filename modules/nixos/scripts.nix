@@ -1,10 +1,11 @@
 { pkgs, ... }:
-
 {
   environment.systemPackages = [
     (import ../../scripts/rofi/power-menu.nix { inherit pkgs; })
     (import ../../scripts/hypr/launch-or-focus.nix { inherit pkgs; })
     (import ../../scripts/system/brightness.nix { inherit pkgs; })
     (import ../../scripts/system/volume.nix { inherit pkgs; })
+    (import ../../scripts/niri/launch-or-focus.nix { inherit pkgs; })
+    (import ../../scripts/programs/nvim-wrapper.nix { inherit pkgs; })
   ];
 }

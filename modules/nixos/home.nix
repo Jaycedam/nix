@@ -9,10 +9,10 @@
     ../../home/dunst.nix
     ../../home/beets.nix
     ../../home/mpd.nix
+    ../../home/rmpc.nix
   ];
 
   programs = {
-    rmpc.enable = true;
     foot = {
       enable = true;
     };
@@ -38,6 +38,7 @@
   gtk.enable = true;
 
   # autocreate user dirs
+
   xdg.userDirs.enable = true;
 
   # home-manager configuration
