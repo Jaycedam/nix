@@ -28,6 +28,7 @@
     # desktop
     transmission_4-gtk
     bitwarden-desktop
+    spotube
     #ente-desktop #broken on darwin
 
     # gaming
