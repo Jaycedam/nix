@@ -24,7 +24,7 @@
     home-manager.useGlobalPkgs = true;
     home-manager.useUserPackages = true;
     home-manager.backupFileExtension = "backup";
-    home-manager.extraSpecialArgs = { inherit user nixvim; };
+    home-manager.extraSpecialArgs = { inherit user nixvim; compositor = "niri"; };
     home-manager.users.${user} = {
       imports = [
         ../modules/shared/home.nix
@@ -33,7 +33,6 @@
         # niri and utils config
         ../home/niri/default.nix
         ../home/waybar/waybar.nix
-        ../home/waybar/waybar-niri.nix
         ../home/hyprlock.nix
         ../home/hypridle.nix
       ];

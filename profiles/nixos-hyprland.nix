@@ -24,7 +24,7 @@
     home-manager.useGlobalPkgs = true;
     home-manager.useUserPackages = true;
     home-manager.backupFileExtension = "backup";
-    home-manager.extraSpecialArgs = { inherit user nixvim; };
+    home-manager.extraSpecialArgs = { inherit user nixvim; compositor = "hyprland"; };
     home-manager.users.${user} = {
       imports = [
         ../modules/shared/home.nix
@@ -33,7 +33,6 @@
         # hyprland and utils config
         ../home/hyprland.nix
         ../home/waybar/waybar.nix
-        ../home/waybar/waybar-hypr.nix
         ../home/hyprlock.nix
         ../home/hypridle.nix
       ];
