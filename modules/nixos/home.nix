@@ -12,12 +12,6 @@
     ../../home/rmpc.nix
   ];
 
-  programs = {
-    foot = {
-      enable = true;
-    };
-  };
-
   services = {
     udiskie.enable = true;
     polkit-gnome.enable = true;

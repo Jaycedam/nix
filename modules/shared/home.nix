@@ -4,6 +4,7 @@
     ../../home/nixvim/default.nix
     ../../home/tmux.nix
     ../../home/kitty.nix
+    ../../home/anki.nix
   ];
 
   home.sessionVariables = {

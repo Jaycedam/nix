@@ -15,6 +15,7 @@
       notifier.enable = true;
       picker.enable = true;
       scroll.enable = true;
+      terminal.enable = true;
     };
   };
 
