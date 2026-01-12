@@ -3,13 +3,6 @@
   programs.hyprlock = {
     enable = true;
     settings = {
-      # background = {
-      #   monitor = "";
-      #   path = " screenshot";
-      #   blur_passes = 3;
-      #   blur_size = 10;
-      # };
-
       input-field = {
         monitor = "";
         size = "300, 30";
