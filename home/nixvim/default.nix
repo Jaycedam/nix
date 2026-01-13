@@ -21,6 +21,9 @@
       ./plugins/lint.nix
       ./plugins/flash.nix
       ./plugins/snacks.nix
+      ./plugins/blink.nix
+      ./plugins/lualine.nix
+      ./plugins/noice.nix
       (import ./plugins/lsp.nix { inherit pkgs; })
 
       # general keymaps
