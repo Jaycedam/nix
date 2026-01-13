@@ -1,11 +1,5 @@
 { ... }:
 {
-  imports = [
-    ./waybar/waybar.nix
-    ./hyprlock.nix
-    ./hypridle.nix
-  ];
-
   wayland.windowManager.hyprland = {
     enable = true;
     # don't install anything with hm, it's installed as a system package with nix

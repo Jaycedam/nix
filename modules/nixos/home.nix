@@ -5,11 +5,14 @@
 }:
 {
   imports = [
-    ../../home/rofi.nix
-    ../../home/dunst.nix
     ../../home/beets.nix
     ../../home/mpd.nix
     ../../home/rmpc.nix
+    ../../home/waybar/waybar.nix
+    ../../home/hyprlock.nix
+    ../../home/hypridle.nix
+    ../../home/rofi.nix
+    ../../home/dunst.nix
   ];
 
   services = {
