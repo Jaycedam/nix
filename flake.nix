@@ -58,33 +58,12 @@
     let
       lib = nixpkgs.lib;
       user = "jay";
-      nixosHyprlandProfile = import ./profiles/nixos-hyprland.nix {
+
+      commonArgs = {
         inherit
           nixpkgs
           home-manager
           stylix
-          user
-          nixvim
-          ;
-      };
-      nixosNiriProfile = import ./profiles/nixos-niri.nix {
-        inherit
-          nixpkgs
-          home-manager
-          stylix
-          user
-          nixvim
-          ;
-      };
-      darwinProfile = import ./profiles/darwin.nix {
-        inherit
-          nixpkgs
-          home-manager
-          stylix
-          nix-darwin
-          nix-homebrew
-          homebrew-core
-          homebrew-cask
           user
           nixvim
           ;
@@ -92,23 +71,39 @@
     in
     {
       nixosConfigurations = {
-        nixos-hyprland = lib.nixosSystem {
-          specialArgs = { inherit user; };
-          # host module is hw specific so we add it outside the profile
-          modules = [ ./hosts/nixos/default.nix ] ++ nixosHyprlandProfile;
-        };
-
         nixos-niri = lib.nixosSystem {
           specialArgs = { inherit user; };
-          # host module is hw specific so we add it outside the profile
-          modules = [ ./hosts/nixos/default.nix ] ++ nixosNiriProfile;
+          modules = [
+            ./hosts/nixos/default.nix
+          ]
+          ++ (import ./profiles/nixos.nix (commonArgs // { compositor = "niri"; }));
+        };
+
+        nixos-hyprland = lib.nixosSystem {
+          specialArgs = { inherit user; };
+          modules = [
+            ./hosts/nixos/default.nix
+          ]
+          ++ (import ./profiles/nixos.nix (commonArgs // { compositor = "hyprland"; }));
         };
       };
 
       darwinConfigurations = {
         darwin = nix-darwin.lib.darwinSystem {
           specialArgs = { inherit user; };
-          modules = [ ] ++ darwinProfile;
+          modules =
+            [ ]
+            ++ (import ./profiles/darwin.nix (
+              commonArgs
+              // {
+                inherit
+                  nix-darwin
+                  nix-homebrew
+                  homebrew-core
+                  homebrew-cask
+                  ;
+              }
+            ));
         };
       };
     };
