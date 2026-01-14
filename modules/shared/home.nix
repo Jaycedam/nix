@@ -45,7 +45,6 @@
       enable = true;
       settings = {
         mouse-hide-while-typing = "true";
-        font-size = "14";
         background-blur = "true";
       };
     };
