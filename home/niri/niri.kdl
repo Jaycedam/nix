@@ -165,6 +165,11 @@ binds {
     Mod+B hotkey-overlay-title="Open browser" { spawn-sh "niri-launch-or-focus brave --id brave-browser"; }
     Mod+Space hotkey-overlay-title="Search apps (rofi)" { spawn-sh "rofi -show drun"; }
 
+    // launch or focus webapps
+    Mod+S hotkey-overlay-title="Open Spotify (Webapp)" { spawn-sh "niri-launch-or-focus-webapp open.spotify.com"; }
+    Mod+W hotkey-overlay-title="Open Whatsapp (Webapp)" { spawn-sh "niri-launch-or-focus-webapp web.whatsapp.com"; }
+    Mod+M hotkey-overlay-title="Open ProtonMail (Webapp)" { spawn-sh "niri-launch-or-focus-webapp mail.proton.me"; }
+
     // Open/close the Overview: a zoomed-out view of workspaces and windows.
     // You can also move the mouse into the top-left hot corner,
     // or do a four-finger swipe up on a touchpad.
@@ -302,7 +307,7 @@ binds {
     // Toggle tabbed column display mode.
     // Windows in this column will appear as vertical tabs,
     // rather than stacked on top of each other.
-    Mod+W { toggle-column-tabbed-display; }
+    Mod+Shift+T { toggle-column-tabbed-display; }
 
     // Actions to switch layouts.
     // Note: if you uncomment these, make sure you do NOT have
