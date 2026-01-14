@@ -33,7 +33,13 @@
 
   # enable theming
   qt.enable = true;
-  gtk.enable = true;
+  gtk = {
+    enable = true;
+    iconTheme = {
+      package = pkgs.candy-icons;
+      name = "candy-icons";
+    };
+  };
 
   # autocreate user dirs
 
@@ -46,12 +52,12 @@
     pointerCursor = {
       enable = true;
       package = pkgs.bibata-cursors;
-      name = "Bibata-Modern-Ice";
+      name = "Bibata-Modern-Classic";
       size = 24;
 
       gtk.enable = true;
       x11 = {
-        defaultCursor = "Bibata-Modern-Ice";
+        defaultCursor = "Bibata-Modern-Classic";
         enable = true;
       };
     };
