@@ -64,8 +64,10 @@
           "niri/workspaces" = {
             format = "{icon}";
             format-icons = {
-              active = "";
-              default = "";
+              browser = "";
+              dev = "";
+              communication = "";
+              default = "";
             };
           };
 
@@ -96,7 +98,7 @@
           };
 
           "custom/power" = {
-            format = "  ";
+            format = "";
             on-click = "rofi-power-menu";
           };
 
@@ -129,7 +131,7 @@
           };
           pulseaudio = {
             format = "{icon} {volume}%";
-            format-muted = "  0%";
+            format-muted = " 0%";
             format-icons = {
               headphone = "";
               hands-free = "";
@@ -200,50 +202,54 @@
       })
     ];
     style = lib.mkAfter ''
+      * {
+        font-family: "JetBrains Mono", "Font Awesome 6 Free";
+      }
+
       window#waybar {
         background-color: rgba(0, 0, 0, 0);
       }
 
-      #tray {
-        padding: 0 8px;
-      }
-
       #workspaces button.active {
-      color: @base0D;
-      }
-
-      #system, #mpris, #actions,#clock, #tray, #window, #workspaces {
-        border-radius: 10px;
-        background-color: @base00;
-        margin: 0 8px;
+        color: @base0D;
       }
 
       #workspaces,
       #mpris,
-      #system, #actions,
+      #system,
+      #actions,
       #window,
       #tray,
+      #clock {
+        margin-bottom: 8px;
+      }
+
+      #workspaces,
+      #window,
+      #mpris,
+      #system,
+      #actions,
       #clock,
+      #tray {
+        border-radius: 10px;
+        background-color: @base00;
+        margin: 0 5px;
+      }
+
+      #window,
+      #clock,
+      #mpris,
+      #tray,
+      #custom-power,
+      #idle_inhibitor,
       #network,
       #bluetooth,
       #battery,
       #pulseaudio,
-      #backlight,
-      #memory,
-      #custom-power,
-      #idle_inhibitor {
-      border-radius: 10px;
-      margin: 0 5px;
-      }
-
-      #workspaces,
-      #mpris,
-      #system, #actions,
-      #window,
-      #tray,
-      #clock {
-      margin-bottom: 8px;
+      #backlight {
+        padding: 0 10px;
       }
     '';
   };
+  stylix.targets.waybar.addCss = false; # only add the colors and fonts
 }
