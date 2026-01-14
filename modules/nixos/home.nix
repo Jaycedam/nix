@@ -13,6 +13,7 @@
     ../../home/hypridle.nix
     ../../home/rofi.nix
     ../../home/dunst.nix
+    ../../home/desktop-entries.nix
   ];
 
   services = {
