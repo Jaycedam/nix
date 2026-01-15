@@ -216,16 +216,6 @@
       }
 
       #workspaces,
-      #mpris,
-      #system,
-      #actions,
-      #window,
-      #tray,
-      #clock {
-        margin-bottom: 8px;
-      }
-
-      #workspaces,
       #window,
       #mpris,
       #system,
