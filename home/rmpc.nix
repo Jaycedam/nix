@@ -1,5 +1,4 @@
-{ ... }:
-{
+_: {
   programs.rmpc = {
     enable = true;
     config = ''

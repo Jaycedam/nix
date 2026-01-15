@@ -1,5 +1,4 @@
-{ ... }:
-{
+_: {
   programs.aerospace = {
     enable = true;
     launchd.enable = true;
@@ -38,10 +37,12 @@
       ];
 
       gaps = {
-        outer.left = 4;
-        outer.bottom = 4;
-        outer.top = 4;
-        outer.right = 4;
+        outer = {
+          left = 4;
+          bottom = 4;
+          top = 4;
+          right = 4;
+        };
         inner.horizontal = 4;
         inner.vertical = 4;
       };

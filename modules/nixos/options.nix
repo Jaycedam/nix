@@ -5,21 +5,22 @@
   ...
 }:
 {
-  # Bootloader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
-
-  # Use latest kernel.
-  boot.kernelPackages = pkgs.linuxPackages_latest;
-
-  # Automatic garbage collection (generations)
-  nix.gc.automatic = true;
-
-  # Automatically run the nix store optimiser at a specific time.
-  nix.optimise.automatic = true;
-
-  # silent boot with animation
   boot = {
+    loader = {
+      # Bootloader.
+      systemd-boot.enable = true;
+      efi.canTouchEfiVariables = true;
+      # Hide the OS choice for bootloaders.
+      # It's still possible to open the bootloader list by pressing any key
+      # It will just not appear on screen unless a key is pressed
+      timeout = 1;
+    };
+
+    # Use latest kernel.
+    kernelPackages = pkgs.linuxPackages_latest;
+
+    # silent boot with animation
+
     plymouth = {
       enable = true;
       theme = lib.mkForce "connect";
@@ -43,10 +44,13 @@
       "rd.udev.log_level=3"
       "rd.systemd.show_status=false"
     ];
-    # Hide the OS choice for bootloaders.
-    # It's still possible to open the bootloader list by pressing any key
-    # It will just not appear on screen unless a key is pressed
-    loader.timeout = 1;
+
+  };
+
+  # Automatic garbage collection (generations) and optimisation
+  nix = {
+    gc.automatic = true;
+    optimise.automatic = true;
   };
 
   # Configure keymap in X11

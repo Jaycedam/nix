@@ -1,5 +1,4 @@
-{ ... }:
-{
+_: {
   keymaps = [
     {
       action = "<cmd>nohlsearch<CR>";

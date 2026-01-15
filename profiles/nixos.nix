@@ -9,8 +9,6 @@
 }:
 
 let
-  lib = nixpkgs.lib;
-
   # Build conditional module lists using attrset lookup
   compositorModules =
     {
@@ -39,17 +37,20 @@ in
   # home manager
   home-manager.nixosModules.home-manager
   {
-    home-manager.useGlobalPkgs = true;
-    home-manager.useUserPackages = true;
-    home-manager.backupFileExtension = "backup";
-    home-manager.extraSpecialArgs = {
-      inherit user nixvim compositor;
-    };
-    home-manager.users.${user} = {
-      imports = [
-        ../modules/shared/home.nix
-        ../modules/nixos/home.nix
-      ] ++ homeCompositorModules;
+    home-manager = {
+      useGlobalPkgs = true;
+      useUserPackages = true;
+      backupFileExtension = "backup";
+      extraSpecialArgs = {
+        inherit user nixvim compositor;
+      };
+      users.${user} = {
+        imports = [
+          ../modules/shared/home.nix
+          ../modules/nixos/home.nix
+        ]
+        ++ homeCompositorModules;
+      };
     };
   }
 ]

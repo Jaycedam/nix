@@ -1,5 +1,4 @@
-{ ... }:
-{
+_: {
   programs.fish = {
     enable = true;
     functions = {
@@ -20,6 +19,7 @@
       set fish_greeting ""
       set -g fish_transient_prompt 1
     '';
+
     shellAbbrs = {
       v = "nvim";
       n = "nvim";

@@ -1,5 +1,4 @@
-{ ... }:
-{
+_: {
   programs.beets = {
     enable = true;
     mpdIntegration.enableUpdate = true;

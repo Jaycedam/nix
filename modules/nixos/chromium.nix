@@ -1,5 +1,4 @@
-{ ... }:
-{
+_: {
   programs.chromium = {
     # enables policy config, not for installing chromium
     enable = true;

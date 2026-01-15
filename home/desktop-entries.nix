@@ -1,5 +1,4 @@
-{ ... }:
-{
+_: {
   # launch-webapp just takes the domain as arg,
   # check the code in scripts/system/launch-webapp.nix
   xdg.desktopEntries = {

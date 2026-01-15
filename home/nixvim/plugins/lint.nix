@@ -1,5 +1,4 @@
-{ ... }:
-{
+_: {
   plugins.lint = {
     enable = true;
     lintersByFt = {

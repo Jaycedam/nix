@@ -22,15 +22,17 @@
   # home manager
   home-manager.darwinModules.home-manager
   {
-    home-manager.useGlobalPkgs = true;
-    home-manager.useUserPackages = true;
-    home-manager.backupFileExtension = "backup";
-    home-manager.extraSpecialArgs = { inherit user nixvim; };
-    home-manager.users.${user} = {
-      imports = [
-        ../modules/shared/home.nix
-        ../modules/darwin/home.nix
-      ];
+    home-manager = {
+      useGlobalPkgs = true;
+      useUserPackages = true;
+      backupFileExtension = "backup";
+      extraSpecialArgs = { inherit user nixvim; };
+      users.${user} = {
+        imports = [
+          ../modules/shared/home.nix
+          ../modules/darwin/home.nix
+        ];
+      };
     };
   }
 
@@ -40,7 +42,7 @@
       # Install Homebrew under the default prefix
       enable = true;
       enableRosetta = true;
-      user = user;
+      inherit user;
       # Optional: Declarative tap management
       taps = {
         "homebrew/homebrew-core" = homebrew-core;

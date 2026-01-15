@@ -56,7 +56,7 @@
       ...
     }:
     let
-      lib = nixpkgs.lib;
+      inherit (nixpkgs) lib;
       user = "jay";
 
       commonArgs = {
@@ -91,19 +91,17 @@
       darwinConfigurations = {
         darwin = nix-darwin.lib.darwinSystem {
           specialArgs = { inherit user; };
-          modules =
-            [ ]
-            ++ (import ./profiles/darwin.nix (
-              commonArgs
-              // {
-                inherit
-                  nix-darwin
-                  nix-homebrew
-                  homebrew-core
-                  homebrew-cask
-                  ;
-              }
-            ));
+          modules = import ./profiles/darwin.nix (
+            commonArgs
+            // {
+              inherit
+                nix-darwin
+                nix-homebrew
+                homebrew-core
+                homebrew-cask
+                ;
+            }
+          );
         };
       };
     };

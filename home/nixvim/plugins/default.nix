@@ -1,5 +1,4 @@
-{ ... }:
-{
+_: {
   plugins = {
     supermaven.enable = true;
     render-markdown.enable = true;

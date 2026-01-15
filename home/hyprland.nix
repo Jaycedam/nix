@@ -1,5 +1,4 @@
-{ ... }:
-{
+_: {
   wayland.windowManager.hyprland = {
     enable = true;
     # don't install anything with hm, it's installed as a system package with nix

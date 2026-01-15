@@ -1,5 +1,4 @@
-{ ... }:
-{
+_: {
   plugins.conform-nvim = {
     enable = true;
     autoInstall.enable = true;
