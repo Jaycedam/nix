@@ -157,6 +157,7 @@
           clock = {
             interval = 1;
             format = " {:%a %b %d %H:%M}";
+            on-click = "niri-launch-or-focus-webapp calendar.proton.me";
           };
           tray = {
             icon-size = 16;
