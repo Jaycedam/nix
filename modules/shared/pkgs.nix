@@ -53,6 +53,7 @@
     # linters
     eslint
     shellcheck
+    statix
 
     (import ../../scripts/tmux/sessions.nix { inherit pkgs; })
   ];

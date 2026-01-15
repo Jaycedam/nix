@@ -7,6 +7,7 @@
       javascript = [ "eslint" ];
       typescript = [ "eslint" ];
       sh = [ "shellcheck" ];
+      nix = [ "statix" ];
     };
   };
 }
