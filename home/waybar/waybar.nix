@@ -12,6 +12,7 @@
         mainBar = {
           layer = "top";
           position = "bottom";
+          margin-bottom = 5;
           modules-right = [
             "mpris"
             "tray"
@@ -85,15 +86,12 @@
               "title"
               "artist"
             ];
-            title-len = 15;
-            artist-len = 10;
+            dynamic-len = 30;
             player-icons = {
-              "default" = "▶";
-              "mpv" = "🎵";
-              "mpd" = "🎵";
+              "default" = "";
             };
             status-icons = {
-              paused = "⏸";
+              paused = "";
             };
           };
 
@@ -208,11 +206,15 @@
       }
 
       window#waybar {
-        background-color: rgba(0, 0, 0, 0);
+        background-color: transparent;
+      }
+
+      #workspaces button.empty {
+        color: @base03;
       }
 
       #workspaces button.active {
-        color: @base0D;
+        color: @base0E;
       }
 
       #workspaces,
@@ -223,8 +225,14 @@
       #clock,
       #tray {
         border-radius: 10px;
+        border: 1px solid @base02;
         background-color: @base00;
         margin: 0 5px;
+      }
+
+      window#waybar.empty #window {
+        border: transparent;
+        background-color: transparent;
       }
 
       #window,
@@ -242,5 +250,5 @@
       }
     '';
   };
-  stylix.targets.waybar.addCss = false; # only add the colors and fonts
+  # stylix.targets.waybar.addCss = false; # only add the colors and fonts
 }

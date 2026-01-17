@@ -58,7 +58,7 @@ output "HDMI-A-1" {
 // https://yalter.github.io/niri/Configuration:-Layout
 layout {
     // Set gaps around windows in logical pixels.
-    gaps 16
+    gaps 15
 
     center-focused-column "never"
     always-center-single-column
@@ -93,8 +93,8 @@ layout {
     // Top and bottom struts will simply add outer gaps in addition to the area occupied by
     // layer-shell panels and regular gaps.
     struts {
-        left 64
-        right 64
+        left 40
+        right 40
     }
 }
 
@@ -116,8 +116,8 @@ window-rule {
     match title="^Picture in picture$" // brave pip doesn't set app-id
     open-floating true
     default-floating-position x=16 y=16 relative-to="top-right"
-    default-column-width { fixed 480; }
-    default-window-height { fixed 270; }
+    default-column-width { fixed 400; }
+    default-window-height { fixed 225; }
     open-focused false
 }
 
@@ -139,6 +139,7 @@ window-rule {
 // Make inactive windows semitransparent.
 window-rule {
     match is-active=false
+    exclude is-floating=true
     opacity 0.9
 }
 
