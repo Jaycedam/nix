@@ -16,6 +16,7 @@
     wl-clipboard
     libnotify
     ddcutil # ext monitor brightness
+    matugen
     # gaming
     lsfg-vk # lossless scaling on linux
     gamemode
