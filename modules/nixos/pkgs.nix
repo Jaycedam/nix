@@ -1,4 +1,9 @@
-{ pkgs, user, ... }:
+{
+  pkgs,
+  config,
+  user,
+  ...
+}:
 {
   environment.systemPackages = with pkgs; [
     ### cli ###
@@ -29,6 +34,7 @@
     signal-desktop
     cryptomator
     ente-desktop
+    tuigreet
     # grayjay
     seahorse # gnome keyring manager
 
@@ -50,6 +56,20 @@
   };
 
   services = {
+    greetd = {
+      enable = true;
+      settings = {
+        initial_session = {
+          command = "${pkgs.niri}/bin/niri-session";
+          inherit user;
+        };
+        default_session = {
+          command = "${pkgs.tuigreet}/bin/tuigreet --time --asterisks --remember --remember-session --sessions ${config.services.displayManager.sessionData.desktops}/share/wayland-sessions";
+          user = "greeter";
+        };
+      };
+    };
+
     gnome.gnome-keyring.enable = true;
     # gnome virtual filesystem for nautilus and other gnome apps
     gvfs.enable = true;
@@ -115,10 +135,6 @@
           f12 = "f12";
         };
       };
-    };
-    getty = {
-      autologinOnce = true;
-      autologinUser = user; # login automatically on console
     };
 
     udisks2.enable = true; # this is necessary for udiskie to work
