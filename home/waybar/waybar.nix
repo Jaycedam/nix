@@ -156,6 +156,7 @@
             interval = 1;
             format = " {:%a %b %d %H:%M}";
             on-click = "niri-launch-or-focus-webapp calendar.proton.me";
+            tooltip = false;
           };
           tray = {
             icon-size = 16;
@@ -200,55 +201,72 @@
         };
       })
     ];
-    style = lib.mkAfter ''
-      * {
-        font-family: "JetBrains Mono", "Font Awesome 6 Free";
+    style = ''
+        @import "colors.css";
+
+        * {
+          font-family: "JetBrains Mono", "Font Awesome 6 Free";
+          font-size: 12px;
+        }
+
+        window#waybar {
+          background-color: transparent;
+          color: @on_background;
+        }
+
+        tooltip {
+            background: @background;
+            border: .5px solid @outline_variant;
+        }
+        tooltip label {
+            color: @on_background;
+        }
+
+      #workspaces button {
+          padding: 0 5px;
+          background: transparent;
+          color: @on_background;
       }
 
-      window#waybar {
-        background-color: transparent;
-      }
+        #workspaces button.empty {
+          color: @outline_variant;
+        }
 
-      #workspaces button.empty {
-        color: @base03;
-      }
+        #workspaces button.active {
+          color: @primary;
+        }
 
-      #workspaces button.active {
-        color: @base0E;
-      }
+        #workspaces,
+        #window,
+        #mpris,
+        #system,
+        #actions,
+        #clock,
+        #tray {
+          border-radius: 10px;
+          border: .2px solid @outline_variant;
+          background-color: @background;
+          margin: 0 5px;
+        }
 
-      #workspaces,
-      #window,
-      #mpris,
-      #system,
-      #actions,
-      #clock,
-      #tray {
-        border-radius: 10px;
-        border: 1px solid @base02;
-        background-color: @base00;
-        margin: 0 5px;
-      }
+        window#waybar.empty #window {
+          border: transparent;
+          background-color: transparent;
+        }
 
-      window#waybar.empty #window {
-        border: transparent;
-        background-color: transparent;
-      }
-
-      #window,
-      #clock,
-      #mpris,
-      #tray,
-      #custom-power,
-      #idle_inhibitor,
-      #network,
-      #bluetooth,
-      #battery,
-      #pulseaudio,
-      #backlight {
-        padding: 0 10px;
-      }
+        #window,
+        #clock,
+        #mpris,
+        #tray,
+        #custom-power,
+        #idle_inhibitor,
+        #network,
+        #bluetooth,
+        #battery,
+        #pulseaudio,
+        #backlight {
+          padding: 0 10px;
+        }
     '';
   };
-  # stylix.targets.waybar.addCss = false; # only add the colors and fonts
 }

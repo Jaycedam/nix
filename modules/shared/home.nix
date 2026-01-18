@@ -1,5 +1,4 @@
-_:
-{
+_: {
   imports = [
     ../../home/nixvim/default.nix
     ../../home/tmux.nix
@@ -14,8 +13,16 @@ _:
   };
 
   programs = {
-    btop.enable = true;
-    opencode.enable = true;
+    btop = {
+      enable = true;
+      settings = {
+        color_scheme = "matugen";
+      };
+    };
+    opencode = {
+      enable = true;
+      settings.theme = "system";
+    };
 
     zoxide = {
       enable = true;
@@ -34,6 +41,15 @@ _:
     yazi = {
       enable = true;
       enableFishIntegration = true;
+      keymap = {
+        mgr.prepend_keymap = [
+          {
+            on = [ "<C-m>" ];
+            run = ''shell 'matugen image "$0"' '';
+            desc = "Generate colors from image";
+          }
+        ];
+      };
     };
 
     lazygit = {

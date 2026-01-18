@@ -1,14 +1,18 @@
-{ pkgs, ... }:
-{
+_: {
   programs.kitty = {
     enable = true;
     enableGitIntegration = true;
     shellIntegration.enableFishIntegration = true;
+    font = {
+      name = "JetBrains Mono";
+      size = 14;
+    };
     settings = {
       cursor_trail = 1;
       background_blur = 64;
       tab_bar_edge = "top";
       hide_window_decorations = "titlebar-only"; # darwin only option
+      include = "colors.conf";
     };
   };
 }

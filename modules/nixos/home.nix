@@ -14,21 +14,24 @@
     ../../home/rofi.nix
     ../../home/dunst.nix
     ../../home/desktop-entries.nix
+    ../../home/matugen/default.nix
   ];
 
   services = {
     udiskie.enable = true;
     polkit-gnome.enable = true;
 
-    hyprpaper = {
-      enable = true;
-      settings = {
-        wallpaper = {
-          monitor = "";
-          path = "${../../wallpapers/1.jpg}";
-        };
-      };
-    };
+    swww.enable = true;
+
+    # hyprpaper = {
+    #   enable = true;
+    #   settings = {
+    #     wallpaper = {
+    #       monitor = "";
+    #       path = "${../../wallpapers/1.jpg}";
+    #     };
+    #   };
+    # };
   };
 
   # enable theming
@@ -39,6 +42,8 @@
       package = pkgs.candy-icons;
       name = "candy-icons";
     };
+    gtk3.extraCss = "@import 'colors.css';";
+    gtk4.extraCss = "@import 'colors.css';";
   };
 
   # autocreate user dirs

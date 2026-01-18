@@ -2,6 +2,10 @@ _: {
   programs.hyprlock = {
     enable = true;
     settings = {
+      source = "colors.conf";
+      background = {
+        path = "$image";
+      };
       input-field = {
         monitor = "";
         size = "300, 30";
@@ -29,6 +33,7 @@ _: {
           position = "0, 405";
           halign = " center";
           valign = " center";
+          color = "@on_background";
         }
         {
           monitor = "";
@@ -37,6 +42,7 @@ _: {
           position = "0, 310";
           halign = " center";
           valign = " center";
+          color = "@on_background";
         }
         {
           monitor = "";
@@ -45,6 +51,7 @@ _: {
           position = "0, -438";
           halign = " center";
           valign = " center";
+          color = "@on_background";
         }
       ];
 

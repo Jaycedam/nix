@@ -1,3 +1,6 @@
+// Set default wallpaper
+spawn-sh-at-startup "swww img ~/Pictures/wallpapers/default.jpg"
+
 workspace "browser"
 workspace "dev"
 workspace "communication"
@@ -82,9 +85,7 @@ layout {
     default-column-width { proportion 0.8; }
 
     focus-ring {
-        width 2
-        active-color "white"
-        inactive-color "#505050" // on other monitors
+        off
     }
 
     // Struts shrink the area occupied by windows, similarly to layer-shell panels.
@@ -96,7 +97,15 @@ layout {
         left 40
         right 40
     }
+
+    // Matugen colors
+    border {
+        width 3
+    }
+    shadow {}
 }
+
+include "./colors.kdl"
 
 hotkey-overlay {
     // Uncomment this line to disable the "Important Hotkeys" pop-up at startup.

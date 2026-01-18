@@ -3,6 +3,7 @@ _: {
     number = true;
     relativenumber = true;
     winborder = "rounded";
+    cursorline = true;
     termguicolors = true;
     scrolloff = 10;
     ignorecase = true;
