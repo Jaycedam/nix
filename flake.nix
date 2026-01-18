@@ -9,11 +9,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    stylix = {
-      url = "github:nix-community/stylix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     nixvim = {
       url = "github:nix-community/nixvim";
     };
@@ -47,7 +42,6 @@
     {
       nixpkgs,
       home-manager,
-      stylix,
       nixvim,
       nix-darwin,
       nix-homebrew,
@@ -63,7 +57,6 @@
         inherit
           nixpkgs
           home-manager
-          stylix
           user
           nixvim
           ;

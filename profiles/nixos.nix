@@ -1,7 +1,6 @@
 {
   nixpkgs,
   home-manager,
-  stylix,
   user,
   nixvim,
   compositor ? "niri",
@@ -31,9 +30,6 @@ in
 ]
 ++ compositorModules
 ++ [
-  # base16 global themes
-  stylix.nixosModules.stylix
-
   # home manager
   home-manager.nixosModules.home-manager
   {

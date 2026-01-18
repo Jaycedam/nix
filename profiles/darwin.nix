@@ -1,7 +1,6 @@
 {
   nixpkgs,
   home-manager,
-  stylix,
   nix-darwin,
   nix-homebrew,
   homebrew-core,
@@ -15,9 +14,6 @@
   # modules
   ../modules/shared/default.nix
   ../modules/darwin/default.nix
-
-  # base16 global themes
-  stylix.darwinModules.stylix
 
   # home manager
   home-manager.darwinModules.home-manager
