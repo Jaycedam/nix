@@ -2,6 +2,9 @@ workspace "browser"
 workspace "dev"
 workspace "communication"
 
+// default wallpaper and theme on startup
+spawn-sh-at-startup "matugen image ~/Pictures/wallpapers/default.jpg &"
+
 input {
     mod-key "Alt"
 
