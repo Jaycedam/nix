@@ -11,7 +11,7 @@
     ../../home/waybar/waybar.nix
     ../../home/hyprlock.nix
     ../../home/hypridle.nix
-    ../../home/rofi.nix
+    ../../home/fuzzel.nix
     ../../home/dunst.nix
     ../../home/desktop-entries.nix
     ../../home/matugen/default.nix
@@ -22,16 +22,6 @@
     polkit-gnome.enable = true;
 
     swww.enable = true;
-
-    # hyprpaper = {
-    #   enable = true;
-    #   settings = {
-    #     wallpaper = {
-    #       monitor = "";
-    #       path = "${../../wallpapers/1.jpg}";
-    #     };
-    #   };
-    # };
   };
 
   # enable theming
