@@ -65,7 +65,7 @@ pkgs.writeShellScriptBin "brightness" ''
   # OSD feedback
   if command -v notify-send >/dev/null; then
   	if [ -n "$last_percent" ]; then
-    		notify-send -t 2000 -h string:x-canonical-private-synchronous:brightness -h int:value:''${last_percent} "Brightness"
+    		notify-send -c osd -h string:x-canonical-private-synchronous:osd -h int:value:''${last_percent} "Brightness"
   	fi
   	if [ "$external_failed" = "true" ]; then
   		notify-send "Brightness Error" "Failed to adjust external monitor brightness"

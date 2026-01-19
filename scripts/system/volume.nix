@@ -12,11 +12,11 @@ pkgs.writeShellScriptBin "volume" ''
     wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
     STATUS=$(wpctl get-volume @DEFAULT_AUDIO_SINK@ | grep -o MUTED || echo UNMUTED)
     if [ "$STATUS" = "MUTED" ]; then
-      notify-send -t 2000 -h string:x-canonical-private-synchronous:volume -h int:value:0 "Volume (Muted)"
+      notify-send -c osd -h string:x-canonical-private-synchronous:osd -h int:value:0 "Volume (Muted)"
     else
       CURRENT_VOL=$(wpctl get-volume @DEFAULT_AUDIO_SINK@ | awk '{print $2}')
       CURRENT_PERCENT=$(awk "BEGIN {printf \"%.0f\", $CURRENT_VOL * 100}")
-      notify-send -t 2000 -h string:x-canonical-private-synchronous:volume -h int:value:"$CURRENT_PERCENT" "Volume"
+      notify-send -c osd -h string:x-canonical-private-synchronous:osd -h int:value:"$CURRENT_PERCENT" "Volume"
     fi
     exit 0
   fi
@@ -25,9 +25,9 @@ pkgs.writeShellScriptBin "volume" ''
     wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle
     STATUS=$(wpctl get-volume @DEFAULT_AUDIO_SOURCE@ | grep -o MUTED || echo UNMUTED)
     if [ "$STATUS" = "MUTED" ]; then
-      notify-send -t 2000 -h string:x-canonical-private-synchronous:mic -h int:value:0 "Mic (Muted)"
+      notify-send -c osd -h string:x-canonical-private-synchronous:osd -h int:value:0 "Mic (Muted)"
     else
-      notify-send -t 2000 -h string:x-canonical-private-synchronous:mic "Mic"
+      notify-send -c osd -h string:x-canonical-private-synchronous:osd "Mic"
     fi
     exit 0
   fi
@@ -48,5 +48,5 @@ pkgs.writeShellScriptBin "volume" ''
   NEW_VOL=$(awk "BEGIN {printf \"%.2f\", $NEW_PERCENT / 100}")
   wpctl set-volume @DEFAULT_AUDIO_SINK@ "$NEW_VOL" -l 1.0
 
-  notify-send -t 2000 -h string:x-canonical-private-synchronous:volume -h int:value:$NEW_PERCENT "Volume"
+  notify-send -c osd -h string:x-canonical-private-synchronous:osd -h int:value:$NEW_PERCENT "Volume"
 ''
