@@ -21,7 +21,7 @@ output_path = "~/.config/waybar/colors.css"
 post_hook = "pkill -SIGUSR2 waybar"
 
 [templates.mako]
-input_path = 'path/to/template'
+input_path = "~/.config/matugen/templates/mako"
 output_path = '~/.config/mako/mako-colors'
 post_hook = 'makoctl reload'
 
