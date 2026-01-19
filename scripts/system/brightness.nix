@@ -6,7 +6,7 @@ pkgs.writeShellScriptBin "brightness" ''
   	exit 1
   fi
 
-  # Adjust external monitors using ddcutil
+   # Adjust external monitors using ddcutil
   displays=$(ddcutil detect --sleep-multiplier 0.5 | grep "Display" | awk '{print $2}' | tr -d ':')
   for disp in $displays; do
   	# Check if monitor supports brightness control (VCP 10)
@@ -65,7 +65,7 @@ pkgs.writeShellScriptBin "brightness" ''
   # OSD feedback
   if command -v notify-send >/dev/null; then
   	if [ -n "$last_percent" ]; then
-  		notify-send -t 2000 -r 9999 -h int:value:''${last_percent} "Brightness"
+    		notify-send -t 2000 -h string:x-canonical-private-synchronous:brightness -h int:value:''${last_percent} "Brightness"
   	fi
   	if [ "$external_failed" = "true" ]; then
   		notify-send "Brightness Error" "Failed to adjust external monitor brightness"
