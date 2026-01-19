@@ -1,6 +1,3 @@
-// Set default wallpaper
-spawn-sh-at-startup "swww img ~/Pictures/wallpapers/default.jpg"
-
 workspace "browser"
 workspace "dev"
 workspace "communication"

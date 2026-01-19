@@ -26,7 +26,8 @@ _: {
     btop = {
       enable = true;
       settings = {
-        color_scheme = "matugen";
+        color_theme = "matugen";
+        theme_background = false;
       };
     };
     opencode = {
