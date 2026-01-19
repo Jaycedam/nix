@@ -185,7 +185,7 @@ binds {
     Mod+E hotkey-overlay-title="Open yazi" { spawn-sh "niri-launch-or-focus \"kitty --class yazi yazi\" --id yazi"; }
     Mod+M hotkey-overlay-title="Open rmpc" { spawn-sh "niri-launch-or-focus \"kitty --class rmpc rmpc\" --id rmpc"; }
     Mod+B hotkey-overlay-title="Open browser" { spawn-sh "niri-launch-or-focus brave --id brave-browser"; }
-    Mod+Space hotkey-overlay-title="Search apps (rofi)" { spawn-sh "rofi -show drun -show-icons"; }
+    Mod+Space hotkey-overlay-title="Search apps (fuzzel)" { spawn "fuzzel"; }
 
     // launch or focus webapps
     Mod+S hotkey-overlay-title="Open Spotify (Webapp)" { spawn-sh "niri-launch-or-focus-webapp open.spotify.com"; }
@@ -357,7 +357,7 @@ binds {
     // The quit action will show a confirmation dialog to avoid accidental exits.
     Mod+Shift+Q { quit; }
 
-    Mod+P { spawn "rofi-power-menu"; }
+    Mod+P { spawn "dmenu-power"; }
 
     // volume keys mappings for PipeWire & WirePlumber. "-l 1.0" limits the volume to 100%.
     // Using spawn-sh allows to pass multiple arguments together with the command.

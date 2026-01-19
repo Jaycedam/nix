@@ -1,6 +1,6 @@
 { pkgs, ... }:
 
-pkgs.writeShellScriptBin "rofi-power-menu" ''
+pkgs.writeShellScriptBin "dmenu-power" ''
   declare -A items=(
       [lock]="  Lock"
       [suspend]="  Suspend"
@@ -9,8 +9,8 @@ pkgs.writeShellScriptBin "rofi-power-menu" ''
       [logout]="  Logout"
   )
 
-  # Display options with rofi
-  selected=$(printf '%s\n' "''${items[@]}" | rofi -dmenu -p "Select action")
+   # Display options with fuzzel
+   selected=$(printf '%s\n' "''${items[@]}" | fuzzel --dmenu -p "Select action")
 
   # Find the key for the selected value and perform action
   if [[ -n "$selected" ]]; then

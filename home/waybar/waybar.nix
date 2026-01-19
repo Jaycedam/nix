@@ -97,7 +97,7 @@
 
           "custom/power" = {
             format = "";
-            on-click = "rofi-power-menu";
+            on-click = "dmenu-power";
           };
 
           network = {

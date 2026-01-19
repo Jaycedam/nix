@@ -8,7 +8,7 @@ _: {
       "$mod" = "SUPER";
       "$terminal" = "kitty";
       "$fileManager" = "$terminal --class 'file-manager' -e fish -c yazi";
-      "$menu" = "rofi -show drun";
+      "$menu" = "fuzzel";
       "$browser" = "brave";
       "$launch" = "launch-or-focus";
 
@@ -129,7 +129,7 @@ _: {
       );
 
       layerrule = [
-        "blur on, match:class  rofi"
+        "blur on, match:class  fuzzel"
         "blur on, match:class waybar"
         "blur on, match:class notifications"
         "ignore_alpha 0, match:class waybar"
