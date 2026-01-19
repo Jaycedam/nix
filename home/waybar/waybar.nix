@@ -205,7 +205,7 @@
         @import "colors.css";
 
         * {
-          font-family: "JetBrains Mono", "Font Awesome 6 Free";
+          font-family: "DejaVu Sans", "Font Awesome 6 Free";
           font-size: 12px;
         }
 
