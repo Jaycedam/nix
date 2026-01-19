@@ -13,7 +13,7 @@
              "$config_dir/fuzzel" \
              "$config_dir/gtk-3.0" \
              "$config_dir/gtk-4.0" \
-             "$config_dir/dunst" \
+             "$config_dir/mako" \
              "$config_dir/yazi" \
           "$config_dir/btop/themes" \
           "$config_dir/neovim" \
@@ -25,7 +25,7 @@
           "$config_dir/kitty/colors.conf" \
           "$config_dir/gtk-3.0/colors.css" \
           "$config_dir/gtk-4.0/colors.css" \
-          "$config_dir/dunst/dunstrc" \
+          "$config_dir/mako/mako-colors" \
           "$config_dir/yazi/theme.toml" \
           "$config_dir/btop/themes/matugen.theme" \
           "$config_dir/neovim/generated.lua" \

@@ -12,9 +12,7 @@
     ../../home/hyprlock.nix
     ../../home/hypridle.nix
     ../../home/fuzzel.nix
-    ../../home/dunst.nix
     ../../home/mako.nix
-    ../../home/swaync.nix
     ../../home/desktop-entries.nix
     ../../home/matugen/default.nix
   ];
@@ -22,7 +20,6 @@
   services = {
     udiskie.enable = true;
     polkit-gnome.enable = true;
-
     swww.enable = true;
   };
 
