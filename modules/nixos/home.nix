@@ -9,6 +9,7 @@
     ../../home/mpd.nix
     ../../home/rmpc.nix
     ../../home/waybar/waybar.nix
+    ../../home/gtk-qt.nix
     ../../home/hyprlock.nix
     ../../home/hypridle.nix
     ../../home/fuzzel.nix
@@ -23,24 +24,7 @@
     swww.enable = true;
   };
 
-  # enable theming
-  qt.enable = true;
-  gtk = {
-    enable = true;
-    theme = {
-      name = "adw-gtk3-dark";
-      package = pkgs.adw-gtk3;
-    };
-    iconTheme = {
-      package = pkgs.candy-icons;
-      name = "candy-icons";
-    };
-    gtk3.extraCss = "@import 'colors.css';";
-    gtk4.extraCss = "@import 'colors.css';";
-  };
-
   # autocreate user dirs
-
   xdg.userDirs.enable = true;
 
   # home-manager configuration

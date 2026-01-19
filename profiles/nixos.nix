@@ -11,8 +11,8 @@ let
   # Build conditional module lists using attrset lookup
   compositorModules =
     {
-      niri = [ ../modules/nixos/niri.nix ];
-      hyprland = [ ../modules/nixos/hyprland.nix ];
+      niri = [ ../modules/nixos/compositors/niri.nix ];
+      hyprland = [ ../modules/nixos/compositors/hyprland.nix ];
     }
     .${compositor} or (throw "Invalid compositor: ${compositor}");
 
