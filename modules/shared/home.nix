@@ -7,20 +7,11 @@ _: {
     ../../home/anki.nix
     ../../home/fish.nix
     ../../home/git.nix
+    ../../home/fontconfig.nix
   ];
 
   home.sessionVariables = {
     EDITOR = "nvim";
-  };
-
-  fonts.fontconfig = {
-    enable = true;
-    defaultFonts = {
-      monospace = [ "JetBrains Mono" ];
-      sansSerif = [ "DejaVu Sans" ];
-      serif = [ "DejaVu Serif" ];
-      emoji = [ "Noto Color Emoji" ];
-    };
   };
 
   programs = {

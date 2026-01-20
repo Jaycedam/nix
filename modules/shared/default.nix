@@ -1,7 +1,9 @@
-_:
-{
+_: {
   imports = [
     ./options.nix
-    ./pkgs.nix
+    ./programs.nix
+    ./fonts.nix
+    ./scripts.nix
+    ./services.nix
   ];
 }

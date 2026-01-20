@@ -3,7 +3,8 @@ _: {
     ./options.nix
     ./boot.nix
     ./network.nix
-    ./pkgs.nix
+    ./programs.nix
+    ./services.nix
     ./scripts.nix
     ./chromium.nix
   ];
