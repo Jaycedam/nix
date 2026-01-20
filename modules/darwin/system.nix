@@ -47,6 +47,5 @@
         wvous-bl-corner = 1;
       };
     };
-
   };
 }

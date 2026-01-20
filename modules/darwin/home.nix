@@ -1,6 +1,5 @@
 {
   config,
-  pkgs,
   ...
 }:
 {
@@ -9,11 +8,6 @@
     ../../home/aerospace.nix
   ];
 
-  programs = {
-    ghostty = {
-      package = pkgs.ghostty-bin; # override for the darwin only version
-    };
-  };
   services = {
     jankyborders = {
       enable = true;

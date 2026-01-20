@@ -1,24 +1,9 @@
-{
-  pkgs,
-  user,
-  ...
-}:
+{ user, ... }:
 {
   # Automatic garbage collection (generations)
   nix = {
     gc.automatic = true;
     optimise.automatic = true;
-  };
-
-  # Configure keymap in X11
-  services.xserver.xkb = {
-    layout = "us";
-    variant = "colemak_dh_iso";
-  };
-
-  console = {
-    useXkbConfig = true;
-    earlySetup = true;
   };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
