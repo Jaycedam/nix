@@ -43,7 +43,6 @@
     pavucontrol
     proton-pass # no darwin release yet
     nautilus # needed by niri
-    adwaita-icon-theme
     gimp # no darwin release yet
     libreoffice-fresh
     signal-desktop
