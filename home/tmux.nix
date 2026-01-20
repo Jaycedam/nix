@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-{
+_: {
   programs.tmux = {
     enable = true;
     prefix = "C-t";
@@ -20,6 +19,7 @@
 
       set -g status-justify absolute-centre
       set -g status-right ""
+      set -g status-style bg=default
 
       setw -g window-status-current-format [#I] #W #{?window_zoomed_flag, ,}"
       # Style for other windows in the status bar
@@ -39,6 +39,8 @@
       bind a new-window -c "#{pane_current_path}" -n AI "opencode"
       # Open remote git repository on the Browser
       bind b run-shell "gh browse"
+
+      source-file "$HOME/.config/tmux/generated.conf"
     '';
   };
 }
