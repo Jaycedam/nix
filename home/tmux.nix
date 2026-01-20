@@ -1,7 +1,9 @@
-_: {
+{ pkgs, ... }:
+{
   programs.tmux = {
     enable = true;
     prefix = "C-t";
+    shell = "${pkgs.fish}/bin/fish";
     newSession = true;
     reverseSplit = true;
     baseIndex = 1;

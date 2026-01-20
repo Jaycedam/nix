@@ -1,4 +1,5 @@
-_: {
+{ pkgs, ... }:
+{
   programs.kitty = {
     enable = true;
     enableGitIntegration = true;
@@ -8,6 +9,7 @@ _: {
       size = 14;
     };
     settings = {
+      shell = "${pkgs.fish}/bin/fish";
       cursor_trail = 1;
       background_blur = 64;
       tab_bar_edge = "top";
