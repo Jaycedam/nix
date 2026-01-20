@@ -14,10 +14,11 @@ _: {
       # OSD bottom-center
       "category=osd" = {
         anchor = "bottom-center";
+        padding = 5;
         width = 200;
-        height = 70;
+        height = 50;
         default-timeout = 1500;
-        outer-margin = 10;
+        outer-margin = 30;
       };
     };
   };
