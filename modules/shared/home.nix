@@ -3,6 +3,7 @@ _: {
     ../../home/nixvim/default.nix
     ../../home/tmux.nix
     ../../home/kitty.nix
+    ../../home/yazi.nix
     ../../home/anki.nix
     ../../home/fish.nix
     ../../home/git.nix
@@ -49,20 +50,6 @@ _: {
       enableFishIntegration = true;
     };
 
-    yazi = {
-      enable = true;
-      enableFishIntegration = true;
-      keymap = {
-        mgr.prepend_keymap = [
-          {
-            on = [ "<C-m>" ];
-            run = ''shell 'matugen image "$0"' '';
-            desc = "Generate colors from image";
-          }
-        ];
-      };
-    };
-
     lazygit = {
       enable = true;
       enableFishIntegration = true;
@@ -74,17 +61,6 @@ _: {
         mouse-hide-while-typing = "true";
         background-blur = "true";
       };
-    };
-
-    alacritty = {
-      enable = true;
-      settings = {
-        window = {
-          decorations = "Buttonless";
-          blur = true;
-        };
-      };
-
     };
   };
 }
