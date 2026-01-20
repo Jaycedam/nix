@@ -3,7 +3,7 @@ workspace "dev"
 workspace "communication"
 
 // default wallpaper and theme on startup
-spawn-sh-at-startup "matugen image ~/Pictures/wallpapers/default.jpg &"
+// spawn-sh-at-startup "matugen image ~/Pictures/wall/default.jpg &"
 
 input {
     mod-key "Alt"
