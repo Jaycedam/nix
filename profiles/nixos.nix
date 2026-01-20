@@ -8,6 +8,7 @@
 }:
 
 let
+  darwin = false;
   # Build conditional module lists using attrset lookup
   compositorModules =
     {
@@ -38,7 +39,12 @@ in
       useUserPackages = true;
       backupFileExtension = "backup";
       extraSpecialArgs = {
-        inherit user nixvim compositor;
+        inherit
+          user
+          nixvim
+          compositor
+          darwin
+          ;
       };
       users.${user} = {
         imports = [

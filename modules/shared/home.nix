@@ -8,6 +8,7 @@ _: {
     ../../home/fish.nix
     ../../home/git.nix
     ../../home/fontconfig.nix
+    ../../home/ghostty.nix
   ];
 
   home.sessionVariables = {
@@ -44,14 +45,6 @@ _: {
     lazygit = {
       enable = true;
       enableFishIntegration = true;
-    };
-
-    ghostty = {
-      enable = true;
-      settings = {
-        mouse-hide-while-typing = "true";
-        background-blur = "true";
-      };
     };
   };
 }

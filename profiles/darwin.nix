@@ -9,7 +9,9 @@
   nixvim,
   ...
 }:
-
+let
+  darwin = true;
+in
 [
   # modules
   ../modules/shared/default.nix
@@ -22,7 +24,7 @@
       useGlobalPkgs = true;
       useUserPackages = true;
       backupFileExtension = "backup";
-      extraSpecialArgs = { inherit user nixvim; };
+      extraSpecialArgs = { inherit user nixvim darwin; };
       users.${user} = {
         imports = [
           ../modules/shared/home.nix
