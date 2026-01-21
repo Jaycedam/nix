@@ -8,12 +8,11 @@
 }:
 
 let
-  darwin = false;
   # Build conditional module lists using attrset lookup
   compositorModules =
     {
-      niri = [ ../modules/nixos/compositors/niri.nix ];
-      hyprland = [ ../modules/nixos/compositors/hyprland.nix ];
+      niri = [ ../modules/compositors/niri.nix ];
+      hyprland = [ ../modules/compositors/hyprland.nix ];
     }
     .${compositor} or (throw "Invalid compositor: ${compositor}");
 
@@ -26,8 +25,7 @@ let
 in
 [
   # modules
-  ../modules/shared/default.nix
-  ../modules/nixos/default.nix
+  ../modules/default.nix
 ]
 ++ compositorModules
 ++ [
@@ -43,13 +41,11 @@ in
           user
           nixvim
           compositor
-          darwin
           ;
       };
       users.${user} = {
         imports = [
-          ../modules/shared/home.nix
-          ../modules/nixos/home.nix
+          ../modules/home.nix
         ]
         ++ homeCompositorModules;
       };

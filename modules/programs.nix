@@ -19,18 +19,54 @@
     libnotify
     ddcutil # ext monitor brightness
     wiremix
+    tree
+    pstree
+    trash-cli
+    tldr
+    ripgrep
+    yt-dlp
+    fd
+    jq
+    imagemagick
+    fastfetch
+    mpv
+    bitwarden-cli
+    ffmpeg
 
     # desktop apps
     pavucontrol
-    proton-pass # no darwin release yet
+    proton-pass
     nautilus # needed by niri
-    gimp # no darwin release yet
+    gimp
     libreoffice-fresh
     signal-desktop
     cryptomator
     ente-desktop
     # grayjay
     seahorse # gnome keyring manager
+    transmission_4-gtk
+    bitwarden-desktop
+    spotube
+
+    ### browser ###
+    brave
+
+    ### dev ###
+    # tools
+    bun
+    tree-sitter
+    lazygit
+    nodejs_24
+    docker
+    docker-compose
+    android-tools
+    # languages
+    go
+
+    # linters
+    eslint
+    shellcheck
+    statix
   ];
 
 }

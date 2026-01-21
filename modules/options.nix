@@ -1,10 +1,25 @@
 { user, ... }:
 {
-  # Automatic garbage collection (generations)
   nix = {
+    settings = {
+      experimental-features = [
+        "nix-command"
+        "flakes"
+      ];
+      trusted-users = [
+        "root"
+        "@wheel"
+        "@admin"
+      ];
+    };
+    # Automatic garbage collection (generations)
+
     gc.automatic = true;
     optimise.automatic = true;
+
   };
+
+  nixpkgs.config.allowUnfree = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.${user} = {

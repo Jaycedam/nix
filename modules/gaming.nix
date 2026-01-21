@@ -21,5 +21,6 @@
     pcsx2
     dolphin-emu
     shadps4
+    gopher64
   ];
 }

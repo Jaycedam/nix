@@ -1,5 +1,5 @@
 {
-  description = "Main flake configuration for NixOS, nix-darwin, and home-manager";
+  description = "Main flake configuration for NixOS, and home-manager";
 
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-unstable";
@@ -11,21 +11,6 @@
 
     nixvim = {
       url = "github:nix-community/nixvim";
-    };
-
-    # Darwin specific inputs
-    nix-darwin = {
-      url = "github:nix-darwin/nix-darwin";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    nix-homebrew.url = "github:zhaofengli/nix-homebrew";
-    homebrew-core = {
-      url = "github:homebrew/homebrew-core";
-      flake = false;
-    };
-    homebrew-cask = {
-      url = "github:homebrew/homebrew-cask";
-      flake = false;
     };
   };
 
@@ -43,10 +28,6 @@
       nixpkgs,
       home-manager,
       nixvim,
-      nix-darwin,
-      nix-homebrew,
-      homebrew-core,
-      homebrew-cask,
       ...
     }:
     let
@@ -78,23 +59,6 @@
             ./hosts/nixos/default.nix
           ]
           ++ (import ./profiles/nixos.nix (commonArgs // { compositor = "hyprland"; }));
-        };
-      };
-
-      darwinConfigurations = {
-        darwin = nix-darwin.lib.darwinSystem {
-          specialArgs = { inherit user; };
-          modules = import ./profiles/darwin.nix (
-            commonArgs
-            // {
-              inherit
-                nix-darwin
-                nix-homebrew
-                homebrew-core
-                homebrew-cask
-                ;
-            }
-          );
         };
       };
     };

@@ -1,5 +1,7 @@
 _: {
   services = {
+    openssh.enable = true;
+
     # gnome virtual filesystem for nautilus and other gnome apps
     gvfs.enable = true;
 
