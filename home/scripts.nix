@@ -1,6 +1,6 @@
 { pkgs, ... }:
 {
-  environment.systemPackages = [
+  home.packages = [
     (import ../scripts/dmenu/dmenu-power.nix { inherit pkgs; })
     (import ../scripts/hypr/launch-or-focus.nix { inherit pkgs; })
     (import ../scripts/system/brightness.nix { inherit pkgs; })

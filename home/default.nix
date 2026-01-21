@@ -27,6 +27,7 @@
     ./fontconfig.nix
     ./ghostty.nix
     ./services.nix
+    ./scripts.nix
   ];
 
   home.sessionVariables = {

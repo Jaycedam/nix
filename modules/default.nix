@@ -4,7 +4,6 @@ _: {
     ./boot.nix
     ./network.nix
     ./services.nix
-    ./scripts.nix
     ./chromium.nix
     ./gaming.nix
     ./keyboard.nix
