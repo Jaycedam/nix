@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 {
   home.packages = with pkgs; [
     # cli
@@ -27,12 +27,10 @@
     # desktop apps
     pavucontrol
     localsend
-    proton-pass
     nautilus # needed by niri
     gimp
     libreoffice-fresh
     signal-desktop
-    cryptomator
     ente-desktop
     # grayjay
     seahorse # gnome keyring manager
@@ -49,8 +47,6 @@
     tree-sitter
     lazygit
     nodejs_24
-    docker
-    docker-compose
     android-tools
     # languages
     go
@@ -59,6 +55,13 @@
     eslint
     shellcheck
     statix
+  ] ++ lib.optionals (builtins.elem pkgs.stdenv.hostPlatform.system (proton-pass.meta.platforms or [])) [
+    proton-pass
+  ] ++ lib.optionals (builtins.elem pkgs.stdenv.hostPlatform.system (cryptomator.meta.platforms or [])) [
+    cryptomator
+  ] ++ lib.optionals (builtins.elem pkgs.stdenv.hostPlatform.system (docker.meta.platforms or [])) [
+    docker
+    docker-compose
   ];
 
   programs = {
