@@ -5,11 +5,18 @@
 }:
 
 {
-  # Symlink default wallpaper to user dir
-  home.file."Pictures/wall/default.jpg".source = ../../../wall/default.jpg;
+  home = {
+    # Symlink default wallpaper to user dir
+    file."Pictures/wall/default.jpg".source = ../../../wall/default.jpg;
 
-  # manual niri config
-  home.file."${config.xdg.configHome}/niri/config.kdl".source = ./niri.kdl;
+    # manual niri config
+    file."${config.xdg.configHome}/niri/config.kdl".source = ./niri.kdl;
+
+    packages = with pkgs; [
+      niri
+      xwayland-satellite # xwayland support
+    ];
+  };
 
   # dark theme
   dconf.settings = {
@@ -17,9 +24,4 @@
       color-scheme = "prefer-dark";
     };
   };
-
-  home.packages = with pkgs; [
-    niri
-    xwayland-satellite # xwayland support
-  ];
 }
