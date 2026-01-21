@@ -29,6 +29,7 @@
     ./services.nix
     ./scripts.nix
     ./gaming.nix
+    ./chromium.nix
   ];
 
   home.sessionVariables = {
