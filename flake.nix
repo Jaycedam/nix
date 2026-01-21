@@ -34,6 +34,12 @@
       inherit (nixpkgs) lib;
       user = "jay";
 
+      # Define both systems for future use
+      systems = {
+        x86 = "x86_64-linux";
+        arm-linux = "aarch64-linux";
+      };
+
       commonArgs = {
         inherit
           nixpkgs
@@ -64,24 +70,28 @@
       };
 
       homeConfigurations = {
-        "${user}-niri" = home-manager.lib.homeManagerConfiguration {
+        "${user}-niri-arm" = home-manager.lib.homeManagerConfiguration {
+          pkgs = nixpkgs.legacyPackages.${systems.arm-linux};
           extraSpecialArgs = commonArgs // {
             compositor = "niri";
+            system = systems.arm-linux;
           };
           modules = [
             ./home/default.nix
           ]
-          ++ (import ./home/compositor/default.nix) "niri";
+          ++ (import ./home/compositor/default.nix { compositor = "niri"; });
         };
 
-        "${user}-hyprland" = home-manager.lib.homeManagerConfiguration {
+        "${user}-hyprland-arm" = home-manager.lib.homeManagerConfiguration {
+          pkgs = nixpkgs.legacyPackages.${systems.arm-linux};
           extraSpecialArgs = commonArgs // {
             compositor = "hyprland";
+            system = systems.arm-linux;
           };
           modules = [
             ./home/default.nix
           ]
-          ++ (import ./home/compositor/default.nix) "hyprland";
+          ++ (import ./home/compositor/default.nix { compositor = "hyprland"; });
         };
       };
     };
