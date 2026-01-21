@@ -16,8 +16,7 @@ On NixOS, the keyboard layout defaults to Colemak-DH with keyd handling home-row
 - [Useful Commands](#useful-commands)
   - [Update](#update)
   - [Diff](#diff)
-- [Non-NixOS Setup Guide](./docs/non-nixos-setup.md)
-- [Config Overview](./docs/config-overview.md)
+- [Additional Documentation](#additional-documentation)
 
 ## Clone Repository
 
@@ -74,3 +73,8 @@ sudo nixos-rebuild dry-activate --flake ~/dev/nix#nixos-niri
 ```bash
 home-manager switch --dry-run --flake ~/dev/nix#jay-niri
 ```
+
+## Additional Documentation
+
+- [Non-NixOS Setup Guide](./docs/non-nixos-setup.md)
+- [Config Overview](./docs/config-overview.md)
