@@ -1,6 +1,6 @@
 # Nix Setup
 
-My personal Nix setup for NixOS. It uses flakes, home-manager, matugen (automatic wallpaper based themes). Features toggleable compositors on NixOS (niri and hyprland). Also supports standalone home-manager for non-NixOS systems.
+My personal Nix setup for NixOS. It uses flakes, home-manager, matugen (automatic wallpaper based themes). Features toggleable compositors on NixOS (niri and hyprland). Also supports standalone home-manager for non-NixOS systems, including ARM Linux, with automatic handling of platform-specific packages.
 
 On NixOS, the keyboard layout defaults to Colemak-DH with keyd handling home-row mods.
 
@@ -42,11 +42,19 @@ sudo NIX_CONFIG="experimental-features = nix-command flakes" \
 
 This flake supports standalone home-manager configurations for non-NixOS systems. The same configuration modules are used, ensuring consistent dotfiles across all systems.
 
-Available configurations: `#jay-niri`, `#jay-hyprland`
+Available configurations: `#jay-niri-arm`, `#jay-hyprland-arm`
 
 ```bash
-home-manager switch --flake ~/dev/nix#jay-niri
+home-manager switch --flake ~/dev/nix#jay-niri-arm
 ```
+
+Or using the GitHub runner (recommended for ARM systems):
+
+```bash
+nix run github:nix-community/home-manager/master -- switch --flake ~/dev/nix#jay-niri-arm
+```
+
+**Note:** Use `-b backup` to automatically backup conflicting files (recommended).
 
 ## Useful Commands
 
@@ -71,8 +79,10 @@ sudo nixos-rebuild dry-activate --flake ~/dev/nix#nixos-niri
 **Home Manager standalone:**
 
 ```bash
-home-manager switch --dry-run --flake ~/dev/nix#jay-niri
+home-manager switch --dry-run --flake ~/dev/nix#jay-niri-arm
 ```
+
+**Note:** Use `-b backup` when switching to automatically backup conflicting files.
 
 ## Additional Documentation
 
