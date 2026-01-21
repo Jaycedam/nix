@@ -33,6 +33,8 @@
     let
       inherit (nixpkgs) lib;
       user = "jay";
+      system = builtins.currentSystem;
+      pkgs = nixpkgs.legacyPackages.${system};
 
       commonArgs = {
         inherit
@@ -40,8 +42,16 @@
           home-manager
           user
           nixvim
+          system
+          pkgs
           ;
       };
+      
+      # Helper to get compositor modules
+      homeCompositorModules = compositor: {
+        niri = [ ./home/niri/default.nix ];
+        hyprland = [ ./home/hyprland.nix ];
+      }.${compositor} or (throw "Invalid compositor: ${compositor}");
     in
     {
       nixosConfigurations = {
@@ -59,6 +69,24 @@
             ./hosts/nixos/default.nix
           ]
           ++ (import ./profiles/nixos.nix (commonArgs // { compositor = "hyprland"; }));
+        };
+      };
+
+      homeConfigurations = {
+        "${user}-niri" = home-manager.lib.homeManagerConfiguration {
+          inherit pkgs;
+          extraSpecialArgs = commonArgs // { compositor = "niri"; };
+          modules = [
+            ./home/home.nix
+          ] ++ homeCompositorModules "niri";
+        };
+
+        "${user}-hyprland" = home-manager.lib.homeManagerConfiguration {
+          inherit pkgs;
+          extraSpecialArgs = commonArgs // { compositor = "hyprland"; };
+          modules = [
+            ./home/home.nix
+          ] ++ homeCompositorModules "hyprland";
         };
       };
     };

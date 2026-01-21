@@ -5,26 +5,26 @@
 }:
 {
   imports = [
-    ../home/beets.nix
-    ../home/mpd.nix
-    ../home/rmpc.nix
-    ../home/waybar/waybar.nix
-    ../home/gtk-qt.nix
-    ../home/hyprlock.nix
-    ../home/hypridle.nix
-    ../home/fuzzel.nix
-    ../home/mako.nix
-    ../home/desktop-entries.nix
-    ../home/matugen/default.nix
-    ../home/nixvim/default.nix
-    ../home/tmux.nix
-    ../home/kitty.nix
-    ../home/yazi.nix
-    ../home/anki.nix
-    ../home/fish.nix
-    ../home/git.nix
-    ../home/fontconfig.nix
-    ../home/ghostty.nix
+    ./beets.nix
+    ./mpd.nix
+    ./rmpc.nix
+    ./waybar/waybar.nix
+    ./gtk-qt.nix
+    ./hyprlock.nix
+    ./hypridle.nix
+    ./fuzzel.nix
+    ./mako.nix
+    ./desktop-entries.nix
+    ./matugen/default.nix
+    ./nixvim/default.nix
+    ./tmux.nix
+    ./kitty.nix
+    ./yazi.nix
+    ./anki.nix
+    ./fish.nix
+    ./git.nix
+    ./fontconfig.nix
+    ./ghostty.nix
   ];
 
   home.sessionVariables = {

@@ -45,7 +45,7 @@ in
       };
       users.${user} = {
         imports = [
-          ../modules/home.nix
+          ../home/home.nix
         ]
         ++ homeCompositorModules;
       };
