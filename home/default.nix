@@ -28,6 +28,7 @@
     ./ghostty.nix
     ./services.nix
     ./scripts.nix
+    ./gaming.nix
   ];
 
   home.sessionVariables = {

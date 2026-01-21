@@ -1,9 +1,4 @@
-{ pkgs, ... }:
-{
-  environment.systemPackages = with pkgs; [
-    xwayland-satellite # xwayland support for niri
-  ];
-
+_: {
   programs = {
     niri.enable = true;
   };

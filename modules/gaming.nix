@@ -9,18 +9,4 @@
       ];
     };
   };
-
-  environment.systemPackages = with pkgs; [
-    # launchers
-    heroic
-    # tools
-    lsfg-vk # lossless scaling on linux
-    gamemode
-    gamescope
-    # emulators
-    pcsx2
-    dolphin-emu
-    shadps4
-    gopher64
-  ];
 }

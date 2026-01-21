@@ -1,5 +1,6 @@
 {
   config,
+  pkgs,
   ...
 }:
 
@@ -16,4 +17,9 @@
       color-scheme = "prefer-dark";
     };
   };
+
+  home.packages = with pkgs; [
+    niri
+    xwayland-satellite # xwayland support
+  ];
 }
