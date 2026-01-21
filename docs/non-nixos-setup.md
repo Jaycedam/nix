@@ -60,4 +60,12 @@ If ddcutil can detect your monitors, everything is configured correctly.
 ```bash
 sudo localectl set-keymap us-colemak_dh_iso
 ```
+
+## Compositor Setup
+
+For compositors like niri, we recommend installing via the system package manager rather than home-manager, as compositors require system-level integration:
+
+```bash
+sudo dnf install niri
+```
 ```

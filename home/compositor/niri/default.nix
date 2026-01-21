@@ -13,7 +13,6 @@
     file."${config.xdg.configHome}/niri/config.kdl".source = ./niri.kdl;
 
     packages = with pkgs; [
-      niri
       xwayland-satellite # xwayland support
     ];
   };
