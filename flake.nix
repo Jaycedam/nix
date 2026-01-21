@@ -33,8 +33,6 @@
     let
       inherit (nixpkgs) lib;
       user = "jay";
-      system = builtins.currentSystem;
-      pkgs = nixpkgs.legacyPackages.${system};
 
       commonArgs = {
         inherit
@@ -42,8 +40,6 @@
           home-manager
           user
           nixvim
-          system
-          pkgs
           ;
       };
 
@@ -69,7 +65,6 @@
 
       homeConfigurations = {
         "${user}-niri" = home-manager.lib.homeManagerConfiguration {
-          inherit pkgs;
           extraSpecialArgs = commonArgs // {
             compositor = "niri";
           };
@@ -80,7 +75,6 @@
         };
 
         "${user}-hyprland" = home-manager.lib.homeManagerConfiguration {
-          inherit pkgs;
           extraSpecialArgs = commonArgs // {
             compositor = "hyprland";
           };
