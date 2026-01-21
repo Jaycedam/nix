@@ -3,33 +3,19 @@
   home-manager,
   user,
   nixvim,
-  compositor ? "niri",
+  compositor,
   ...
 }:
 
 let
-  # Build conditional module lists using attrset lookup
-  compositorModules =
-    {
-      niri = [ ../modules/compositors/niri.nix ];
-      hyprland = [ ../modules/compositors/hyprland.nix ];
-    }
-    .${compositor} or (throw "Invalid compositor: ${compositor}");
-
-  homeCompositorModules =
-    {
-      niri = [ ../home/niri/default.nix ];
-      hyprland = [ ../home/hyprland.nix ];
-    }
-    .${compositor} or (throw "Invalid compositor: ${compositor}");
+  homeCompositorModules = import ../home/compositor/default.nix { inherit compositor; };
+  compositorModules = import ../modules/compositors/default.nix { inherit compositor; };
 in
 [
-  # modules
   ../modules/default.nix
 ]
 ++ compositorModules
 ++ [
-  # home manager
   home-manager.nixosModules.home-manager
   {
     home-manager = {
@@ -45,7 +31,7 @@ in
       };
       users.${user} = {
         imports = [
-          ../home/home.nix
+          ../home/default.nix
         ]
         ++ homeCompositorModules;
       };

@@ -13,6 +13,16 @@ _: {
       "127.0.0.1"
       "::1"
     ];
+
+    firewall = {
+      enable = true;
+      allowedTCPPorts = [
+        53317 # localsend
+      ];
+      allowedUDPPorts = [
+        53317 # localsend
+      ];
+    };
   };
 
   services.dnscrypt-proxy = {

@@ -1,15 +1,6 @@
+{ pkgs, ... }:
 {
-  pkgs,
-  ...
-}:
-{
-  # programs that need extra config or system integration need to be enabled
-  programs = {
-    localsend.enable = true; # it's installed here to enable the firewall automatically
-  };
-
-  # regular pkg installation, without extra config needed
-  environment.systemPackages = with pkgs; [
+  home.packages = with pkgs; [
     # cli
     fwupd # upgrade firmware
     playerctl
@@ -35,6 +26,7 @@
 
     # desktop apps
     pavucontrol
+    localsend
     proton-pass
     nautilus # needed by niri
     gimp
@@ -69,4 +61,36 @@
     statix
   ];
 
+  programs = {
+    btop = {
+      enable = true;
+      settings = {
+        color_theme = "matugen";
+        theme_background = false;
+      };
+    };
+    opencode = {
+      enable = true;
+      settings.theme = "system";
+    };
+
+    zoxide = {
+      enable = true;
+      enableFishIntegration = true;
+    };
+
+    bat = {
+      enable = true;
+    };
+
+    fzf = {
+      enable = true;
+      enableFishIntegration = true;
+    };
+
+    lazygit = {
+      enable = true;
+      enableFishIntegration = true;
+    };
+  };
 }

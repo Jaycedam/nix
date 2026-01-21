@@ -46,12 +46,7 @@
           pkgs
           ;
       };
-      
-      # Helper to get compositor modules
-      homeCompositorModules = compositor: {
-        niri = [ ./home/niri/default.nix ];
-        hyprland = [ ./home/hyprland.nix ];
-      }.${compositor} or (throw "Invalid compositor: ${compositor}");
+
     in
     {
       nixosConfigurations = {
@@ -75,18 +70,24 @@
       homeConfigurations = {
         "${user}-niri" = home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
-          extraSpecialArgs = commonArgs // { compositor = "niri"; };
+          extraSpecialArgs = commonArgs // {
+            compositor = "niri";
+          };
           modules = [
-            ./home/home.nix
-          ] ++ homeCompositorModules "niri";
+            ./home/default.nix
+          ]
+          ++ (import ./home/compositor/default.nix) "niri";
         };
 
         "${user}-hyprland" = home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
-          extraSpecialArgs = commonArgs // { compositor = "hyprland"; };
+          extraSpecialArgs = commonArgs // {
+            compositor = "hyprland";
+          };
           modules = [
-            ./home/home.nix
-          ] ++ homeCompositorModules "hyprland";
+            ./home/default.nix
+          ]
+          ++ (import ./home/compositor/default.nix) "hyprland";
         };
       };
     };

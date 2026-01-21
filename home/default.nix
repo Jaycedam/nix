@@ -9,6 +9,7 @@
     ./mpd.nix
     ./rmpc.nix
     ./waybar/waybar.nix
+    ./programs.nix
     ./gtk-qt.nix
     ./hyprlock.nix
     ./hypridle.nix
@@ -25,49 +26,11 @@
     ./git.nix
     ./fontconfig.nix
     ./ghostty.nix
+    ./services.nix
   ];
 
   home.sessionVariables = {
     EDITOR = "nvim";
-  };
-
-  programs = {
-    btop = {
-      enable = true;
-      settings = {
-        color_theme = "matugen";
-        theme_background = false;
-      };
-    };
-    opencode = {
-      enable = true;
-      settings.theme = "system";
-    };
-
-    zoxide = {
-      enable = true;
-      enableFishIntegration = true;
-    };
-
-    bat = {
-      enable = true;
-    };
-
-    fzf = {
-      enable = true;
-      enableFishIntegration = true;
-    };
-
-    lazygit = {
-      enable = true;
-      enableFishIntegration = true;
-    };
-  };
-
-  services = {
-    udiskie.enable = true;
-    polkit-gnome.enable = true;
-    swww.enable = true;
   };
 
   # autocreate user dirs
