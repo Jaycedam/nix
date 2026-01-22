@@ -36,11 +36,18 @@ sudo localectl set-keymap us-colemak_dh_iso
 echo "Upgrading system packages..."
 sudo dnf upgrade -y
 
+echo "Adding Brave browser repository..."
+sudo dnf install dnf-plugins-core -y
+sudo dnf config-manager addrepo --from-repofile=https://brave-browser-rpm-release.s3.brave.com/brave-browser.repo
+
 echo "Installing niri compositor..."
 sudo dnf install --setopt=install_weak_deps=False niri -y
 
 echo "Installing desktop dependencies..."
 sudo dnf install xdg-desktop-portal-gnome gnome-keyring pipewire -y
+
+echo "Installing GPU-accelerated applications..."
+sudo dnf install mpv gimp kitty brave-browser -y
 
 echo "Enabling audio services..."
 systemctl --user enable --now pipewire.service
