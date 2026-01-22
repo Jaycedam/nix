@@ -193,7 +193,7 @@ binds {
     Mod+N hotkey-overlay-title="Open neovim" { spawn-sh "niri-launch-or-focus nvim-wrapper"; }
     Mod+E hotkey-overlay-title="Open yazi" { spawn-sh "niri-launch-or-focus \"kitty --class yazi yazi\" --id yazi"; }
     Mod+M hotkey-overlay-title="Open rmpc" { spawn-sh "niri-launch-or-focus \"kitty --class rmpc rmpc\" --id rmpc"; }
-    Mod+B hotkey-overlay-title="Open browser" { spawn-sh "niri-launch-or-focus brave --id brave-browser"; }
+    Mod+B hotkey-overlay-title="Open browser" { spawn-sh "niri-launch-or-focus \"brave || brave-browser\" --id brave-browser"; }
     Mod+Space hotkey-overlay-title="Search apps (fuzzel)" { spawn "fuzzel"; }
 
     // launch or focus webapps
