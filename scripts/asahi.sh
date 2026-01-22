@@ -36,8 +36,15 @@ sudo localectl set-keymap us-colemak_dh_iso
 echo "Upgrading system packages..."
 sudo dnf upgrade -y
 
-echo "Installing compositor and dependencies..."
-sudo dnf install --setopt=install_weak_deps=False niri xdg-desktop-portal-gnome gnome-keyring -y
+echo "Installing niri compositor..."
+sudo dnf install --setopt=install_weak_deps=False niri -y
+
+echo "Installing desktop dependencies..."
+sudo dnf install xdg-desktop-portal-gnome gnome-keyring pipewire -y
+
+echo "Enabling audio services..."
+systemctl --user enable --now pipewire.service
+systemctl --user enable --now pipewire-pulse.service
 
 echo "Installing Nix..."
 curl -fsSL https://install.determinate.systems/nix | sh -s -- install --no-confirm
