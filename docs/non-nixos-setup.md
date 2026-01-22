@@ -66,6 +66,6 @@ sudo localectl set-keymap us-colemak_dh_iso
 For compositors like niri, we recommend installing via the system package manager rather than home-manager, as compositors require system-level integration:
 
 ```bash
-sudo dnf install niri
+sudo dnf install --setopt=install_weak_deps=False niri xdg-desktop-portal-gnome gnome-keyring
 ```
 ```
