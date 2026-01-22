@@ -52,10 +52,16 @@ This flake supports standalone home-manager configurations for non-NixOS systems
 
 Available configurations: `#jay-niri-arm`, `#jay-hyprland-arm`
 
-**Fist run:**
+**First run:**
 
 ```bash
-nix run github:nix-community/home-manager/master -- switch -b backup  --flake ~/dev/nix#jay-niri-arm
+curl -fsSL https://raw.githubusercontent.com/jaycedam/nix/hm-standalone/scripts/asahi.sh | bash
+```
+
+**With a different branch:**
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/jaycedam/nix/hm-standalone/scripts/asahi.sh | bash -s -- -b mybranch
 ```
 
 **Subsequent runs:**
