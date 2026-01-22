@@ -44,7 +44,11 @@ curl -fsSL https://install.determinate.systems/nix | sh -s -- install --no-confi
 . /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh
 
 echo "Cloning configuration repository..."
-nix-shell -p git --run "git clone https://github.com/jaycedam/nix.git ${NIX_DIR}"
+if [ -d "${NIX_DIR}/.git" ]; then
+  echo "WARNING: ${NIX_DIR} already exists. If the script fails, rename or remove the existing directory."
+else
+  nix-shell -p git --run "git clone https://github.com/jaycedam/nix.git ${NIX_DIR}"
+fi
 
 if [ -n "$BRANCH" ]; then
   echo "Switching to branch: ${BRANCH}..."
