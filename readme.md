@@ -18,19 +18,17 @@ On NixOS, the keyboard layout defaults to Colemak-DH with keyd handling home-row
   - [Diff](#diff)
 - [Additional Documentation](#additional-documentation)
 
-## Clone Repository
+## Apply Configuration
+
+### NixOS
+
+**Clone repository:**
 
 ```bash
 nix-shell -p git --run "git clone https://github.com/jaycedam/nix.git ~/dev/nix"
 ```
 
-## Apply Configuration
-
-### NixOS
-
-Available configurations: `#nixos-niri`, `#nixos-hyprland`
-
-**First run:**
+**First run:** Available configurations: `#nixos-niri`, `#nixos-hyprland`
 
 ```bash
 sudo NIX_CONFIG="experimental-features = nix-command flakes" \
@@ -91,10 +89,8 @@ sudo nixos-rebuild dry-activate --flake ~/dev/nix#nixos-niri
 **Home Manager standalone:**
 
 ```bash
-home-manager switch --dry-run --flake ~/dev/nix#jay-niri-arm
+home-manager switch -b backup --dry-run --flake ~/dev/nix#jay-niri-arm
 ```
-
-**Note:** Use `-b backup` when switching to automatically backup conflicting files.
 
 ## Additional Documentation
 
