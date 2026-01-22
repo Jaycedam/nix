@@ -76,14 +76,9 @@
             compositor = "niri";
             system = systems.arm-linux;
           };
-          modules = import ./profiles/asahi.nix (
-            commonArgs
-            // {
-              compositor = "niri";
-              system = systems.arm-linux;
-            }
-          );
+          modules = import ./profiles/asahi.nix;
         };
+
       };
     };
 }
