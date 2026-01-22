@@ -30,9 +30,17 @@ nix-shell -p git --run "git clone https://github.com/jaycedam/nix.git ~/dev/nix"
 
 Available configurations: `#nixos-niri`, `#nixos-hyprland`
 
+**First run:**
+
 ```bash
 sudo NIX_CONFIG="experimental-features = nix-command flakes" \
     nixos-rebuild switch --flake ~/dev/nix#nixos-niri
+```
+
+**Subsequent runs:**
+
+```bash
+sudo nixos-rebuild switch --flake ~/dev/nix#nixos-niri
 ```
 
 ### Home Manager Standalone
@@ -44,17 +52,17 @@ This flake supports standalone home-manager configurations for non-NixOS systems
 
 Available configurations: `#jay-niri-arm`, `#jay-hyprland-arm`
 
-```bash
-home-manager switch --flake ~/dev/nix#jay-niri-arm
-```
-
-Or using the GitHub runner (recommended for ARM systems):
+**Fist run:**
 
 ```bash
-nix run github:nix-community/home-manager/master -- switch --flake ~/dev/nix#jay-niri-arm
+nix run github:nix-community/home-manager/master -- switch -b backup  --flake ~/dev/nix#jay-niri-arm
 ```
 
-**Note:** Use `-b backup` to automatically backup conflicting files (recommended).
+**Subsequent runs:**
+
+```bash
+home-manager switch -b backup --flake ~/dev/nix#jay-niri-arm
+```
 
 ## Useful Commands
 
