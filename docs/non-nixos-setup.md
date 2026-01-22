@@ -3,7 +3,7 @@
 This document covers additional steps required to run this configuration on non-NixOS distributions with home-manager standalone.
 
 > [!NOTE]
-> This guide uses Fedora as the example distribution. If you're using a different distro (Ubuntu, Arch, etc.), adapt the package installation commands accordingly.
+> This guide covers setup for non-NixOS distributions. Commands may need adaptation for your specific distribution.
 
 ## Table of Contents
 
@@ -34,7 +34,10 @@ echo "i2c_dev" | sudo tee /etc/modules-load.d/i2c.conf
 
 ### 3. Add User to i2c Group
 
+The setup script creates the `i2c` group automatically. If you need to do this manually:
+
 ```bash
+sudo groupadd i2c 2>/dev/null || true
 sudo usermod -aG i2c $(whoami)
 ```
 

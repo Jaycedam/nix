@@ -43,14 +43,12 @@ sudo NIX_CONFIG="experimental-features = nix-command flakes" \
 sudo nixos-rebuild switch --flake ~/dev/nix#nixos-niri
 ```
 
-### Home Manager Standalone
+### Asahi Linux
 
 > [!IMPORTANT]
 > Non-NixOS systems require additional setup. See the [Non-NixOS Setup Guide](./docs/non-nixos-setup.md) for required kernel module and user group configuration.
 
-This flake supports standalone home-manager configurations for non-NixOS systems. The same configuration modules are used, ensuring consistent dotfiles across all systems.
-
-Available configurations: `#jay-niri-arm`, `#jay-hyprland-arm`
+This script expects Asahi Linux minimal (may also work on Fedora minimal). It sets up everything automatically using the system's package manager for the Wayland compositor, login manager, and PipeWire with PulseAudio compatibility. The remaining apps and all user configuration are handled by home-manager standalone.
 
 **First run:**
 
