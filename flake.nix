@@ -76,24 +76,13 @@
             compositor = "niri";
             system = systems.arm-linux;
           };
-          modules = [
-            { programs.home-manager.enable = true; } # install home-manager
-            ./home/default.nix
-          ]
-          ++ (import ./home/compositor/default.nix { compositor = "niri"; });
-        };
-
-        "${user}-hyprland-arm" = home-manager.lib.homeManagerConfiguration {
-          pkgs = nixpkgs.legacyPackages.${systems.arm-linux};
-          extraSpecialArgs = commonArgs // {
-            compositor = "hyprland";
-            system = systems.arm-linux;
-          };
-          modules = [
-            { programs.home-manager.enable = true; } # install home-manager
-            ./home/default.nix
-          ]
-          ++ (import ./home/compositor/default.nix { compositor = "hyprland"; });
+          modules = import ./profiles/asahi.nix (
+            commonArgs
+            // {
+              compositor = "niri";
+              system = systems.arm-linux;
+            }
+          );
         };
       };
     };
