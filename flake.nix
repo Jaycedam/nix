@@ -53,19 +53,14 @@
     {
       nixosConfigurations = {
         nixos-niri = lib.nixosSystem {
-          specialArgs = { inherit user; };
+          specialArgs = commonArgs // {
+            inherit user;
+            compositor = "niri";
+          };
           modules = [
             ./hosts/nixos/default.nix
-          ]
-          ++ (import ./profiles/nixos.nix (commonArgs // { compositor = "niri"; }));
-        };
-
-        nixos-hyprland = lib.nixosSystem {
-          specialArgs = { inherit user; };
-          modules = [
-            ./hosts/nixos/default.nix
-          ]
-          ++ (import ./profiles/nixos.nix (commonArgs // { compositor = "hyprland"; }));
+            ./profiles/nixos.nix
+          ];
         };
       };
 

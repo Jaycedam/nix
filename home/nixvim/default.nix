@@ -54,7 +54,7 @@
       ./plugins/blink.nix
       ./plugins/lualine.nix
       ./plugins/noice.nix
-      (import ./plugins/lsp.nix { inherit pkgs; })
+      ./plugins/lsp.nix
 
       # general keymaps
       ./keymaps.nix
