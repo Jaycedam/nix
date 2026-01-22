@@ -77,6 +77,7 @@
             system = systems.arm-linux;
           };
           modules = [
+            { programs.home-manager.enable = true; } # install home-manager
             ./home/default.nix
           ]
           ++ (import ./home/compositor/default.nix { compositor = "niri"; });
@@ -89,6 +90,7 @@
             system = systems.arm-linux;
           };
           modules = [
+            { programs.home-manager.enable = true; } # install home-manager
             ./home/default.nix
           ]
           ++ (import ./home/compositor/default.nix { compositor = "hyprland"; });
