@@ -24,6 +24,7 @@
     ./waybar/waybar.nix
     ./programs.nix
     ./gtk-qt.nix
+    ./hyprlock.nix
     ./hypridle.nix
     ./fuzzel.nix
     ./mako.nix
@@ -42,11 +43,7 @@
     ./scripts.nix
     ./chromium.nix
   ]
-  ++ lib.optionals asahi [
-    ./swaylock.nix
-  ]
   ++ lib.optionals (!asahi) [
-    ./hyprlock.nix
     ./gaming.nix
   ];
 

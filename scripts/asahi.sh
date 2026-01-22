@@ -40,11 +40,14 @@ echo "Adding Brave browser repository..."
 sudo dnf install dnf-plugins-core -y
 sudo dnf config-manager addrepo --overwrite --from-repofile=https://brave-browser-rpm-release.s3.brave.com/brave-browser.repo
 
+echo "Adding Hyprland repository..."
+sudo dnf copr enable solopasha/hyprland -y
+
 echo "Installing niri compositor..."
 sudo dnf install --setopt=install_weak_deps=False niri -y
 
 echo "Installing desktop dependencies..."
-sudo dnf install xdg-desktop-portal-gnome gnome-keyring pipewire swaylock -y
+sudo dnf install xdg-desktop-portal-gnome gnome-keyring pipewire hyprlock -y
 
 echo "Installing GPU-accelerated applications..."
 sudo dnf install mpv gimp kitty brave-browser -y
@@ -53,9 +56,13 @@ echo "Enabling audio services..."
 systemctl --user enable --now pipewire.service
 systemctl --user enable --now pipewire-pulse.service
 
-echo "Installing Nix..."
-curl -fsSL https://install.determinate.systems/nix | sh -s -- install --no-confirm
-. /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh
+if ! command -v nix >/dev/null 2>&1; then
+    echo "Installing Nix..."
+    curl -fsSL https://install.determinate.systems/nix | sh -s -- install --no-confirm
+    . /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh
+else
+    echo "Nix is already installed."
+fi
 
 echo "Cloning configuration repository..."
 if [ -d "${NIX_DIR}/.git" ]; then
