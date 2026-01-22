@@ -70,6 +70,7 @@
           extraSpecialArgs = commonArgs // {
             compositor = "niri";
             system = systems.arm-linux;
+            asahi = true;
           };
           modules = import ./profiles/asahi.nix;
         };

@@ -1,4 +1,9 @@
-{ pkgs, lib, ... }:
+{
+  pkgs,
+  lib,
+  asahi ? false,
+  ...
+}:
 {
   home.packages =
     with pkgs;
@@ -20,17 +25,15 @@
       yt-dlp
       fd
       jq
-      imagemagick
-      fastfetch
-      mpv
-      bitwarden-cli
-      ffmpeg
+       imagemagick
+       fastfetch
+       bitwarden-cli
+       ffmpeg
 
-      # desktop apps
-      pavucontrol
-      localsend
-      nautilus # needed by niri
-      gimp
+       # desktop apps
+       pavucontrol
+       localsend
+       nautilus # needed by niri
       libreoffice-fresh
       signal-desktop
       ente-desktop
@@ -41,7 +44,6 @@
       spotube
 
       ### browser ###
-      brave
 
       ### dev ###
       # tools
@@ -71,7 +73,12 @@
     ++ lib.optionals (builtins.elem pkgs.stdenv.hostPlatform.system (docker.meta.platforms or [ ])) [
       docker
       docker-compose
-    ];
+    ]
+     ++ lib.optionals (!asahi) [
+       brave
+       mpv
+       gimp
+     ];
 
   programs = {
     btop = {

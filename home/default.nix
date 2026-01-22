@@ -1,6 +1,8 @@
 {
+  lib,
   pkgs,
   user,
+  asahi ? false,
   ...
 }:
 {
@@ -39,8 +41,10 @@
     ./ghostty.nix
     ./services.nix
     ./scripts.nix
-    ./gaming.nix
     ./chromium.nix
+  ]
+  ++ lib.optionals (!asahi) [
+    ./gaming.nix
   ];
 
   home.sessionVariables = {

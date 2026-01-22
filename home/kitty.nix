@@ -1,7 +1,8 @@
-{ pkgs, ... }:
+{ lib, pkgs, asahi ? false, ... }:
 {
   programs.kitty = {
     enable = true;
+    package = lib.mkIf asahi null;
     enableGitIntegration = true;
     shellIntegration.enableFishIntegration = true;
     font = {
