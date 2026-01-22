@@ -19,21 +19,22 @@
       wiremix
       tree
       pstree
+      bluetui
       trash-cli
       tldr
       ripgrep
       yt-dlp
       fd
       jq
-       imagemagick
-       fastfetch
-       bitwarden-cli
-       ffmpeg
+      imagemagick
+      fastfetch
+      bitwarden-cli
+      ffmpeg
 
-       # desktop apps
-       pavucontrol
-       localsend
-       nautilus # needed by niri
+      # desktop apps
+      pavucontrol
+      localsend
+      nautilus # needed by niri
       libreoffice-fresh
       signal-desktop
       ente-desktop
@@ -74,11 +75,11 @@
       docker
       docker-compose
     ]
-     ++ lib.optionals (!asahi) [
-       brave
-       mpv
-       gimp
-     ];
+    ++ lib.optionals (!asahi) [
+      brave
+      mpv
+      gimp
+    ];
 
   programs = {
     btop = {
