@@ -6,10 +6,18 @@ workspace "communication"
 // spawn-sh-at-startup "matugen image ~/Pictures/wall/default.jpg &"
 
 input {
+        keyboard {
+        xkb {
+            layout "us"
+            variant "colemak_dh_iso"
+            options "caps:escape"
+        }
+    }
+
     mod-key "Alt"
 
     touchpad {
-        tap
+        // tap
         // dwt
         // dwtp
         // drag false
@@ -61,7 +69,7 @@ output "HDMI-A-1" {
 // https://yalter.github.io/niri/Configuration:-Layout
 layout {
     // Set gaps around windows in logical pixels.
-    gaps 15
+    gaps 10
 
     center-focused-column "never"
     always-center-single-column
