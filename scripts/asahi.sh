@@ -63,7 +63,11 @@ if [ -n "$BRANCH" ]; then
   git switch "${BRANCH}"
 fi
 
+echo "Creating i2c group for external monitor control..."
+sudo groupadd i2c 2>/dev/null || true
+sudo usermod -aG i2c $(whoami)
+
 echo "Applying home-manager configuration..."
 nix run github:nix-community/home-manager/master -- switch -b backup --flake ${NIX_DIR}#jay-niri-arm
 
-echo "Setup complete!"
+echo "Setup complete! Reboot to apply all changes."
