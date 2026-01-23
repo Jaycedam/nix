@@ -1,6 +1,6 @@
 # Nix Setup
 
-My personal Nix setup for NixOS. It uses flakes, home-manager, matugen (automatic wallpaper based themes). Features toggleable compositors on NixOS (niri and hyprland).
+My personal Nix setup for NixOS. It uses flakes, home-manager, matugen (automatic wallpaper based themes). Features toggleable compositors on NixOS (niri and hyprland). Also supports standalone home-manager for non-NixOS systems, including ARM Linux, with automatic handling of platform-specific packages.
 
 On NixOS, the keyboard layout defaults to Colemak-DH with keyd handling home-row mods.
 
@@ -9,19 +9,61 @@ On NixOS, the keyboard layout defaults to Colemak-DH with keyd handling home-row
 
 ## Table of Contents
 
-- [Apply NixOS configuration](#apply-nixos-configuration)
+- [Clone Repository](#clone-repository)
+- [Apply Configuration](#apply-configuration)
+  - [NixOS](#nixos)
+  - [Home Manager Standalone](#home-manager-standalone)
 - [Useful Commands](#useful-commands)
   - [Update](#update)
-  - [Rebuild](#rebuild)
-  - [Diff before switch](#diff-before-switch)
-- [Config Overview](#config-overview)
+  - [Diff](#diff)
+- [Additional Documentation](#additional-documentation)
 
-## Apply NixOS configuration
+## Apply Configuration
 
-Clone the repo to ~/dev/nix and apply with flakes. Loads nixos-niri by default.
+### NixOS
+
+**Clone repository:**
 
 ```bash
-nix shell nixpkgs#git nixpkgs#curl -c curl -fsSL https://raw.githubusercontent.com/jaycedam/nix/master/install.sh | bash
+nix-shell -p git --run "git clone https://github.com/jaycedam/nix.git ~/dev/nix"
+```
+
+**First run:** Available configurations: `#nixos-niri`, `#nixos-hyprland`
+
+```bash
+sudo NIX_CONFIG="experimental-features = nix-command flakes" \
+    nixos-rebuild switch --flake ~/dev/nix#nixos-niri
+```
+
+**Subsequent runs:**
+
+```bash
+sudo nixos-rebuild switch --flake ~/dev/nix#nixos-niri
+```
+
+### Asahi Linux
+
+> [!IMPORTANT]
+> Non-NixOS systems require additional setup. See the [Non-NixOS Setup Guide](./docs/non-nixos-setup.md) for required kernel module and user group configuration.
+
+This script expects Asahi Linux minimal (may also work on Fedora minimal). It sets up everything automatically using the system's package manager for the Wayland compositor, login manager, and PipeWire with PulseAudio compatibility. The remaining apps and all user configuration are handled by home-manager standalone.
+
+**First run:**
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/jaycedam/nix/hm-standalone/scripts/asahi.sh | bash
+```
+
+**With a different branch:**
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/jaycedam/nix/hm-standalone/scripts/asahi.sh | bash -s -- -b mybranch
+```
+
+**Subsequent runs:**
+
+```bash
+home-manager switch -b backup --flake ~/dev/nix#jay-niri-arm
 ```
 
 ## Useful Commands
@@ -32,34 +74,25 @@ nix shell nixpkgs#git nixpkgs#curl -c curl -fsSL https://raw.githubusercontent.c
 nix flake update
 ```
 
-Then run the rebuild command.
+Then run the rebuild command for NixOS or Home Manager, depending on which config you are using.
 
-### Rebuild
+### Diff
 
-Use the correct `#host`, options: `#nixos-hyprland`, `#nixos-niri`
+Useful for checking what changes will be made before switching configurations.
 
-Check the [flake.nix](./flake.nix) file for available hosts.
-
-```sh
-sudo nixos-rebuild switch --flake ~/dev/nix#nixos-niri
-```
-
-### Diff before switch
+**NixOS:**
 
 ```sh
 sudo nixos-rebuild dry-activate --flake ~/dev/nix#nixos-niri
 ```
 
-## Config Overview
+**Home Manager standalone:**
 
-The flow starts with the [flake.nix](./flake.nix) file, which defines the configuration per [profile](./profiles/). The profiles are where the system is constructed with system/home-manager default modules as well as a compositor.
+```bash
+home-manager switch -b backup --dry-run --flake ~/dev/nix#jay-niri-arm
+```
 
-| Directory            | Description                                                                  |
-| -------------------- | ---------------------------------------------------------------------------- |
-| home/                | Home-manager modules for user-level customization                            |
-| hosts/               | Physical device configurations for nixos (hardware config, mounts, monitors) |
-| modules/             | NixOS specific system modules                                                |
-| modules/compositors/ | Compositor specific nixos modules (niri, hyprland)                           |
-| profiles/            | Platform entry points composing main modules for a specific OS               |
-| scripts/             | Standalone utility scripts packaged as derivations                           |
-| wall/                | Wallpapers                                                                   |
+## Additional Documentation
+
+- [Non-NixOS Setup Guide](./docs/non-nixos-setup.md)
+- [Config Overview](./docs/config-overview.md)

@@ -34,6 +34,12 @@
       inherit (nixpkgs) lib;
       user = "jay";
 
+      # Define both systems for future use
+      systems = {
+        x86 = "x86_64-linux";
+        arm-linux = "aarch64-linux";
+      };
+
       commonArgs = {
         inherit
           nixpkgs
@@ -42,24 +48,32 @@
           nixvim
           ;
       };
+
     in
     {
       nixosConfigurations = {
         nixos-niri = lib.nixosSystem {
-          specialArgs = { inherit user; };
+          specialArgs = commonArgs // {
+            inherit user;
+            compositor = "niri";
+          };
           modules = [
             ./hosts/nixos/default.nix
-          ]
-          ++ (import ./profiles/nixos.nix (commonArgs // { compositor = "niri"; }));
+            ./profiles/nixos.nix
+          ];
+        };
+      };
+
+      homeConfigurations = {
+        "${user}-niri-arm" = home-manager.lib.homeManagerConfiguration {
+          pkgs = nixpkgs.legacyPackages.${systems.arm-linux};
+          extraSpecialArgs = commonArgs // {
+            compositor = "niri";
+            system = systems.arm-linux;
+          };
+          modules = import ./profiles/asahi.nix;
         };
 
-        nixos-hyprland = lib.nixosSystem {
-          specialArgs = { inherit user; };
-          modules = [
-            ./hosts/nixos/default.nix
-          ]
-          ++ (import ./profiles/nixos.nix (commonArgs // { compositor = "hyprland"; }));
-        };
       };
     };
 }

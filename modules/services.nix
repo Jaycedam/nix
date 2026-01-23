@@ -1,6 +1,9 @@
 _: {
   services = {
-    openssh.enable = true;
+    openssh = {
+      enable = true;
+      startWhenNeeded = true;
+    };
 
     # gnome virtual filesystem for nautilus and other gnome apps
     gvfs.enable = true;
@@ -17,7 +20,5 @@ _: {
       enable = true;
       openFirewall = true;
     };
-
-    openssh.startWhenNeeded = true;
   };
 }

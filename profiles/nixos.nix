@@ -1,54 +1,34 @@
 {
-  nixpkgs,
   home-manager,
   user,
   nixvim,
-  compositor ? "niri",
+  compositor,
   ...
 }:
-
-let
-  # Build conditional module lists using attrset lookup
-  compositorModules =
+{
+  imports = [
+    ../modules/default.nix
+    ../modules/compositors/default.nix
+    home-manager.nixosModules.home-manager
     {
-      niri = [ ../modules/compositors/niri.nix ];
-      hyprland = [ ../modules/compositors/hyprland.nix ];
-    }
-    .${compositor} or (throw "Invalid compositor: ${compositor}");
-
-  homeCompositorModules =
-    {
-      niri = [ ../home/niri/default.nix ];
-      hyprland = [ ../home/hyprland.nix ];
-    }
-    .${compositor} or (throw "Invalid compositor: ${compositor}");
-in
-[
-  # modules
-  ../modules/default.nix
-]
-++ compositorModules
-++ [
-  # home manager
-  home-manager.nixosModules.home-manager
-  {
-    home-manager = {
-      useGlobalPkgs = true;
-      useUserPackages = true;
-      backupFileExtension = "backup";
-      extraSpecialArgs = {
-        inherit
-          user
-          nixvim
-          compositor
-          ;
+      home-manager = {
+        useGlobalPkgs = true;
+        useUserPackages = true;
+        backupFileExtension = "backup";
+        extraSpecialArgs = {
+          inherit
+            user
+            nixvim
+            compositor
+            ;
+        };
+        users.${user} = {
+          imports = [
+            ../home/default.nix
+            ../home/compositor/default.nix
+          ];
+        };
       };
-      users.${user} = {
-        imports = [
-          ../modules/home.nix
-        ]
-        ++ homeCompositorModules;
-      };
-    };
-  }
-]
+    }
+  ];
+}

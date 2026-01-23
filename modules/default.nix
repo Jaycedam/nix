@@ -3,13 +3,10 @@ _: {
     ./options.nix
     ./boot.nix
     ./network.nix
-    ./programs.nix
     ./services.nix
-    ./scripts.nix
     ./chromium.nix
     ./gaming.nix
     ./keyboard.nix
     ./greeter.nix
-    ./fonts.nix
   ];
 }

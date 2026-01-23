@@ -4,7 +4,7 @@ _: {
     settings = {
       source = "colors.conf";
       background = {
-        path = "$image";
+        color = "@background";
       };
       input-field = {
         monitor = "";

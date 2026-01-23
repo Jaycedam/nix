@@ -20,19 +20,28 @@ pkgs.writeShellScriptBin "launch-webapp" ''
       exit 1
   fi
 
-  URL="$1"
-  PROFILE="$2"
+   URL="$1"
+   PROFILE="$2"
 
-  if [ -z "$URL" ]; then
-      echo "Error: URL is required."
-      show_help
-      exit 1
-  fi
+   if [ -z "$URL" ]; then
+       echo "Error: URL is required."
+       show_help
+       exit 1
+   fi
 
-  CMD="brave --app=\"https://$URL\""
-  if [ -n "$PROFILE" ]; then
-      CMD="$CMD --profile-directory=\"$PROFILE\""
-  fi
+   if command -v brave >/dev/null 2>&1; then
+       BROWSER=brave
+   elif command -v brave-browser >/dev/null 2>&1; then
+       BROWSER=brave-browser
+   else
+       echo "Error: Brave browser not found on PATH."
+       exit 1
+   fi
+
+   CMD="$BROWSER --app=\"https://$URL\""
+   if [ -n "$PROFILE" ]; then
+       CMD="$CMD --profile-directory=\"$PROFILE\""
+   fi
 
   eval "$CMD" &
 ''
