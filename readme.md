@@ -51,13 +51,13 @@ This script expects Asahi Linux minimal (may also work on Fedora minimal). It se
 **First run:**
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/jaycedam/nix/hm-standalone/scripts/asahi.sh | bash
+curl -fsSL https://raw.githubusercontent.com/jaycedam/nix/master/scripts/asahi.sh | bash
 ```
 
 **With a different branch:**
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/jaycedam/nix/hm-standalone/scripts/asahi.sh | bash -s -- -b mybranch
+curl -fsSL https://raw.githubusercontent.com/jaycedam/nix/master/scripts/asahi.sh | bash -s -- -b mybranch
 ```
 
 **Subsequent runs:**
