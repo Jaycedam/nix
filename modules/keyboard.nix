@@ -19,14 +19,14 @@ _: {
       keyboards.default.settings = {
         main = {
           capslock = "esc";
-          a = "overloadt(meta, a, 200)";
-          s = "overloadt(alt, s, 200)";
+          a = "overloadt(alt, a, 200)";
+          s = "overloadt(meta, s, 200)";
           d = "overloadt(shift, d, 200)";
           f = "overloadt(control, f, 200)";
           j = "overloadt(control, j, 200)";
           k = "overloadt(shift, k, 200)";
-          l = "overloadt(alt, l, 200)";
-          ";" = "overloadt(meta, ;, 200)";
+          l = "overloadt(meta, l, 200)";
+          ";" = "overloadt(alt, ;, 200)";
 
           # Brightness
           f1 = "brightnessdown";
