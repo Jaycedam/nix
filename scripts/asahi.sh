@@ -25,13 +25,13 @@ echo "Verifying sudo access..."
 sudo -v
 
 echo "Suppressing TTY console logs..."
-sudo dmesg --console-off
+sudo dmesg --console-off >/dev/null
 
 echo "Setting TTY font size for HiDPI displays..."
-sudo setfont solar24x32
+sudo setfont solar24x32 >/dev/null
 
 echo "Setting Colemak-DH keyboard layout..."
-sudo localectl set-keymap us-colemak_dh_iso
+sudo localectl set-keymap us-colemak_dh_iso >/dev/null
 
 echo "Setting up Hyprlock's PAM config..."
 sudo tee /etc/pam.d/hyprlock >/dev/null <<EOF
@@ -41,7 +41,7 @@ session include login
 EOF
 
 echo "Setting up keyd config..."
-sudo mkdir -p /etc/keyd
+sudo mkdir -p /etc/keyd >/dev/null
 sudo tee /etc/keyd/default.conf >/dev/null <<EOF
 [ids]
 *
@@ -83,22 +83,22 @@ f12 = f12
 EOF
 
 echo "Upgrading system packages..."
-sudo dnf upgrade -y
+sudo dnf upgrade -y >/dev/null
 
 # Util for using COPR
-sudo dnf install dnf-plugins-core -y
+sudo dnf install dnf-plugins-core -y >/dev/null
 
 echo "Adding Hyprland repository..."
-sudo dnf copr enable solopasha/hyprland -y
+sudo dnf copr enable solopasha/hyprland -y >/dev/null
 
 echo "Adding keyd repository..."
-sudo dnf copr enable alternateved/keyd -y
+sudo dnf copr enable alternateved/keyd -y >/dev/null
 
 echo "Installing niri compositor..."
-sudo dnf install --setopt=install_weak_deps=False niri -y
+sudo dnf install --setopt=install_weak_deps=False niri -y >/dev/null
 
 echo "Installing desktop dependencies..."
-sudo dnf install xdg-desktop-portal-gnome gnome-keyring pipewire keyd tuned -y
+sudo dnf install xdg-desktop-portal-gnome gnome-keyring pipewire keyd tuned -y >/dev/null
 
 if ! command -v nix >/dev/null 2>&1; then
     echo "Installing Nix..."
@@ -113,33 +113,33 @@ echo "Cloning configuration repository..."
 if [ -d "${DIR}/.git" ]; then
     echo "WARNING: ${DIR} already exists. If the script fails, rename or remove the existing directory."
 else
-    nix-shell -p git --run "git clone https://github.com/jaycedam/nix.git ${DIR}"
+    nix-shell -p git --run "git clone https://github.com/jaycedam/nix.git ${DIR}" >/dev/null
 fi
 
 if [ -n "$BRANCH" ]; then
     echo "Switching to branch: ${BRANCH}..."
     cd "${DIR}"
-    git switch "${BRANCH}"
+    git switch "${BRANCH}" >/dev/null
 fi
 
 echo "Creating i2c group for external monitor control..."
 sudo groupadd i2c 2>/dev/null || true
-sudo usermod -aG i2c "$(whoami)"
+sudo usermod -aG i2c "$(whoami)" >/dev/null
 
-# Disable SELinux to allow GPU driver symlink for nixpkgs
-echo "Disabling SELinux to allow target.genericLinux.enable (Home Manager)..."
-sudo setenforce 0
+echo "Making SELinux permissive to enable GPU drivers for nixpkgs..."
+sudo setenforce 0 >/dev/null
+sudo sed -i 's/^SELINUX=.*/SELINUX=permissive/' /etc/selinux/config >/dev/null
 
 echo "Applying home-manager configuration..."
 nix run github:nix-community/home-manager/master -- switch -b backup --flake "${DIR}"#jay-niri-arm
 
 echo "Enabling services..."
-systemctl --user enable --now pipewire.service
-systemctl --user enable --now pipewire-pulse.service
-sudo systemctl enable --now keyd
-sudo systemctl enable --now tuned
+systemctl --user enable --now pipewire.service >/dev/null
+systemctl --user enable --now pipewire-pulse.service >/dev/null
+sudo systemctl enable --now keyd >/dev/null
+sudo systemctl enable --now tuned >/dev/null
 
 echo "Enabling GPU driver access..."
-sudo "$(which non-nixos-gpu-setup)"
+sudo "$(which non-nixos-gpu-setup)" >/dev/null
 
 echo "Done! Reboot to apply all changes."
