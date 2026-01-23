@@ -13,10 +13,11 @@ This flake provides a unified configuration system that works on both NixOS and 
 | Directory            | Description                                                                  |
 | -------------------- | ---------------------------------------------------------------------------- |
 | home/                | Home-manager modules for user-level customization                            |
+| home/scripts/        | Standalone utility scripts packaged as derivations                           |
 | home/compositors/    | Home-manager compositor modules (niri, hyprland)                             |
 | hosts/               | Physical device configurations for nixos (hardware config, mounts, monitors) |
 | modules/             | NixOS specific system modules                                                |
 | modules/compositors/ | Compositor specific nixos modules (niri, hyprland)                           |
 | profiles/            | Platform entry points composing main modules for a specific OS               |
-| scripts/             | Standalone utility scripts packaged as derivations                           |
+| scripts/             | Setup scripts for NixOS and home-manager standalone                          |
 | wall/                | Wallpapers                                                                   |
