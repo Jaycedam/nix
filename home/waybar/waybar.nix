@@ -164,12 +164,9 @@
           };
           backlight = {
             device = "intel_backlight";
-            format = "{icon}{percent}% ";
+            format = "{icon} {percent}% ";
             format-icons = [
-              "󰃞"
-              "󰃝"
-              "󰃟"
-              "󰃠"
+              ""
             ];
           };
           bluetooth = {
