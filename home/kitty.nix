@@ -1,4 +1,4 @@
-{ lib, pkgs, asahi ? false, ... }:
+{ lib, pkgs, asahi, ... }:
 {
   programs.kitty = {
     enable = true;

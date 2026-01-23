@@ -1,4 +1,4 @@
-{ lib, asahi ? false, ... }: {
+{ lib, asahi, ... }: {
   programs.ghostty = {
     enable = true;
     package = lib.mkIf asahi null;

@@ -56,6 +56,7 @@
           specialArgs = commonArgs // {
             inherit user;
             compositor = "niri";
+            asahi = false;
           };
           modules = [
             ./hosts/nixos/default.nix

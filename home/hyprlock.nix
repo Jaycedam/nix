@@ -1,6 +1,6 @@
 {
   lib,
-  asahi ? false,
+  asahi,
   ...
 }:
 {

@@ -2,7 +2,7 @@
   lib,
   pkgs,
   user,
-  asahi ? false,
+  asahi,
   ...
 }:
 {
