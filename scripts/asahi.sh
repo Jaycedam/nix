@@ -33,13 +33,6 @@ sudo setfont solar24x32 >/dev/null
 echo "Setting Colemak-DH keyboard layout..."
 sudo localectl set-keymap us-colemak_dh_iso >/dev/null
 
-echo "Setting up Hyprlock's PAM config..."
-sudo tee /etc/pam.d/hyprlock >/dev/null <<EOF
-auth include login
-account include login
-session include login
-EOF
-
 echo "Setting up keyd config..."
 sudo mkdir -p /etc/keyd >/dev/null
 sudo tee /etc/keyd/default.conf >/dev/null <<EOF
@@ -98,7 +91,7 @@ echo "Installing niri compositor..."
 sudo dnf install --setopt=install_weak_deps=False niri -y >/dev/null
 
 echo "Installing desktop dependencies..."
-sudo dnf install xdg-desktop-portal-gnome gnome-keyring pipewire keyd tuned -y >/dev/null
+sudo dnf install xdg-desktop-portal-gnome gnome-keyring pipewire keyd tuned hyprlock -y >/dev/null
 
 if ! command -v nix >/dev/null 2>&1; then
     echo "Installing Nix..."
