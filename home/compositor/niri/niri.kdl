@@ -16,13 +16,13 @@ input {
 
     touchpad {
         // tap
-        // dwt
+        dwt // disable-while-typing
         // dwtp
         // drag false
         // drag-lock
         natural-scroll
-        // accel-speed 0.2
-        // accel-profile "flat"
+        accel-speed 0.1
+        accel-profile "adaptive"
         // scroll-method "two-finger"
         // disabled-on-external-mouse
     }
@@ -381,7 +381,11 @@ binds {
     XF86AudioPrev        allow-when-locked=true { spawn-sh "playerctl previous"; }
     XF86AudioNext        allow-when-locked=true { spawn-sh "playerctl next"; }
 
-    // brightness key mappings for brightness, using dms-shell https://danklinux.com/
+    // brightness key mappings for brightness
     XF86MonBrightnessUp allow-when-locked=true { spawn-sh "brightness up"; }
     XF86MonBrightnessDown allow-when-locked=true { spawn-sh "brightness down"; }
+
+    // keyboard backlight using Shift + brightness keys since M1 doesn't have dedicated keyboard backlight keys
+    Shift+XF86MonBrightnessUp { spawn-sh "brightnessctl -q -d kbd_backlight s +25%"; }
+    Shift+XF86MonBrightnessDown { spawn-sh "brightnessctl -q -d kbd_backlight s 25%-"; }
 }
