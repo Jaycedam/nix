@@ -3,6 +3,7 @@
   user,
   nixvim,
   compositor,
+  asahi,
   ...
 }:
 {
@@ -20,6 +21,7 @@
             user
             nixvim
             compositor
+            asahi
             ;
         };
         users.${user} = {

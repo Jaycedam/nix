@@ -1,6 +1,7 @@
 {
   pkgs,
   user,
+  asahi,
   ...
 }:
 {
@@ -11,7 +12,6 @@
     ./waybar/waybar.nix
     ./programs.nix
     ./gtk-qt.nix
-    ./hyprlock.nix
     ./hypridle.nix
     ./fuzzel.nix
     ./mako.nix
@@ -30,6 +30,7 @@
     ./scripts.nix
     ./chromium.nix
     ./gaming.nix
+    ./hyprlock.nix
   ];
 
   home.sessionVariables = {

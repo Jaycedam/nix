@@ -4,4 +4,3 @@
   ../home/compositor/default.nix
   ../home/standalone-conf.nix
 ]
-

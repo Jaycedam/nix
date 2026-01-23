@@ -40,14 +40,15 @@
         arm-linux = "aarch64-linux";
       };
 
-      commonArgs = {
-        inherit
-          nixpkgs
-          home-manager
-          user
-          nixvim
-          ;
-      };
+       commonArgs = {
+         inherit
+           nixpkgs
+           home-manager
+           user
+           nixvim
+           ;
+         asahi = false;
+       };
 
     in
     {
@@ -67,10 +68,11 @@
       homeConfigurations = {
         "${user}-niri-arm" = home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs.legacyPackages.${systems.arm-linux};
-          extraSpecialArgs = commonArgs // {
-            compositor = "niri";
-            system = systems.arm-linux;
-          };
+           extraSpecialArgs = commonArgs // {
+             compositor = "niri";
+             system = systems.arm-linux;
+             asahi = true;
+           };
           modules = import ./profiles/asahi.nix;
         };
 
