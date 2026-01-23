@@ -1,8 +1,6 @@
 {
-  lib,
   pkgs,
   user,
-  asahi,
   ...
 }:
 {
@@ -31,8 +29,6 @@
     ./services.nix
     ./scripts.nix
     ./chromium.nix
-  ]
-  ++ lib.optionals (!asahi) [
     ./gaming.nix
   ];
 

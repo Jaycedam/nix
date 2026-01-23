@@ -36,9 +36,8 @@ sudo localectl set-keymap us-colemak_dh_iso
 echo "Upgrading system packages..."
 sudo dnf upgrade -y
 
-echo "Adding Brave browser repository..."
+# Util for using COPR
 sudo dnf install dnf-plugins-core -y
-sudo dnf config-manager addrepo --overwrite --from-repofile=https://brave-browser-rpm-release.s3.brave.com/brave-browser.repo
 
 echo "Adding Hyprland repository..."
 sudo dnf copr enable solopasha/hyprland -y
@@ -50,10 +49,7 @@ echo "Installing niri compositor..."
 sudo dnf install --setopt=install_weak_deps=False niri -y
 
 echo "Installing desktop dependencies..."
-sudo dnf install xdg-desktop-portal-gnome gnome-keyring pipewire hyprlock keyd -y
-
-echo "Installing GPU-accelerated applications..."
-sudo dnf install mpv gimp kitty brave-browser -y
+sudo dnf install xdg-desktop-portal-gnome gnome-keyring pipewire keyd -y
 
 echo "Enabling audio services..."
 systemctl --user enable --now pipewire.service
@@ -62,6 +58,7 @@ systemctl --user enable --now pipewire-pulse.service
 if ! command -v nix >/dev/null 2>&1; then
     echo "Installing Nix..."
     curl -fsSL https://install.determinate.systems/nix | sh -s -- install --no-confirm
+    # shellcheck disable=SC1091
     . /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh
 else
     echo "Nix is already installed."
@@ -82,18 +79,20 @@ fi
 
 echo "Creating i2c group for external monitor control..."
 sudo groupadd i2c 2>/dev/null || true
-sudo usermod -aG i2c $(whoami)
+sudo usermod -aG i2c "$(whoami)"
+
+# Disable SELinux to allow GPU driver symlink for nixpkgs
+echo "Disabling SELinux to allow target.genericLinux.enable (Home Manager)..."
+sudo setenforce 0
 
 echo "Applying home-manager configuration..."
-nix run github:nix-community/home-manager/master -- switch -b backup --flake ${NIX_DIR}#jay-niri-arm
+nix run github:nix-community/home-manager/master -- switch -b backup --flake "${NIX_DIR}"#jay-niri-arm
 
 echo "Setting up keyd configuration..."
 sudo mkdir -p /etc/keyd
 sudo tee /etc/keyd/default.conf >/dev/null <<EOF
 [ids]
-
 *
-
 [main]
 a = overloadt(alt, a, 200)
 s = overloadt(meta, s, 200)
@@ -103,20 +102,15 @@ j = overloadt(control, j, 200)
 k = overloadt(shift, k, 200)
 l = overloadt(meta, l, 200)
 ; = overloadt(alt, ;, 200)
-
 f1 = brightnessdown
 f2 = brightnessup
-
 f7 = previoussong
 f8 = playpause
 f9 = nextsong
-
 f10 = mute
 f11 = volumedown
 f12 = volumeup
-
 space = overloadt(nav_layer, space, 200)
-
 [nav_layer]
 h = left
 j = down
@@ -126,7 +120,6 @@ w = C-right
 t = C-left
 i = backspace
 ; = enter
-
 f1 = f1
 f2 = f2
 f7 = f7
@@ -137,8 +130,15 @@ f11 = f11
 f12 = f12
 EOF
 
+echo "Setting up Hyprlock's PAM config..."
+sudo tee /etc/pam.d/hyprlock >/dev/null <<EOF
+auth include login
+account include login
+session include login
+EOF
+
 echo "Enabling keyd service..."
 sudo systemctl enable --now keyd
-sudo keyd reload
 
-echo "Setup complete! Reboot to apply all changes."
+echo "Done! Make sure to run the command listed in the logs to enable GPU driver access."
+echo "After that, reboot to apply all changes."

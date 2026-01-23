@@ -1,7 +1,6 @@
 {
   pkgs,
   lib,
-  asahi,
   ...
 }:
 {
@@ -38,6 +37,8 @@
       libreoffice-fresh
       signal-desktop
       ente-desktop
+      mpv
+      gimp
       # grayjay
       seahorse # gnome keyring manager
       transmission_4-gtk
@@ -45,6 +46,7 @@
       spotube
 
       ### browser ###
+      brave
 
       ### dev ###
       # tools
@@ -74,11 +76,6 @@
     ++ lib.optionals (builtins.elem pkgs.stdenv.hostPlatform.system (docker.meta.platforms or [ ])) [
       docker
       docker-compose
-    ]
-    ++ lib.optionals (!asahi) [
-      brave
-      mpv
-      gimp
     ];
 
   programs = {

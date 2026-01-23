@@ -1,12 +1,6 @@
-{
-  lib,
-  asahi,
-  ...
-}:
-{
+_: {
   programs.hyprlock = {
     enable = true;
-    package = lib.mkIf asahi null;
     settings = {
       source = "colors.conf";
       background = {

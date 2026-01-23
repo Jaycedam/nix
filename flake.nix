@@ -56,7 +56,6 @@
           specialArgs = commonArgs // {
             inherit user;
             compositor = "niri";
-            asahi = false;
           };
           modules = [
             ./hosts/nixos/default.nix
@@ -71,7 +70,6 @@
           extraSpecialArgs = commonArgs // {
             compositor = "niri";
             system = systems.arm-linux;
-            asahi = true;
           };
           modules = import ./profiles/asahi.nix;
         };
