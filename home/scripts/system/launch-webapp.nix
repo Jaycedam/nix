@@ -1,6 +1,10 @@
 { pkgs, ... }:
 
 pkgs.writeShellScriptBin "launch-webapp" ''
+  URL="$1"
+  PROFILE="$2"
+  BROWSER="brave"
+
   show_help() {
       echo "Usage: $0 URL [PROFILE]"
       echo "Launch a Brave webapp for the given URL."
@@ -20,21 +24,9 @@ pkgs.writeShellScriptBin "launch-webapp" ''
       exit 1
   fi
 
-   URL="$1"
-   PROFILE="$2"
-
    if [ -z "$URL" ]; then
        echo "Error: URL is required."
        show_help
-       exit 1
-   fi
-
-   if command -v brave >/dev/null 2>&1; then
-       BROWSER=brave
-   elif command -v brave-browser >/dev/null 2>&1; then
-       BROWSER=brave-browser
-   else
-       echo "Error: Brave browser not found on PATH."
        exit 1
    fi
 
