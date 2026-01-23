@@ -18,7 +18,6 @@ _: {
       # but the config is on qwerty so some combos won't make much sense
       keyboards.default.settings = {
         main = {
-          capslock = "esc";
           a = "overloadt(alt, a, 200)";
           s = "overloadt(meta, s, 200)";
           d = "overloadt(shift, d, 200)";
