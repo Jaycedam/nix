@@ -22,7 +22,7 @@ input {
         // drag-lock
         natural-scroll
         accel-speed 0.1
-        accel-profile "adaptive"
+        // accel-profile "adaptive"
         // scroll-method "two-finger"
         // disabled-on-external-mouse
     }
