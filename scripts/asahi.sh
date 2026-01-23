@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -e
 
-NIX_DIR="${HOME}/dev/nix"
+DIR="${HOME}/dev/nix"
 BRANCH=""
 
 while getopts "b:h" opt; do
@@ -33,62 +33,14 @@ sudo setfont solar24x32
 echo "Setting Colemak-DH keyboard layout..."
 sudo localectl set-keymap us-colemak_dh_iso
 
-echo "Upgrading system packages..."
-sudo dnf upgrade -y
+echo "Setting up Hyprlock's PAM config..."
+sudo tee /etc/pam.d/hyprlock >/dev/null <<EOF
+auth include login
+account include login
+session include login
+EOF
 
-# Util for using COPR
-sudo dnf install dnf-plugins-core -y
-
-echo "Adding Hyprland repository..."
-sudo dnf copr enable solopasha/hyprland -y
-
-echo "Adding keyd repository..."
-sudo dnf copr enable alternateved/keyd -y
-
-echo "Installing niri compositor..."
-sudo dnf install --setopt=install_weak_deps=False niri -y
-
-echo "Installing desktop dependencies..."
-sudo dnf install xdg-desktop-portal-gnome gnome-keyring pipewire keyd -y
-
-echo "Enabling audio services..."
-systemctl --user enable --now pipewire.service
-systemctl --user enable --now pipewire-pulse.service
-
-if ! command -v nix >/dev/null 2>&1; then
-    echo "Installing Nix..."
-    curl -fsSL https://install.determinate.systems/nix | sh -s -- install --no-confirm
-    # shellcheck disable=SC1091
-    . /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh
-else
-    echo "Nix is already installed."
-fi
-
-echo "Cloning configuration repository..."
-if [ -d "${NIX_DIR}/.git" ]; then
-    echo "WARNING: ${NIX_DIR} already exists. If the script fails, rename or remove the existing directory."
-else
-    nix-shell -p git --run "git clone https://github.com/jaycedam/nix.git ${NIX_DIR}"
-fi
-
-if [ -n "$BRANCH" ]; then
-    echo "Switching to branch: ${BRANCH}..."
-    cd "${NIX_DIR}"
-    git switch "${BRANCH}"
-fi
-
-echo "Creating i2c group for external monitor control..."
-sudo groupadd i2c 2>/dev/null || true
-sudo usermod -aG i2c "$(whoami)"
-
-# Disable SELinux to allow GPU driver symlink for nixpkgs
-echo "Disabling SELinux to allow target.genericLinux.enable (Home Manager)..."
-sudo setenforce 0
-
-echo "Applying home-manager configuration..."
-nix run github:nix-community/home-manager/master -- switch -b backup --flake "${NIX_DIR}"#jay-niri-arm
-
-echo "Setting up keyd configuration..."
+echo "Setting up keyd config..."
 sudo mkdir -p /etc/keyd
 sudo tee /etc/keyd/default.conf >/dev/null <<EOF
 [ids]
@@ -130,15 +82,64 @@ f11 = f11
 f12 = f12
 EOF
 
-echo "Setting up Hyprlock's PAM config..."
-sudo tee /etc/pam.d/hyprlock >/dev/null <<EOF
-auth include login
-account include login
-session include login
-EOF
+echo "Upgrading system packages..."
+sudo dnf upgrade -y
 
-echo "Enabling keyd service..."
+# Util for using COPR
+sudo dnf install dnf-plugins-core -y
+
+echo "Adding Hyprland repository..."
+sudo dnf copr enable solopasha/hyprland -y
+
+echo "Adding keyd repository..."
+sudo dnf copr enable alternateved/keyd -y
+
+echo "Installing niri compositor..."
+sudo dnf install --setopt=install_weak_deps=False niri -y
+
+echo "Installing desktop dependencies..."
+sudo dnf install xdg-desktop-portal-gnome gnome-keyring pipewire keyd tuned -y
+
+if ! command -v nix >/dev/null 2>&1; then
+    echo "Installing Nix..."
+    curl -fsSL https://install.determinate.systems/nix | sh -s -- install --no-confirm
+    # shellcheck disable=SC1091
+    . /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh
+else
+    echo "Nix is already installed."
+fi
+
+echo "Cloning configuration repository..."
+if [ -d "${DIR}/.git" ]; then
+    echo "WARNING: ${DIR} already exists. If the script fails, rename or remove the existing directory."
+else
+    nix-shell -p git --run "git clone https://github.com/jaycedam/nix.git ${DIR}"
+fi
+
+if [ -n "$BRANCH" ]; then
+    echo "Switching to branch: ${BRANCH}..."
+    cd "${DIR}"
+    git switch "${BRANCH}"
+fi
+
+echo "Creating i2c group for external monitor control..."
+sudo groupadd i2c 2>/dev/null || true
+sudo usermod -aG i2c "$(whoami)"
+
+# Disable SELinux to allow GPU driver symlink for nixpkgs
+echo "Disabling SELinux to allow target.genericLinux.enable (Home Manager)..."
+sudo setenforce 0
+
+echo "Applying home-manager configuration..."
+nix run github:nix-community/home-manager/master -- switch -b backup --flake "${DIR}"#jay-niri-arm
+
+echo "Enabling services..."
+systemctl --user enable --now pipewire.service
+systemctl --user enable --now pipewire-pulse.service
 sudo systemctl enable --now keyd
+sudo systemctl enable --now tuned
 
-echo "Done! Make sure to run the command listed in the logs to enable GPU driver access."
-echo "After that, reboot to apply all changes."
+echo "Enabling GPU driver access..."
+sudo "$(which non-nixos-gpu-setup)"
+
+echo "Done! Reboot to apply all changes."
