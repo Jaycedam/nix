@@ -5,7 +5,7 @@ _: {
       settings = {
         user = {
           name = "Jaycedam";
-          email = "45575946+Jaycedam@users.noreply.github.com";
+          email = "45575946+jaycem-dev@users.noreply.github.com";
         };
       };
     };
