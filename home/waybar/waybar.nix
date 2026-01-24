@@ -165,6 +165,7 @@
           };
           bluetooth = {
             format = "";
+            format-off = "";
             format-no-controller = "";
             format-connected = "";
             tooltip-format = "{controller_alias}\n\n{num_connections} connected";
@@ -221,7 +222,7 @@
             color: @on_background;
         }
 
-        #bluetooth-off {
+        #bluetooth.off {
             color: @outline_variant;
         }
 
