@@ -15,20 +15,22 @@
           margin-bottom = 5;
           modules-right = [
             "mpris"
-            "tray"
-            "group/actions"
             "group/system"
-          ];
-
-          modules-center = [
             "clock"
           ];
 
-          "group/actions" = {
+          "group/custom-tray" = {
+            orientation = "inherit";
+            modules = [
+              "idle_inhibitor"
+              "tray"
+            ];
+          };
+
+          "group/power" = {
             orientation = "inherit";
             modules = [
               "custom/power"
-              "idle_inhibitor"
             ];
           };
 
@@ -176,16 +178,24 @@
       (lib.mkIf (compositor == "niri") {
         mainBar = {
           modules-left = [
-            "niri/workspaces"
+            "group/power"
+            "group/custom-tray"
             "niri/window"
+          ];
+          modules-center = [
+            "niri/workspaces"
           ];
         };
       })
       (lib.mkIf (compositor == "hyprland") {
         mainBar = {
           modules-left = [
-            "hyprland/workspaces"
+            "group/power"
+            "group/custom-tray"
             "hyprland/window"
+          ];
+          modules-center = [
+            "hyprland/workspaces"
           ];
         };
       })
@@ -245,9 +255,9 @@
         #window,
         #mpris,
         #system,
-        #actions,
+        #power,
         #clock,
-        #tray {
+        #custom-tray {
           border-radius: 10px;
           border: .2px solid @outline_variant;
           background-color: @background;
@@ -270,7 +280,7 @@
         #battery,
         #pulseaudio,
         #backlight {
-          padding: 0 10px;
+          padding: 0 8px;
         }
     '';
   };

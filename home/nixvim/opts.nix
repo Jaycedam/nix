@@ -17,6 +17,8 @@ _: {
     splitright = true;
     splitbelow = true;
     signcolumn = "yes";
+    title = true;
+    titlestring.__raw = "[[%{v:progname} - %t %m]]";
     completeopt = [
       "menuone"
       "noselect"
