@@ -1,9 +1,9 @@
 _: {
-  programs.chromium = {
+  programs.brave = {
     enable = true;
     extensions = [
       "eimadpbcbfnmbkopoojfekhnkhdbieeh" # dark reader
-      "dbepggeogbaibhgnhhndojpepiihcmeb" # vimium
+      "hfjbmagddngcpeloejdejnfgbamkjaeg" # vimium
       "ghmbeldphafepmbegfdlkpapadhbakde" # protonpass
       "mnjggcdmjocbbbhaepdhchncahnbgone" # sponsorblock
     ];

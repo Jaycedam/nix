@@ -1,7 +1,6 @@
 {
   pkgs,
   user,
-  asahi,
   ...
 }:
 {
@@ -28,7 +27,7 @@
     ./ghostty.nix
     ./services.nix
     ./scripts.nix
-    ./chromium.nix
+    ./brave.nix
     ./gaming.nix
     ./hyprlock.nix
   ];
