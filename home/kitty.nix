@@ -6,7 +6,7 @@
     shellIntegration.enableFishIntegration = true;
     font = {
       name = "JetBrains Mono";
-      size = 14;
+      size = 13;
     };
     settings = {
       shell = "${pkgs.fish}/bin/fish";

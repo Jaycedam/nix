@@ -39,7 +39,6 @@
               "bluetooth"
               "battery"
               "pulseaudio"
-              "backlight"
             ];
           };
 
@@ -162,22 +161,14 @@
             icon-size = 16;
             spacing = 10;
           };
-          backlight = {
-            device = "intel_backlight";
-            format = "{icon} {percent}% ";
-            format-icons = [
-              ""
-            ];
-          };
           bluetooth = {
-            format = " {status}";
+            format = "";
             format-no-controller = "";
-            format-connected = " {device_alias}";
-            format-connected-battery = " {device_alias}{device_battery_percentage}%";
-            tooltip-format = "{controller_alias}\t{controller_address}\n\n{num_connections} connected";
-            tooltip-format-connected = "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}";
-            tooltip-format-enumerate-connected = "{device_alias}\t{device_address}";
-            tooltip-format-enumerate-connected-battery = "{device_alias}\t{device_address}\t{device_battery_percentage}%";
+            format-connected = "";
+            tooltip-format = "{controller_alias}\n\n{num_connections} connected";
+            tooltip-format-connected = "{controller_alias}\n\n{num_connections} connected\n\n{device_enumerate}";
+            tooltip-format-enumerate-connected = "{device_alias}";
+            tooltip-format-enumerate-connected-battery = "{device_alias}\t{device_battery_percentage}%";
             on-click = "kitty --class 'bluetui' bluetui";
           };
         };
@@ -218,6 +209,22 @@
         }
         tooltip label {
             color: @on_background;
+        }
+
+        #bluetooth-off {
+            color: @outline_variant;
+        }
+
+        #bluetooth.connected {
+            color: @secondary;
+        }
+
+        #battery-warning {
+            color: @on_background;
+        }
+
+        #battery-warning {
+            color: @error;
         }
 
       #workspaces button {
