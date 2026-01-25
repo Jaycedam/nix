@@ -1,6 +1,7 @@
 _: {
   imports = [
     ./options.nix
+    ./users.nix
     ./boot.nix
     ./network.nix
     ./services.nix
