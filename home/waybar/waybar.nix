@@ -230,11 +230,7 @@
             color: @secondary;
         }
 
-        #battery-warning {
-            color: @on_background;
-        }
-
-        #battery-warning {
+        #battery.warning {
             color: @error;
         }
 
