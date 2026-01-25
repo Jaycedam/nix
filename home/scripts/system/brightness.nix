@@ -6,13 +6,15 @@ pkgs.writeShellScriptBin "brightness" ''
   	exit 1
   fi
 
+  STEP=5
+
    # Adjust external monitors using ddcutil
   displays=$(ddcutil detect --sleep-multiplier 0.5 | grep "Display" | awk '{print $2}' | tr -d ':')
   for disp in $displays; do
   	# Check if monitor supports brightness control (VCP 10)
   	if ddcutil getvcp 10 --display "$disp" --sleep-multiplier 0.5 >/dev/null 2>&1; then
   		if [ "$1" = "up" ]; then
-  			if ddcutil setvcp 10 + 10 --display "$disp" --sleep-multiplier 0.5 >/dev/null 2>&1; then
+  			if ddcutil setvcp 10 + $STEP --display "$disp" --sleep-multiplier 0.5 >/dev/null 2>&1; then
   				# Get current percentage after adjustment
   				vcp_output=$(ddcutil getvcp 10 --display "$disp" --sleep-multiplier 0.5)
   				current=$(echo "$vcp_output" | grep -oP 'current value =\s*\K\d+')
@@ -23,7 +25,7 @@ pkgs.writeShellScriptBin "brightness" ''
   				external_failed=true
   			fi
   		else
-  			if ddcutil setvcp 10 - 10 --display "$disp" --sleep-multiplier 0.5 >/dev/null 2>&1; then
+  			if ddcutil setvcp 10 - $STEP --display "$disp" --sleep-multiplier 0.5 >/dev/null 2>&1; then
   				# Get current percentage after adjustment
   				vcp_output=$(ddcutil getvcp 10 --display "$disp" --sleep-multiplier 0.5)
   				current=$(echo "$vcp_output" | grep -oP 'current value =\s*\K\d+')
@@ -40,7 +42,7 @@ pkgs.writeShellScriptBin "brightness" ''
   # Adjust internal display using brightnessctl
   if command -v brightnessctl >/dev/null 2>&1 && brightnessctl --class=backlight get >/dev/null 2>&1; then
   	if [ "$1" = "up" ]; then
-  		if brightnessctl --class=backlight set +10% >/dev/null 2>&1; then
+  		if brightnessctl --class=backlight set +$STEP% >/dev/null 2>&1; then
   			# Get current percentage after adjustment
   			current=$(brightnessctl --class=backlight get)
   			max=$(brightnessctl --class=backlight max)
@@ -50,7 +52,7 @@ pkgs.writeShellScriptBin "brightness" ''
   			internal_failed=true
   		fi
   	else
-  		if brightnessctl --class=backlight set 10%- >/dev/null 2>&1; then
+  		if brightnessctl --class=backlight set $STEP%- >/dev/null 2>&1; then
   			# Get current percentage after adjustment
   			current=$(brightnessctl --class=backlight get)
   			max=$(brightnessctl --class=backlight max)
