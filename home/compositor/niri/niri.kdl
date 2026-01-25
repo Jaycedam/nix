@@ -196,10 +196,10 @@ binds {
     Mod+Space hotkey-overlay-title="Search apps (fuzzel)" { spawn "fuzzel"; }
 
     // launch or focus webapps
-    Mod+S hotkey-overlay-title="Open Spotify (Webapp)" { spawn-sh "niri-launch-or-focus-webapp open.spotify.com"; }
     Mod+W hotkey-overlay-title="Open Whatsapp (Webapp)" { spawn-sh "niri-launch-or-focus-webapp web.whatsapp.com"; }
     Mod+Shift+M hotkey-overlay-title="Open ProtonMail (Webapp)" { spawn-sh "niri-launch-or-focus-webapp mail.proton.me"; }
     Mod+Y hotkey-overlay-title="Open YouTube (Webapp)" { spawn-sh "niri-launch-or-focus-webapp youtube.com"; }
+    Mod+Shift+Y hotkey-overlay-title="Open YouTube Music (Webapp)" { spawn-sh "niri-launch-or-focus-webapp music.youtube.com"; }
 
     // Open/close the Overview: a zoomed-out view of workspaces and windows.
     // You can also move the mouse into the top-left hot corner,

@@ -53,7 +53,16 @@ _: {
         "AudioVideo"
         "Audio"
       ];
-      mimeType = [ "x-scheme-handler/spotify" ];
+    };
+
+    youtube-music = {
+      name = "YouTube Music";
+      genericName = "Music Streaming";
+      exec = "launch-webapp music.youtube.com";
+      categories = [
+        "AudioVideo"
+        "Audio"
+      ];
     };
 
     youtube = {
