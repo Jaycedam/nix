@@ -69,6 +69,8 @@ output "HDMI-A-1" {
 // Find more information on the wiki:
 // https://yalter.github.io/niri/Configuration:-Layout
 layout {
+    background-color "transparent"
+
     // Set gaps around windows in logical pixels.
     gaps 10
 
@@ -181,6 +183,12 @@ window-rule {
     match app-id=r#"brave-mail.proton.me__-Default"#
     open-focused true
     open-on-workspace "communication"
+}
+
+// Put swww inside the overview backdrop.
+layer-rule {
+    match namespace="^swww-daemon$"
+    place-within-backdrop true
 }
 
 binds {
