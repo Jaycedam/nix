@@ -72,11 +72,7 @@
       lib.optionals (builtins.elem pkgs.stdenv.hostPlatform.system (cryptomator.meta.platforms or [ ]))
         [
           cryptomator
-        ]
-    ++ lib.optionals (builtins.elem pkgs.stdenv.hostPlatform.system (docker.meta.platforms or [ ])) [
-      docker
-      docker-compose
-    ];
+        ];
 
   programs = {
     btop = {

@@ -16,6 +16,7 @@ _: {
 
     firewall = {
       enable = true;
+      trustedInterfaces = [ "virbr0" ]; # libvirt network
       allowedTCPPorts = [
         53317 # localsend
       ];

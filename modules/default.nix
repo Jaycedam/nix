@@ -9,5 +9,6 @@ _: {
     ./gaming.nix
     ./keyboard.nix
     ./greeter.nix
+    ./virtualization.nix
   ];
 }

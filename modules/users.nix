@@ -7,6 +7,9 @@
       "networkmanager"
       "wheel"
       "i2c" # allow ddcutil control
+      "podman"
+      "libvirtd"
+      "kvm"
     ];
     # user pkgs, not useful since I use home-manager
     # packages = with pkgs; [ ];
