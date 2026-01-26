@@ -22,17 +22,10 @@ On NixOS, the keyboard layout defaults to Colemak-DH with keyd handling home-row
 
 ### NixOS
 
-**Clone repository:**
+**First run:**
 
 ```bash
-nix-shell -p git --run "git clone https://github.com/jaycedam/nix.git ~/dev/nix"
-```
-
-**First run:** Available configurations: `#nixos-niri`, `#nixos-hyprland`
-
-```bash
-sudo NIX_CONFIG="experimental-features = nix-command flakes" \
-    nixos-rebuild switch --flake ~/dev/nix#nixos-niri
+curl -fsSL https://raw.githubusercontent.com/jaycem-dev/nix/master/scripts/nixos.sh | bash
 ```
 
 **Subsequent runs:**
@@ -51,7 +44,7 @@ This script expects Asahi Linux minimal (may also work on Fedora minimal). It se
 **First run:**
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/jaycedam/nix/master/scripts/asahi.sh | bash
+curl -fsSL https://raw.githubusercontent.com/jaycem-dev/nix/master/scripts/asahi.sh | bash
 ```
 
 **Subsequent runs:**
