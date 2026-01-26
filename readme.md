@@ -43,8 +43,8 @@ sudo nixos-rebuild switch --flake ~/dev/nix#nixos-niri
 
 ### Asahi Linux
 
-> [!IMPORTANT]
-> Non-NixOS systems require additional setup. See the [Non-NixOS Setup Guide](./docs/non-nixos-setup.md) for required kernel module and user group configuration.
+> [!NOTE]
+> Other distros may require additional setup. See the [Non-NixOS Setup Guide](./docs/non-nixos-setup.md) for required kernel module and user group configuration.
 
 This script expects Asahi Linux minimal (may also work on Fedora minimal). It sets up everything automatically using the system's package manager for the Wayland compositor, login manager, and PipeWire with PulseAudio compatibility. The remaining apps and all user configuration are handled by home-manager standalone.
 
@@ -52,12 +52,6 @@ This script expects Asahi Linux minimal (may also work on Fedora minimal). It se
 
 ```bash
 curl -fsSL https://raw.githubusercontent.com/jaycedam/nix/master/scripts/asahi.sh | bash
-```
-
-**With a different branch:**
-
-```bash
-curl -fsSL https://raw.githubusercontent.com/jaycedam/nix/master/scripts/asahi.sh | bash -s -- -b mybranch
 ```
 
 **Subsequent runs:**
@@ -80,13 +74,13 @@ Then run the rebuild command for NixOS or Home Manager, depending on which confi
 
 Useful for checking what changes will be made before switching configurations.
 
-**NixOS:**
+- NixOS:
 
 ```sh
 sudo nixos-rebuild dry-activate --flake ~/dev/nix#nixos-niri
 ```
 
-**Home Manager standalone:**
+- Home Manager standalone:
 
 ```bash
 home-manager switch -b backup --dry-run --flake ~/dev/nix#jay-niri-arm
