@@ -86,6 +86,7 @@
       enable = true;
       settings.theme = "system";
     };
+    gemini-cli.enable = true;
 
     foot.enable = true;
 
