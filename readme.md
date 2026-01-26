@@ -9,7 +9,6 @@ On NixOS, the keyboard layout defaults to Colemak-DH with keyd handling home-row
 
 ## Table of Contents
 
-- [Clone Repository](#clone-repository)
 - [Apply Configuration](#apply-configuration)
   - [NixOS](#nixos)
   - [Home Manager Standalone](#home-manager-standalone)
