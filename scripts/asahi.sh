@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 set -e
 
-SCRIPT_DIR="$(dirname "$0")" # Get script directory
 DIR="${HOME}/dev/nix"
 BRANCH=""
 
@@ -103,8 +102,21 @@ else
     echo "Nix is already installed."
 fi
 
-# Source and run git clone script
-source "${SCRIPT_DIR}/git-clone.sh" "${DIR}" "${BRANCH}"
+echo "Cloning configuration repository..."
+if [ -d "${DIR}/.git" ]; then
+    echo "WARNING: ${DIR} already exists. If the script fails, rename or remove the existing directory."
+else
+    nix-shell -p git --run "git clone https://github.com/jaycem-dev/nix.git ${DIR}" >/dev/null
+fi
+
+if [ -n "$BRANCH" ]; then
+    echo "Switching to branch: ${BRANCH}..."
+    cd "${DIR}"
+    if ! git switch "${BRANCH}" >/dev/null; then
+        echo "Error: Failed to switch to branch '${BRANCH}'"
+        exit 1
+    fi
+fi
 
 echo "Creating i2c group for external monitor control..."
 sudo groupadd i2c 2>/dev/null || true
