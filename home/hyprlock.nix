@@ -10,7 +10,8 @@
     settings = {
       source = "colors.conf";
       background = {
-        color = "@background";
+        monitor = "";
+        path = "$image";
       };
       input-field = {
         monitor = "";
@@ -24,7 +25,6 @@
         placeholder_text = "";
         hide_input = false;
         fail_text = "$FAIL <b>($ATTEMPTS)</b>";
-        fail_transition = 300;
         invert_numlock = false;
         position = "0, -468";
         halign = "center";
@@ -39,7 +39,7 @@
           position = "0, 405";
           halign = " center";
           valign = " center";
-          color = "@on_background";
+          color = "$on_background";
         }
         {
           monitor = "";
@@ -48,7 +48,7 @@
           position = "0, 310";
           halign = " center";
           valign = " center";
-          color = "@on_background";
+          color = "$on_background";
         }
         {
           monitor = "";
@@ -57,7 +57,7 @@
           position = "0, -438";
           halign = " center";
           valign = " center";
-          color = "@on_background";
+          color = "$on_background";
         }
       ];
 
