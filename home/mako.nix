@@ -3,6 +3,7 @@ _: {
     enable = true;
     settings = {
       font = "DejaVu Sans 12";
+      outer-margin = 15;
       width = 400;
       padding = 10;
       border-radius = 10;
@@ -18,7 +19,7 @@ _: {
         width = 200;
         height = 50;
         default-timeout = 1500;
-        outer-margin = 30;
+        # outer-margin = 30;
       };
     };
   };

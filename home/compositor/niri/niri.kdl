@@ -35,12 +35,12 @@ input {
         // scroll-method "no-scroll"
     }
 
-    // Uncomment this to make the mouse warp to the center of newly focused windows.
-    // warp-mouse-to-focus
+    // make the mouse warp to the center of newly focused windows.
+    warp-mouse-to-focus
 
     // Focus windows and outputs automatically when moving the mouse into them.
     // Setting max-scroll-amount="0%" makes it work only on windows already fully on screen.
-    focus-follows-mouse max-scroll-amount="0%"
+    focus-follows-mouse max-scroll-amount="30%"
 }
 
 cursor {
@@ -72,7 +72,7 @@ layout {
     background-color "transparent"
 
     // Set gaps around windows in logical pixels.
-    gaps 10
+    gaps 15
 
     center-focused-column "never"
     always-center-single-column
@@ -97,6 +97,7 @@ layout {
 
     focus-ring {
         off
+        width 3
     }
 
     // Struts shrink the area occupied by windows, similarly to layer-shell panels.
@@ -111,6 +112,7 @@ layout {
 
     // Matugen colors
     border {
+        on
         width 3
     }
 }
@@ -183,6 +185,13 @@ window-rule {
     match app-id=r#"brave-mail.proton.me__-Default"#
     open-focused true
     open-on-workspace "communication"
+}
+
+// disable the workspace shadows in the overview. 
+overview {
+    workspace-shadow {
+        off
+    }
 }
 
 // Put swww inside the overview backdrop.

@@ -15,3 +15,6 @@ on-notify=none
 
 [urgency=high]
 border-color={{colors.error_container.default.hex}}
+
+[category=osd]
+border-color={{colors.primary.default.hex}}

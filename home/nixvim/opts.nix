@@ -20,7 +20,7 @@
     splitbelow = true;
     signcolumn = "yes";
     title = true;
-    titlestring.__raw = "[[%{v:progname} - %t %m]]";
+    titlestring.__raw = "[[%{v:progname} - %f %m]]";
     completeopt = [
       "menuone"
       "noselect"
