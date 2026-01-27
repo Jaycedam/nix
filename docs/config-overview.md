@@ -19,5 +19,4 @@ This flake provides a unified configuration system that works on both NixOS and 
 | modules/             | NixOS specific system modules                                                |
 | modules/compositors/ | Compositor specific nixos modules (niri, hyprland)                           |
 | profiles/            | Platform entry points composing main modules for a specific OS               |
-| scripts/             | Setup scripts for NixOS and home-manager standalone                          |
 | wall/                | Wallpapers                                                                   |

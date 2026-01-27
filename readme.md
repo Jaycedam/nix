@@ -9,50 +9,43 @@ On NixOS, the keyboard layout defaults to Colemak-DH with keyd handling home-row
 
 ## Table of Contents
 
-- [Apply Configuration](#apply-configuration)
-  - [NixOS](#nixos)
-  - [Home Manager Standalone](#home-manager-standalone)
+- [Setup](#setup)
 - [Useful Commands](#useful-commands)
+  - [Rebuild](#rebuild)
   - [Update](#update)
   - [Diff](#diff)
 - [Additional Documentation](#additional-documentation)
 
-## Apply Configuration
+## Setup
 
-### NixOS
+The install script expects NixOS or Asahi Linux minimal (may also work on Fedora minimal).
 
-**First run:**
+- First run:
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/jaycem-dev/nix/master/scripts/nixos.sh | bash
+curl -fsSL https://raw.githubusercontent.com/jaycem-dev/nix/master/install.sh | bash
 ```
 
-**Subsequent runs:**
+For later runs you can run the rebuild command for NixOS, or Home Manager if using Asahi/Fedora.
 
-```bash
+> [!NOTE]
+> Other distros may require additional setup. See [Non-NixOS Setup Guide](./docs/non-nixos-setup.md)
+
+## Useful Commands
+
+### Rebuild
+
+- NixOS:
+
+```
 sudo nixos-rebuild switch --flake ~/dev/nix#nixos-niri
 ```
 
-### Asahi Linux
-
-> [!NOTE]
-> Other distros may require additional setup. See the [Non-NixOS Setup Guide](./docs/non-nixos-setup.md) for required kernel module and user group configuration.
-
-This script expects Asahi Linux minimal (may also work on Fedora minimal). It sets up everything automatically using the system's package manager for the Wayland compositor, login manager, and PipeWire with PulseAudio compatibility. The remaining apps and all user configuration are handled by home-manager standalone.
-
-**First run:**
-
-```bash
-curl -fsSL https://raw.githubusercontent.com/jaycem-dev/nix/master/scripts/asahi.sh | bash
-```
-
-**Subsequent runs:**
+- Asahi/Fedora:
 
 ```bash
 home-manager switch -b backup --flake ~/dev/nix#jay-niri-arm
 ```
-
-## Useful Commands
 
 ### Update
 
