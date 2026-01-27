@@ -2,9 +2,6 @@ workspace "browser"
 workspace "dev"
 workspace "communication"
 
-// default wallpaper and theme on startup
-// spawn-sh-at-startup "matugen image ~/Pictures/wall/default.jpg &"
-
 input {
         keyboard {
         xkb {
@@ -182,6 +179,7 @@ window-rule {
 // communication workspace apps
 window-rule {
     match app-id=r#"brave-web.whatsapp.com__-Default"#
+    match app-id=r#"signal"#
     match app-id=r#"brave-mail.proton.me__-Default"#
     open-focused true
     open-on-workspace "communication"

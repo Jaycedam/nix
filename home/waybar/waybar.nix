@@ -68,6 +68,7 @@
             format-icons = {
               browser = "";
               dev = "";
+              media = "";
               communication = "";
               default = "";
             };
@@ -102,8 +103,8 @@
           };
 
           network = {
-            format-wifi = "  ";
-            format-ethernet = " Wired";
+            format-wifi = "";
+            format-ethernet = "";
             tooltip-format = "Connected to {essid}";
             format-linked = "󱘖 {ifname} (No IP)";
             format-disconnected = " Disconnected";
