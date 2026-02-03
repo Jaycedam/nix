@@ -1,5 +1,5 @@
 [config]
-caching = true
+caching = false
 
 [config.wallpaper]
 command = "swww"
