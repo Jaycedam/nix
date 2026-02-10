@@ -10,5 +10,6 @@ _: {
     ./keyboard.nix
     ./greeter.nix
     ./virtualization.nix
+    ./homelab.nix
   ];
 }
