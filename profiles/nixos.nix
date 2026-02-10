@@ -4,6 +4,7 @@
   nixvim,
   compositor,
   asahi,
+  zen-browser,
   ...
 }:
 {
@@ -22,6 +23,7 @@
             nixvim
             compositor
             asahi
+            zen-browser
             ;
         };
         users.${user} = {

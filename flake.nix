@@ -12,6 +12,15 @@
     nixvim = {
       url = "github:nix-community/nixvim";
     };
+
+    zen-browser = {
+      url = "github:0xc000022070/zen-browser-flake";
+      inputs = {
+        # IMPORTANT: To ensure compatibility with the latest Firefox version, use nixpkgs-unstable.
+        nixpkgs.follows = "nixpkgs";
+        home-manager.follows = "home-manager";
+      };
+    };
   };
 
   nixConfig = {
@@ -28,6 +37,7 @@
       nixpkgs,
       home-manager,
       nixvim,
+      zen-browser,
       ...
     }:
     let
@@ -40,15 +50,16 @@
         arm-linux = "aarch64-linux";
       };
 
-       commonArgs = {
-         inherit
-           nixpkgs
-           home-manager
-           user
-           nixvim
-           ;
-         asahi = false;
-       };
+      commonArgs = {
+        inherit
+          nixpkgs
+          home-manager
+          user
+          nixvim
+          zen-browser
+          ;
+        asahi = false;
+      };
 
     in
     {
@@ -68,11 +79,11 @@
       homeConfigurations = {
         "${user}-niri-arm" = home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs.legacyPackages.${systems.arm-linux};
-           extraSpecialArgs = commonArgs // {
-             compositor = "niri";
-             system = systems.arm-linux;
-             asahi = true;
-           };
+          extraSpecialArgs = commonArgs // {
+            compositor = "niri";
+            system = systems.arm-linux;
+            asahi = true;
+          };
           modules = import ./profiles/asahi.nix;
         };
 
