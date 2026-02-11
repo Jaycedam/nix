@@ -74,6 +74,17 @@
             ./profiles/nixos.nix
           ];
         };
+
+        nixos-hypr = lib.nixosSystem {
+          specialArgs = commonArgs // {
+            inherit user;
+            compositor = "hyprland";
+          };
+          modules = [
+            ./hosts/nixos/default.nix
+            ./profiles/nixos.nix
+          ];
+        };
       };
 
       homeConfigurations = {
