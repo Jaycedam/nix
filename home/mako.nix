@@ -6,9 +6,7 @@ _: {
       outer-margin = 15;
       width = 400;
       padding = 10;
-      border-radius = 10;
       border-size = 1;
-      icon-border-radius = 10;
       layer = "overlay";
       include = "~/.config/mako/mako-colors";
 

@@ -13,7 +13,7 @@
           layer = "top";
           position = "bottom";
           spacing = 10;
-          margin = "0 10 5 10";
+          # margin = "0 10 5 10";
 
           "group/system" = {
             orientation = "horizontal";
@@ -22,7 +22,6 @@
               "bluetooth"
               "battery"
               "pulseaudio"
-              "clock"
             ];
           };
 
@@ -32,14 +31,17 @@
               transition-duration = 600;
               children-class = "tray-group-item";
               transition-left-to-right = false;
+              click-to-reveal = true;
             };
             modules = [
               "custom/expand-icon"
+              "custom/power"
+              "idle_inhibitor"
               "tray"
             ];
           };
           "custom/expand-icon" = {
-            format = "";
+            format = "";
             tooltip = false;
             on-scroll-up = "";
             on-scroll-down = "";
@@ -128,8 +130,6 @@
           "group/actions" = {
             orientation = "inherit";
             modules = [
-              "custom/power"
-              "idle_inhibitor"
               "group/tray-expander"
             ];
           };
@@ -193,7 +193,7 @@
           };
           clock = {
             interval = 1;
-            format = " {:%A %H:%M}";
+            format = "{:%A, %b %d - %H:%M}";
             on-click = "niri-launch-or-focus-webapp calendar.proton.me";
             tooltip = false;
           };
@@ -217,14 +217,15 @@
       (lib.mkIf (compositor == "niri") {
         mainBar = {
           modules-left = [
-            "group/actions"
+            "niri/workspaces"
             "niri/window"
           ];
           modules-center = [
-            "niri/workspaces"
+            "clock"
           ];
           modules-right = [
             "mpris"
+            "group/actions"
             "privacy"
             "group/system"
           ];
@@ -256,7 +257,7 @@
         }
 
         window#waybar {
-          background-color: transparent;
+          background-color: @background;
           color: @on_background;
         }
 
@@ -284,17 +285,6 @@
             color: @error;
         }
 
-        #workspaces, 
-        #system, 
-        #window,
-        #actions, 
-        #privacy,
-        #mpris {
-            background-color: @background;
-            border-radius: 10;
-            border: 1px solid @outline_variant;
-        }
-
         #privacy {
             color: @tertiary;
         }
@@ -304,7 +294,7 @@
           padding: 0 10px;
           background: transparent;
           color: @on_background;
-          border-radius: 10;
+          border-radius: 0;
       }
 
         #workspaces button.empty {
@@ -314,7 +304,6 @@
         #workspaces button.active {
           color: @on_primary;
           background-color: @primary;
-          padding: 0 20px;
         }
 
         window#waybar.empty #window {
@@ -324,7 +313,6 @@
 
         #tray-expander {
             background-color: @surface_container;
-            border-radius: 10;
         }
     '';
   };

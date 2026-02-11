@@ -7,6 +7,9 @@ _: {
         font = "DejaVu Sans:size=14";
         icon-theme = "candy-icons";
       };
+      border = {
+        radius = 0;
+      };
     };
   };
 }
