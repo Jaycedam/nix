@@ -1,7 +1,10 @@
 { pkgs, ... }:
 {
   programs = {
-    niri.enable = true;
+    niri = {
+      enable = true;
+      useNautilus = false;
+    };
   };
 
   environment.systemPackages = with pkgs; [

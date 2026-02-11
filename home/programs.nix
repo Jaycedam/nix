@@ -33,10 +33,15 @@
       # desktop apps
       pavucontrol
       localsend
-      nautilus # needed by niri
+      thunar
+      thunar-archive-plugin
+      thunar-media-tags-plugin
+      thunar-volman
+      thunar-vcs-plugin
       libreoffice-fresh
       signal-desktop
       ente-desktop
+      jellyfin-desktop
       mpv
       gimp
       # grayjay
