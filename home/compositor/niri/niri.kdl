@@ -103,8 +103,8 @@ layout {
     // Top and bottom struts will simply add outer gaps in addition to the area occupied by
     // layer-shell panels and regular gaps.
     struts {
-        left 20
-        right 20
+        left 30
+        right 30
     }
 
     // Matugen colors
@@ -164,6 +164,7 @@ window-rule {
 // browser workspace apps
 window-rule {
     match app-id=r#"brave-browser"#
+    match app-id=r#"zen-beta"#
     open-focused true
     open-on-workspace "browser"
 }
@@ -207,7 +208,7 @@ binds {
     Mod+N hotkey-overlay-title="Open neovim" { spawn-sh "niri-launch-or-focus nvim-wrapper"; }
     Mod+E hotkey-overlay-title="Open yazi" { spawn-sh "niri-launch-or-focus \"kitty --class yazi yazi\" --id yazi"; }
     Mod+M hotkey-overlay-title="Open rmpc" { spawn-sh "niri-launch-or-focus \"kitty --class rmpc rmpc\" --id rmpc"; }
-    Mod+B hotkey-overlay-title="Open browser" { spawn-sh "niri-launch-or-focus brave --id brave-browser"; }
+    Mod+B hotkey-overlay-title="Open browser" { spawn-sh "niri-launch-or-focus zen --id zen-beta"; }
     Mod+Space hotkey-overlay-title="Search apps (fuzzel)" { spawn "fuzzel"; }
 
     // launch or focus webapps

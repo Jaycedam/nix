@@ -7,22 +7,20 @@ _: {
     settings = {
       "$mod" = "SUPER";
       "$terminal" = "kitty";
-      "$fileManager" = "$terminal --class 'file-manager' -e fish -c yazi";
+      "$fileManager" = "$terminal --class 'yazi' yazi";
       "$menu" = "fuzzel";
-      "$browser" = "brave";
+      "$browser" = "zen";
       "$launch" = "launch-or-focus";
 
       animations = {
         enabled = true;
         bezier = [
-          "quart, 0.25, 1, 0.5, 1"
+          "easeInOut, 0.37, 0, 0.63, 1"
         ];
         animation = [
-          "windows, 1, 3, quart, slide"
-          "border, 1, 3, quart"
-          "borderangle, 1, 3, quart"
-          "fade, 1, 3, quart"
-          "workspaces, 1, 3, quart"
+          "workspaces, 1, 2, default"
+          "windows, 1, 2, easeInOut, slide"
+          "fade, 0"
         ];
       };
 
@@ -43,7 +41,7 @@ _: {
         blur = {
           enabled = true;
           size = 10;
-          passes = 2;
+          passes = 1;
         };
       };
 
@@ -58,6 +56,7 @@ _: {
       input = {
         kb_layout = "us";
         kb_variant = "colemak_dh_iso";
+        kb_options = "caps:swapescape";
       };
 
       bindm = [
@@ -76,16 +75,16 @@ _: {
 
       # Laptop multimedia keys for volume and LCD brightness
       bindel = [
-        ",XF86AudioRaiseVolume, exec, wpctl set-volume -l 1.0 @DEFAULT_AUDIO_SINK@ 5%+"
-        ",XF86AudioLowerVolume, exec, wpctl set-volume -l 1.0 @DEFAULT_AUDIO_SINK@ 5%-"
-        ",XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
-        ",XF86AudioMicMute, exec, wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
+        ",XF86AudioRaiseVolume, exec, volume up"
+        ",XF86AudioLowerVolume, exec, volume down"
+        ",XF86AudioMute, exec, volume mute"
+        ",XF86AudioMicMute, exec, volume micmute"
         ",XF86MonBrightnessUp, exec, brightness up"
         ",XF86MonBrightnessDown, exec, brightness down"
       ];
 
       bind = [
-        "$mod, T, exec, $launch $terminal"
+        "$mod, T, exec, $terminal"
         "$mod, Q, killactive"
         "$mod SHIFT, Q, exec, command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch exit"
         "$mod, E, exec, $fileManager"

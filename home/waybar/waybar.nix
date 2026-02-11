@@ -233,11 +233,16 @@
       (lib.mkIf (compositor == "hyprland") {
         mainBar = {
           modules-left = [
-            "tray"
+            "group/actions"
             "hyprland/window"
           ];
           modules-center = [
             "hyprland/workspaces"
+          ];
+          modules-right = [
+            "mpris"
+            "privacy"
+            "group/system"
           ];
         };
       })
