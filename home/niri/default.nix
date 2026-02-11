@@ -6,7 +6,7 @@
 {
   home = {
     # Symlink default wallpaper to user dir
-    file."Pictures/wall/default.jpg".source = ../../../wall/default.jpg;
+    file."Pictures/wall/default.jpg".source = ../../wall/default.jpg;
     # manual niri config
     file."${config.xdg.configHome}/niri/config.kdl".source = ./niri.kdl;
   };

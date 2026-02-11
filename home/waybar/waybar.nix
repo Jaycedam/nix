@@ -1,6 +1,5 @@
 {
   lib,
-  compositor,
   ...
 }:
 {
@@ -14,6 +13,20 @@
           position = "bottom";
           spacing = 10;
           # margin = "0 10 5 10";
+
+          modules-left = [
+            "niri/workspaces"
+            "niri/window"
+          ];
+          modules-center = [
+            "clock"
+          ];
+          modules-right = [
+            "mpris"
+            "group/actions"
+            "privacy"
+            "group/system"
+          ];
 
           "group/system" = {
             orientation = "horizontal";
@@ -31,7 +44,6 @@
               transition-duration = 600;
               children-class = "tray-group-item";
               transition-left-to-right = false;
-              click-to-reveal = true;
             };
             modules = [
               "custom/expand-icon"
@@ -214,39 +226,6 @@
           };
         };
       }
-      (lib.mkIf (compositor == "niri") {
-        mainBar = {
-          modules-left = [
-            "niri/workspaces"
-            "niri/window"
-          ];
-          modules-center = [
-            "clock"
-          ];
-          modules-right = [
-            "mpris"
-            "group/actions"
-            "privacy"
-            "group/system"
-          ];
-        };
-      })
-      (lib.mkIf (compositor == "hyprland") {
-        mainBar = {
-          modules-left = [
-            "group/actions"
-            "hyprland/window"
-          ];
-          modules-center = [
-            "hyprland/workspaces"
-          ];
-          modules-right = [
-            "mpris"
-            "privacy"
-            "group/system"
-          ];
-        };
-      })
     ];
     style = ''
         @import "colors.css";
@@ -294,7 +273,7 @@
           padding: 0 10px;
           background: transparent;
           color: @on_background;
-          border-radius: 0;
+          border-radius: 10;
       }
 
         #workspaces button.empty {
@@ -313,6 +292,7 @@
 
         #tray-expander {
             background-color: @surface_container;
+            border-radius: 10;
         }
     '';
   };

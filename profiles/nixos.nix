@@ -2,7 +2,6 @@
   home-manager,
   user,
   nixvim,
-  compositor,
   asahi,
   zen-browser,
   ...
@@ -10,7 +9,6 @@
 {
   imports = [
     ../modules/default.nix
-    ../modules/compositors/default.nix
     home-manager.nixosModules.home-manager
     {
       home-manager = {
@@ -21,7 +19,6 @@
           inherit
             user
             nixvim
-            compositor
             asahi
             zen-browser
             ;
@@ -29,7 +26,6 @@
         users.${user} = {
           imports = [
             ../home/default.nix
-            ../home/compositor/default.nix
           ];
         };
       };

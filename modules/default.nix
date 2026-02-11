@@ -1,5 +1,6 @@
 _: {
   imports = [
+    ./niri.nix
     ./options.nix
     ./users.nix
     ./boot.nix

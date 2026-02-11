@@ -148,11 +148,11 @@ window-rule {
     block-out-from "screen-capture"
 }
 
-// window-rule {
-//     // rounded corners
-//     geometry-corner-radius 10
-//     clip-to-geometry true
-// }
+window-rule {
+    // rounded corners
+    geometry-corner-radius 10
+    clip-to-geometry true
+}
 
 // Make inactive windows semitransparent.
 window-rule {

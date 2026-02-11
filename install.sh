@@ -167,7 +167,7 @@ if [ "$DISTRO" = "nixos" ]; then
 
     # Switch to NixOS configuration
     sudo NIX_CONFIG="experimental-features = nix-command flakes" \
-        nixos-rebuild switch --flake ~/dev/nix#nixos-niri
+        nixos-rebuild switch --flake ~/dev/nix#nixos
 
 elif [ "$DISTRO" = "fedora" ]; then
     echo "Detected Fedora..."
@@ -178,7 +178,7 @@ elif [ "$DISTRO" = "fedora" ]; then
     clone_config
 
     echo "Applying home-manager configuration..."
-    nix run github:nix-community/home-manager/master -- switch -b backup --flake "${DIR}"#jay-niri-arm
+    nix run github:nix-community/home-manager/master -- switch -b backup --flake "${DIR}"#asahi
 
     echo "Enabling GPU driver access..."
     sudo "$(which non-nixos-gpu-setup)" >/dev/null

@@ -64,21 +64,9 @@
     in
     {
       nixosConfigurations = {
-        nixos-niri = lib.nixosSystem {
+        nixos = lib.nixosSystem {
           specialArgs = commonArgs // {
             inherit user;
-            compositor = "niri";
-          };
-          modules = [
-            ./hosts/nixos/default.nix
-            ./profiles/nixos.nix
-          ];
-        };
-
-        nixos-hypr = lib.nixosSystem {
-          specialArgs = commonArgs // {
-            inherit user;
-            compositor = "hyprland";
           };
           modules = [
             ./hosts/nixos/default.nix
@@ -88,10 +76,9 @@
       };
 
       homeConfigurations = {
-        "${user}-niri-arm" = home-manager.lib.homeManagerConfiguration {
+        "asahi" = home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs.legacyPackages.${systems.arm-linux};
           extraSpecialArgs = commonArgs // {
-            compositor = "niri";
             system = systems.arm-linux;
             asahi = true;
           };

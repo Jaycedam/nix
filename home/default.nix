@@ -5,6 +5,7 @@
 }:
 {
   imports = [
+    ./niri/default.nix
     ./beets.nix
     ./mpd.nix
     ./rmpc.nix

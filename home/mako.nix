@@ -7,6 +7,7 @@ _: {
       width = 400;
       padding = 10;
       border-size = 1;
+      border-radius = 10;
       layer = "overlay";
       include = "~/.config/mako/mako-colors";
 
@@ -15,7 +16,7 @@ _: {
         anchor = "bottom-center";
         padding = 5;
         width = 200;
-        height = 50;
+        height = 30;
         default-timeout = 1500;
         # outer-margin = 30;
       };

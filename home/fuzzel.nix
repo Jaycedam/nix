@@ -8,7 +8,7 @@ _: {
         icon-theme = "candy-icons";
       };
       border = {
-        radius = 0;
+        radius = 10;
       };
     };
   };
