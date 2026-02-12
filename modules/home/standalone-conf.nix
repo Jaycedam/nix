@@ -1,5 +1,4 @@
 {
-  lib,
   pkgs,
   user,
   ...
@@ -19,4 +18,3 @@
   # use system gpu drivers on non-NixOS, to get gpu acceleration
   targets.genericLinux.enable = true;
 }
-

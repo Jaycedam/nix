@@ -41,14 +41,7 @@
       ...
     }:
     let
-      inherit (nixpkgs) lib;
       user = "jay";
-
-      # Define both systems for future use
-      systems = {
-        x86 = "x86_64-linux";
-        arm-linux = "aarch64-linux";
-      };
 
       commonArgs = {
         inherit
@@ -64,27 +57,11 @@
     in
     {
       nixosConfigurations = {
-        nixos = lib.nixosSystem {
-          specialArgs = commonArgs // {
-            inherit user;
-          };
-          modules = [
-            ./hosts/nixos/default.nix
-            ./profiles/nixos.nix
-          ];
-        };
+        nixos = import ./profiles/nixos.nix commonArgs;
       };
 
       homeConfigurations = {
-        "asahi" = home-manager.lib.homeManagerConfiguration {
-          pkgs = nixpkgs.legacyPackages.${systems.arm-linux};
-          extraSpecialArgs = commonArgs // {
-            system = systems.arm-linux;
-            asahi = true;
-          };
-          modules = import ./profiles/asahi.nix;
-        };
-
+        "asahi" = import ./profiles/asahi.nix commonArgs;
       };
     };
 }
