@@ -11,11 +11,11 @@ My personal Nix flake dual setup for NixOS and Asahi/Fedora with standalone home
 
 - [Description](#description)
 - [Setup](#setup)
+- [Project Structure](#project-structure)
 - [Useful Commands](#useful-commands)
   - [Rebuild](#rebuild)
   - [Update](#update)
   - [Diff](#diff)
-- [Project Structure](#project-structure)
 
 ## Description
 
@@ -34,6 +34,21 @@ curl -fsSL https://raw.githubusercontent.com/jaycem-dev/nix/master/install.sh | 
 ```
 
 For later runs, run the rebuild command for NixOS or Home Manager if using Asahi/Fedora.
+
+## Project Structure
+
+This flake provides a unified configuration system that works on both NixOS and non-NixOS systems.
+
+- **NixOS**: Full system rebuild with integrated home-manager
+- **Standalone**: Home-manager only for any Linux distribution
+
+| Directory             | Description                                                                  |
+| --------------------- | ---------------------------------------------------------------------------- |
+| **profiles/**         | System entry points - defines complete NixOS and Home Manager configurations |
+| modules/nixos/        | NixOS system-level modules (boot, network, services, users, etc.)            |
+| modules/home/         | Home Manager user-level modules (programs, dotfiles, window managers, etc.)  |
+| modules/home/scripts/ | Standalone utility scripts packaged as derivations                           |
+| modules/hosts/        | Host-specific hardware and system config (hardware-config.nix, mounts, etc.) |
 
 ## Useful Commands
 
@@ -74,19 +89,3 @@ sudo nixos-rebuild dry-activate --flake ~/dev/nix#nixos
 ```bash
 home-manager switch -b backup --dry-run --flake ~/dev/nix#asahi
 ```
-
-## Project Structure
-
-This flake provides a unified configuration system that works on both NixOS and non-NixOS systems.
-
-- **NixOS**: Full system rebuild with integrated home-manager
-- **Standalone**: Home-manager only for any Linux distribution
-
-| Directory             | Description                                                                  |
-| --------------------- | ---------------------------------------------------------------------------- |
-| **profiles/**         | System entry points - defines complete NixOS and Home Manager configurations |
-| modules/nixos/        | NixOS system-level modules (boot, network, services, users, etc.)            |
-| modules/home/         | Home Manager user-level modules (programs, dotfiles, window managers, etc.)  |
-| modules/home/scripts/ | Standalone utility scripts packaged as derivations                           |
-| modules/hosts/        | Host-specific hardware and system config (hardware-config.nix, mounts, etc.) |
-| wall/                 | Wallpapers                                                                   |
