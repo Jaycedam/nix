@@ -3,13 +3,17 @@
   home-manager,
   user,
   nixvim,
-  zen-browser,
   asahi,
   ...
 }:
 nixpkgs.lib.nixosSystem {
   specialArgs = {
-    inherit user nixvim zen-browser home-manager asahi;
+    inherit
+      user
+      nixvim
+      home-manager
+      asahi
+      ;
   };
   modules = [
     ../modules/hosts/nixos/default.nix
@@ -21,7 +25,7 @@ nixpkgs.lib.nixosSystem {
         useUserPackages = true;
         backupFileExtension = "backup";
         extraSpecialArgs = {
-          inherit user nixvim zen-browser asahi;
+          inherit user nixvim asahi;
         };
         users.${user} = {
           imports = [

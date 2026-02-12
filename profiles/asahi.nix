@@ -3,7 +3,6 @@
   home-manager,
   user,
   nixvim,
-  zen-browser,
   ...
 }:
 let
@@ -17,7 +16,6 @@ home-manager.lib.homeManagerConfiguration {
       home-manager
       user
       nixvim
-      zen-browser
       system
       ;
     asahi = true;

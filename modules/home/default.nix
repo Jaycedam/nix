@@ -31,7 +31,6 @@
     ./brave.nix
     ./gaming.nix
     ./hyprlock.nix
-    ./zen-browser.nix
   ];
 
   home = {
