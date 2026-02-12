@@ -2,10 +2,10 @@
 
 My personal Nix flake dual setup for NixOS and Asahi/Fedora with standalone home-manager.
 
-If you intend to use this configuration, you may want to clone the project first, then change the keyboard layout in [install.sh](./install.sh) and [niri.kdl](./home/niri/niri.kdl), since I use Colemak-DH-ISO by default. You may also want to disable the keyd service in the [install script](./install.sh).
+**Note:** This uses Colemak-DH-ISO keyboard layout by default. Edit [keyboard.nix](./modules/nixos/keyboard.nix) and [niri.kdl](./modules/home/niri/niri.kdl) before installing.
 
 > [!IMPORTANT]
-> This guide uses `~/dev/nix` because that is the default path that the install script uses.
+> Uses `~/dev/nix` path (install script default).
 
 ## Table of Contents
 
@@ -73,11 +73,11 @@ This flake provides a unified configuration system that works on both NixOS and 
 - **NixOS**: Full system rebuild with integrated home-manager
 - **Standalone**: Home-manager only for any Linux distribution
 
-| Directory     | Description                                                                  |
-| ------------- | ---------------------------------------------------------------------------- |
-| home/         | Home-manager modules for user-level customization                            |
-| home/scripts/ | Standalone utility scripts packaged as derivations                           |
-| hosts/        | Physical device configurations for NixOS (hardware config, mounts, monitors) |
-| modules/      | NixOS-specific system modules                                                |
-| profiles/     | Platform entry points composing main modules for a specific OS               |
-| wall/         | Wallpapers                                                                   |
+| Directory             | Description                                                                  |
+| --------------------- | ---------------------------------------------------------------------------- |
+| **profiles/**         | System entry points - defines complete NixOS and Home Manager configurations |
+| modules/nixos/        | NixOS system-level modules (boot, network, services, users, etc.)            |
+| modules/home/         | Home Manager user-level modules (programs, dotfiles, window managers, etc.)  |
+| modules/home/scripts/ | Standalone utility scripts packaged as derivations                           |
+| modules/hosts/        | Host-specific hardware and system config (hardware-config.nix, mounts, etc.) |
+| wall/                 | Wallpapers                                                                   |
