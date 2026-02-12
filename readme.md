@@ -9,12 +9,21 @@ My personal Nix flake dual setup for NixOS and Asahi/Fedora with standalone home
 
 ## Table of Contents
 
+- [Description](#description)
 - [Setup](#setup)
 - [Useful Commands](#useful-commands)
   - [Rebuild](#rebuild)
   - [Update](#update)
   - [Diff](#diff)
 - [Project Structure](#project-structure)
+
+## Description
+
+- Compositor and tools: Niri, Fuzzel, Waybar, Mako, Hyprlock, Hypridle
+- Main programs: Kitty, Fish, Neovim, Zen Browser
+- Theming: Matugen
+
+![Screenshot](assets/screenshot.avif)
 
 ## Setup
 
