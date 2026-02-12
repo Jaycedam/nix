@@ -3,7 +3,7 @@ set -e
 
 DISTRO=$(grep '^NAME=' /etc/os-release | cut -d= -f2 | tr -d '"' | cut -d' ' -f1 | tr '[:upper:]' '[:lower:]')
 DIR="${HOME}/dev/nix"
-WALLPAPER="$DIR/wall/default.jpg"
+WALLPAPER="$DIR/assets/wallpaper.jpg"
 BRANCH=""
 
 while getopts "b:h" opt; do
