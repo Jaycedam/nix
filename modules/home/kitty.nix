@@ -11,7 +11,7 @@
     settings = {
       shell = "${pkgs.fish}/bin/fish";
       cursor_trail = 1;
-      background_opacity = 0.9;
+      # background_opacity = 0.9;
       tab_bar_edge = "top";
       include = "colors.conf";
     };

@@ -12,20 +12,20 @@
           layer = "top";
           position = "bottom";
           spacing = 10;
-          # margin = "0 10 5 10";
+          margin = "0 10 5 10";
 
           modules-left = [
-            "niri/workspaces"
+            "group/actions"
             "niri/window"
           ];
           modules-center = [
-            "clock"
+            "niri/workspaces"
           ];
           modules-right = [
             "mpris"
-            "group/actions"
             "privacy"
             "group/system"
+            "clock"
           ];
 
           "group/system" = {
@@ -47,13 +47,11 @@
             };
             modules = [
               "custom/expand-icon"
-              "custom/power"
-              "idle_inhibitor"
               "tray"
             ];
           };
           "custom/expand-icon" = {
-            format = "";
+            format = "";
             tooltip = false;
             on-scroll-up = "";
             on-scroll-down = "";
@@ -142,6 +140,8 @@
           "group/actions" = {
             orientation = "inherit";
             modules = [
+              "custom/power"
+              "idle_inhibitor"
               "group/tray-expander"
             ];
           };
@@ -205,7 +205,7 @@
           };
           clock = {
             interval = 1;
-            format = "{:%A, %b %d - %H:%M}";
+            format = "{:%a, %b %d  %H:%M}";
             on-click = "niri-launch-or-focus-webapp calendar.proton.me";
             tooltip = false;
           };
@@ -236,7 +236,7 @@
         }
 
         window#waybar {
-          background-color: @background;
+          background-color: transparent;
           color: @on_background;
         }
 
@@ -266,6 +266,18 @@
 
         #privacy {
             color: @tertiary;
+        }
+
+        #workspaces, 
+        #system, 
+        #window,
+        #actions, 
+        #privacy,
+        #clock,
+        #mpris {
+            background-color: @background;
+            border-radius: 10;
+            border: 1px solid @outline_variant;
         }
 
       #workspaces button {
