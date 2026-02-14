@@ -1,4 +1,8 @@
-_: {
+{ config, ... }:
+let
+  apps = "${config.home.path}/share/applications";
+in
+{
   # launch-webapp just takes the domain as arg,
   # check the code in scripts/system/launch-webapp.nix
   xdg.desktopEntries = {
@@ -74,5 +78,12 @@ _: {
         "Audio"
       ];
     };
+  };
+  xdg.autostart = {
+    enable = true;
+    entries = [
+      "${apps}/whatsapp.desktop"
+      "${apps}/proton-mail.desktop"
+    ];
   };
 }
