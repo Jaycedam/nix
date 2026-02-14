@@ -60,8 +60,7 @@ _: {
           format-icons = {
             browser = "";
             dev = "";
-            media = "";
-            communication = "";
+            chat = "";
             default = "";
           };
         };

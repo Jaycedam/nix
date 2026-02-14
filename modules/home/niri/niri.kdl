@@ -1,9 +1,9 @@
 workspace "browser"
 workspace "dev"
-workspace "communication"
+workspace "chat"
 
 input {
-        keyboard {
+    keyboard {
         xkb {
             layout "us"
             variant "colemak_dh_iso"
@@ -69,9 +69,10 @@ layout {
     background-color "transparent"
 
     // Set gaps around windows in logical pixels.
-    gaps 10
+    gaps 15
 
-    center-focused-column "on-overflow"
+    // options: never, always, on-overflow
+    center-focused-column "never"
     always-center-single-column
 
     // You can customize the widths that "switch-preset-column-width" (Mod+R) toggles between.
@@ -107,11 +108,14 @@ layout {
         right 20
     }
 
-    // Matugen colors
     border {
         on
         width 3
     }
+
+    // shadow {
+    //     on
+    // }
 }
 
 include "./colors.kdl"
@@ -165,7 +169,6 @@ window-rule {
 window-rule {
     match app-id=r#"brave-browser"#
     match app-id=r#"zen-beta"#
-    open-focused true
     open-on-workspace "browser"
 }
 // dev workspace apps
@@ -174,16 +177,22 @@ window-rule {
     match app-id=r#"kitty"#
     match app-id=r#"Alacritty"#
     match app-id=r#"com.mitchellh.ghostty"#
-    open-focused true
     open-on-workspace "dev"
 }
-// communication workspace apps
+// chat workspace apps
 window-rule {
     match app-id=r#"brave-web.whatsapp.com__-Default"#
     match app-id=r#"signal"#
     match app-id=r#"brave-mail.proton.me__-Default"#
-    open-focused true
-    open-on-workspace "communication"
+    open-on-workspace "chat"
+}
+
+// niri startup, don't focus autostarted apps
+window-rule {
+    match at-startup=true app-id=r#"brave-web.whatsapp.com__-Default"#
+    match at-startup=true app-id=r#"brave-mail.proton.me__-Default"#
+    open-on-workspace "chat"
+    open-focused false
 }
 
 // disable the workspace shadows in the overview. 
