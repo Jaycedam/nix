@@ -93,6 +93,11 @@ EOF
     sudo sed -i 's/^SELINUX=.*/SELINUX=permissive/' /etc/selinux/config >/dev/null
 }
 
+set_wallpaper() {
+    echo "Setting default wallpaper..."
+    swww img "$WALLPAPER" >/dev/null
+}
+
 fedora_pkgs() {
     echo "Upgrading system packages..."
     sudo dnf upgrade -y >/dev/null
@@ -169,6 +174,8 @@ if [ "$DISTRO" = "nixos" ]; then
     sudo NIX_CONFIG="experimental-features = nix-command flakes" \
         nixos-rebuild switch --flake ~/dev/nix#nixos
 
+    set_wallpaper
+
 elif [ "$DISTRO" = "fedora" ]; then
     echo "Detected Fedora..."
     sudo_check
@@ -182,6 +189,8 @@ elif [ "$DISTRO" = "fedora" ]; then
 
     echo "Enabling GPU driver access..."
     sudo "$(which non-nixos-gpu-setup)" >/dev/null
+
+    set_wallpaper
 else
     echo "Error: Unsupported distro: $DISTRO"
     exit 1
