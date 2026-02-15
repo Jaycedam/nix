@@ -69,7 +69,7 @@ layout {
     background-color "transparent"
 
     // Set gaps around windows in logical pixels.
-    gaps 15
+    gaps 10
 
     // options: never, always, on-overflow
     center-focused-column "on-overflow"
@@ -94,7 +94,7 @@ layout {
     default-column-width { proportion 0.8; }
 
     focus-ring {
-        on
+        off
         width 3
         active-color "#c4a7e7"
     }
@@ -109,10 +109,11 @@ layout {
         right 20
     }
 
-    // border {
-    //     on
-    //     width 3
-    // }
+    border {
+        on
+        width 3
+        active-color "#c4a7e7"
+    }
 
     // shadow {
     //     on

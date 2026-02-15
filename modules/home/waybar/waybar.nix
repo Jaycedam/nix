@@ -1,4 +1,5 @@
-_: {
+{ lib, ... }:
+{
   programs.waybar = {
     enable = true;
     systemd.enable = true;
@@ -18,42 +19,10 @@ _: {
         ];
         modules-right = [
           "mpris"
+          "group/custom-tray"
           "privacy"
-          "group/tray-expander"
           "group/system"
         ];
-
-        "group/system" = {
-          orientation = "horizontal";
-          modules = [
-            "network"
-            "bluetooth"
-            "battery"
-            "pulseaudio"
-          ];
-        };
-
-        "group/tray-expander" = {
-          "orientation" = "inherit";
-          "drawer" = {
-            transition-duration = 600;
-            children-class = "tray-group-item";
-            transition-left-to-right = false;
-          };
-          modules = [
-            "custom/expand-icon"
-            "idle_inhibitor"
-            "tray"
-          ];
-        };
-        "custom/expand-icon" = {
-          format = "";
-          tooltip = false;
-          on-scroll-up = "";
-          on-scroll-down = "";
-          on-scroll-left = "";
-          on-scroll-right = "";
-        };
 
         "niri/workspaces" = {
           format = "{icon}";
@@ -106,10 +75,10 @@ _: {
           ];
           dynamic-len = 40;
           player-icons = {
-            default = "";
+            default = "";
           };
           status-icons = {
-            paused = "";
+            paused = "";
           };
         };
 
@@ -141,14 +110,12 @@ _: {
           tooltip = true;
         };
         pulseaudio = {
-          format = "{icon} {volume}%";
-          format-muted = " 0%";
+          format = "{icon}";
+          format-muted = "";
           format-icons = {
             headphone = "";
             hands-free = "";
             headset = "";
-            phone = "";
-            portable = "";
             default = [
               ""
               ""
@@ -165,9 +132,18 @@ _: {
             deactivated = "";
           };
         };
+        "group/system" = {
+          orientation = "horizontal";
+          modules = [
+            "network"
+            "bluetooth"
+            "pulseaudio"
+            "battery"
+          ];
+        };
         clock = {
           interval = 1;
-          format = "{:%A %H:%M}";
+          format = "{:%H:%M · %a %d}";
           on-click = "niri-launch-or-focus-webapp calendar.proton.me";
           "tooltip-format" = "<tt>{calendar}</tt>";
           calendar = {
@@ -189,6 +165,35 @@ _: {
           icon-size = 16;
           spacing = 5;
         };
+        "group/tray-expander" = {
+          "orientation" = "inherit";
+          "drawer" = {
+            transition-duration = 600;
+            children-class = "tray-group-item";
+            transition-left-to-right = false;
+          };
+          modules = [
+            "custom/expand-icon"
+            "tray"
+          ];
+        };
+        "custom/expand-icon" = {
+          format = "";
+          tooltip = false;
+          on-scroll-up = "";
+          on-scroll-down = "";
+          on-scroll-left = "";
+          on-scroll-right = "";
+        };
+
+        "group/custom-tray" = {
+          orientation = "horizontal";
+          modules = [
+            "group/tray-expander"
+            "idle_inhibitor"
+          ];
+        };
+
         bluetooth = {
           format = "";
           format-off = "";
@@ -202,7 +207,69 @@ _: {
         };
       };
     };
+
+    style = lib.mkAfter ''
+        window#waybar {
+          background-color: @base00;
+          color: @base06;
+          border-top: 1px solid @base02;
+        }
+
+        .module {
+            padding: 0 8px;
+        }
+
+        tooltip {
+            background: @base00;
+            border: 1px solid @base0D ;
+        }
+        tooltip label {
+            color: @base00;
+        }
+
+        #bluetooth.connected {
+            color: @base0C ;
+        }
+
+        #battery.warning, #battery.critical {
+            color: @base08 ;
+        }
+
+        #privacy {
+            color: @base09 ;
+        }
+
+      #workspaces button {
+          transition: all 0.1s ease;
+          padding: 0 10px;
+          background: transparent;
+          border-radius: 10;
+      }
+
+        #workspaces button.empty,
+        #bluetooth.off {
+          color: @base02;
+        }
+
+        #workspaces button.active {
+          background-color: @base0D;
+          color: @base00;
+        }
+
+        window#waybar.empty #window {
+          border: transparent;
+          background-color: transparent;
+        }
+
+        #custom-tray {
+            background-color: @base02 ;
+            border-radius: 10;
+        }
+    '';
+
   };
 
-  stylix.targets.waybar.font = "sansSerif";
+  stylix = {
+    targets.waybar.addCss = false; # only add fonts and colors
+  };
 }
