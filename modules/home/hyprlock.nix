@@ -8,7 +8,6 @@
     enable = true;
     package = if asahi then null else pkgs.hyprlock;
     settings = {
-      source = "colors.conf";
       background = {
         monitor = "";
         path = "$image";

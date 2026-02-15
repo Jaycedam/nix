@@ -30,6 +30,19 @@
       bitwarden-cli
       ffmpeg
 
+      # fonts
+      noto-fonts
+      noto-fonts-cjk-sans
+      noto-fonts-color-emoji
+      liberation_ttf # replacements for the MS fonts: Times New Roman, Arial, and Courier New.
+      dejavu_fonts
+      jetbrains-mono
+      font-awesome
+
+      # icons
+      adwaita-icon-theme
+      kdePackages.breeze-icons
+
       # desktop apps
       pavucontrol
       localsend
@@ -82,14 +95,9 @@
   programs = {
     btop = {
       enable = true;
-      settings = {
-        color_theme = "matugen";
-        theme_background = false;
-      };
     };
     opencode = {
       enable = true;
-      settings.theme = "system";
     };
     gemini-cli.enable = true;
 

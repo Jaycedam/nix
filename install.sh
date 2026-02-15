@@ -187,7 +187,4 @@ else
     exit 1
 fi
 
-echo "Setting default theme with Matugen..."
-matugen image "$WALLPAPER" &>/dev/null
-
 echo "Done! Reboot to apply all changes."

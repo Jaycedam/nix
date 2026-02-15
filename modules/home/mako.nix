@@ -9,7 +9,6 @@ _: {
       border-size = 1;
       border-radius = 10;
       layer = "overlay";
-      include = "~/.config/mako/mako-colors";
 
       # OSD bottom-center
       "category=osd" = {

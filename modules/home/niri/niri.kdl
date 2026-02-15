@@ -72,7 +72,7 @@ layout {
     gaps 15
 
     // options: never, always, on-overflow
-    center-focused-column "never"
+    center-focused-column "on-overflow"
     always-center-single-column
 
     // You can customize the widths that "switch-preset-column-width" (Mod+R) toggles between.
@@ -117,8 +117,6 @@ layout {
     //     on
     // }
 }
-
-include "./colors.kdl"
 
 hotkey-overlay {
     // Uncomment this line to disable the "Important Hotkeys" pop-up at startup.

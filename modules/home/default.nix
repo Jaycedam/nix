@@ -11,12 +11,10 @@
     ./rmpc.nix
     ./waybar/waybar.nix
     ./programs.nix
-    ./gtk-qt.nix
     ./hypridle.nix
     ./fuzzel.nix
     ./mako.nix
     ./desktop-entries.nix
-    ./matugen/default.nix
     ./nixvim/default.nix
     ./tmux.nix
     ./kitty.nix
@@ -24,7 +22,6 @@
     ./anki.nix
     ./fish.nix
     ./git.nix
-    ./fontconfig.nix
     ./ghostty.nix
     ./services.nix
     ./scripts.nix

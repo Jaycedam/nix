@@ -21,14 +21,6 @@ _: {
           run = "cd ~/Pictures";
           desc = "Go to ~/Pictures";
         }
-        {
-          on = [
-            "<Space>"
-            "w"
-          ];
-          run = "shell -- matugen image %H";
-          desc = "Set wallpaper and theme";
-        }
         # toggle
         {
           on = "<Tab>";
