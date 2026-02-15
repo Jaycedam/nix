@@ -2,7 +2,6 @@ _: {
   services.mako = {
     enable = true;
     settings = {
-      font = "DejaVu Sans 12";
       outer-margin = 15;
       width = 400;
       padding = 10;

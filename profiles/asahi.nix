@@ -3,6 +3,7 @@
   home-manager,
   user,
   nixvim,
+  stylix,
   ...
 }:
 let
@@ -16,12 +17,14 @@ home-manager.lib.homeManagerConfiguration {
       home-manager
       user
       nixvim
+      stylix
       system
       ;
     asahi = true;
   };
   modules = [
     { programs.home-manager.enable = true; }
+    stylix.homeModules.stylix
     ../modules/home/default.nix
     ../modules/home/standalone-conf.nix
   ];

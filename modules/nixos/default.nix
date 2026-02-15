@@ -12,5 +12,6 @@ _: {
     ./greeter.nix
     ./virtualization.nix
     ./homelab.nix
+    ./stylix.nix
   ];
 }

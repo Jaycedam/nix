@@ -4,6 +4,7 @@
   user,
   nixvim,
   asahi,
+  stylix,
   ...
 }:
 nixpkgs.lib.nixosSystem {
@@ -13,9 +14,11 @@ nixpkgs.lib.nixosSystem {
       nixvim
       home-manager
       asahi
+      stylix
       ;
   };
   modules = [
+    stylix.nixosModules.stylix
     ../modules/hosts/nixos/default.nix
     ../modules/nixos/default.nix
     home-manager.nixosModules.home-manager
@@ -25,7 +28,12 @@ nixpkgs.lib.nixosSystem {
         useUserPackages = true;
         backupFileExtension = "backup";
         extraSpecialArgs = {
-          inherit user nixvim asahi;
+          inherit
+            user
+            nixvim
+            asahi
+            stylix
+            ;
         };
         users.${user} = {
           imports = [

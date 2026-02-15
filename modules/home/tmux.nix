@@ -41,8 +41,6 @@
       bind a new-window -c "#{pane_current_path}" -n AI "opencode"
       # Open remote git repository on the Browser
       bind b run-shell "gh browse"
-
-      source-file "$HOME/.config/tmux/generated.conf"
     '';
   };
 }

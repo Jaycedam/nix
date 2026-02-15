@@ -12,6 +12,12 @@
     nixvim = {
       url = "github:nix-community/nixvim";
     };
+
+    stylix = {
+      url = "github:nix-community/stylix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
   };
 
   nixConfig = {
@@ -28,6 +34,7 @@
       nixpkgs,
       home-manager,
       nixvim,
+      stylix,
       ...
     }:
     let
@@ -39,6 +46,7 @@
           home-manager
           user
           nixvim
+          stylix
           ;
         asahi = false;
       };
