@@ -5,6 +5,7 @@
 }:
 {
   imports = [
+    ../common/stylix.nix
     ./niri/default.nix
     ./beets.nix
     ./mpd.nix

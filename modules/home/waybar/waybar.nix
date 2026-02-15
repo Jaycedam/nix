@@ -203,4 +203,6 @@ _: {
       };
     };
   };
+
+  stylix.targets.waybar.font = "sansSerif";
 }
