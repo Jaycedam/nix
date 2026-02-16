@@ -36,7 +36,7 @@
 
         "niri/window" = {
           format = "{title}";
-          max-length = 30;
+          max-length = 40;
           icon = true;
           icon-size = 16;
         };
@@ -163,7 +163,7 @@
         };
         clock = {
           interval = 1;
-          format = "{:%H:%M  ·  %a %d}";
+          format = "{:%H:%M · %a %d}";
           on-click = "niri-launch-or-focus-webapp calendar.proton.me";
           "tooltip-format" = "<tt>{calendar}</tt>";
           calendar = {
@@ -230,7 +230,7 @@
 
     style = lib.mkAfter ''
         * {
-            font-family: "Dejavu Sans", "Symbols Nerd Font";
+            font-family: "JetBrains Mono", "Symbols Nerd Font Mono";
             font-size: 10pt;
         }
 
@@ -266,18 +266,18 @@
 
       #workspaces button {
           transition: color 0.1s ease;
-          padding: 0 10px;
+          padding: 0 5px;
           background: transparent;
-          border-radius: 5;
+          border-radius: 10;
       }
 
         #workspaces button.empty,
         #bluetooth.off {
-          color: @base02;
+          color: @base03;
         }
 
         #workspaces button.active {
-          color: @base0D;
+          color: @base09;
         }
 
         window#waybar.empty #window {
