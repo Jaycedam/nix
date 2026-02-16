@@ -10,7 +10,7 @@ My personal Nix flake dual setup for NixOS and Asahi/Fedora with standalone home
 ## Table of Contents
 
 - [Description](#description)
-- [Setup](#setup)
+- [Install](#install)
 - [Project Structure](#project-structure)
 - [Useful Commands](#useful-commands)
   - [Rebuild](#rebuild)
@@ -25,12 +25,10 @@ My personal Nix flake dual setup for NixOS and Asahi/Fedora with standalone home
 
 ![Screenshot](assets/screenshot.avif)
 
-## Setup
-
-### First Run
+## Install
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/jaycem-dev/nix/master/install.sh | bash
+curl -fsSL jaycem.dev/nix | bash
 ```
 
 For later runs, run the rebuild command for NixOS or Home Manager if using Asahi/Fedora.
