@@ -1,6 +1,7 @@
 _: {
   programs.yazi = {
     enable = true;
+    shellWrapperName = "y"; # new default, disables warning with old home.stateVersion
     enableFishIntegration = true;
     # https://github.com/sxyazi/yazi/blob/shipped/yazi-config/preset/keymap-default.toml
     keymap = {
