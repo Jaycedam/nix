@@ -71,6 +71,18 @@ install_nix() {
     fi
 }
 
+libinput_quirks() {
+    echo "Setting up libinput quirks for keyd virtual keyboard..."
+    sudo mkdir -p /etc/libinput
+    sudo tee /etc/libinput/local-overrides.quirks >/dev/null <<EOF
+[Serial Keyboards]
+
+MatchUdevType=keyboard
+MatchName=keyd*keyboard
+AttrKeyboardIntegration=internal
+EOF
+}
+
 fedora_settings() {
     echo "Suppressing TTY console logs..."
     sudo dmesg --console-off >/dev/null
@@ -120,7 +132,9 @@ fedora_pkgs() {
     systemctl --user enable --now pipewire-pulse.service >/dev/null
     sudo systemctl enable --now tuned >/dev/null
     sudo systemctl enable --now keyd >/dev/null
+}
 
+keyd_config() {
     echo "Copying keyd config..."
     sudo mkdir -p /etc/keyd >/dev/null
     sudo tee /etc/keyd/default.conf >/dev/null <<EOF
@@ -162,7 +176,6 @@ f10 = f10
 f11 = f11
 f12 = f12
 EOF
-
 }
 
 if [ "$DISTRO" = "nixos" ]; then
@@ -180,6 +193,8 @@ elif [ "$DISTRO" = "fedora" ]; then
     echo "Detected Fedora..."
     sudo_check
     fedora_settings
+    keyd_config
+    libinput_quirks
     fedora_pkgs
     install_nix
     clone_config
