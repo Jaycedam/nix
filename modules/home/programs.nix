@@ -38,6 +38,7 @@
       liberation_ttf # replacements for the MS fonts: Times New Roman, Arial, and Courier New.
       dejavu_fonts
       jetbrains-mono
+      nerd-fonts.symbols-only
       font-awesome
 
       # icons

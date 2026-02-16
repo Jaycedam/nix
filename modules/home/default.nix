@@ -53,6 +53,8 @@
     stateVersion = "25.11";
   };
 
+  fonts.fontconfig.enable = true;
+
   # autocreate user dirs
   xdg.userDirs.enable = true;
 }

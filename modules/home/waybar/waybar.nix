@@ -27,10 +27,10 @@
         "niri/workspaces" = {
           format = "{icon}";
           format-icons = {
-            browser = "";
-            dev = "";
-            chat = "";
-            default = "";
+            browser = "󰊯";
+            dev = "󰞷";
+            chat = "󰻞";
+            default = "󰝥";
           };
         };
 
@@ -75,19 +75,19 @@
           ];
           dynamic-len = 40;
           player-icons = {
-            default = "";
+            default = "󰐍";
           };
           status-icons = {
-            paused = "";
+            paused = "󰏦";
           };
         };
 
         network = {
-          format-wifi = "";
-          format-ethernet = "";
+          format-wifi = "󰖩";
+          format-ethernet = "󰈀";
           tooltip-format = "Connected to {essid}";
-          format-linked = "󱘖 {ifname} (No IP)";
-          format-disconnected = " Disconnected";
+          format-linked = "󱎔 {ifname} (No IP)";
+          format-disconnected = "󰀦 Disconnected";
           interval = 3;
           on-click = "kitty --class 'impala' impala";
         };
@@ -95,31 +95,51 @@
         battery = {
           states = {
             warning = 30;
-            critical = 15;
           };
           format = "{icon} {capacity}%";
-          format-charging = " {capacity}%";
+          format-charging = "󰂄 {capacity}%";
           interval = 1;
-          format-icons = [
-            ""
-            ""
-            ""
-            ""
-            ""
-          ];
+          format-icons = {
+            default = [
+              "󰂎"
+              "󰁺"
+              "󰁻"
+              "󰁼"
+              "󰁽"
+              "󰁾"
+              "󰁿"
+              "󰂀"
+              "󰂁"
+              "󰂂"
+              "󰁹"
+            ];
+            charging = [
+              "󰢟"
+              "󰢜"
+              "󰂆"
+              "󰂇"
+              "󰂈"
+              "󰢝"
+              "󰂉"
+              "󰢞"
+              "󰂊"
+              "󰂋"
+              "󰂅"
+            ];
+          };
           tooltip = true;
         };
         pulseaudio = {
           format = "{icon}";
-          format-muted = "";
+          format-muted = "󰝟";
           format-icons = {
-            headphone = "";
-            hands-free = "";
-            headset = "";
+            headphone = "󰋋";
+            hands-free = "󰋋";
+            headset = "󰋋";
             default = [
-              ""
-              ""
-              ""
+              "󰕿"
+              "󰖀"
+              "󰕾"
             ];
           };
           on-click = "pavucontrol -t 3";
@@ -128,8 +148,8 @@
         idle_inhibitor = {
           format = "{icon}";
           format-icons = {
-            activated = "";
-            deactivated = "";
+            activated = "󰅶";
+            deactivated = "󰛊";
           };
         };
         "group/system" = {
@@ -143,7 +163,7 @@
         };
         clock = {
           interval = 1;
-          format = "{:%H:%M · %a %d}";
+          format = "{:%H:%M  ·  %a %d}";
           on-click = "niri-launch-or-focus-webapp calendar.proton.me";
           "tooltip-format" = "<tt>{calendar}</tt>";
           calendar = {
@@ -178,7 +198,7 @@
           ];
         };
         "custom/expand-icon" = {
-          format = "";
+          format = "󰄽";
           tooltip = false;
           on-scroll-up = "";
           on-scroll-down = "";
@@ -195,10 +215,10 @@
         };
 
         bluetooth = {
-          format = "";
-          format-off = "";
+          format = "󰂯";
+          format-off = "󰂲";
           format-no-controller = "";
-          format-connected = "";
+          format-connected = "󰂱";
           tooltip-format = "{controller_alias}\n\n{num_connections} connected";
           tooltip-format-connected = "{controller_alias}\n\n{num_connections} connected\n\n{device_enumerate}";
           tooltip-format-enumerate-connected = "{device_alias}";
@@ -209,6 +229,11 @@
     };
 
     style = lib.mkAfter ''
+        * {
+            font-family: "Dejavu Sans", "Symbols Nerd Font";
+            font-size: 10pt;
+        }
+
         window#waybar {
           background-color: @base00;
           color: @base06;
@@ -231,7 +256,7 @@
             color: @base0C ;
         }
 
-        #battery.warning, #battery.critical {
+        #battery.warning {
             color: @base08 ;
         }
 
@@ -240,10 +265,10 @@
         }
 
       #workspaces button {
-          transition: all 0.1s ease;
+          transition: color 0.1s ease;
           padding: 0 10px;
           background: transparent;
-          border-radius: 10;
+          border-radius: 5;
       }
 
         #workspaces button.empty,
@@ -252,8 +277,7 @@
         }
 
         #workspaces button.active {
-          background-color: @base0D;
-          color: @base00;
+          color: @base0D;
         }
 
         window#waybar.empty #window {
@@ -269,7 +293,8 @@
 
   };
 
-  stylix = {
-    targets.waybar.addCss = false; # only add fonts and colors
+  stylix.targets.waybar = {
+    addCss = false;
   };
+
 }
