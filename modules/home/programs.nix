@@ -29,6 +29,7 @@
       fastfetch
       bitwarden-cli
       ffmpeg
+      unrar
 
       # fonts
       noto-fonts
@@ -62,6 +63,7 @@
       transmission_4-gtk
       bitwarden-desktop
       spotube
+      moonlight-qt
 
       ### browser ###
       brave
