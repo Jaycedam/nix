@@ -1,4 +1,5 @@
-_: {
+{ pkgs, ... }:
+{
   # use xkb config for tty, early for luks prompt
   console = {
     useXkbConfig = true;
@@ -68,4 +69,14 @@ _: {
       };
     };
   };
+
+  # fix for internal keyboards blocking touchpad 'disable-while-typing' action, when using keyd
+  environment.etc."libinput/local-overrides.quirks".text = pkgs.lib.mkForce ''
+    [Serial Keyboards]
+
+    MatchUdevType=keyboard
+    MatchName=keyd*keyboard
+    AttrKeyboardIntegration=internal
+  '';
+
 }
