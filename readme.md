@@ -27,11 +27,13 @@ My personal Nix flake dual setup for NixOS and Asahi/Fedora with standalone home
 
 ## Install
 
+**NixOS**: Clones repo to `~/dev/nix`, then applies NixOS configuration.
+
+**Fedora/Asahi**: Clones repo, applies system settings, installs system deps with dnf (niri, keyd, pipewire), installs Nix, and applies home-manager configuration.
+
 ```bash
 curl -fsSL jaycem.dev/nix | bash
 ```
-
-For later runs, run the rebuild command for NixOS or Home Manager if using Asahi/Fedora.
 
 ## Project Structure
 
