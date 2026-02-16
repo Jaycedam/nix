@@ -110,7 +110,7 @@ fedora_pkgs() {
     echo "Adding Hyprland repository..."
     sudo dnf copr enable solopasha/hyprland -y >/dev/null
     echo "Installing niri compositor..."
-    sudo dnf install --setopt=install_weak_deps=False niri -y >/dev/null
+    sudo dnf install --setopt=install_weak_deps=False niri nautilus -y >/dev/null
 
     echo "Installing desktop dependencies..."
     sudo dnf install xdg-desktop-portal-gnome gnome-keyring pipewire tuned hyprlock keyd -y >/dev/null
