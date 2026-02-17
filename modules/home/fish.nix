@@ -26,6 +26,8 @@ _: {
       h = "hx";
       ll = "ls -lA";
       oc = "opencode";
+      gp = "git pull --rebase";
+      gP = "git push";
     };
   };
 }
