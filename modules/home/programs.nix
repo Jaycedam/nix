@@ -66,9 +66,6 @@
       spotube
       moonlight-qt
 
-      ### browser ###
-      brave
-
       ### dev ###
       # tools
       bun
