@@ -15,6 +15,7 @@ _: {
         enable = true;
         installCargo = true;
         installRustc = true;
+        installRustfmt = true;
       };
       bashls = {
         enable = true;

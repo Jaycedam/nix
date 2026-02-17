@@ -76,6 +76,7 @@
       lazygit
       nodejs_24
       android-tools
+      gcc
       # languages
       go
 
