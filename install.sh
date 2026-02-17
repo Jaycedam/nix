@@ -134,6 +134,11 @@ fedora_pkgs() {
     sudo systemctl enable --now keyd >/dev/null
 }
 
+nix_trusted_users() {
+    echo "Configuring Nix trusted users..."
+    sudo sh -c 'echo "trusted-users = root @wheel '$(whoami)'" >> /etc/nix/nix.custom.conf'
+}
+
 keyd_config() {
     echo "Copying keyd config..."
     sudo mkdir -p /etc/keyd >/dev/null
@@ -197,6 +202,7 @@ elif [ "$DISTRO" = "fedora" ]; then
     libinput_quirks
     fedora_pkgs
     install_nix
+    nix_trusted_users
     clone_config
 
     echo "Applying home-manager configuration..."
