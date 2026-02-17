@@ -45,16 +45,9 @@ cursor {
     hide-after-inactive-ms 5000
 }
 
-// You can configure outputs by their name, which you can find
-// by running `niri msg outputs` while inside a niri instance.
-// The built-in laptop monitor is usually called "eDP-1".
-// Find more information on the wiki:
+// run `niri msg outputs` to get the list of outputs
 // https://yalter.github.io/niri/Configuration:-Outputs
-// Remember to uncomment the node by removing "/-"!
 output "eDP-1" {
-    // The format is "<width>x<height>" or "<width>x<height>@<refresh rate>".
-    // If the refresh rate is omitted, niri will pick the highest refresh rate for the resolution.
-    // `niri msg outputs`
     scale 1.7
 }
 output "HDMI-A-1" {
@@ -62,59 +55,34 @@ output "HDMI-A-1" {
     scale 1
 }
 
-// Settings that influence how windows are positioned and sized.
-// Find more information on the wiki:
 // https://yalter.github.io/niri/Configuration:-Layout
 layout {
     background-color "transparent"
-
-    // Set gaps around windows in logical pixels.
     gaps 10
-
     // options: never, always, on-overflow
     center-focused-column "on-overflow"
     always-center-single-column
-
-    // You can customize the widths that "switch-preset-column-width" (Mod+R) toggles between.
+    default-column-width { proportion 0.8; }
     preset-column-widths {
-        // Proportion sets the width as a fraction of the output width, taking gaps into account.
-        // For example, you can perfectly fit four windows sized "proportion 0.25" on an output.
-        // The default preset widths are 1/3, 1/2 and 2/3 of the output.
         proportion 0.5
         proportion 0.8
     }
-
-    // You can also customize the heights that "switch-preset-window-height" (Mod+Shift+R) toggles between.
     preset-window-heights {
         proportion 0.2
         proportion 0.5
     }
-
-    // You can change the default width of the new windows.
-    default-column-width { proportion 0.8; }
-
-    focus-ring {
-        off
-        width 3
-        active-color "#c4a7e7"
-    }
-
-    // Struts shrink the area occupied by windows, similarly to layer-shell panels.
-    // You can think of them as a kind of outer gaps. They are set in logical pixels.
-    // Left and right struts will cause the next window to the side to always be visible.
-    // Top and bottom struts will simply add outer gaps in addition to the area occupied by
-    // layer-shell panels and regular gaps.
     struts {
         left 20
         right 20
     }
-
+    focus-ring {
+        off
+    }
     border {
         on
         width 3
         active-color "#c4a7e7"
     }
-
     // shadow {
     //     on
     // }
@@ -127,10 +95,9 @@ hotkey-overlay {
 
 prefer-no-csd // no client-side decorations
 
-screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
+screenshot-path "~/Pictures/Screenshots/screenshot %Y-%m-%d %H-%M-%S.png"
 
 // https://yalter.github.io/niri/Configuration:-Window-Rules
-
 // Open the Firefox and Chromium PIP floating by default.
 window-rule {
     match app-id=r#"firefox$"# title="^Picture-in-Picture$"
@@ -211,24 +178,21 @@ layer-rule {
 binds {
     // Mod-Shift-/, which is usually the same as Mod-?,
     // shows a list of important hotkeys.
-    Mod+Shift+Slash { show-hotkey-overlay; }
+    Mod+Shift+Slash repeat=false { show-hotkey-overlay; }
 
     Mod+T hotkey-overlay-title="Open kitty" { spawn "kitty"; }
-    Mod+N hotkey-overlay-title="Open neovim" { spawn-sh "niri-launch-or-focus nvim-wrapper"; }
-    Mod+E hotkey-overlay-title="Open yazi" { spawn-sh "niri-launch-or-focus \"kitty --class yazi yazi\" --id yazi"; }
-    Mod+M hotkey-overlay-title="Open rmpc" { spawn-sh "niri-launch-or-focus \"kitty --class rmpc rmpc\" --id rmpc"; }
-    Mod+B hotkey-overlay-title="Open browser" { spawn-sh "niri-launch-or-focus brave --id brave-browser"; }
-    Mod+Space hotkey-overlay-title="Search apps" { spawn "fuzzel"; }
+    Mod+N repeat=false hotkey-overlay-title="Open neovim" { spawn-sh "niri-launch-or-focus nvim-wrapper"; }
+    Mod+E repeat=false hotkey-overlay-title="Open yazi" { spawn-sh "niri-launch-or-focus \"kitty --class yazi yazi\" --id yazi"; }
+    Mod+M repeat=false hotkey-overlay-title="Open rmpc" { spawn-sh "niri-launch-or-focus \"kitty --class rmpc rmpc\" --id rmpc"; }
+    Mod+B repeat=false hotkey-overlay-title="Open browser" { spawn-sh "niri-launch-or-focus brave --id brave-browser"; }
+    Mod+Space repeat=false hotkey-overlay-title="Search apps" { spawn "fuzzel"; }
 
     // launch or focus webapps
-    Mod+W hotkey-overlay-title="Open Whatsapp (Webapp)" { spawn-sh "niri-launch-or-focus-webapp web.whatsapp.com"; }
-    Mod+Shift+M hotkey-overlay-title="Open ProtonMail (Webapp)" { spawn-sh "niri-launch-or-focus-webapp mail.proton.me"; }
-    Mod+Y hotkey-overlay-title="Open YouTube (Webapp)" { spawn-sh "niri-launch-or-focus-webapp youtube.com"; }
-    Mod+Shift+Y hotkey-overlay-title="Open YouTube Music (Webapp)" { spawn-sh "niri-launch-or-focus-webapp music.youtube.com"; }
+    Mod+W repeat=false hotkey-overlay-title="Open Whatsapp (Webapp)" { spawn-sh "niri-launch-or-focus-webapp web.whatsapp.com"; }
+    Mod+Shift+M repeat=false hotkey-overlay-title="Open ProtonMail (Webapp)" { spawn-sh "niri-launch-or-focus-webapp mail.proton.me"; }
+    Mod+Y repeat=false hotkey-overlay-title="Open YouTube (Webapp)" { spawn-sh "niri-launch-or-focus-webapp youtube.com"; }
+    Mod+S repeat=false hotkey-overlay-title="Open Spotify (Webapp)" { spawn-sh "niri-launch-or-focus-webapp open.spotify.com"; }
 
-    // Open/close the Overview: a zoomed-out view of workspaces and windows.
-    // You can also move the mouse into the top-left hot corner,
-    // or do a four-finger swipe up on a touchpad.
     Mod+O repeat=false { toggle-overview; }
     Mod+Q repeat=false { close-window; }
 
@@ -319,7 +283,7 @@ binds {
     Mod+Shift+9 { move-column-to-workspace 9; }
 
     // Switches focus between the current and the previous workspace.
-    Mod+Tab { focus-workspace-previous; }
+    Mod+Tab repeat=false { focus-workspace-previous; }
 
     // The following binds move the focused window in and out of a column.
     // If the window is alone, they will consume it into the nearby column to the side.
@@ -327,14 +291,14 @@ binds {
     Mod+Comma  { consume-or-expel-window-left; }
     Mod+Period { consume-or-expel-window-right; }
 
-    Mod+R { switch-preset-column-width; }
-    Mod+Shift+R {switch-preset-window-height;}
-    Mod+F { maximize-column; }
-    Mod+Shift+F { fullscreen-window; }
+    Mod+R repeat=false { switch-preset-column-width; }
+    Mod+Shift+R repeat=false {switch-preset-window-height;}
+    Mod+F repeat=false { maximize-column; }
+    Mod+Shift+F repeat=false { fullscreen-window; }
 
     // Expand the focused column to space not taken up by other fully visible columns.
     // Makes the column "fill the rest of the space".
-    Mod+Shift+E { expand-column-to-available-width; }
+    Mod+Shift+E repeat=false { expand-column-to-available-width; }
 
     Mod+C { center-column; }
 
@@ -357,8 +321,8 @@ binds {
     Mod+Shift+Equal { set-window-height "+10%"; }
 
     // Move the focused window between the floating and the tiling layout.
-    Mod+V       { toggle-window-floating; }
-    Mod+Shift+V { switch-focus-between-floating-and-tiling; }
+    Mod+V       repeat=false { toggle-window-floating; }
+    Mod+Shift+V repeat=false { switch-focus-between-floating-and-tiling; }
 
     // Toggle tabbed column display mode.
     // Windows in this column will appear as vertical tabs,
@@ -391,7 +355,7 @@ binds {
     // The quit action will show a confirmation dialog to avoid accidental exits.
     Mod+Shift+Q { quit; }
 
-    Mod+P { spawn "dmenu-power"; }
+    Mod+P repeat=false { spawn "dmenu-power"; }
 
     // volume keys mappings for PipeWire & WirePlumber. "-l 1.0" limits the volume to 100%.
     // Using spawn-sh allows to pass multiple arguments together with the command.
