@@ -65,22 +65,6 @@
       bitwarden-desktop
       spotube
       moonlight-qt
-
-      ### dev ###
-      # tools
-      bun
-      tree-sitter
-      lazygit
-      nodejs_24
-      android-tools
-      gcc
-      # languages
-      go
-
-      # linters
-      eslint
-      shellcheck
-      statix
     ]
     ++
       lib.optionals (builtins.elem pkgs.stdenv.hostPlatform.system (proton-pass.meta.platforms or [ ]))
