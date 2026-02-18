@@ -6,9 +6,9 @@
     settings = {
       mainBar = {
         layer = "top";
-        position = "bottom";
+        position = "top";
         spacing = 10;
-        # margin = "0 10 5 10";
+        margin = "5 10 0 10";
 
         modules-left = [
           "niri/workspaces"
@@ -235,9 +235,8 @@
         }
 
         window#waybar {
-          background-color: @base00;
+          background-color: transparent;
           color: @base06;
-          border-top: 1px solid @base02;
         }
 
         .module {
@@ -285,8 +284,22 @@
           background-color: transparent;
         }
 
-        #custom-tray {
-            background-color: @base02 ;
+        #idle_inhibitor.deactivated {
+            color: @base03;
+        }
+
+        #idle_inhibitor.activated {
+            color: @base09;
+        }
+
+        #workspaces,
+        #window,
+        #clock,
+        #mpris,
+        #custom-tray,
+        #system {
+            background-color: @base00;
+            border: 1px solid @base02;
             border-radius: 10;
         }
     '';

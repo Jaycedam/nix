@@ -48,7 +48,7 @@ cursor {
 // run `niri msg outputs` to get the list of outputs
 // https://yalter.github.io/niri/Configuration:-Outputs
 output "eDP-1" {
-    scale 1.7
+    scale 1.6
 }
 output "HDMI-A-1" {
     mode "1920x1080"
@@ -62,19 +62,19 @@ layout {
     // options: never, always, on-overflow
     center-focused-column "on-overflow"
     always-center-single-column
-    default-column-width { proportion 0.8; }
+    default-column-width { proportion 0.9; }
     preset-column-widths {
         proportion 0.5
-        proportion 0.8
+        proportion 0.9
     }
     preset-window-heights {
         proportion 0.2
         proportion 0.5
     }
-    struts {
-        left 20
-        right 20
-    }
+    // struts {
+    //     left 10
+    //     right 10
+    // }
     focus-ring {
         off
     }
@@ -82,6 +82,7 @@ layout {
         on
         width 3
         active-color "#c4a7e7"
+        inactive-color "#26233a"
     }
     // shadow {
     //     on
