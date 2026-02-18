@@ -20,6 +20,7 @@
     splitbelow = true;
     signcolumn = "yes";
     title = true;
+    autoread = true;
     titlestring.__raw = "[[%{v:progname} - %f %m]]";
     completeopt = [
       "menuone"

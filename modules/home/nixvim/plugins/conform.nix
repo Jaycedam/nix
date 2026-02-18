@@ -5,6 +5,7 @@ _: {
     settings = {
       formatters_by_ft = {
         python = [ "ruff" ];
+        rust = [ "rustfmt" ];
         htmldjango = [ "djlint" ];
         javascript = [ "prettier" ];
         astro = [ "prettier" ];

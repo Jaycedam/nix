@@ -3,6 +3,7 @@ _: {
     enable = true;
     lintersByFt = {
       python = [ "ruff" ];
+      rust = [ "clippy" ];
       javascript = [ "eslint" ];
       typescript = [ "eslint" ];
       sh = [ "shellcheck" ];
