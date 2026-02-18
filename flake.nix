@@ -58,7 +58,7 @@
           systems
           theme
           ;
-        asahi = false; # default is non asahi systems, override for asahi
+        nixos = true; # default is nixos systems, override for non-nixos
       };
 
       hmArgs = commonArgs // {
@@ -81,7 +81,7 @@
         asahi = import ./profiles/mkHome.nix (
           hmArgs
           // {
-            asahi = true;
+            nixos = false;
             system = systems.linux-arm;
           }
         );

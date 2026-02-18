@@ -2,7 +2,7 @@
   nixpkgs,
   user,
   nixvim,
-  asahi,
+  nixos,
   stylix,
   theme,
   ...
@@ -12,7 +12,7 @@ nixpkgs.lib.nixosSystem {
     inherit
       user
       nixvim
-      asahi
+      nixos
       stylix
       theme
       ;

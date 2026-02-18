@@ -1,12 +1,12 @@
 {
   pkgs,
-  asahi,
+  nixos,
   ...
 }:
 {
   programs.hyprlock = {
     enable = true;
-    package = if asahi then null else pkgs.hyprlock;
+    package = if nixos then pkgs.hyprlock else null;
     settings = {
       background = {
         monitor = "";

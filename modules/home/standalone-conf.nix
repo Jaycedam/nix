@@ -1,6 +1,7 @@
 {
   pkgs,
   user,
+  nixos,
   ...
 }:
 {
@@ -15,6 +16,6 @@
     settings.trusted-users = [ user ];
   };
 
-  # use system gpu drivers on non-NixOS, to get gpu acceleration
-  targets.genericLinux.enable = true;
+  # use system gpu drivers on non-NixOS (when nixos=false), to get gpu acceleration
+  targets.genericLinux.enable = !nixos;
 }

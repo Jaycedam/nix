@@ -1,7 +1,7 @@
 {
   pkgs,
   lib,
-  asahi,
+  system,
   ...
 }:
 {
@@ -17,7 +17,7 @@
 
   # Widevine CDM for aarch64 (DRM support)
   home.file.".config/BraveSoftware/Brave-Browser/WidevineCdm/latest-component-updated-widevine-cdm" =
-    lib.mkIf asahi
+    lib.mkIf (system == "aarch64-linux")
       {
         text = ''{"Path":"${pkgs.widevine-cdm}/share/google/chrome/WidevineCdm"}'';
       };

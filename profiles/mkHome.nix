@@ -4,8 +4,9 @@
   user,
   nixvim,
   stylix,
-  asahi,
+  nixos,
   system,
+  theme,
   ...
 }:
 home-manager.lib.homeManagerConfiguration {
@@ -18,7 +19,7 @@ home-manager.lib.homeManagerConfiguration {
       nixvim
       stylix
       system
-      asahi
+      nixos
       theme
       ;
   };
