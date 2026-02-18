@@ -1,4 +1,8 @@
-{ lib, ... }:
+{ lib, theme, ... }:
+let
+  iconSize = 15;
+  spacing = 10;
+in
 {
   programs.waybar = {
     enable = true;
@@ -6,9 +10,9 @@
     settings = {
       mainBar = {
         layer = "top";
-        position = "top";
-        spacing = 10;
-        margin = "5 10 0 10";
+        position = "bottom";
+        spacing = spacing;
+        margin = "0 10 5 10";
 
         modules-left = [
           "niri/workspaces"
@@ -38,7 +42,7 @@
           format = "{title}";
           max-length = 40;
           icon = true;
-          icon-size = 16;
+          icon-size = iconSize;
         };
 
         privacy = {
@@ -130,7 +134,7 @@
           tooltip = true;
         };
         pulseaudio = {
-          format = "{icon}";
+          format = "{icon} {volume}%";
           format-muted = "󰝟";
           format-icons = {
             headphone = "󰋋";
@@ -163,7 +167,7 @@
         };
         clock = {
           interval = 1;
-          format = "{:%H:%M · %a %d}";
+          format = "{:%a %d %b · %H:%M}";
           on-click = "niri-launch-or-focus-webapp calendar.proton.me";
           "tooltip-format" = "<tt>{calendar}</tt>";
           calendar = {
@@ -182,34 +186,14 @@
           };
         };
         tray = {
-          icon-size = 16;
-          spacing = 5;
-        };
-        "group/tray-expander" = {
-          "orientation" = "inherit";
-          "drawer" = {
-            transition-duration = 600;
-            children-class = "tray-group-item";
-            transition-left-to-right = false;
-          };
-          modules = [
-            "custom/expand-icon"
-            "tray"
-          ];
-        };
-        "custom/expand-icon" = {
-          format = "󰄽";
-          tooltip = false;
-          on-scroll-up = "";
-          on-scroll-down = "";
-          on-scroll-left = "";
-          on-scroll-right = "";
+          icon-size = iconSize;
+          spacing = spacing;
         };
 
         "group/custom-tray" = {
           orientation = "horizontal";
           modules = [
-            "group/tray-expander"
+            "tray"
             "idle_inhibitor"
           ];
         };
@@ -229,79 +213,74 @@
     };
 
     style = lib.mkAfter ''
-        * {
-            font-family: "JetBrains Mono", "Symbols Nerd Font Mono";
-            font-size: 10pt;
-        }
+      * {
+          font-family: "JetBrains Mono", "Symbols Nerd Font Mono";
+      }
 
-        window#waybar {
-          background-color: transparent;
+      window#waybar {
+          background-color: @base00;
           color: @base06;
-        }
+          border: 1px solid @base02;
+          border-radius: ${toString theme.borderRadius}px;
+      }
 
-        .module {
-            padding: 0 8px;
-        }
+      .module {
+          padding: 0 8px;
+      }
 
-        tooltip {
-            background: @base00;
-            border: 1px solid @base0D ;
-        }
-        tooltip label {
-            color: @base00;
-        }
+      tooltip {
+          background: @base00;
+          border: 1px solid @base0D ;
+      }
+      tooltip label {
+          color: @base00;
+      }
 
-        #bluetooth.connected {
-            color: @base0C ;
-        }
+      #bluetooth.connected, #network.wifi {
+          color: @base0C ;
+      }
 
-        #battery.warning {
-            color: @base08 ;
-        }
+      #battery.warning {
+          color: @base08 ;
+      }
 
-        #privacy {
-            color: @base09 ;
-        }
+      #privacy {
+          color: @base09 ;
+      }
 
       #workspaces button {
           transition: color 0.1s ease;
           padding: 0 5px;
           background: transparent;
-          border-radius: 10;
+          border-radius: ${toString theme.borderRadius};
       }
 
-        #workspaces button.empty,
-        #bluetooth.off {
+      #custom-tray {
+          background: @base02;
+          border-radius: ${toString theme.borderRadius};
+      }
+
+      #workspaces button.empty,
+      #bluetooth.off {
+        color: @base03;
+      }
+
+      #workspaces button.active {
+        color: @base09;
+      }
+
+      window#waybar.empty #window {
+        border: transparent;
+        background-color: transparent;
+      }
+
+      #idle_inhibitor.deactivated {
           color: @base03;
-        }
+      }
 
-        #workspaces button.active {
+      #idle_inhibitor.activated {
           color: @base09;
-        }
-
-        window#waybar.empty #window {
-          border: transparent;
-          background-color: transparent;
-        }
-
-        #idle_inhibitor.deactivated {
-            color: @base03;
-        }
-
-        #idle_inhibitor.activated {
-            color: @base09;
-        }
-
-        #workspaces,
-        #window,
-        #clock,
-        #mpris,
-        #custom-tray,
-        #system {
-            background-color: @base00;
-            border: 1px solid @base02;
-            border-radius: 10;
-        }
+      }
     '';
 
   };

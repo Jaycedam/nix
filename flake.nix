@@ -45,6 +45,10 @@
         linux = "x86_64-linux";
       };
 
+      theme = {
+        borderRadius = 5;
+      };
+
       commonArgs = {
         inherit
           nixpkgs
@@ -52,6 +56,7 @@
           nixvim
           stylix
           systems
+          theme
           ;
         asahi = false; # default is non asahi systems, override for asahi
       };

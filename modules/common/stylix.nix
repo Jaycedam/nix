@@ -5,6 +5,20 @@
     polarity = "dark";
     base16Scheme = "${pkgs.base16-schemes}/share/themes/rose-pine.yaml";
 
+    # fonts.sizes = {
+    #   # applications = 12; # default: 12
+    #   # terminal = 12; # default: applications
+    #   # desktop = 8; # default: 10
+    #   # popups = 10; # default: desktop
+    # };
+
+    opacity = {
+      applications = 0.95;
+      terminal = 0.95;
+      popups = 0.95;
+      desktop = 0.95;
+    };
+
     icons = {
       enable = true;
       package = pkgs.candy-icons;

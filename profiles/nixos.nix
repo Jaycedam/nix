@@ -4,6 +4,7 @@
   nixvim,
   asahi,
   stylix,
+  theme,
   ...
 }:
 nixpkgs.lib.nixosSystem {
@@ -13,6 +14,7 @@ nixpkgs.lib.nixosSystem {
       nixvim
       asahi
       stylix
+      theme
       ;
   };
   modules = [

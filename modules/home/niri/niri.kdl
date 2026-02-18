@@ -71,10 +71,10 @@ layout {
         proportion 0.2
         proportion 0.5
     }
-    // struts {
-    //     left 10
-    //     right 10
-    // }
+    struts {
+        left 10
+        right 10
+    }
     focus-ring {
         off
     }
@@ -84,9 +84,9 @@ layout {
         active-color "#c4a7e7"
         inactive-color "#26233a"
     }
-    // shadow {
-    //     on
-    // }
+    shadow {
+        on
+    }
 }
 
 hotkey-overlay {
@@ -122,7 +122,7 @@ window-rule {
 
 window-rule {
     // rounded corners
-    geometry-corner-radius 10
+    geometry-corner-radius 5 
     clip-to-geometry true
 }
 

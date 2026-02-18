@@ -1,10 +1,10 @@
-{ config, ... }:
+{ config, theme, ... }:
 {
   programs.fuzzel = {
     enable = true;
     settings = {
       border = {
-        radius = 10;
+        radius = theme.borderRadius;
       };
     };
   };

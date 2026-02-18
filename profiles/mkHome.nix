@@ -19,6 +19,7 @@ home-manager.lib.homeManagerConfiguration {
       stylix
       system
       asahi
+      theme
       ;
   };
   modules = [
