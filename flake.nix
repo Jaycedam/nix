@@ -55,10 +55,11 @@
           user
           nixvim
           stylix
-          systems
           theme
           ;
-        nixos = true; # default is nixos systems, override for non-nixos
+        # The following are defaults - only override when necessary (e.g., on non-NixOS or ARM systems)
+        nixos = true;
+        system = systems.linux;
       };
 
       hmArgs = commonArgs // {
@@ -72,12 +73,7 @@
       };
 
       homeConfigurations = {
-        "${user}" = import ./profiles/mkHome.nix (
-          hmArgs
-          // {
-            system = systems.linux;
-          }
-        );
+        "${user}" = import ./profiles/mkHome.nix hmArgs;
         asahi = import ./profiles/mkHome.nix (
           hmArgs
           // {
