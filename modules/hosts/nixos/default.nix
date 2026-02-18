@@ -9,11 +9,6 @@
 
   networking.hostName = "nixos"; # Define your hostname.
 
-  # Host-specific Hyprland monitor config
-  home-manager.users.${user}.wayland.windowManager.hyprland.settings.monitor = [
-    "HDMI-A-1,1920x1080@72,auto,1"
-  ];
-
   # other ssd/hdd mounts
   fileSystems."/mnt/ssd" = {
     device = "/dev/disk/by-uuid/208fa710-4554-4c04-9b2a-a7dd49cc4181";
