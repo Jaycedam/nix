@@ -5,19 +5,46 @@ DISTRO=$(grep '^NAME=' /etc/os-release | cut -d= -f2 | tr -d '"' | cut -d' ' -f1
 DIR="${HOME}/dev/nix"
 WALLPAPER="$DIR/assets/wallpaper.jpg"
 BRANCH=""
+NIXOS_PROFILE=""
+HM_PROFILE=""
 
-while getopts "b:h" opt; do
-    case $opt in
-    b)
-        BRANCH="$OPTARG"
+while [[ $# -gt 0 ]]; do
+    case $1 in
+    --branch)
+        if [[ -z "${2:-}" ]] || [[ "${2:-}" == --* ]]; then
+            echo "Error: --branch requires an argument" >&2
+            exit 1
+        fi
+        BRANCH="$2"
+        shift 2
         ;;
-    h)
-        echo "Usage: $0 [-b branch]"
-        echo "  -b branch    Git branch to switch to after cloning"
+    --nixos)
+        if [[ -z "${2:-}" ]] || [[ "${2:-}" == --* ]]; then
+            echo "Error: --nixos requires an argument" >&2
+            exit 1
+        fi
+        NIXOS_PROFILE="#${2}"
+        shift 2
+        ;;
+    --home)
+        if [[ -z "${2:-}" ]] || [[ "${2:-}" == --* ]]; then
+            echo "Error: --home requires an argument" >&2
+            exit 1
+        fi
+        HM_PROFILE="#${2}"
+        shift 2
+        ;;
+    --help)
+        echo "Usage: $0 [options]"
+        echo ""
+        echo "Options:"
+        echo "  --branch branch    Git branch to switch to after cloning"
+        echo "  --nixos profile    NixOS configuration profile (optional, defaults to host)"
+        echo "  --home profile     Home Manager profile (optional, defaults to current user)"
         exit 0
         ;;
     *)
-        echo "Usage: $0 [-b branch]"
+        echo "Usage: $0 [--branch branch] [--nixos profile] [--home profile]"
         exit 1
         ;;
     esac
@@ -136,7 +163,8 @@ fedora_pkgs() {
 
 nix_trusted_users() {
     echo "Configuring Nix trusted users..."
-    sudo sh -c 'echo "trusted-users = root @wheel '$(whoami)'" >> /etc/nix/nix.custom.conf'
+    sudo mkdir -p /etc/nix
+    sudo tee /etc/nix/nix.custom.conf >/dev/null <<<"trusted-users = root @wheel $(whoami)"
 }
 
 keyd_config() {
@@ -190,7 +218,10 @@ if [ "$DISTRO" = "nixos" ]; then
 
     # Switch to NixOS configuration
     sudo NIX_CONFIG="experimental-features = nix-command flakes" \
-        nixos-rebuild switch --flake ~/dev/nix#nixos
+        nixos-rebuild switch --flake ~/dev/nix"${NIXOS_PROFILE}"
+
+    echo "Applying home-manager configuration..."
+    nix run github:nix-community/home-manager/master -- switch -b backup --flake "${DIR}""${HM_PROFILE}"
 
     set_wallpaper
 
@@ -206,7 +237,7 @@ elif [ "$DISTRO" = "fedora" ]; then
     clone_config
 
     echo "Applying home-manager configuration..."
-    nix run github:nix-community/home-manager/master -- switch -b backup --flake "${DIR}"#asahi
+    nix run github:nix-community/home-manager/master -- switch -b backup --flake "${DIR}""${HM_PROFILE}"
 
     echo "Enabling GPU driver access..."
     sudo "$(which non-nixos-gpu-setup)" >/dev/null
