@@ -1,4 +1,4 @@
-_: {
+{ pkgs, ... }: {
   imports = [
     ./niri.nix
     ./options.nix
@@ -14,4 +14,6 @@ _: {
     ./homelab.nix
     ../common/stylix.nix
   ];
+
+  environment.systemPackages = with pkgs; [ home-manager ];
 }
