@@ -4,11 +4,10 @@
   user,
   nixvim,
   stylix,
+  asahi,
+  system,
   ...
 }:
-let
-  system = "aarch64-linux";
-in
 home-manager.lib.homeManagerConfiguration {
   pkgs = nixpkgs.legacyPackages.${system};
   extraSpecialArgs = {
@@ -19,8 +18,8 @@ home-manager.lib.homeManagerConfiguration {
       nixvim
       stylix
       system
+      asahi
       ;
-    asahi = true;
   };
   modules = [
     { programs.home-manager.enable = true; }

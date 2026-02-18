@@ -38,17 +38,26 @@
       ...
     }:
     let
-      user = "jay";
+      user = "jay"; # used for home-manager config, default profile
+
+      systems = {
+        linux-arm = "aarch64-linux";
+        linux = "x86_64-linux";
+      };
 
       commonArgs = {
         inherit
           nixpkgs
-          home-manager
           user
           nixvim
           stylix
+          systems
           ;
-        asahi = false;
+        asahi = false; # default is non asahi systems, override for asahi
+      };
+
+      hmArgs = commonArgs // {
+        inherit home-manager;
       };
 
     in
@@ -58,7 +67,19 @@
       };
 
       homeConfigurations = {
-        "asahi" = import ./profiles/asahi.nix commonArgs;
+        "${user}" = import ./profiles/mkHome.nix (
+          hmArgs
+          // {
+            system = systems.linux;
+          }
+        );
+        asahi = import ./profiles/mkHome.nix (
+          hmArgs
+          // {
+            asahi = true;
+            system = systems.linux-arm;
+          }
+        );
       };
     };
 }
