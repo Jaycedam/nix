@@ -12,8 +12,8 @@ pkgs.writeShellScriptBin "ns" ''
 
   DIR="$HOME/dev/nix"
   GC=false
-  PROFILE=""
-  FLAKE_PATH="$DIR"
+  USER_PROFILE=""
+  HOST_PROFILE=""
 
   usage() {
       echo -e "''${GREEN}Usage:''${RESET} ns [''${YELLOW}OPTIONS''${RESET}] <''${YELLOW}update''${RESET}|''${YELLOW}switch''${RESET}|''${YELLOW}clean''${RESET}|''${YELLOW}news''${RESET}] [''${YELLOW}home''${RESET}|''${YELLOW}nixos''${RESET}]"
@@ -31,17 +31,19 @@ pkgs.writeShellScriptBin "ns" ''
       echo "If no target is specified, both home and nixos are applied."
       echo ""
       echo -e "''${GREEN}Options:''${RESET}"
-      echo -e "  ''${YELLOW}--config''${RESET}, ''${YELLOW}-c''${RESET} <dir>  Override the nix config directory (default: \$HOME/dev/nix)"
-      echo -e "  ''${YELLOW}--profile''${RESET}, ''${YELLOW}-p''${RESET} <name>  Use a specific flake profile"
-      echo -e "  ''${YELLOW}--gc''${RESET}             Run garbage collection after update/switch"
+      echo -e "  ''${YELLOW}--config''${RESET}, ''${YELLOW}-c''${RESET} <dir>   Override the nix config directory (default: \$HOME/dev/nix)"
+      echo -e "  ''${YELLOW}--user''${RESET} <name>        Use a specific home-manager profile"
+      echo -e "  ''${YELLOW}--host''${RESET} <name>        Use a specific nixos profile"
+      echo -e "  ''${YELLOW}--gc''${RESET}                Run garbage collection after update/switch"
       echo ""
       echo -e "''${GREEN}Examples:''${RESET}"
-      echo -e "  ns ''${YELLOW}update''${RESET}                    Update both home and nixos"
-      echo -e "  ns ''${YELLOW}switch''${RESET} ''${YELLOW}home''${RESET}               Switch home-manager only"
-      echo -e "  ns ''${YELLOW}clean''${RESET} ''${YELLOW}nixos''${RESET}               Clean nixos generations only"
-      echo -e "  ns ''${YELLOW}news''${RESET}                      Show home-manager news"
-      echo -e "  ns ''${YELLOW}update''${RESET} ''${YELLOW}--gc''${RESET}               Update and run garbage collection"
-      echo -e "  ns ''${YELLOW}switch''${RESET} ''${YELLOW}home''${RESET} ''${YELLOW}-p''${RESET} laptop     Switch home-manager with laptop profile"
+      echo -e "  ns ''${YELLOW}update''${RESET}                       Update both home and nixos"
+      echo -e "  ns ''${YELLOW}switch''${RESET} ''${YELLOW}home''${RESET}                Switch home-manager only"
+      echo -e "  ns ''${YELLOW}clean''${RESET} ''${YELLOW}nixos''${RESET}                Clean nixos generations only"
+      echo -e "  ns ''${YELLOW}news''${RESET}                         Show home-manager news"
+      echo -e "  ns ''${YELLOW}update''${RESET} ''${YELLOW}--gc''${RESET}                Update and run garbage collection"
+      echo -e "  ns ''${YELLOW}switch''${RESET} ''${YELLOW}home''${RESET} ''${YELLOW}--user''${RESET} jay        Switch home-manager with jay profile"
+      echo -e "  ns ''${YELLOW}switch''${RESET} ''${YELLOW}nixos''${RESET} ''${YELLOW}--host''${RESET} laptop    Switch nixos with laptop profile"
       echo -e "  ns ''${YELLOW}update''${RESET} ''${YELLOW}nixos''${RESET} ''${YELLOW}-c''${RESET} /custom/path"
   }
 
@@ -56,12 +58,20 @@ pkgs.writeShellScriptBin "ns" ''
           DIR="$2"
           shift 2
           ;;
-      --profile | -p)
+      --user)
           if [[ -z "''${2:-}" ]]; then
-              echo -e "''${RED}Error:''${RESET} --profile requires a profile name"
+              echo -e "''${RED}Error:''${RESET} --user requires a profile name"
               exit 1
           fi
-          PROFILE="$2"
+          USER_PROFILE="$2"
+          shift 2
+          ;;
+      --host)
+          if [[ -z "''${2:-}" ]]; then
+              echo -e "''${RED}Error:''${RESET} --host requires a profile name"
+              exit 1
+          fi
+          HOST_PROFILE="$2"
           shift 2
           ;;
       --gc)
@@ -81,10 +91,6 @@ pkgs.writeShellScriptBin "ns" ''
 
   set -- "''${args[@]}"
 
-  if [[ -n "$PROFILE" ]]; then
-      FLAKE_PATH="$DIR#$PROFILE"
-  fi
-
   if [[ $# -lt 1 ]]; then
       echo -e "''${RED}Error:''${RESET} Missing required argument"
       usage
@@ -101,7 +107,11 @@ pkgs.writeShellScriptBin "ns" ''
   fi
 
   if [[ "$action" == "news" ]]; then
-      home-manager news --flake "$FLAKE_PATH"
+      if [[ -n "$USER_PROFILE" ]]; then
+          home-manager news --flake "$DIR#$USER_PROFILE"
+      else
+          home-manager news --flake "$DIR"
+      fi
       exit 0
   fi
 
@@ -112,8 +122,11 @@ pkgs.writeShellScriptBin "ns" ''
   fi
 
   echo -e "$ARROW Dir: $DIR"
-  if [[ -n "$PROFILE" ]]; then
-      echo -e "$ARROW Profile: $PROFILE"
+  if [[ -n "$USER_PROFILE" ]]; then
+      echo -e "$ARROW User profile: $USER_PROFILE"
+  fi
+  if [[ -n "$HOST_PROFILE" ]]; then
+      echo -e "$ARROW Host profile: $HOST_PROFILE"
   fi
 
   cleanup() {
@@ -136,12 +149,16 @@ pkgs.writeShellScriptBin "ns" ''
 
   run_home() {
       local action="$1"
+      local flake_path="$DIR"
+      if [[ -n "$USER_PROFILE" ]]; then
+          flake_path="$DIR#$USER_PROFILE"
+      fi
       echo -e "$ARROW [home-manager] Running $action..."
       if [[ "$action" == "update" ]]; then
           nix flake update "$DIR" >/dev/null
-          home-manager switch -b backup --flake "$FLAKE_PATH" >/dev/null
+          home-manager switch -b backup --flake "$flake_path" >/dev/null
       elif [[ "$action" == "switch" ]]; then
-          home-manager switch -b backup --flake "$FLAKE_PATH" >/dev/null
+          home-manager switch -b backup --flake "$flake_path" >/dev/null
       elif [[ "$action" == "clean" ]]; then
           cleanup home
           return
@@ -153,12 +170,16 @@ pkgs.writeShellScriptBin "ns" ''
 
   run_nixos() {
       local action="$1"
+      local flake_path="$DIR"
+      if [[ -n "$HOST_PROFILE" ]]; then
+          flake_path="$DIR#$HOST_PROFILE"
+      fi
       echo -e "$ARROW [nixos] Running $action..."
       if [[ "$action" == "update" ]]; then
           nix flake update "$DIR" >/dev/null
-          sudo nixos-rebuild switch --flake "$FLAKE_PATH" >/dev/null
+          sudo nixos-rebuild switch --flake "$flake_path" >/dev/null
       elif [[ "$action" == "switch" ]]; then
-          sudo nixos-rebuild switch --flake "$FLAKE_PATH" >/dev/null
+          sudo nixos-rebuild switch --flake "$flake_path" >/dev/null
       elif [[ "$action" == "clean" ]]; then
           cleanup nixos
           return
