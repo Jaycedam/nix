@@ -72,8 +72,8 @@ layout {
         proportion 0.5
     }
     struts {
-        left 10
-        right 10
+        left 20
+        right 20
     }
     focus-ring {
         off
