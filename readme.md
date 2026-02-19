@@ -11,7 +11,7 @@ My personal Nix flake for NixOS with standalone Home Manager for non-NixOS syste
 
 - [Description](#description)
 - [Install](#install)
-- [Useful Commands](#useful-commands)
+- [Nix Cli Helper](#nix-cli-helper)
 - [Project Structure](#project-structure)
 
 ## Description
@@ -34,9 +34,9 @@ Current install script works on both NixOS and Fedora with standalone Home Manag
 curl -fsSL jaycem.dev/nix | bash
 ```
 
-## Useful Commands
+## Nix Cli Helper
 
-The [`ns`](./modules/home/scripts/system/nix-utils.nix) script is included as a pkg derivation and provides an unified and easier interface for managing NixOS and Home Manager flake based configurations with the same cli.
+The [`ns`](./modules/home/scripts/system/nix-utils.nix) cli is included as a pkg derivation and provides an unified and easier interface for managing NixOS and Home Manager flake based configurations with the same cli.
 
 ```bash
 ns <action> [target] [options]
