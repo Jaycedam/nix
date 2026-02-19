@@ -19,7 +19,7 @@ nixpkgs.lib.nixosSystem {
   };
   modules = [
     stylix.nixosModules.stylix
-    ../modules/hosts/nixos/default.nix
-    ../modules/nixos/default.nix
+    ../modules/hosts/nixos
+    ../modules/nixos
   ];
 }

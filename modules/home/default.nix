@@ -6,17 +6,17 @@
 {
   imports = [
     ../common/stylix.nix
-    ./niri/default.nix
+    ./niri
     ./beets.nix
     ./mpd.nix
     ./rmpc.nix
-    ./waybar/waybar.nix
+    ./waybar
     ./programs.nix
     ./hypridle.nix
     ./fuzzel.nix
     ./mako.nix
     ./desktop-entries.nix
-    ./nixvim/default.nix
+    ./nixvim
     ./tmux.nix
     ./kitty.nix
     ./yazi.nix

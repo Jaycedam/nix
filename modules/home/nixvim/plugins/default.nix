@@ -1,4 +1,15 @@
-_: {
+{
+  imports = [
+    ./conform.nix
+    ./lint.nix
+    ./flash.nix
+    ./snacks.nix
+    ./blink.nix
+    ./lualine.nix
+    ./noice.nix
+    ./lsp.nix
+  ];
+
   plugins = {
     supermaven.enable = true;
     render-markdown.enable = true;

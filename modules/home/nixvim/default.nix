@@ -1,4 +1,4 @@
-{ nixvim, pkgs, ... }:
+{ nixvim, ... }:
 
 {
   imports = [
@@ -31,18 +31,7 @@
     };
 
     imports = [
-      # plugins and their keymaps
-      ./plugins/default.nix
-      ./plugins/conform.nix
-      ./plugins/lint.nix
-      ./plugins/flash.nix
-      ./plugins/snacks.nix
-      ./plugins/blink.nix
-      ./plugins/lualine.nix
-      ./plugins/noice.nix
-      ./plugins/lsp.nix
-
-      # general keymaps
+      ./plugins
       ./keymaps.nix
       ./opts.nix
     ];
