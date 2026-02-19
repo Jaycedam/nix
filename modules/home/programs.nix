@@ -1,20 +1,22 @@
 {
   pkgs,
-  lib,
   ...
 }:
+let
+  inherit (pkgs.stdenv.hostPlatform) system;
+  supported = pkg: builtins.elem system (pkg.meta.platforms or [ ]);
+in
 {
   home.packages =
     with pkgs;
     [
-      # cli
-      fwupd # upgrade firmware
+      fwupd
       playerctl
       brightnessctl
-      impala # wifi tui selector
+      impala
       wl-clipboard
       libnotify
-      ddcutil # ext monitor brightness
+      ddcutil
       wiremix
       tree
       pstree
@@ -31,21 +33,18 @@
       ffmpeg
       unrar
 
-      # fonts
       noto-fonts
       noto-fonts-cjk-sans
       noto-fonts-color-emoji
-      liberation_ttf # replacements for the MS fonts: Times New Roman, Arial, and Courier New.
+      liberation_ttf
       dejavu_fonts
       jetbrains-mono
       nerd-fonts.symbols-only
       font-awesome
 
-      # icons
       adwaita-icon-theme
       kdePackages.breeze-icons
 
-      # desktop apps
       pavucontrol
       localsend
       thunar
@@ -59,23 +58,16 @@
       jellyfin-desktop
       mpv
       gimp
-      # grayjay
-      seahorse # gnome keyring manager
+      seahorse
       transmission_4-gtk
       bitwarden-desktop
       spotube
       moonlight-qt
     ]
-    ++
-      lib.optionals (builtins.elem pkgs.stdenv.hostPlatform.system (proton-pass.meta.platforms or [ ]))
-        [
-          proton-pass
-        ]
-    ++
-      lib.optionals (builtins.elem pkgs.stdenv.hostPlatform.system (cryptomator.meta.platforms or [ ]))
-        [
-          cryptomator
-        ];
+    ++ builtins.filter supported [
+      proton-pass
+      cryptomator
+    ];
 
   programs = {
     btop = {
