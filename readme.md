@@ -11,11 +11,8 @@ My personal Nix flake for NixOS with standalone Home Manager for non-NixOS syste
 
 - [Description](#description)
 - [Install](#install)
-- [Project Structure](#project-structure)
 - [Useful Commands](#useful-commands)
-  - [Rebuild](#rebuild)
-  - [Update](#update)
-  - [Diff](#diff)
+- [Project Structure](#project-structure)
 
 ## Description
 
@@ -37,6 +34,34 @@ Current install script works on both NixOS and Fedora with standalone Home Manag
 curl -fsSL jaycem.dev/nix | bash
 ```
 
+## Useful Commands
+
+The [`ns`](./modules/home/scripts/system/nix-utils.nix) script is included as a pkg derivation and provides an unified and easier interface for managing NixOS and Home Manager flake based configurations with the same cli.
+
+```bash
+ns <action> [target] [options]
+```
+
+When no target is specified, both NixOS and Home Manager are applied. The `update` action also rebuilds after updating the flake.
+
+Available actions: `update`, `switch`, `clean`, `news`
+
+Available targets: `home`, `nixos`
+
+Available options: `-c, --config <dir>`, `--user <name>` (home-manager profile), `--host <name>` (nixos profile), `--gc` (garbage collection)
+
+Run `ns -h` for more information.
+
+### Examples
+
+```bash
+ns switch                       # Rebuild both NixOS and Home Manager
+ns switch home                  # Rebuild Home Manager only
+ns switch nixos --host laptop   # Rebuild NixOS with laptop profile
+ns switch home --user jay       # Rebuild Home Manager with jay profile
+ns update --gc                  # Update and run garbage collection
+```
+
 ## Project Structure
 
 This flake provides a unified configuration system that works on both NixOS and non-NixOS systems.
@@ -52,37 +77,3 @@ This flake provides a unified configuration system that works on both NixOS and 
 | modules/home/scripts/ | Standalone utility scripts packaged as derivations                           |
 | modules/common/       | Shared modules used by both NixOS and Home Manager (stylix, etc.)            |
 | modules/hosts/        | Host-specific hardware and system config (hardware-config.nix, mounts, etc.) |
-
-## Useful Commands
-
-### Rebuild
-
-- NixOS:
-
-Available profiles: `#nixos`
-
-Leave empty if current hostname match the available profiles.
-
-```
-sudo nixos-rebuild switch --flake ~/dev/nix#nixos
-```
-
-- Home Manager Standalone:
-
-Available profiles: `#jay`, `#asahi` (aarch64-linux).
-
-Add # at the end of the command to use a specific profile, eg. `.../nix#jay`.
-
-Leave empty if current user match the available profiles.
-
-```bash
-home-manager switch -b backup --flake ~/dev/nix
-```
-
-### Update
-
-```sh
-nix flake update
-```
-
-Then run the rebuild command for NixOS or Home Manager.
