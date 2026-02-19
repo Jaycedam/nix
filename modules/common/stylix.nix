@@ -12,12 +12,12 @@
     #   # popups = 10; # default: desktop
     # };
 
-    opacity = {
-      applications = 0.95;
-      terminal = 0.95;
-      popups = 0.95;
-      desktop = 0.95;
-    };
+    # opacity = {
+    #   applications = 0.95;
+    #   terminal = 0.95;
+    #   popups = 0.95;
+    #   desktop = 0.95;
+    # };
 
     icons = {
       enable = true;
