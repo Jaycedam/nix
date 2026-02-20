@@ -1,6 +1,14 @@
 #!/usr/bin/env bash
 set -e
 
+RED='\033[31m'
+GREEN='\033[32m'
+YELLOW='\033[33m'
+BLUE='\033[34m'
+MAGENTA='\033[35m'
+RESET='\033[0m'
+ARROW="${MAGENTA}==>${RESET}"
+
 DISTRO=$(grep '^NAME=' /etc/os-release | cut -d= -f2 | tr -d '"' | cut -d' ' -f1 | tr '[:upper:]' '[:lower:]')
 DIR="${HOME}/dev/nix"
 WALLPAPER="$DIR/assets/wallpaper.jpg"
@@ -12,7 +20,7 @@ while [[ $# -gt 0 ]]; do
     case $1 in
     --branch)
         if [[ -z "${2:-}" ]] || [[ "${2:-}" == --* ]]; then
-            echo "Error: --branch requires an argument" >&2
+            echo -e "${RED}Error:${RESET} --branch requires an argument" >&2
             exit 1
         fi
         BRANCH="$2"
@@ -20,7 +28,7 @@ while [[ $# -gt 0 ]]; do
         ;;
     --nixos)
         if [[ -z "${2:-}" ]] || [[ "${2:-}" == --* ]]; then
-            echo "Error: --nixos requires an argument" >&2
+            echo -e "${RED}Error:${RESET} --nixos requires an argument" >&2
             exit 1
         fi
         NIXOS_PROFILE="#${2}"
@@ -28,32 +36,33 @@ while [[ $# -gt 0 ]]; do
         ;;
     --home)
         if [[ -z "${2:-}" ]] || [[ "${2:-}" == --* ]]; then
-            echo "Error: --home requires an argument" >&2
+            echo -e "${RED}Error:${RESET} --home requires an argument" >&2
             exit 1
         fi
         HM_PROFILE="#${2}"
         shift 2
         ;;
     --help)
-        echo "Usage: $0 [options]"
+        echo -e "${GREEN}Usage:${RESET} $0 [options]"
         echo ""
-        echo "Options:"
-        echo "  --branch branch    Git branch to switch to after cloning"
-        echo "  --nixos profile    NixOS configuration profile (optional, defaults to host)"
-        echo "  --home profile     Home Manager profile (optional, defaults to current user)"
+        echo -e "${GREEN}Options:${RESET}"
+        echo -e "  ${BLUE}--branch${RESET} branch    Git branch to switch to after cloning"
+        echo -e "  ${BLUE}--nixos${RESET} profile    NixOS configuration profile (optional, defaults to host)"
+        echo -e "  ${BLUE}--home${RESET} profile     Home Manager profile (optional, defaults to current user)"
         exit 0
         ;;
     *)
-        echo "Usage: $0 [--branch branch] [--nixos profile] [--home profile]"
+        echo -e "${RED}Error:${RESET} Invalid option"
+        echo -e "${GREEN}Usage:${RESET} $0 [--branch branch] [--nixos profile] [--home profile]"
         exit 1
         ;;
     esac
 done
 
 sudo_check() {
-    echo "Verifying sudo access..."
+    echo -e "$ARROW Verifying ${BLUE}sudo${RESET} access..."
     if ! sudo -v; then
-        echo "Error: Sudo access required"
+        echo -e "${RED}Error:${RESET} Sudo access required"
         exit 1
     fi
 
@@ -70,18 +79,18 @@ sudo_check() {
 }
 
 clone_config() {
-    echo "Cloning configuration repository..."
+    echo -e "$ARROW Cloning configuration repository..."
     if [ -d "${DIR}/.git" ]; then
-        echo "WARNING: ${DIR} already exists. If the script fails, rename or remove the existing directory."
+        echo -e "${YELLOW}WARNING:${RESET} ${DIR} already exists. If the script fails, rename or remove the existing directory."
     else
         nix-shell -p git --run "git clone https://github.com/jaycem-dev/nix.git ${DIR}" >/dev/null
     fi
 
     if [ -n "$BRANCH" ]; then
-        echo "Switching to branch: ${BRANCH}..."
+        echo -e "$ARROW Switching to ${BLUE}${BRANCH}${RESET} branch..."
         cd "${DIR}"
         if ! git switch "${BRANCH}" >/dev/null; then
-            echo "Error: Failed to switch to branch '${BRANCH}'"
+            echo -e "${RED}Error:${RESET} Failed to switch to branch '${BRANCH}'"
             exit 1
         fi
     fi
@@ -89,17 +98,17 @@ clone_config() {
 
 install_nix() {
     if ! command -v nix >/dev/null 2>&1; then
-        echo "Installing Nix..."
+        echo -e "$ARROW Installing ${BLUE}Nix${RESET}..."
         curl -fsSL https://install.determinate.systems/nix | sh -s -- install --no-confirm
         # shellcheck disable=SC1091
         . /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh
     else
-        echo "Nix is already installed."
+        echo -e "$ARROW ${BLUE}Nix${RESET} is already installed."
     fi
 }
 
 libinput_quirks() {
-    echo "Setting up libinput quirks for keyd virtual keyboard..."
+    echo -e "$ARROW Setting up ${BLUE}libinput quirks${RESET} for keyd virtual keyboard..."
     sudo mkdir -p /etc/libinput
     sudo tee /etc/libinput/local-overrides.quirks >/dev/null <<EOF
 [Serial Keyboards]
@@ -111,7 +120,7 @@ EOF
 }
 
 iwd_backend() {
-    echo "Configuring NetworkManager to use iwd as WiFi backend..."
+    echo -e "$ARROW Configuring ${BLUE}NetworkManager${RESET} to use ${BLUE}iwd${RESET} as WiFi backend..."
     sudo dnf install iwd -y >/dev/null
     sudo mkdir -p /etc/NetworkManager/conf.d
     sudo tee /etc/NetworkManager/conf.d/wifi-backend.conf >/dev/null <<EOF
@@ -120,54 +129,54 @@ wifi.backend=iwd
 EOF
     sudo systemctl enable --now iwd >/dev/null
     sudo systemctl restart NetworkManager >/dev/null
-    echo "Switched to iwd WiFi backend. You may need to reconnect to your network."
+    echo -e "$ARROW Switched to ${BLUE}iwd${RESET} WiFi backend. You may need to reconnect to your network."
 }
 
 fedora_settings() {
-    echo "Suppressing TTY console logs..."
+    echo -e "$ARROW Suppressing ${BLUE}TTY${RESET} console logs..."
     sudo dmesg --console-off >/dev/null
 
-    echo "Setting TTY font size for HiDPI displays..."
+    echo -e "$ARROW Setting ${BLUE}TTY font${RESET} size for HiDPI displays..."
     sudo setfont solar24x32 >/dev/null
     sudo tee /etc/vconsole.conf >/dev/null <<EOF
 FONT=solar24x32
 EOF
 
-    echo "Setting Colemak-DH keyboard layout..."
+    echo -e "$ARROW Setting ${BLUE}Colemak-DH${RESET} keyboard layout..."
     sudo localectl set-keymap us-colemak_dh_iso >/dev/null
 
-    echo "Creating i2c group for external monitor control..."
+    echo -e "$ARROW Creating ${BLUE}i2c${RESET} group for external monitor control..."
     sudo groupadd i2c 2>/dev/null || true
     sudo usermod -aG i2c "$(whoami)" >/dev/null
 
-    echo "Making SELinux permissive to enable GPU drivers for nixpkgs..."
+    echo -e "$ARROW Making ${BLUE}SELinux${RESET} permissive to enable GPU drivers for nixpkgs..."
     sudo setenforce 0 >/dev/null
     sudo sed -i 's/^SELINUX=.*/SELINUX=permissive/' /etc/selinux/config >/dev/null
 }
 
 set_wallpaper() {
-    echo "Setting default wallpaper..."
+    echo -e "$ARROW Setting default ${BLUE}wallpaper${RESET}..."
     swww img "$WALLPAPER" >/dev/null
 }
 
 fedora_pkgs() {
-    echo "Upgrading system packages..."
+    echo -e "$ARROW Upgrading ${BLUE}system packages${RESET}..."
     sudo dnf upgrade -y >/dev/null
 
     # Util for using COPR
     sudo dnf install dnf-plugins-core -y >/dev/null
 
-    echo "Adding keyd repository..."
+    echo -e "$ARROW Adding ${BLUE}keyd${RESET} repository..."
     sudo dnf copr enable alternateved/keyd -y >/dev/null
-    echo "Adding Hyprland repository..."
+    echo -e "$ARROW Adding ${BLUE}Hyprland${RESET} repository..."
     sudo dnf copr enable solopasha/hyprland -y >/dev/null
-    echo "Installing niri compositor..."
+    echo -e "$ARROW Installing ${BLUE}niri${RESET} compositor..."
     sudo dnf install --setopt=install_weak_deps=False niri nautilus -y >/dev/null
 
-    echo "Installing desktop dependencies..."
+    echo -e "$ARROW Installing ${BLUE}desktop dependencies${RESET}..."
     sudo dnf install xdg-desktop-portal-gnome gnome-keyring pipewire tuned hyprlock keyd -y >/dev/null
 
-    echo "Enabling services..."
+    echo -e "$ARROW Enabling ${BLUE}services${RESET}..."
     systemctl --user enable --now pipewire.service >/dev/null
     systemctl --user enable --now pipewire-pulse.service >/dev/null
     sudo systemctl enable --now tuned >/dev/null
@@ -175,13 +184,13 @@ fedora_pkgs() {
 }
 
 nix_trusted_users() {
-    echo "Configuring Nix trusted users..."
+    echo -e "$ARROW Configuring ${BLUE}Nix trusted users${RESET}..."
     sudo mkdir -p /etc/nix
     sudo tee /etc/nix/nix.custom.conf >/dev/null <<<"trusted-users = root @wheel $(whoami)"
 }
 
 keyd_config() {
-    echo "Copying keyd config..."
+    echo -e "$ARROW Copying ${BLUE}keyd${RESET} config..."
     sudo mkdir -p /etc/keyd >/dev/null
     sudo tee /etc/keyd/default.conf >/dev/null <<EOF
 [ids]
@@ -225,7 +234,7 @@ EOF
 }
 
 if [ "$DISTRO" = "nixos" ]; then
-    echo "Detected NixOS..."
+    echo -e "$ARROW Detected ${BLUE}NixOS${RESET}..."
     sudo_check
     clone_config
 
@@ -233,13 +242,13 @@ if [ "$DISTRO" = "nixos" ]; then
     sudo NIX_CONFIG="experimental-features = nix-command flakes" \
         nixos-rebuild switch --flake ~/dev/nix"${NIXOS_PROFILE}"
 
-    echo "Applying home-manager configuration..."
+    echo -e "$ARROW Applying ${BLUE}home-manager${RESET} configuration..."
     nix run github:nix-community/home-manager/master -- switch -b backup --flake "${DIR}""${HM_PROFILE}"
 
     set_wallpaper
 
 elif [ "$DISTRO" = "fedora" ]; then
-    echo "Detected Fedora..."
+    echo -e "$ARROW Detected ${BLUE}Fedora${RESET}..."
     sudo_check
     fedora_settings
     keyd_config
@@ -249,18 +258,18 @@ elif [ "$DISTRO" = "fedora" ]; then
     nix_trusted_users
     clone_config
 
-    echo "Applying home-manager configuration..."
+    echo -e "$ARROW Applying ${BLUE}home-manager${RESET} configuration..."
     nix run github:nix-community/home-manager/master -- switch -b backup --flake "${DIR}""${HM_PROFILE}"
 
-    echo "Enabling GPU driver access..."
+    echo -e "$ARROW Enabling ${BLUE}GPU driver${RESET} access..."
     sudo "$(which non-nixos-gpu-setup)" >/dev/null
 
     set_wallpaper
 
     iwd_backend
 else
-    echo "Error: Unsupported distro: $DISTRO"
+    echo -e "${RED}Error:${RESET} Unsupported distro: $DISTRO"
     exit 1
 fi
 
-echo "Done! Reboot to apply all changes."
+echo -e "$ARROW ${GREEN}Done!${RESET} Reboot to apply all changes."
