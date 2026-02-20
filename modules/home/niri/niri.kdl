@@ -88,11 +88,11 @@ layout {
     border {
         on
         width 3
-        active-color "#c4a7e7"
-        inactive-color "#26233a"
+        active-color "#ffffff"
+        inactive-color "#212121"
     }
     shadow {
-        on
+        off
     }
 }
 
