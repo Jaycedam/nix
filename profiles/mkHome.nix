@@ -26,7 +26,7 @@ home-manager.lib.homeManagerConfiguration {
   modules = [
     { programs.home-manager.enable = true; }
     stylix.homeModules.stylix
-    ../modules/home/default.nix
+    ../modules/home
     ../modules/home/standalone-conf.nix
   ];
 }
