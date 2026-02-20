@@ -8,8 +8,7 @@
     window#waybar {
         background-color: @base00;
         color: @base06;
-        border: 1px solid @base02;
-        border-radius: ${toString theme.borderRadius}px;
+        border-bottom: 1px solid @base02;
     }
 
     .module {

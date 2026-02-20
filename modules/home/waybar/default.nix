@@ -10,9 +10,9 @@ _: {
     settings = {
       mainBar = {
         layer = "top";
-        position = "bottom";
+        position = "top";
         spacing = 10;
-        margin = "0 10 5 10";
+        # margin = "0 10 5 10";
 
         modules-left = [
           "niri/workspaces"
