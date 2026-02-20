@@ -110,6 +110,19 @@ AttrKeyboardIntegration=internal
 EOF
 }
 
+iwd_backend() {
+    echo "Configuring NetworkManager to use iwd as WiFi backend..."
+    sudo dnf install iwd -y >/dev/null
+    sudo mkdir -p /etc/NetworkManager/conf.d
+    sudo tee /etc/NetworkManager/conf.d/wifi-backend.conf >/dev/null <<EOF
+[device]
+wifi.backend=iwd
+EOF
+    sudo systemctl enable --now iwd >/dev/null
+    sudo systemctl restart NetworkManager >/dev/null
+    echo "Switched to iwd WiFi backend. You may need to reconnect to your network."
+}
+
 fedora_settings() {
     echo "Suppressing TTY console logs..."
     sudo dmesg --console-off >/dev/null
@@ -243,6 +256,8 @@ elif [ "$DISTRO" = "fedora" ]; then
     sudo "$(which non-nixos-gpu-setup)" >/dev/null
 
     set_wallpaper
+
+    iwd_backend
 else
     echo "Error: Unsupported distro: $DISTRO"
     exit 1
