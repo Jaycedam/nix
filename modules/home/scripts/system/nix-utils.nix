@@ -155,7 +155,7 @@ pkgs.writeShellScriptBin "ns" ''
       fi
       echo -e "$ARROW [home-manager] Running $action..."
       if [[ "$action" == "update" ]]; then
-          nix flake update "$DIR" >/dev/null
+          nix flake update --flake "$DIR" >/dev/null
           home-manager switch -b backup --flake "$flake_path" >/dev/null
       elif [[ "$action" == "switch" ]]; then
           home-manager switch -b backup --flake "$flake_path" >/dev/null
