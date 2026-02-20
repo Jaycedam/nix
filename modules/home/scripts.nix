@@ -10,6 +10,7 @@
     (import ./scripts/system/launch-webapp.nix { inherit pkgs; })
 
     (import ./scripts/niri/launch-or-focus.nix { inherit pkgs; })
+    (import ./scripts/niri/launch-or-focus-tui.nix { inherit pkgs; })
     (import ./scripts/niri/launch-or-focus-webapp.nix { inherit pkgs; })
 
     (import ./scripts/programs/nvim-wrapper.nix { inherit pkgs; })

@@ -40,6 +40,13 @@ input {
     focus-follows-mouse max-scroll-amount="30%"
 }
 
+// Disable the hot corners.
+gestures {
+    hot-corners {
+        off
+    }
+}
+
 cursor {
     // hide-when-typing
     hide-after-inactive-ms 5000
@@ -183,8 +190,8 @@ binds {
 
     Mod+T hotkey-overlay-title="Open kitty" { spawn "kitty"; }
     Mod+N repeat=false hotkey-overlay-title="Open neovim" { spawn-sh "niri-launch-or-focus nvim-wrapper"; }
-    Mod+E repeat=false hotkey-overlay-title="Open yazi" { spawn-sh "niri-launch-or-focus \"kitty --class yazi yazi\" --id yazi"; }
-    Mod+M repeat=false hotkey-overlay-title="Open rmpc" { spawn-sh "niri-launch-or-focus \"kitty --class rmpc rmpc\" --id rmpc"; }
+    Mod+E repeat=false hotkey-overlay-title="Open yazi" { spawn-sh "niri-launch-or-focus-tui yazi"; }
+    Mod+M repeat=false hotkey-overlay-title="Open rmpc" { spawn-sh "niri-launch-or-focus-tui rmpc"; }
     Mod+B repeat=false hotkey-overlay-title="Open browser" { spawn-sh "niri-launch-or-focus brave --id brave-browser"; }
     Mod+Space repeat=false hotkey-overlay-title="Search apps" { spawn "fuzzel"; }
 

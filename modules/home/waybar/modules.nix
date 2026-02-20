@@ -70,7 +70,7 @@ in
       format-linked = "󱎔 {ifname} (No IP)";
       format-disconnected = "󰀦 Disconnected";
       interval = 3;
-      on-click = "kitty --class 'impala' impala";
+      on-click = "niri-launch-or-focus-tui impala";
     };
 
     battery = {
@@ -184,7 +184,7 @@ in
       tooltip-format-connected = "{controller_alias}\n\n{num_connections} connected\n\n{device_enumerate}";
       tooltip-format-enumerate-connected = "{device_alias}";
       tooltip-format-enumerate-connected-battery = "{device_alias}\t{device_battery_percentage}%";
-      on-click = "kitty --class 'bluetui' bluetui";
+      on-click = "niri-launch-or-focus-tui bluetui";
     };
   };
 }
