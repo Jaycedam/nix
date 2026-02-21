@@ -29,6 +29,7 @@
     ./brave.nix
     ./gaming.nix
     ./hyprlock.nix
+    ./eza.nix
     ./dev.nix
   ];
 

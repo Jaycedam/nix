@@ -19,12 +19,15 @@ _: {
       set fish_greeting ""
       set -g fish_transient_prompt 1
     '';
-
+    shellAliases = {
+      rm = "trash";
+      ls = "eza";
+    };
     shellAbbrs = {
       v = "nvim";
       n = "nvim";
       h = "hx";
-      ll = "ls -lA";
+      ll = "ls -lhA";
       oc = "opencode";
       gp = "git pull --rebase";
       gP = "git push";
