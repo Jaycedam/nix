@@ -132,6 +132,13 @@ EOF
     echo -e "$ARROW Switched to ${BLUE}iwd${RESET} WiFi backend. You may need to reconnect to your network."
 }
 
+localsend_firewall() {
+    echo -e "$ARROW Configuring ${BLUE}firewall${RESET} for LocalSend..."
+    sudo firewall-cmd --permanent --add-port=53317/tcp >/dev/null
+    sudo firewall-cmd --permanent --add-port=53317/udp >/dev/null
+    sudo firewall-cmd --reload >/dev/null
+}
+
 fedora_settings() {
     echo -e "$ARROW Suppressing ${BLUE}TTY${RESET} console logs..."
     sudo dmesg --console-off >/dev/null
@@ -267,6 +274,7 @@ elif [ "$DISTRO" = "fedora" ]; then
     set_wallpaper
 
     iwd_backend
+    localsend_firewall
 else
     echo -e "${RED}Error:${RESET} Unsupported distro: $DISTRO"
     exit 1
