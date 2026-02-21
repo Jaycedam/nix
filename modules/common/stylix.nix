@@ -6,7 +6,7 @@
     # base16Scheme = "${pkgs.base16-schemes}/share/themes/rose-pine.yaml";
     base16Scheme = {
       base00 = "#0f0f0f"; # default background
-      base01 = "#141414"; # lighter background (status bar)
+      base01 = "#151515"; # lighter background (status bar)
       base02 = "#212121"; # selection background
       base03 = "#595959"; # comments, invisibles
       base04 = "#737373"; # dark foreground (status bar)
