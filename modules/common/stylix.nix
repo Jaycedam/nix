@@ -23,12 +23,13 @@
       base0F = "#c4c4c4"; # deprecated, secondary
     };
 
-    opacity = {
-      applications = 0.9;
-      terminal = 0.9;
-      popups = 0.9;
-      desktop = 0.9;
-    };
+    # waiting for niri blur support
+    # opacity = {
+    #   applications = 0.9;
+    #   terminal = 0.9;
+    #   popups = 0.9;
+    #   desktop = 0.9;
+    # };
 
     icons = {
       enable = true;

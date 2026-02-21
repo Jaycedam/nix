@@ -5,7 +5,7 @@ pkgs.writeShellScriptBin "niri-launch-or-focus" ''
 
   # Function to display usage
   usage() {
-      echo "Usage: $0 <command> [--id <app_id>] [--debug]"
+      echo "Usage: $0 <command> [--id <app_id>] [--tui] [--debug]"
       echo ""
       echo "Arguments:"
       echo "  <command>    The command to run if the app is not already open"
@@ -13,6 +13,7 @@ pkgs.writeShellScriptBin "niri-launch-or-focus" ''
       echo ""
       echo "Options:"
       echo "  -h, --help   Show this help message"
+      echo "  --tui        Launch in kitty terminal (wraps command with 'kitty --class <id>')"
       echo "  --debug      Enable debug output"
       echo ""
       echo "This script checks if an app with the given app_id is open using niri IPC."
@@ -23,6 +24,7 @@ pkgs.writeShellScriptBin "niri-launch-or-focus" ''
   CMD=""
   ID=""
   DEBUG=0
+  TUI=0
 
   while [[ $# -gt 0 ]]; do
       case $1 in
@@ -32,6 +34,10 @@ pkgs.writeShellScriptBin "niri-launch-or-focus" ''
               ;;
           --debug)
               DEBUG=1
+              shift
+              ;;
+          --tui)
+              TUI=1
               shift
               ;;
           --id)
@@ -75,6 +81,12 @@ pkgs.writeShellScriptBin "niri-launch-or-focus" ''
       if [[ "$DEBUG" == "1" ]]; then echo "Debug: Using CMD as ID: $ID"; fi
   else
       if [[ "$DEBUG" == "1" ]]; then echo "Debug: Using provided ID: $ID"; fi
+  fi
+
+  # Wrap command with kitty if TUI mode
+  if [[ "$TUI" == "1" ]]; then
+      CMD="kitty --class $ID $CMD"
+      if [[ "$DEBUG" == "1" ]]; then echo "Debug: TUI mode enabled, command is now: $CMD"; fi
   fi
 
   if [[ "$DEBUG" == "1" ]]; then echo "Debug: Checking for open app with ID: $ID"; fi
