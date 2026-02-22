@@ -6,6 +6,7 @@ _: {
     ./boot.nix
     ./network.nix
     ./services.nix
+    ./mangowc.nix
     ./chromium.nix
     ./gaming.nix
     ./keyboard.nix

@@ -17,6 +17,10 @@
       url = "github:nix-community/stylix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    mango = {
+      url = "github:DreamMaoMao/mango";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
   };
 
@@ -32,6 +36,7 @@
   outputs =
     {
       nixpkgs,
+      mango,
       home-manager,
       nixvim,
       stylix,
@@ -55,6 +60,7 @@
           user
           nixvim
           stylix
+          mango
           theme
           ;
         # The following are defaults - only override when necessary (e.g., on non-NixOS or ARM systems)

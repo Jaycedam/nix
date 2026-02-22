@@ -1,6 +1,7 @@
 {
   nixpkgs,
   user,
+  mango,
   nixvim,
   nixos,
   stylix,
@@ -13,6 +14,7 @@ nixpkgs.lib.nixosSystem {
       user
       nixvim
       nixos
+      mango
       stylix
       theme
       ;

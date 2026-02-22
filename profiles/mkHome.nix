@@ -1,5 +1,6 @@
 {
   nixpkgs,
+  mango,
   home-manager,
   user,
   nixvim,
@@ -15,6 +16,7 @@ home-manager.lib.homeManagerConfiguration {
     inherit
       nixpkgs
       home-manager
+      mango
       user
       nixvim
       stylix
