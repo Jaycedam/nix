@@ -32,6 +32,7 @@
     ./eza.nix
     ./dev.nix
     ./mangowc.nix
+    ./noctalia.nix
   ];
 
   home = {

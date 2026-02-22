@@ -1,6 +1,7 @@
 {
   nixpkgs,
   mango,
+  noctalia,
   home-manager,
   user,
   nixvim,
@@ -21,6 +22,7 @@ home-manager.lib.homeManagerConfiguration {
       nixvim
       stylix
       system
+      noctalia
       nixos
       theme
       ;
