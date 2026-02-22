@@ -31,6 +31,7 @@
     ./hyprlock.nix
     ./eza.nix
     ./dev.nix
+    ./mangowc.nix
   ];
 
   home = {
