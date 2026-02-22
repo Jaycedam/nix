@@ -253,6 +253,17 @@
       bind=super,minus,resizewin,-50,+0
       bind=super,equal,resizewin,+50,+0
 
+      # brightness
+      bind=none,XF86MonBrightnessUp,spawn,brightness up
+      bind=none,XF86MonBrightnessDown,spawn,brightness down
+      # keyboard backlight
+      bind=shift,XF86MonBrightnessUp,spawn,brightnessctl -q -d kbd_backlight s +25%
+      bind=shift,XF86MonBrightnessDown,spawn,brightnessctl -q -d kbd_backlight s 25%-
+      # volume
+      bind=none,XF86AudioRaiseVolume,spawn,volume up
+      bind=none,XF86AudioLowerVolume,spawn,volume down
+      bind=none,XF86AudioMute,spawn,volume mute
+
       # Mouse Button Bindings
       # btn_left and btn_right can't bind none mod key
       mousebind=super,btn_left,moveresize,curmove
