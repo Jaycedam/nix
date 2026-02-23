@@ -1,4 +1,4 @@
-{ mango, ... }:
+{ config, mango, ... }:
 {
   imports = [
     mango.hmModules.mango
@@ -11,7 +11,7 @@
 
       # Window effect
       blur=1
-      blur_layer=0
+      blur_layer=1
       blur_optimized=1
       blur_params_num_passes = 2
       blur_params_radius = 5
@@ -128,14 +128,14 @@
       scratchpad_width_ratio=0.8
       scratchpad_height_ratio=0.9
       borderpx=4
-      rootcolor=0x201b14ff
-      bordercolor=0x444444ff
-      focuscolor=0xc9b890ff
-      maximizescreencolor=0x89aa61ff
-      urgentcolor=0xad401fff
-      scratchpadcolor=0x516c93ff
-      globalcolor=0xb153a7ff
-      overlaycolor=0x14a57cff
+      rootcolor=0x${config.lib.stylix.colors.base00}ff
+      bordercolor=0x${config.lib.stylix.colors.base03}ff
+      focuscolor=0x${config.lib.stylix.colors.base0D}ff
+      maximizescreencolor=0x${config.lib.stylix.colors.base0B}ff
+      urgentcolor=0x${config.lib.stylix.colors.base08}ff
+      scratchpadcolor=0x${config.lib.stylix.colors.base0C}ff
+      globalcolor=0x${config.lib.stylix.colors.base0E}ff
+      overlaycolor=0x${config.lib.stylix.colors.base0A}ff
 
       # layout support:
       circle_layout=tile,scroller
