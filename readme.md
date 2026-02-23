@@ -11,7 +11,6 @@ My personal Nix flake for NixOS with standalone Home Manager for non-NixOS syste
 
 - [Description](#description)
 - [Install](#install)
-- [Project Structure](#project-structure)
 
 ## Description
 
@@ -25,28 +24,17 @@ Home Manager is setup as a NixOS module, with available profiles for non-NixOS s
 
 ## Install
 
-Current install script works on both NixOS and Fedora with standalone Home Manager.
-
-**NixOS**: Clones repo to `~/dev/nix`, then applies NixOS configuration.
-
-**Fedora**: Clones repo, applies system settings, installs system dependencies, installs Nix, and applies Home Manager configuration.
+The install script auto-detects the distro (NixOS or other) and applies the appropriate configuration. Pass a flake profile as the first argument.
 
 ```bash
-curl -fsSL jaycem.dev/nix | bash
+curl -fsSL jaycem.dev/nix | bash -- nixos-mango
 ```
 
-## Project Structure
+**Available profiles:**
 
-This flake provides a unified configuration system that works on both NixOS and non-NixOS systems.
-
-- **NixOS**: Full system rebuild with integrated home-manager
-- **Standalone**: Home Manager for any Linux distribution.
-
-| Directory             | Description                                                                  |
-| --------------------- | ---------------------------------------------------------------------------- |
-| **profiles/**         | System entry points - defines complete NixOS and Home Manager configurations |
-| modules/nixos/        | NixOS system-level modules (boot, network, services, users, etc.)            |
-| modules/home/         | Home Manager user-level modules (programs, dotfiles, window managers, etc.)  |
-| modules/home/scripts/ | Standalone utility scripts packaged as derivations                           |
-| modules/common/       | Shared modules used by both NixOS and Home Manager (stylix, etc.)            |
-| modules/hosts/        | Host-specific hardware and system config (hardware-config.nix, mounts, etc.) |
+| NixOS (with HM as module) | Home Manager standalone |
+| ------------------------- | ----------------------- |
+| `nixos-niri`              | `niri`                  |
+| `nixos-mango`             | `mango`                 |
+|                           | `asahi-niri` (arm64)    |
+|                           | `asahi-mango` (arm64)   |
