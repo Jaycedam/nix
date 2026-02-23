@@ -8,6 +8,7 @@
   theme,
   compositor,
   home-manager,
+  system,
   ...
 }:
 nixpkgs.lib.nixosSystem {
@@ -23,6 +24,9 @@ nixpkgs.lib.nixosSystem {
       ;
   };
   modules = [
+    ../modules/hosts/nixos
+    ../modules/nixos
+
     stylix.nixosModules.stylix
     home-manager.nixosModules.home-manager
     {
@@ -35,6 +39,7 @@ nixpkgs.lib.nixosSystem {
             user
             nixvim
             stylix
+            system
             nixos
             theme
             compositor
@@ -43,7 +48,5 @@ nixpkgs.lib.nixosSystem {
         };
       };
     }
-    ../modules/hosts/nixos
-    ../modules/nixos
   ];
 }
