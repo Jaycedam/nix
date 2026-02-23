@@ -13,12 +13,22 @@ DISTRO=$(grep '^NAME=' /etc/os-release | cut -d= -f2 | tr -d '"' | cut -d' ' -f1
 DIR="${HOME}/dev/nix"
 WALLPAPER="$DIR/assets/wallpaper.jpg"
 BRANCH=""
-NIXOS_PROFILE=""
-HM_PROFILE=""
+PROFILE=""
+
+if [[ "${1:-}" != -* ]]; then
+    PROFILE="#${1}"
+    shift
+fi
+
+if [[ $# -gt 0 ]]; then
+    echo -e "${RED}Error:${RESET} Too many arguments"
+    "$0" --help
+    exit 1
+fi
 
 while [[ $# -gt 0 ]]; do
     case $1 in
-    --branch)
+    --branch | -b)
         if [[ -z "${2:-}" ]] || [[ "${2:-}" == --* ]]; then
             echo -e "${RED}Error:${RESET} --branch requires an argument" >&2
             exit 1
@@ -26,34 +36,19 @@ while [[ $# -gt 0 ]]; do
         BRANCH="$2"
         shift 2
         ;;
-    --nixos)
-        if [[ -z "${2:-}" ]] || [[ "${2:-}" == --* ]]; then
-            echo -e "${RED}Error:${RESET} --nixos requires an argument" >&2
-            exit 1
-        fi
-        NIXOS_PROFILE="#${2}"
-        shift 2
-        ;;
-    --home)
-        if [[ -z "${2:-}" ]] || [[ "${2:-}" == --* ]]; then
-            echo -e "${RED}Error:${RESET} --home requires an argument" >&2
-            exit 1
-        fi
-        HM_PROFILE="#${2}"
-        shift 2
-        ;;
-    --help)
-        echo -e "${GREEN}Usage:${RESET} $0 [options]"
+    --help | -h)
+        echo -e "${GREEN}Usage:${RESET} $0 [profile] [options]"
         echo ""
         echo -e "${GREEN}Options:${RESET}"
-        echo -e "  ${BLUE}--branch${RESET} branch    Git branch to switch to after cloning"
-        echo -e "  ${BLUE}--nixos${RESET} profile    NixOS configuration profile (optional, defaults to host)"
-        echo -e "  ${BLUE}--home${RESET} profile     Home Manager profile (optional, defaults to current user)"
+        echo -e "  ${BLUE}profile${RESET}               Flake profile. On NixOS uses it for nixos-rebuild"
+        echo -e "                           (HM as NixOS module); on other distros uses it"
+        echo -e "                           for home-manager standalone"
+        echo -e "  ${BLUE}--branch${RESET}|-b branch   Git branch to switch to after cloning"
         exit 0
         ;;
     *)
         echo -e "${RED}Error:${RESET} Invalid option"
-        echo -e "${GREEN}Usage:${RESET} $0 [--branch branch] [--nixos profile] [--home profile]"
+        echo -e "${GREEN}Usage:${RESET} $0 [profile] [--branch|-b branch]"
         exit 1
         ;;
     esac
@@ -243,7 +238,7 @@ if [ "$DISTRO" = "nixos" ]; then
 
     # Switch to NixOS configuration
     sudo NIX_CONFIG="experimental-features = nix-command flakes" \
-        nixos-rebuild switch --flake ~/dev/nix"${NIXOS_PROFILE}"
+        nixos-rebuild switch --flake ~/dev/nix"${PROFILE}"
 
     set_wallpaper
 
@@ -259,7 +254,7 @@ elif [ "$DISTRO" = "fedora" ]; then
     clone_config
 
     echo -e "$ARROW Applying ${BLUE}home-manager${RESET} configuration..."
-    nix run github:nix-community/home-manager/master -- switch -b backup --flake "${DIR}""${HM_PROFILE}"
+    nix run github:nix-community/home-manager/master -- switch -b backup --flake "${DIR}""${PROFILE}"
 
     echo -e "$ARROW Enabling ${BLUE}GPU driver${RESET} access..."
     sudo "$(which non-nixos-gpu-setup)" >/dev/null
