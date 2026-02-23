@@ -10,7 +10,7 @@ let
   loginctl = "${pkgs.systemd}/bin/loginctl";
   systemctl = "${pkgs.systemd}/bin/systemctl";
   pidof = "${pkgs.procps}/bin/pidof";
-  swaylock = if nixos then "${pkgs.swaylock}/bin/swaylock" else "swaylock";
+  swaylock = if nixos then "${pkgs.swaylock}/bin/swaylock" else "/usr/bin/swaylock";
 
   monitorOffCmd =
     {
