@@ -1,4 +1,5 @@
-_: {
+{ compositor, ... }:
+{
   imports = [
     ./modules.nix
     ./style.nix
@@ -14,10 +15,19 @@ _: {
         spacing = 10;
         # margin = "0 10 5 10";
 
-        modules-left = [
-          "niri/workspaces"
-          "niri/window"
-        ];
+        modules-left =
+          if compositor == "niri" then
+            [
+              "niri/workspaces"
+              "niri/window"
+            ]
+          else if compositor == "mango" then
+            [
+              "ext/workspaces"
+              "dwl/window"
+            ]
+          else
+            throw "Unsupported compositor: ${compositor}";
         modules-center = [
           "clock"
         ];

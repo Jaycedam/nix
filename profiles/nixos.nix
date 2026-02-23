@@ -1,10 +1,14 @@
 {
   nixpkgs,
   user,
+  mango,
   nixvim,
   nixos,
   stylix,
   theme,
+  compositor,
+  home-manager,
+  system,
   ...
 }:
 nixpkgs.lib.nixosSystem {
@@ -13,13 +17,36 @@ nixpkgs.lib.nixosSystem {
       user
       nixvim
       nixos
+      mango
       stylix
       theme
+      compositor
       ;
   };
   modules = [
-    stylix.nixosModules.stylix
     ../modules/hosts/nixos
     ../modules/nixos
+
+    stylix.nixosModules.stylix
+    home-manager.nixosModules.home-manager
+    {
+      home-manager = {
+        useUserPackages = true;
+        useGlobalPkgs = true;
+        users.${user} = ../modules/home;
+        extraSpecialArgs = {
+          inherit
+            user
+            nixvim
+            stylix
+            system
+            nixos
+            theme
+            compositor
+            mango
+            ;
+        };
+      };
+    }
   ];
 }

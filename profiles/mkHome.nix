@@ -1,5 +1,6 @@
 {
   nixpkgs,
+  mango,
   home-manager,
   user,
   nixvim,
@@ -7,6 +8,7 @@
   nixos,
   system,
   theme,
+  compositor,
   ...
 }:
 home-manager.lib.homeManagerConfiguration {
@@ -15,12 +17,14 @@ home-manager.lib.homeManagerConfiguration {
     inherit
       nixpkgs
       home-manager
+      mango
       user
       nixvim
       stylix
       system
       nixos
       theme
+      compositor
       ;
   };
   modules = [

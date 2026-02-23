@@ -18,6 +18,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    mango = {
+      url = "github:DreamMaoMao/mango";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
   };
 
   nixConfig = {
@@ -32,6 +37,7 @@
   outputs =
     {
       nixpkgs,
+      mango,
       home-manager,
       nixvim,
       stylix,
@@ -55,30 +61,43 @@
           user
           nixvim
           stylix
+          mango
           theme
+          home-manager
           ;
-        # The following are defaults - only override when necessary (e.g., on non-NixOS or ARM systems)
         nixos = true;
         system = systems.linux;
-      };
-
-      hmArgs = commonArgs // {
-        inherit home-manager;
       };
 
     in
     {
       nixosConfigurations = {
-        nixos = import ./profiles/nixos.nix commonArgs;
+        nixos-niri = import ./profiles/nixos.nix (commonArgs // { compositor = "niri"; });
+        nixos-mango = import ./profiles/nixos.nix (commonArgs // { compositor = "mango"; });
       };
 
+      # home-manager standalone for non-NixOS systems
+      # not needed on NixOS, home-manager is setup as a NixOS module
       homeConfigurations = {
-        "${user}" = import ./profiles/mkHome.nix hmArgs;
-        asahi = import ./profiles/mkHome.nix (
-          hmArgs
+        # x86_64 linux
+        niri = import ./profiles/mkHome.nix (commonArgs // { compositor = "niri"; });
+        mango = import ./profiles/mkHome.nix (commonArgs // { compositor = "mango"; });
+
+        # asahi linux (arm64)
+        asahi-niri = import ./profiles/mkHome.nix (
+          commonArgs
           // {
             nixos = false;
             system = systems.linux-arm;
+            compositor = "niri";
+          }
+        );
+        asahi-mango = import ./profiles/mkHome.nix (
+          commonArgs
+          // {
+            nixos = false;
+            system = systems.linux-arm;
+            compositor = "mango";
           }
         );
       };

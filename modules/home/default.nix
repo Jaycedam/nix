@@ -6,7 +6,7 @@
 {
   imports = [
     ../common/stylix.nix
-    ./niri
+    ./compositors
     ./beets.nix
     ./mpd.nix
     ./rmpc.nix
@@ -25,7 +25,7 @@
     ./git.nix
     ./ghostty.nix
     ./services.nix
-    ./scripts.nix
+    ./scripts
     ./brave.nix
     ./gaming.nix
     ./hyprlock.nix

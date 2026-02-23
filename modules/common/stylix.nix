@@ -6,8 +6,8 @@
     # base16Scheme = "${pkgs.base16-schemes}/share/themes/rose-pine.yaml";
     base16Scheme = {
       base00 = "#0f0f0f"; # default background
-      base01 = "#151515"; # lighter background (status bar)
-      base02 = "#212121"; # selection background
+      base01 = "#161616"; # lighter background (status bar)
+      base02 = "#222222"; # selection background
       base03 = "#595959"; # comments, invisibles
       base04 = "#737373"; # dark foreground (status bar)
       base05 = "#fafafa"; # default foreground
@@ -23,13 +23,12 @@
       base0F = "#c4c4c4"; # deprecated, secondary
     };
 
-    # waiting for niri blur support
-    # opacity = {
-    #   applications = 0.9;
-    #   terminal = 0.9;
-    #   popups = 0.9;
-    #   desktop = 0.9;
-    # };
+    opacity = {
+      applications = 0.9;
+      terminal = 0.9;
+      popups = 0.9;
+      desktop = 0.9;
+    };
 
     icons = {
       enable = true;

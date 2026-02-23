@@ -1,6 +1,7 @@
-_: {
+{ compositor, ... }:
+{
   imports = [
-    ./niri.nix
+    ./compositors
     ./options.nix
     ./users.nix
     ./boot.nix
