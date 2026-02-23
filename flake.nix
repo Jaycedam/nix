@@ -23,11 +23,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    noctalia = {
-      url = "github:noctalia-dev/noctalia-shell";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
   };
 
   nixConfig = {
@@ -43,7 +38,6 @@
     {
       nixpkgs,
       mango,
-      noctalia,
       home-manager,
       nixvim,
       stylix,
@@ -68,7 +62,6 @@
           nixvim
           stylix
           mango
-          noctalia
           theme
           ;
         # The following are defaults - only override when necessary (e.g., on non-NixOS or ARM systems)
