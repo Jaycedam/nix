@@ -47,7 +47,8 @@
         border-radius: ${toString theme.borderRadius};
     }
 
-    #workspaces button.empty,
+    #workspaces button.empty, 
+    #workspaces button.hidden,
     #bluetooth.off {
       color: @base03;
     }
