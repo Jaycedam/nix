@@ -24,4 +24,7 @@ _: {
 
   # Required for ddcutil to control ext monitor brightness
   hardware.i2c.enable = true;
+
+  # enable swaylock to access pam
+  security.pam.services.swaylock = { };
 }
