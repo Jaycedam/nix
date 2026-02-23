@@ -56,19 +56,10 @@ in
         command = "${systemctl} suspend";
       }
     ];
-    events = [
-      {
-        event = "before-sleep";
-        command = "${loginctl} lock-session";
-      }
-      {
-        event = "lock";
-        command = "${pidof} swaylock || ${swaylock}";
-      }
-      {
-        event = "after-resume";
-        command = monitorOnCmd;
-      }
-    ];
+    events = {
+      "before-sleep" = "${loginctl} lock-session";
+      "lock" = "${pidof} swaylock || ${swaylock}";
+      "after-resume" = monitorOnCmd;
+    };
   };
 }
