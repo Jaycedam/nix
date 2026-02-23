@@ -9,6 +9,11 @@
       # More option see https://github.com/DreamMaoMao/mango/wiki/
       exec-once=~/.config/mango/autostart.sh
 
+      # monitor rules
+      # monitorrule=name:Values,Parameter:Values,Parameter:Values
+      monitorrule=name:eDP-1,scale:1.7
+      monitorrule=name:HDMI-A-1,refresh:72
+
       # Window effect
       blur=1
       blur_layer=1
@@ -177,15 +182,23 @@
       # switch window focus
       binds=super,tab,focusstack,next
       binds=super,left,focusdir,left
+      binds=super,l,focusdir,right
+      binds=super,h,focusdir,left
       binds=super,right,focusdir,right
       binds=super,up,focusdir,up
+      binds=super,k,focusdir,up
       binds=super,down,focusdir,down
+      binds=super,j,focusdir,down
 
       # swap window
       binds=super+shift,up,exchange_client,up
+      binds=super+shift,k,exchange_client,up
       binds=super+shift,down,exchange_client,down
+      binds=super+shift,j,exchange_client,down
       binds=super+shift,left,exchange_client,left
+      binds=super+shift,h,exchange_client,left
       binds=super+shift,right,exchange_client,right
+      binds=super+shift,l,exchange_client,right
 
       # switch window status
       binds=super,g,toggleglobal,
@@ -195,8 +208,8 @@
       binds=super+shift,f,togglefullscreen,
       binds=alt+shift,f,togglefakefullscreen,
       binds=super,i,minimized,
-      binds=super,o,toggleoverlay,
-      binds=super+shift,I,restore_minimized
+      binds=super+shift,o,toggleoverlay,
+      binds=super+shift,i,restore_minimized
       binds=super,z,toggle_scratchpad
 
       # scroller layout
@@ -209,8 +222,10 @@
       # tag switch
       # bind=super,left,viewtoleft,0
       bind=ctrl,left,viewtoleft_have_client,0
+      bind=ctrl,h,viewtoleft_have_client,0
       # bind=super,right,viewtoright,0
       bind=ctrl,right,viewtoright_have_client,0
+      bind=ctrl,l,viewtoright_have_client,0
       # bind=ctrl+super,left,tagtoleft,0
       # bind=ctrl+super,right,tagtoright,0
 
@@ -286,6 +301,13 @@
       mousebind=super,btn_left,moveresize,curmove
       mousebind=NONE,btn_middle,togglemaximizescreen,0
       mousebind=super,btn_right,moveresize,curresize
+
+      # 3-finger: Workspace navigation
+      gesturebind=none,left,3,viewtoleft_have_client
+      gesturebind=none,right,3,viewtoright_have_client
+      gesturebind=none,up,3,toggleoverview
+      gesturebind=none,down,3,toggleovervie
+
 
       # Axis Bindings
       axisbind=super,UP,viewtoleft_have_client
