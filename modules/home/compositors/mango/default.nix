@@ -296,6 +296,12 @@
       bind=none,XF86AudioLowerVolume,spawn,volume down
       bind=none,XF86AudioMute,spawn,volume mute
 
+      # playerctl
+      bind=none,XF86AudioPlay,spawn,playerctl play-pause
+      bind=none,XF86AudioStop,spawn,playerctl stop
+      bind=none,XF86AudioPrev,spawn,playerctl previous
+      bind=none,XF86AudioNext,spawn,playerctl next
+
       # Mouse Button Bindings
       # btn_left and btn_right can't bind none mod key
       mousebind=super,btn_left,moveresize,curmove
