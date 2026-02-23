@@ -8,6 +8,7 @@
   nixos,
   system,
   theme,
+  compositor,
   ...
 }:
 home-manager.lib.homeManagerConfiguration {
@@ -23,6 +24,7 @@ home-manager.lib.homeManagerConfiguration {
       system
       nixos
       theme
+      compositor
       ;
   };
   modules = [

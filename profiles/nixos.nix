@@ -6,6 +6,7 @@
   nixos,
   stylix,
   theme,
+  compositor,
   ...
 }:
 nixpkgs.lib.nixosSystem {
@@ -17,6 +18,7 @@ nixpkgs.lib.nixosSystem {
       mango
       stylix
       theme
+      compositor
       ;
   };
   modules = [

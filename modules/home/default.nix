@@ -6,7 +6,7 @@
 {
   imports = [
     ../common/stylix.nix
-    ./niri
+    ./compositors
     ./beets.nix
     ./mpd.nix
     ./rmpc.nix
@@ -31,7 +31,6 @@
     ./hyprlock.nix
     ./eza.nix
     ./dev.nix
-    ./mangowc.nix
   ];
 
   home = {

@@ -64,7 +64,6 @@
           mango
           theme
           ;
-        # The following are defaults - only override when necessary (e.g., on non-NixOS or ARM systems)
         nixos = true;
         system = systems.linux;
       };
@@ -76,16 +75,27 @@
     in
     {
       nixosConfigurations = {
-        nixos = import ./profiles/nixos.nix commonArgs;
+        nixos-niri = import ./profiles/nixos.nix (commonArgs // { compositor = "niri"; });
+        nixos-mango = import ./profiles/nixos.nix (commonArgs // { compositor = "mango"; });
       };
 
       homeConfigurations = {
-        "${user}" = import ./profiles/mkHome.nix hmArgs;
-        asahi = import ./profiles/mkHome.nix (
+        niri = import ./profiles/mkHome.nix (hmArgs // { compositor = "niri"; });
+        mango = import ./profiles/mkHome.nix (hmArgs // { compositor = "mango"; });
+        asahi-niri = import ./profiles/mkHome.nix (
           hmArgs
           // {
             nixos = false;
             system = systems.linux-arm;
+            compositor = "niri";
+          }
+        );
+        asahi-mango = import ./profiles/mkHome.nix (
+          hmArgs
+          // {
+            nixos = false;
+            system = systems.linux-arm;
+            compositor = "mango";
           }
         );
       };
