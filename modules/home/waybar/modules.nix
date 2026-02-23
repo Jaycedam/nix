@@ -15,7 +15,9 @@ in
     };
     "dwl/window" = {
       format = "[{layout}] {title}";
+      max-length = 40;
       icon = true;
+      icon-size = iconSize;
     };
 
     "niri/workspaces" = {
