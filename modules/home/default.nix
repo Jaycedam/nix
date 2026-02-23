@@ -12,7 +12,7 @@
     ./rmpc.nix
     ./waybar
     ./programs.nix
-    ./hypridle.nix
+    ./swayidle.nix
     ./fuzzel.nix
     ./mako.nix
     ./desktop-entries.nix
@@ -28,7 +28,7 @@
     ./scripts
     ./brave.nix
     ./gaming.nix
-    ./hyprlock.nix
+    ./swaylock.nix
     ./eza.nix
     ./dev.nix
   ];

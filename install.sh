@@ -175,13 +175,11 @@ fedora_pkgs() {
 
     echo -e "$ARROW Adding ${BLUE}keyd${RESET} repository..."
     sudo dnf copr enable alternateved/keyd -y >/dev/null
-    echo -e "$ARROW Adding ${BLUE}Hyprland${RESET} repository..."
-    sudo dnf copr enable solopasha/hyprland -y >/dev/null
     echo -e "$ARROW Installing ${BLUE}niri${RESET} compositor..."
     sudo dnf install --setopt=install_weak_deps=False niri nautilus -y >/dev/null
 
     echo -e "$ARROW Installing ${BLUE}desktop dependencies${RESET}..."
-    sudo dnf install xdg-desktop-portal-gnome gnome-keyring pipewire tuned hyprlock keyd -y >/dev/null
+    sudo dnf install xdg-desktop-portal-gnome xdg-desktop-portal-wlr xdg-desktop-portal-gtk gnome-keyring pipewire tuned swaylock keyd -y >/dev/null
 
     echo -e "$ARROW Enabling ${BLUE}services${RESET}..."
     systemctl --user enable --now pipewire.service >/dev/null

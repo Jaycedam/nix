@@ -303,11 +303,10 @@
       mousebind=super,btn_right,moveresize,curresize
 
       # 3-finger: Workspace navigation
-      gesturebind=none,left,3,viewtoleft_have_client
-      gesturebind=none,right,3,viewtoright_have_client
-      gesturebind=none,up,3,toggleoverview
-      gesturebind=none,down,3,toggleovervie
-
+      gesturebind=none,right,3,viewtoleft_have_client
+      gesturebind=none,left,3,viewtoright_have_client
+      gesturebind=none,down,3,toggleoverview
+      gesturebind=none,up,3,toggleovervie
 
       # Axis Bindings
       axisbind=super,UP,viewtoleft_have_client
