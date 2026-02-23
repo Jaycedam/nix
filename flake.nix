@@ -63,13 +63,10 @@
           stylix
           mango
           theme
+          home-manager
           ;
         nixos = true;
         system = systems.linux;
-      };
-
-      hmArgs = commonArgs // {
-        inherit home-manager;
       };
 
     in
@@ -80,10 +77,10 @@
       };
 
       homeConfigurations = {
-        niri = import ./profiles/mkHome.nix (hmArgs // { compositor = "niri"; });
-        mango = import ./profiles/mkHome.nix (hmArgs // { compositor = "mango"; });
+        niri = import ./profiles/mkHome.nix (commonArgs // { compositor = "niri"; });
+        mango = import ./profiles/mkHome.nix (commonArgs // { compositor = "mango"; });
         asahi-niri = import ./profiles/mkHome.nix (
-          hmArgs
+          commonArgs
           // {
             nixos = false;
             system = systems.linux-arm;
@@ -91,7 +88,7 @@
           }
         );
         asahi-mango = import ./profiles/mkHome.nix (
-          hmArgs
+          commonArgs
           // {
             nixos = false;
             system = systems.linux-arm;
