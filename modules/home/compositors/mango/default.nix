@@ -326,6 +326,8 @@
       windowrule=tags:4,appid:brave-web.whatsapp.com__-Default
       windowrule=tags:4,appid:brave-web.mail.proton.me__-Default
       windowrule=tags:5,appid:steam
+      # pip
+      windowrule=width:400,height:225,isfloating:1,isglobal:1,isoverlay:1,offsetx:100,offsety:-100,noblur:1,isnoborder:1,unfocused_opacity:1,title:Picture in picture
     '';
     autostart_sh = ''
       # Note: here no need to add shebang
