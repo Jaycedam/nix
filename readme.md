@@ -11,7 +11,6 @@ My personal Nix flake for NixOS with standalone Home Manager for non-NixOS syste
 
 - [Description](#description)
 - [Install](#install)
-- [Nix Cli Helper](#nix-cli-helper)
 - [Project Structure](#project-structure)
 
 ## Description
@@ -41,7 +40,7 @@ curl -fsSL jaycem.dev/nix | bash
 This flake provides a unified configuration system that works on both NixOS and non-NixOS systems.
 
 - **NixOS**: Full system rebuild with integrated home-manager
-- **Standalone**: Home Manager for any Linux distribution (including NixOS)
+- **Standalone**: Home Manager for any Linux distribution.
 
 | Directory             | Description                                                                  |
 | --------------------- | ---------------------------------------------------------------------------- |
