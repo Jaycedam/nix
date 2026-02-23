@@ -17,9 +17,9 @@ My personal Nix flake for NixOS with standalone Home Manager for non-NixOS syste
 
 Home Manager is setup as a NixOS module, with available profiles for non-NixOS systems as well. Check the [flake.nix](./flake.nix) file for available profiles.
 
-- Compositor and tools: Niri/Mangowc, Fuzzel, Waybar, Mako, Hyprlock, Hypridle
-- Main programs: Kitty, Fish, Neovim
-- Theming: Stylix
+- Compositor and tools: niri/mangowc, fuzzel, waybar, mako, swayidle, swaylock
+- Main programs: kitty, fish, neovim
+- Theming: stylix
 
 ![Screenshot](assets/screenshot.avif)
 
