@@ -249,9 +249,6 @@ if [ "$DISTRO" = "nixos" ]; then
     sudo NIX_CONFIG="experimental-features = nix-command flakes" \
         nixos-rebuild switch --flake ~/dev/nix"${NIXOS_PROFILE}"
 
-    echo -e "$ARROW Applying ${BLUE}home-manager${RESET} configuration..."
-    nix run github:nix-community/home-manager/master -- switch -b backup --flake "${DIR}""${HM_PROFILE}"
-
     set_wallpaper
 
 elif [ "$DISTRO" = "fedora" ]; then
