@@ -93,7 +93,6 @@
       focus_cross_tag=0
       enable_floating_snap=0
       snap_distance=30
-      cursor_size=24
       drag_tile_to_tile=1
 
       # keyboard
@@ -107,9 +106,10 @@
       # Trackpad
       # need relogin to make it apply
       disable_trackpad=0
-      tap_to_click=1
+      tap_to_click=0
       tap_and_drag=1
       drag_lock=1
+      click_method=2
       trackpad_natural_scrolling=1
       disable_while_typing=1
       left_handed=0
@@ -127,7 +127,7 @@
       gappov=10
       scratchpad_width_ratio=0.8
       scratchpad_height_ratio=0.9
-      borderpx=4
+      borderpx=3
       rootcolor=0x${config.lib.stylix.colors.base00}ff
       bordercolor=0x${config.lib.stylix.colors.base03}ff
       focuscolor=0x${config.lib.stylix.colors.base0D}ff
@@ -162,6 +162,13 @@
       binds=super,t,spawn,kitty
       binds=super,b,spawn,brave
       binds=super,p,spawn,dmenu-power
+      binds=super,e,spawn,kitty --class yazi yazi
+      binds=super,m,spawn,kitty --class rmpc rmpc
+      binds=super,n,spawn,kitty --class nvim nvim
+      binds=super,s,spawn,launch-webapp open.spotify.com
+      binds=super,y,spawn,launch-webapp youtube.com
+      binds=super,w,spawn,launch-webapp web.whatsapp.com
+      binds=super+shift,m,spawn,launch-webapp mail.proton.me
 
       # exit
       binds=super+shift,q,quit
@@ -230,6 +237,16 @@
       bind=super+shift,8,tag,8,0
       bind=super+shift,9,tag,9,0
 
+      bind=ctrl+shift,1,toggleview,1,0
+      bind=ctrl+shift,2,toggleview,2,0
+      bind=ctrl+shift,3,toggleview,3,0
+      bind=ctrl+shift,4,toggleview,4,0
+      bind=ctrl+shift,5,toggleview,5,0
+      bind=ctrl+shift,6,toggleview,6,0
+      bind=ctrl+shift,7,toggleview,7,0
+      bind=ctrl+shift,8,toggleview,8,0
+      bind=ctrl+shift,9,toggleview,9,0
+
       # monitor switch
       # bind=alt+shift,left,focusmon,left
       # bind=alt+shift,right,focusmon,right
@@ -270,15 +287,24 @@
       mousebind=NONE,btn_middle,togglemaximizescreen,0
       mousebind=super,btn_right,moveresize,curresize
 
-
       # Axis Bindings
       axisbind=super,UP,viewtoleft_have_client
       axisbind=super,DOWN,viewtoright_have_client
 
-
       # layer rule
       layerrule=animation_type_open:zoom,layer_name:launcher
       layerrule=animation_type_close:zoom,layer_name:launcher
+      layerrule=animation_type_open:fade,layer_name:notifications
+      layerrule=animation_type_close:fade,layer_name:notifications
+
+      # window rule
+      windowrule=tags:1,appid:brave-browser
+      windowrule=tags:2,appid:kitty
+      windowrule=tags:3,appid:brave-open.spotify.com__-Default
+      windowrule=tags:3,appid:brave-youtube.com__-Default
+      windowrule=tags:4,appid:brave-web.whatsapp.com__-Default
+      windowrule=tags:4,appid:brave-web.mail.proton.me__-Default
+      windowrule=tags:5,appid:steam
     '';
     autostart_sh = ''
       # Note: here no need to add shebang
