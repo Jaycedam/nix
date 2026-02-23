@@ -76,9 +76,14 @@
         nixos-mango = import ./profiles/nixos.nix (commonArgs // { compositor = "mango"; });
       };
 
+      # home-manager standalone for non-NixOS systems
+      # not needed on NixOS, home-manager is setup as a NixOS module
       homeConfigurations = {
+        # x86_64 linux
         niri = import ./profiles/mkHome.nix (commonArgs // { compositor = "niri"; });
         mango = import ./profiles/mkHome.nix (commonArgs // { compositor = "mango"; });
+
+        # asahi linux (arm64)
         asahi-niri = import ./profiles/mkHome.nix (
           commonArgs
           // {
