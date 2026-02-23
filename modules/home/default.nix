@@ -25,7 +25,7 @@
     ./git.nix
     ./ghostty.nix
     ./services.nix
-    ./scripts.nix
+    ./scripts
     ./brave.nix
     ./gaming.nix
     ./hyprlock.nix
