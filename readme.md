@@ -16,9 +16,11 @@ My personal Nix flake for NixOS with standalone Home Manager for non-NixOS syste
 
 ## Description
 
-- Compositor and tools: Niri, Fuzzel, Waybar, Mako, Hyprlock, Hypridle
+Home Manager is setup as a NixOS module, with available profiles for non-NixOS systems as well. Check the [flake.nix](./flake.nix) file for available profiles.
+
+- Compositor and tools: Niri/Mangowc, Fuzzel, Waybar, Mako, Hyprlock, Hypridle
 - Main programs: Kitty, Fish, Neovim
-- Theming: stylix
+- Theming: Stylix
 
 ![Screenshot](assets/screenshot.avif)
 
@@ -32,34 +34,6 @@ Current install script works on both NixOS and Fedora with standalone Home Manag
 
 ```bash
 curl -fsSL jaycem.dev/nix | bash
-```
-
-## Nix Cli Helper
-
-The [`ns`](./modules/home/scripts/system/nix-utils.nix) cli is included as a pkg derivation and provides an unified and easier interface for managing NixOS and Home Manager flake based configurations with the same cli.
-
-```bash
-ns <action> [target] [options]
-```
-
-When no target is specified, both NixOS and Home Manager are applied. The `update` action also rebuilds after updating the flake.
-
-Available actions: `update`, `switch`, `clean`, `news`
-
-Available targets: `home`, `nixos`
-
-Available options: `-c, --config <dir>`, `--user <name>` (home-manager profile), `--host <name>` (nixos profile), `--gc` (garbage collection)
-
-Run `ns -h` for more information.
-
-### Examples
-
-```bash
-ns switch                       # Rebuild both NixOS and Home Manager
-ns switch home                  # Rebuild Home Manager only
-ns switch nixos --host laptop   # Rebuild NixOS with laptop profile
-ns switch home --user jay       # Rebuild Home Manager with jay profile
-ns update --gc                  # Update and run garbage collection
 ```
 
 ## Project Structure
