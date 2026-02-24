@@ -189,7 +189,7 @@ binds {
     Mod+Shift+Slash repeat=false { show-hotkey-overlay; }
 
     Mod+T hotkey-overlay-title="Open kitty" { spawn "kitty"; }
-    Mod+N repeat=false hotkey-overlay-title="Open neovim" { spawn-sh "niri-launch-or-focus --tui nvim -c 'lua Snacks.picker.projects()'"; }
+    Mod+N repeat=false hotkey-overlay-title="Open neovim" { spawn-sh "niri-launch-or-focus --tui nvim"; }
     Mod+E repeat=false hotkey-overlay-title="Open yazi" { spawn-sh "niri-launch-or-focus --tui yazi"; }
     Mod+M repeat=false hotkey-overlay-title="Open rmpc" { spawn-sh "niri-launch-or-focus --tui rmpc"; }
     Mod+B repeat=false hotkey-overlay-title="Open browser" { spawn-sh "niri-launch-or-focus brave --id brave-browser"; }
