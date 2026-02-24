@@ -37,9 +37,10 @@
     preferXdgDirectories = true;
     username = user;
     homeDirectory = "/home/${user}";
-    sessionVariables = {
-      EDITOR = "nvim";
-    };
+  sessionVariables = {
+    EDITOR = "nvim";
+    SUDO_EDITOR = "nvim";
+  };
     pointerCursor = {
       enable = true;
       package = pkgs.bibata-cursors;
