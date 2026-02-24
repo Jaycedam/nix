@@ -23,6 +23,7 @@
           s = "overloadt(meta, s, 200)";
           d = "overloadt(shift, d, 200)";
           f = "overloadt(control, f, 200)";
+          g = "altgr";
           j = "overloadt(control, j, 200)";
           k = "overloadt(shift, k, 200)";
           l = "overloadt(meta, l, 200)";
@@ -42,18 +43,39 @@
           f11 = "volumedown";
           f12 = "volumeup";
 
-          space = "overloadt(nav_layer, space, 200)";
+          # Chords
+          "w + e" = "esc";
+          "i + o" = "backspace";
+          "x + c" = "tab";
+          "comma + dot" = "enter";
+
+          space = "overloadt(extend, space, 200)";
         };
 
-        nav_layer = {
+        extend = {
           q = "esc";
+          w = "tab";
+          # e = "";
+          # r = "";
+          # t = "";
+          # y = "";
+          # u = "";
+          i = "up";
+          # o = "";
+          # p = "";
+
+          a = "alt";
+          s = "meta";
+          d = "shift";
+          f = "control";
+          g = "altgr";
           h = "backspace";
           j = "left";
           k = "down";
           l = "right";
-          i = "up";
           ";" = "enter";
 
+          # reset fkeys
           f1 = "f1";
           f2 = "f2";
           f3 = "f3";
