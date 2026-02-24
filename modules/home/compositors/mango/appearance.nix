@@ -1,4 +1,4 @@
-{ config, ... }:
+{ config, theme, ... }:
 {
   wayland.windowManager.mango.settings = ''
     # Window effect
@@ -6,7 +6,7 @@
     blur_layer=1
     blur_optimized=1
     blur_params_num_passes = 2
-    blur_params_radius = 5
+    blur_params_radius = 10
     blur_params_noise = 0.02
     blur_params_brightness = 0.9
     blur_params_contrast = 0.9
@@ -21,7 +21,7 @@
     shadows_position_y = 0
     shadowscolor= 0x000000ff
 
-    border_radius=10
+    border_radius=${toString theme.borderRadius}
     no_radius_when_single=0
     focused_opacity=1.0
     unfocused_opacity=0.8

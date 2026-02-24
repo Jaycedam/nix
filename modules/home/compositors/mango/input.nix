@@ -5,8 +5,8 @@ _: {
     repeat_delay=600
     numlockon=0
     xkb_rules_layout=us,us
-    xkb_rules_variant=colemak_dh_iso,
-    xkb_rules_options=grp:lalt_lshift_toggle,caps:escape
+    xkb_rules_variant=colemak_dh_iso
+    xkb_rules_options=caps:escape
 
     # Trackpad
     # need relogin to make it apply
@@ -34,8 +34,7 @@ _: {
     # 3-finger: Workspace navigation
     gesturebind=none,right,3,viewtoleft_have_client
     gesturebind=none,left,3,viewtoright_have_client
-    gesturebind=none,down,3,toggleoverview
-    gesturebind=none,up,3,toggleovervie
+    gesturebind=none,up,3,toggleoverview
 
     # Axis Bindings
     axisbind=super,UP,viewtoleft_have_client
