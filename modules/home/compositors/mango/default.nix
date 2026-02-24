@@ -164,12 +164,12 @@
 
       # apps
       binds=super,space,spawn,fuzzel
-      binds=super,t,spawn,kitty
+      binds=super,t,spawn,kitty -1
       binds=super,b,spawn,brave
       binds=super,p,spawn,dmenu-power
-      binds=super,e,spawn,kitty --class yazi yazi
-      binds=super,m,spawn,kitty --class rmpc rmpc
-      binds=super,n,spawn,kitty --class nvim nvim
+      binds=super,e,spawn,kitty -1 --class yazi yazi
+      binds=super,m,spawn,kitty -1 --class rmpc rmpc
+      binds=super,n,spawn,kitty -1 --class nvim nvim
       binds=super,s,spawn,launch-webapp open.spotify.com
       binds=super,y,spawn,launch-webapp youtube.com
       binds=super,w,spawn,launch-webapp web.whatsapp.com
