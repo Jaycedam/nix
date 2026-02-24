@@ -6,11 +6,10 @@ pkgs.writeShellScriptBin "dmenu-power" ''
       [suspend]="  Suspend"
       [reboot]="  Reboot"
       [shutdown]="  Shutdown"
-      [logout]="  Logout"
   )
 
    # Display options with fuzzel
-   selected=$(printf '%s\n' "''${items[@]}" | fuzzel --dmenu -p "Select action")
+   selected=$(printf '%s\n' "''${items[@]}" | fuzzel --dmenu -p "Select action: ")
 
   # Find the key for the selected value and perform action
   if [[ -n "$selected" ]]; then
@@ -18,7 +17,7 @@ pkgs.writeShellScriptBin "dmenu-power" ''
           if [[ "''${items[$key]}" == "$selected" ]]; then
               case $key in
               lock)
-                  hyprlock
+                  swaylock
                   ;;
               suspend)
                   systemctl suspend
@@ -28,9 +27,6 @@ pkgs.writeShellScriptBin "dmenu-power" ''
                   ;;
               shutdown)
                   systemctl poweroff
-                  ;;
-              logout)
-                   command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch exit
                   ;;
               esac
               break
