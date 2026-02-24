@@ -211,10 +211,10 @@ f9 = nextsong
 f10 = mute
 f11 = volumedown
 f12 = volumeup
-w + e = esc
-i + o = backspace
-x + c = tab
-comma + dot = enter
+w+e = esc
+i+o = backspace
+z+x = tab
+comma+dot = enter
 space = overloadt(extend, space, 200)
 
 [extend]
