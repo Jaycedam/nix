@@ -12,7 +12,7 @@
       # monitor rules
       # monitorrule=name:Values,Parameter:Values,Parameter:Values
       monitorrule=name:eDP-1,scale:1.7
-      monitorrule=name:HDMI-A-1,refresh:72
+      monitorrule=name:HDMI-A-1,width:1920,height:1080,refresh:71.91
 
       # Window effect
       blur=1
