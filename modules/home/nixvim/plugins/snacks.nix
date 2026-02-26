@@ -1,4 +1,5 @@
-_: {
+{ lib, ... }:
+{
   plugins.snacks = {
     enable = true;
     settings = {
@@ -21,7 +22,7 @@ _: {
   keymaps = [
     ## pickers and explorer
     {
-      action = "<cmd>lua Snacks.explorer()<CR>";
+      action = lib.nixvim.mkRaw "function() Snacks.explorer() end";
       mode = "n";
       key = "<leader>e";
       options = {
@@ -30,7 +31,7 @@ _: {
       };
     }
     {
-      action = "<cmd>lua Snacks.picker.buffers()<CR>";
+      action = lib.nixvim.mkRaw "function() Snacks.picker.buffers() end";
       mode = "n";
       key = "<leader>b";
       options = {
@@ -39,7 +40,7 @@ _: {
       };
     }
     {
-      action = "<cmd>lua Snacks.picker.grep()<CR>";
+      action = lib.nixvim.mkRaw "function() Snacks.picker.grep() end";
       mode = "n";
       key = "<leader>/";
       options = {
@@ -48,7 +49,7 @@ _: {
       };
     }
     {
-      action = "<cmd>lua Snacks.picker.files()<CR>";
+      action = lib.nixvim.mkRaw "function() Snacks.picker.files() end";
       mode = "n";
       key = "<leader>f";
       options = {
@@ -57,7 +58,7 @@ _: {
       };
     }
     {
-      action = "<cmd>lua Snacks.picker.projects()<CR>";
+      action = lib.nixvim.mkRaw "function() Snacks.picker.projects() end";
       mode = "n";
       key = "<leader>p";
       options = {
@@ -66,7 +67,7 @@ _: {
       };
     }
     {
-      action = "<cmd>lua Snacks.picker.grep_word()<CR>";
+      action = lib.nixvim.mkRaw "function() Snacks.picker.grep_word() end";
       key = "<leader>/";
       mode = [
         "v"
@@ -78,7 +79,7 @@ _: {
       };
     }
     {
-      action = "<cmd>lua Snacks.picker.diagnostics()<CR>";
+      action = lib.nixvim.mkRaw "function() Snacks.picker.diagnostics() end";
       mode = "n";
       key = "<leader>d";
       options = {
@@ -87,7 +88,7 @@ _: {
       };
     }
     {
-      action = "<cmd>lua Snacks.picker.diagnostics_buffer()<CR>";
+      action = lib.nixvim.mkRaw "function() Snacks.picker.diagnostics_buffer() end";
       mode = "n";
       key = "<leader>D";
       options = {
@@ -96,7 +97,7 @@ _: {
       };
     }
     {
-      action = "<cmd>lua Snacks.picker.help()<CR>";
+      action = lib.nixvim.mkRaw "function() Snacks.picker.help() end";
       mode = "n";
       key = "<leader>h";
       options = {
@@ -105,7 +106,7 @@ _: {
       };
     }
     {
-      action = "<cmd>lua Snacks.picker.keymaps()<CR>";
+      action = lib.nixvim.mkRaw "function() Snacks.picker.keymaps() end";
       mode = "n";
       key = "<leader>k";
       options = {
@@ -115,7 +116,7 @@ _: {
     }
     ## git
     {
-      action = "<cmd>lua Snacks.lazygit()<CR>";
+      action = lib.nixvim.mkRaw "function() Snacks.lazygit() end";
       mode = "n";
       key = "<leader>G";
       options = {
@@ -125,7 +126,7 @@ _: {
     }
     ## lsp
     {
-      action = "<cmd>lua Snacks.picker.lsp_definitions()<CR>";
+      action = lib.nixvim.mkRaw "function() Snacks.picker.lsp_definitions() end";
       mode = "n";
       key = "<leader>gd";
       options = {
@@ -134,7 +135,7 @@ _: {
       };
     }
     {
-      action = "<cmd>lua Snacks.picker.lsp_declarations()<CR>";
+      action = lib.nixvim.mkRaw "function() Snacks.picker.lsp_declarations() end";
       mode = "n";
       key = "<leader>gD";
       options = {
@@ -143,7 +144,7 @@ _: {
       };
     }
     {
-      action = "<cmd>lua Snacks.picker.lsp_references()<CR>";
+      action = lib.nixvim.mkRaw "function() Snacks.picker.lsp_references() end";
       mode = "n";
       key = "<leader>r";
       options = {
@@ -152,7 +153,7 @@ _: {
       };
     }
     {
-      action = "<cmd>lua Snacks.picker.lsp_implementations()<CR>";
+      action = lib.nixvim.mkRaw "function() Snacks.picker.lsp_implementations() end";
       mode = "n";
       key = "<leader>i";
       options = {
@@ -161,7 +162,7 @@ _: {
       };
     }
     {
-      action = "<cmd>lua Snacks.picker.lsp_type_definitions()<CR>";
+      action = lib.nixvim.mkRaw "function() Snacks.picker.lsp_type_definitions() end";
       mode = "n";
       key = "<leader>t";
       options = {
@@ -170,7 +171,7 @@ _: {
       };
     }
     {
-      action = "<cmd>lua Snacks.picker.lsp_symbols()<CR>";
+      action = lib.nixvim.mkRaw "function() Snacks.picker.lsp_symbols() end";
       mode = "n";
       key = "<leader>s";
       options = {
@@ -179,7 +180,7 @@ _: {
       };
     }
     {
-      action = "<cmd>lua Snacks.picker.lsp_workspace_symbols()<CR>";
+      action = lib.nixvim.mkRaw "function() Snacks.picker.lsp_workspace_symbols() end";
       mode = "n";
       key = "<leader>S";
       options = {
@@ -189,7 +190,7 @@ _: {
     }
     ## other
     {
-      action = "<cmd>lua Snacks.zen()<CR>";
+      action = lib.nixvim.mkRaw "function() Snacks.zen() end";
       mode = "n";
       key = "<leader>z";
       options = {
@@ -198,7 +199,7 @@ _: {
       };
     }
     {
-      action = "<cmd>lua Snacks.terminal()<CR>";
+      action = lib.nixvim.mkRaw "function() Snacks.terminal() end";
       mode = "n";
       key = "<c-/>";
       options = {
@@ -207,7 +208,19 @@ _: {
       };
     }
     {
-      action = "<cmd>lua Snacks.scratch()<CR>";
+      action = lib.nixvim.mkRaw "function() Snacks.terminal.toggle('opencode') end";
+      key = "<c-o>";
+      mode = [
+        "n"
+        "t"
+      ];
+      options = {
+        silent = true;
+        desc = "Toggle opencode terminal";
+      };
+    }
+    {
+      action = lib.nixvim.mkRaw "function() Snacks.scratch() end";
       mode = "n";
       key = "<leader>.";
       options = {
@@ -216,7 +229,7 @@ _: {
       };
     }
     {
-      action = "<cmd>lua Snacks.gitbrowse()<CR>";
+      action = lib.nixvim.mkRaw "function() Snacks.gitbrowse() end";
       key = "<leader>B";
       mode = [
         "n"
