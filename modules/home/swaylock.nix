@@ -12,7 +12,7 @@
       indicator-idle-visible = true;
       indicator-radius = 100;
       show-failed-attempts = true;
-      show-keyboard-layout = true;
+      hide-keyboard-layout = true;
       daemonize = true;
     };
   };
