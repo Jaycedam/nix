@@ -9,16 +9,16 @@ _: {
 
     # apps
     binds=super,space,spawn,fuzzel
-    binds=super,t,spawn,kitty -1
+    binds=super,t,spawn,kitty
     binds=super,b,spawn,brave
     binds=super,p,spawn,dmenu-power
-    binds=super,e,spawn,kitty -1 --class yazi yazi
-    binds=super,m,spawn,kitty -1 --class rmpc rmpc
-    binds=super,n,spawn,kitty -1 --class nvim nvim
-    binds=super,s,spawn,brave --focus="https://open.spotify.com/*" https://www.open.spotify.com
-    binds=super,y,spawn,brave --focus="https://www.youtube.com/*" https://www.youtube.com
-    binds=super,w,spawn,brave --focus="https://web.whatsapp.com/*" https://www.web.whatsapp.com
-    binds=super+shift,m,spawn,brave --focus="https://mail.proton.me/*" https://mail.proton.me
+    binds=super,e,spawn,launch-tui yazi
+    binds=super,m,spawn,launch-tui rmpc
+    binds=super,n,spawn,launch-tui nvim
+    binds=super,s,spawn,chromium-focus-site https://open.spotify.com
+    binds=super,y,spawn,chromium-focus-site https://www.youtube.com
+    binds=super,w,spawn,chromium-focus-site https://web.whatsapp.com
+    binds=super+shift,m,spawn,chromium-focus-site https://mail.proton.me
 
     # exit
     binds=super+shift,q,quit

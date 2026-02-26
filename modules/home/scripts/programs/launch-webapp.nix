@@ -3,7 +3,7 @@
 pkgs.writeShellScriptBin "launch-webapp" ''
   URL="$1"
   PROFILE="$2"
-  BROWSER="brave"
+  BROWSER="${pkgs.brave}/bin/brave"
 
   show_help() {
       echo "Usage: $0 URL [PROFILE]"

@@ -1,7 +1,11 @@
-_:
+{ pkgs, ... }:
 let
   iconSize = 15;
   spacing = 10;
+  brave = "${pkgs.brave}/bin/brave";
+  kitty = "${pkgs.kitty}/bin/kitty -1";
+  impala = "${pkgs.impala}/bin/impala";
+  bluetui = "${pkgs.bluetui}/bin/bluetui";
 in
 {
   programs.waybar.settings.mainBar = {
@@ -13,6 +17,7 @@ in
       on-click-right = "deactivate";
       sort-by-id = true;
     };
+
     "dwl/window" = {
       format = "[{layout}] {title}";
       max-length = 40;
@@ -85,7 +90,7 @@ in
       format-linked = "󱎔 {ifname} (No IP)";
       format-disconnected = "󰀦 Disconnected";
       interval = 3;
-      on-click = "niri-launch-or-focus --tui impala";
+      on-click = "${kitty} --class impala ${impala}";
     };
 
     battery = {
@@ -125,6 +130,7 @@ in
       };
       tooltip = true;
     };
+
     pulseaudio = {
       format = "{icon} {volume}%";
       format-muted = "󰝟";
@@ -141,6 +147,7 @@ in
       on-click = "pavucontrol -t 3";
       on-click-right = "pactl --set-sink-mute 0 toggle";
     };
+
     idle_inhibitor = {
       format = "{icon}";
       format-icons = {
@@ -148,6 +155,7 @@ in
         deactivated = "󰛊";
       };
     };
+
     "group/system" = {
       orientation = "horizontal";
       modules = [
@@ -157,10 +165,12 @@ in
         "battery"
       ];
     };
+
     clock = {
       interval = 1;
       format = "{:%a %d %b · %H:%M}";
-      on-click = "niri-launch-or-focus-webapp calendar.proton.me";
+      on-click = "${brave} --focus='https://calendar.proton.me/*' https://calendar.proton.me";
+
       "tooltip-format" = "<tt>{calendar}</tt>";
       calendar = {
         "format" = {
@@ -177,6 +187,7 @@ in
         "on-scroll-down" = "shift_down";
       };
     };
+
     tray = {
       icon-size = iconSize;
       inherit spacing;
@@ -199,7 +210,7 @@ in
       tooltip-format-connected = "{controller_alias}\n\n{num_connections} connected\n\n{device_enumerate}";
       tooltip-format-enumerate-connected = "{device_alias}";
       tooltip-format-enumerate-connected-battery = "{device_alias}\t{device_battery_percentage}%";
-      on-click = "niri-launch-or-focus --tui bluetui";
+      on-click = "${kitty} --class bluetui ${bluetui}";
     };
   };
 }
