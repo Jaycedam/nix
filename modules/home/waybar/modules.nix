@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, compositor, ... }:
 let
   iconSize = 15;
   spacing = 10;
@@ -90,7 +90,11 @@ in
       format-linked = "󱎔 {ifname} (No IP)";
       format-disconnected = "󰀦 Disconnected";
       interval = 3;
-      on-click = "${kitty} --class impala ${impala}";
+      on-click =
+        if compositor == "niri" then
+          "niri-launch-or-focus --tui impala"
+        else
+          "${kitty} --class impala ${impala}";
     };
 
     battery = {
@@ -169,7 +173,11 @@ in
     clock = {
       interval = 1;
       format = "{:%a %d %b · %H:%M}";
-      on-click = "${brave} --focus='https://calendar.proton.me/*' https://calendar.proton.me";
+      on-click =
+        if compositor == "niri" then
+          "niri-launch-or-focus-webapp calendar.proton.me"
+        else
+          "${brave} --focus='https://calendar.proton.me/*' https://calendar.proton.me";
 
       "tooltip-format" = "<tt>{calendar}</tt>";
       calendar = {
@@ -210,7 +218,11 @@ in
       tooltip-format-connected = "{controller_alias}\n\n{num_connections} connected\n\n{device_enumerate}";
       tooltip-format-enumerate-connected = "{device_alias}";
       tooltip-format-enumerate-connected-battery = "{device_alias}\t{device_battery_percentage}%";
-      on-click = "${kitty} --class bluetui ${bluetui}";
+      on-click =
+        if compositor == "niri" then
+          "niri-launch-or-focus --tui bluetui"
+        else
+          "${kitty} --class bluetui ${bluetui}";
     };
   };
 }
