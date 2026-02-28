@@ -10,6 +10,7 @@ in
   home.packages =
     with pkgs;
     [
+      # cli
       fwupd
       playerctl
       brightnessctl
@@ -33,6 +34,7 @@ in
       ffmpeg
       unrar
 
+      # fonts and icons
       noto-fonts
       noto-fonts-cjk-sans
       noto-fonts-color-emoji
@@ -41,10 +43,10 @@ in
       jetbrains-mono
       nerd-fonts.symbols-only
       font-awesome
-
       adwaita-icon-theme
       kdePackages.breeze-icons
 
+      # desktop
       pavucontrol
       localsend
       thunar
@@ -63,6 +65,7 @@ in
       bitwarden-desktop
       spotube
       moonlight-qt
+      freetube
     ]
     ++ builtins.filter supported [
       proton-pass
