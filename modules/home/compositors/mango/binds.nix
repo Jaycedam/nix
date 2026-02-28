@@ -14,11 +14,14 @@ _: {
     binds=super,p,spawn,dmenu-power
     binds=super,e,spawn,launch-tui yazi
     binds=super,m,spawn,launch-tui rmpc
-    binds=super,n,spawn,launch-tui nvim
-    binds=super,s,spawn,chromium-focus-site https://open.spotify.com
-    binds=super,y,spawn,chromium-focus-site https://www.youtube.com
-    binds=super,w,spawn,chromium-focus-site https://web.whatsapp.com
-    binds=super+shift,m,spawn,chromium-focus-site https://mail.proton.me
+    binds=super,n,spawn,launch-tui nvim -c lua Snacks.picker.projects()
+
+    # webapps
+    # TODO: add a script to focus if already open, missing ipc support from mango
+    binds=super,s,spawn,launch-webapp open.spotify.com
+    binds=super,y,spawn,launch-webapp youtube.com
+    binds=super,w,spawn,launch-webapp web.whatsapp.com
+    binds=super+shift,m,spawn,launch-webapp mail.proton.me
 
     # exit
     binds=super+shift,q,quit
@@ -58,8 +61,8 @@ _: {
 
     # tag directional switch
     # options: viewtoleft, viewtoright, viewtoleft_have_client, viewtoright_have_client
-    bind=ctrl+shift,left,viewtoleft_have_client,0
-    bind=ctrl+shift,right,viewtoright_have_client,0
+    bind=ctrl+shift,up,viewtoleft_have_client,0
+    bind=ctrl+shift,down,viewtoright_have_client,0
 
     binds=super,1,view,1,0
     binds=super,2,view,2,0

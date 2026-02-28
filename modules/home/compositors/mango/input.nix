@@ -31,10 +31,11 @@ _: {
     mousebind=NONE,btn_middle,togglemaximizescreen,0
     mousebind=super,btn_right,moveresize,curresize
 
-    # 3-finger: Workspace navigation
-    gesturebind=none,right,3,viewtoleft_have_client
-    gesturebind=none,left,3,viewtoright_have_client
-    gesturebind=none,up,3,toggleoverview
+    # 3-finger: Workspace navigation, niri like gestures
+    gesturebind=none,right,3,focusdir,left
+    gesturebind=none,left,3,focusdir,right
+    gesturebind=none,down,3,viewtoleft_have_client
+    gesturebind=none,up,3,viewtoright_have_client
 
     # Axis Bindings
     axisbind=super,UP,viewtoleft_have_client

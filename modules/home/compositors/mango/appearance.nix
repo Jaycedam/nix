@@ -6,7 +6,7 @@
     blur_layer=1
     blur_optimized=1
     blur_params_num_passes = 2
-    blur_params_radius = 20
+    blur_params_radius = 10
     blur_params_noise = 0.02
     blur_params_brightness = 0.9
     blur_params_contrast = 0.9
@@ -34,7 +34,7 @@
     animation_type_close=slide
     animation_fade_in=1
     animation_fade_out=1
-    tag_animation_direction=1
+    tag_animation_direction=0 # 1-horizontal,0-vertical
     zoom_initial_ratio=0.3
     zoom_end_ratio=0.8
     fadein_begin_opacity=0.5
