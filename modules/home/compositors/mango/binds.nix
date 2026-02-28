@@ -14,7 +14,7 @@ _: {
     binds=super,p,spawn,dmenu-power
     binds=super,e,spawn,launch-tui yazi
     binds=super,m,spawn,launch-tui rmpc
-    binds=super,n,spawn,launch-tui nvim -c lua Snacks.picker.projects()
+    binds=super,n,spawn,launch-tui nvim-projects
 
     # webapps
     # TODO: add a script to focus if already open, missing ipc support from mango
