@@ -72,6 +72,14 @@ _: {
           run = "help";
           desc = "Help";
         }
+        {
+          on = [
+            "<Space>"
+            "w"
+          ];
+          run = "shell 'swww img -t grow --transition-duration 2 --transition-fps 60 %h'";
+          desc = "Set wallpaper (swww)";
+        }
 
       ];
     };
