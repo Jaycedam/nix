@@ -172,7 +172,7 @@ fedora_pkgs() {
     sudo dnf copr enable alternateved/keyd -y >/dev/null
 
     echo -e "$ARROW Installing ${BLUE}desktop dependencies${RESET}..."
-    sudo dnf install --setopt=install_weak_deps=False niri nautilus tuned swaylock keyd -y >/dev/null
+    sudo dnf install --setopt=install_weak_deps=False niri nautilus xdg-desktop-portal-gtk xdg-desktop-portal-gnome tuned swaylock keyd -y >/dev/null
 
     echo -e "$ARROW Enabling ${BLUE}services${RESET}..."
     systemctl --user enable --now pipewire.service >/dev/null
