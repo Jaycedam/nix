@@ -31,6 +31,4 @@
       # Note: here no need to add shebang
     '';
   };
-
-  services.gnome-keyring.enable = true;
 }

@@ -4,5 +4,6 @@ _: {
     polkit-gnome.enable = true;
     swww.enable = true;
     easyeffects.enable = true;
+    gnome-keyring.enable = true;
   };
 }
