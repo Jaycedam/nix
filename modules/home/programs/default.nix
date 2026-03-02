@@ -7,6 +7,39 @@ let
   supported = pkg: builtins.elem system (pkg.meta.platforms or [ ]);
 in
 {
+  imports = [
+    ./beets.nix
+    ./waybar.nix
+    ./fuzzel.nix
+    ./desktop-entries.nix
+    ./nixvim
+    ./tmux.nix
+    ./kitty.nix
+    ./yazi.nix
+    ./anki.nix
+    ./fish.nix
+    ./git.nix
+    ./ghostty.nix
+    ./brave.nix
+    ./gaming.nix
+    ./swaylock.nix
+    ./eza.nix
+    ./dev.nix
+  ];
+
+  programs = {
+    btop.enable = true;
+    bat.enable = true;
+    zoxide = {
+      enable = true;
+      enableFishIntegration = true;
+    };
+    fzf = {
+      enable = true;
+      enableFishIntegration = true;
+    };
+  };
+
   home.packages =
     with pkgs;
     [
@@ -71,17 +104,4 @@ in
       proton-pass
       cryptomator
     ];
-
-  programs = {
-    btop.enable = true;
-    bat.enable = true;
-    zoxide = {
-      enable = true;
-      enableFishIntegration = true;
-    };
-    fzf = {
-      enable = true;
-      enableFishIntegration = true;
-    };
-  };
 }
