@@ -35,6 +35,11 @@ in
               "ext/workspaces"
               "dwl/window"
             ]
+          else if compositor == "hyprland" then
+            [
+              "ext/workspaces"
+              "dwl/window"
+            ]
           else
             throw "Unsupported compositor: ${compositor}";
         modules-center = [
