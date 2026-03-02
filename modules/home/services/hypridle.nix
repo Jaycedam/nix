@@ -11,6 +11,11 @@ let
         powerOn = "mmsg -d enable_monitor";
         powerOff = "mmsg -d disable_monitor";
       }
+    else if compositor == "hyprland" then
+      {
+        powerOn = "hyprctl dispatch dpms on";
+        powerOff = "hyprctl dispatch dpms off";
+      }
     else
       throw "Unsupported compositor: ${compositor}";
 in
