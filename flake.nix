@@ -44,6 +44,7 @@
       ...
     }:
     let
+      inherit (nixpkgs) lib;
       user = "jay"; # used for home-manager config, default profile
 
       systems = {
@@ -53,6 +54,11 @@
 
       theme = {
         borderRadius = 5;
+      };
+
+      compositors = {
+        mango = "mango";
+        niri = "niri";
       };
 
       commonArgs = {
@@ -65,41 +71,48 @@
           theme
           home-manager
           ;
-        nixos = true;
-        system = systems.linux;
+        nixos = true; # default nixos system
+        system = systems.linux; # default x86_64-linux
+      };
+
+      homeCommonArgs = commonArgs // {
+        nixos = false;
+      };
+
+      nixosVariants = {
+        nixos-niri = {
+          compositor = compositors.niri;
+        };
+        nixos-mango = {
+          compositor = compositors.mango;
+        };
+      };
+
+      homeVariants = {
+        niri = {
+          compositor = compositors.niri;
+        };
+        mango = {
+          compositor = compositors.mango;
+        };
+        asahi-niri = {
+          compositor = compositors.niri;
+          system = systems.linux-arm;
+        };
+        asahi-mango = {
+          compositor = compositors.mango;
+          system = systems.linux-arm;
+        };
       };
 
     in
     {
-      nixosConfigurations = {
-        nixos-niri = import ./profiles/nixos.nix (commonArgs // { compositor = "niri"; });
-        nixos-mango = import ./profiles/nixos.nix (commonArgs // { compositor = "mango"; });
-      };
+      nixosConfigurations = lib.mapAttrs (
+        name: overrides: import ./profiles/nixos.nix (commonArgs // overrides)
+      ) nixosVariants;
 
-      # home-manager standalone for non-NixOS systems
-      # not needed on NixOS, home-manager is setup as a NixOS module
-      homeConfigurations = {
-        # x86_64 linux
-        niri = import ./profiles/mkHome.nix (commonArgs // { compositor = "niri"; });
-        mango = import ./profiles/mkHome.nix (commonArgs // { compositor = "mango"; });
-
-        # asahi linux (arm64)
-        asahi-niri = import ./profiles/mkHome.nix (
-          commonArgs
-          // {
-            nixos = false;
-            system = systems.linux-arm;
-            compositor = "niri";
-          }
-        );
-        asahi-mango = import ./profiles/mkHome.nix (
-          commonArgs
-          // {
-            nixos = false;
-            system = systems.linux-arm;
-            compositor = "mango";
-          }
-        );
-      };
+      homeConfigurations = lib.mapAttrs (
+        name: overrides: import ./profiles/mkHome.nix (homeCommonArgs // overrides)
+      ) homeVariants;
     };
 }

@@ -11,18 +11,21 @@
   system,
   ...
 }:
-nixpkgs.lib.nixosSystem {
-  specialArgs = {
+let
+  commonArgs = {
     inherit
       user
       nixvim
-      nixos
-      mango
       stylix
+      nixos
       theme
       compositor
+      mango
       ;
   };
+in
+nixpkgs.lib.nixosSystem {
+  specialArgs = commonArgs;
   modules = [
     ../modules/hosts/nixos
     ../modules/nixos
@@ -34,17 +37,8 @@ nixpkgs.lib.nixosSystem {
         useUserPackages = true;
         useGlobalPkgs = true;
         users.${user} = ../modules/home;
-        extraSpecialArgs = {
-          inherit
-            user
-            nixvim
-            stylix
-            system
-            nixos
-            theme
-            compositor
-            mango
-            ;
+        extraSpecialArgs = commonArgs // {
+          inherit system;
         };
       };
     }
