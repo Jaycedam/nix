@@ -26,10 +26,9 @@ curl -fsSL jaycem.dev/nix | bash -- nixos-mango
 
 | NixOS (with HM as module) | Home Manager standalone |
 | ------------------------- | ----------------------- |
-| `nixos-niri`              | `niri`                  |
-| `nixos-mango`             | `mango`                 |
-|                           | `asahi-niri` (arm64)    |
-|                           | `asahi-mango` (arm64)   |
+| nixos-niri                | `asahi-niri` (arm64)    |
+| nixos-mango               | `asahi-mango` (arm64)   |
+| nixos-hypr                | `asahi-hypr` (arm64)    |
 
 ## Software
 

@@ -47,13 +47,14 @@
         linux = "x86_64-linux";
       };
 
-      theme = {
-        borderRadius = 5;
+      compositors = {
+        niri = "niri";
+        mango = "mango";
+        hypr = "hyprland";
       };
 
-      compositors = {
-        mango = "mango";
-        niri = "niri";
+      theme = {
+        borderRadius = 5;
       };
 
       commonArgs = {
@@ -81,21 +82,22 @@
         nixos-mango = {
           compositor = compositors.mango;
         };
+        nixos-hypr = {
+          compositor = compositors.hypr;
+        };
       };
 
       homeVariants = {
-        niri = {
-          compositor = compositors.niri;
-        };
-        mango = {
-          compositor = compositors.mango;
-        };
         asahi-niri = {
           compositor = compositors.niri;
           system = systems.linux-arm;
         };
         asahi-mango = {
           compositor = compositors.mango;
+          system = systems.linux-arm;
+        };
+        asahi-hypr = {
+          compositor = compositors.hypr;
           system = systems.linux-arm;
         };
       };

@@ -36,6 +36,7 @@ nixpkgs.lib.nixosSystem {
       home-manager = {
         useUserPackages = true;
         useGlobalPkgs = true;
+        backupFileExtension = "backup";
         users.${user} = ../modules/home;
         extraSpecialArgs = commonArgs // {
           inherit system;
