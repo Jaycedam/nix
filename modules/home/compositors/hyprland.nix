@@ -43,12 +43,15 @@
         }
         {
           name = "fix-xwayland-drags";
-          match.class = "^$";
-          match.title = "^$";
-          match.xwayland = true;
-          match.float = true;
-          match.fullscreen = false;
-          match.pin = false;
+
+          match = {
+            class = "^$";
+            title = "^$";
+            xwayland = true;
+            float = true;
+            fullscreen = false;
+            pin = false;
+          };
           no_focus = true;
         }
         {
