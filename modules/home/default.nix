@@ -1,17 +1,18 @@
 {
   pkgs,
   user,
+  compositor,
   ...
 }:
 {
   imports = [
     ../common/stylix.nix
-    ./compositors
-    ./beets.nix
-    ./mpd.nix
-    ./rmpc.nix
-    ./waybar
+    ./scripts
+
+    # Programs
     ./programs.nix
+    ./beets.nix
+    ./waybar.nix
     ./fuzzel.nix
     ./mako.nix
     ./desktop-entries.nix
@@ -23,14 +24,25 @@
     ./fish.nix
     ./git.nix
     ./ghostty.nix
-    ./services.nix
-    ./scripts
     ./brave.nix
     ./gaming.nix
     ./swaylock.nix
-    ./hypridle.nix
     ./eza.nix
     ./dev.nix
+
+    # Services
+    ./services.nix
+    ./hypridle.nix
+
+    # Compositor
+    (
+      if compositor == "niri" then
+        ./niri
+      else if compositor == "mango" then
+        ./mango
+      else
+        throw "Unsupported compositor: ${compositor}"
+    )
   ];
 
   home = {

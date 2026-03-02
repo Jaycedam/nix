@@ -1,7 +1,6 @@
 { compositor, ... }:
 {
   imports = [
-    ./compositors
     ./options.nix
     ./users.nix
     ./boot.nix
@@ -14,5 +13,15 @@
     ./virtualization.nix
     ./homelab.nix
     ../common/stylix.nix
+
+    # Compositor
+    (
+      if compositor == "niri" then
+        ./niri.nix
+      else if compositor == "mango" then
+        ./mango.nix
+      else
+        throw "Unsupported compositor: ${compositor}"
+    )
   ];
 }

@@ -3,6 +3,15 @@
   ...
 }:
 {
+  programs = {
+    opencode.enable = true;
+    gemini-cli.enable = true;
+    lazygit = {
+      enable = true;
+      enableFishIntegration = true;
+    };
+  };
+
   home.packages = with pkgs; [
     # Go
     go # compiler

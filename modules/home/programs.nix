@@ -73,31 +73,13 @@ in
     ];
 
   programs = {
-    btop = {
-      enable = true;
-    };
-    opencode = {
-      enable = true;
-    };
-    gemini-cli.enable = true;
-
-    foot.enable = true;
-
+    btop.enable = true;
+    bat.enable = true;
     zoxide = {
       enable = true;
       enableFishIntegration = true;
     };
-
-    bat = {
-      enable = true;
-    };
-
     fzf = {
-      enable = true;
-      enableFishIntegration = true;
-    };
-
-    lazygit = {
       enable = true;
       enableFishIntegration = true;
     };

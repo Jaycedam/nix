@@ -1,7 +1,6 @@
 _: {
   programs.beets = {
     enable = true;
-    mpdIntegration.enableUpdate = true;
     settings = {
       directory = "~/Music";
       library = "~/.local/share/beets/library.blb";
