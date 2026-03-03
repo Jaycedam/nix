@@ -70,6 +70,7 @@
           mangowc
           theme
           home-manager
+          lib
           ;
         nixos = true; # default nixos system
         system = systems.linux; # default x86_64-linux

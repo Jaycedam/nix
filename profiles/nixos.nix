@@ -27,9 +27,9 @@ let
       ;
   };
   hostModule = ../modules/hosts/${host};
-  appleSiliconModule = lib.mkIf (
-    apple-silicon != null
-  ) apple-silicon.nixosModules.apple-silicon-support;
+  appleSiliconModules = lib.optionals (apple-silicon != null) [
+    apple-silicon.nixosModules.apple-silicon-support
+  ];
 in
 nixpkgs.lib.nixosSystem {
   specialArgs = commonArgs // {
@@ -52,7 +52,6 @@ nixpkgs.lib.nixosSystem {
         };
       };
     }
-
-    appleSiliconModule
-  ];
+  ]
+  ++ appleSiliconModules;
 }
