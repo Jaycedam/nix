@@ -16,16 +16,7 @@
 
     # silent boot with animation
 
-    plymouth = {
-      enable = true;
-      theme = lib.mkForce "connect";
-      themePackages = with pkgs; [
-        # By default we would install all themes
-        (adi1090x-plymouth-themes.override {
-          selected_themes = [ "connect" ];
-        })
-      ];
-    };
+    plymouth.enable = true;
 
     # Enable "Silent boot"
     consoleLogLevel = 0;
