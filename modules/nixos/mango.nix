@@ -1,7 +1,7 @@
-{ mango, ... }:
+{ mangowc, ... }:
 {
   imports = [
-    mango.nixosModules.mango
+    mangowc.nixosModules.mango
   ];
 
   programs.mango.enable = true;

@@ -14,8 +14,8 @@
       url = "github:nix-community/stylix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    mango = {
-      url = "github:DreamMaoMao/mango";
+    mangowc = {
+      url = "github:mangowm/mango";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
@@ -32,7 +32,7 @@
   outputs =
     {
       nixpkgs,
-      mango,
+      mangowc,
       home-manager,
       nixvim,
       stylix,
@@ -63,7 +63,7 @@
           user
           nixvim
           stylix
-          mango
+          mangowc
           theme
           home-manager
           ;

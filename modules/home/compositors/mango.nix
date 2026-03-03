@@ -1,12 +1,12 @@
 {
-  mango,
+  mangowc,
   config,
   theme,
   ...
 }:
 {
   imports = [
-    mango.hmModules.mango
+    mangowc.hmModules.mango
   ];
 
   wayland.windowManager.mango = {

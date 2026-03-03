@@ -1,6 +1,6 @@
 {
   nixpkgs,
-  mango,
+  mangowc,
   home-manager,
   user,
   nixvim,
@@ -17,7 +17,7 @@ let
     inherit
       nixpkgs
       home-manager
-      mango
+      mangowc
       user
       nixvim
       stylix

@@ -1,7 +1,7 @@
 {
   nixpkgs,
   user,
-  mango,
+  mangowc,
   nixvim,
   nixos,
   stylix,
@@ -20,7 +20,7 @@ let
       nixos
       theme
       compositor
-      mango
+      mangowc
       ;
   };
 in
