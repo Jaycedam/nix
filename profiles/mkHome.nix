@@ -1,5 +1,4 @@
 {
-  pkgs,
   nixpkgs,
   mango,
   home-manager,
@@ -13,6 +12,7 @@
   ...
 }:
 let
+  pkgs = nixpkgs.legacyPackages.${system};
   commonArgs = {
     inherit
       nixpkgs
@@ -29,7 +29,7 @@ let
   };
 in
 home-manager.lib.homeManagerConfiguration {
-  pkgs = nixpkgs.legacyPackages.${system};
+  inherit pkgs;
   extraSpecialArgs = commonArgs;
   modules = [
     stylix.homeModules.stylix
