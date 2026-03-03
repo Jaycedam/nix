@@ -8,7 +8,6 @@ let
 in
 {
   imports = [
-    ./beets.nix
     ./waybar.nix
     ./fuzzel.nix
     ./desktop-entries.nix
