@@ -9,6 +9,9 @@
   compositor,
   home-manager,
   system,
+  host,
+  apple-silicon ? null,
+  lib,
   ...
 }:
 let
@@ -23,11 +26,17 @@ let
       mangowc
       ;
   };
+  hostModule = ../modules/hosts/${host};
+  appleSiliconModule = lib.mkIf (
+    apple-silicon != null
+  ) apple-silicon.nixosModules.apple-silicon-support;
 in
 nixpkgs.lib.nixosSystem {
-  specialArgs = commonArgs;
+  specialArgs = commonArgs // {
+    inherit apple-silicon;
+  };
   modules = [
-    ../modules/hosts/nixos
+    hostModule
     ../modules/nixos
 
     stylix.nixosModules.stylix
@@ -43,5 +52,7 @@ nixpkgs.lib.nixosSystem {
         };
       };
     }
+
+    appleSiliconModule
   ];
 }

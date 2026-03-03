@@ -18,6 +18,9 @@
       url = "github:mangowm/mango";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    apple-silicon = {
+      url = "github:tpwrules/nixos-apple-silicon";
+    };
   };
 
   nixConfig = {
@@ -36,6 +39,7 @@
       home-manager,
       nixvim,
       stylix,
+      apple-silicon,
       ...
     }:
     let
@@ -77,12 +81,34 @@
 
       nixosVariants = {
         nixos-niri = {
+          host = "nixos";
           compositor = compositors.niri;
         };
         nixos-mango = {
+          host = "nixos";
           compositor = compositors.mango;
         };
         nixos-hypr = {
+          host = "nixos";
+          compositor = compositors.hypr;
+        };
+
+        asahi-niri = {
+          host = "asahi";
+          system = systems.linux-arm;
+          inherit apple-silicon;
+          compositor = compositors.niri;
+        };
+        asahi-mango = {
+          host = "asahi";
+          system = systems.linux-arm;
+          inherit apple-silicon;
+          compositor = compositors.mango;
+        };
+        asahi-hypr = {
+          host = "asahi";
+          system = systems.linux-arm;
+          inherit apple-silicon;
           compositor = compositors.hypr;
         };
       };
