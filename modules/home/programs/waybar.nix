@@ -22,7 +22,7 @@ in
         layer = "top";
         position = "top";
         spacing = 10;
-        # margin = "0 10 5 10";
+        margin = "5 10 0 10";
 
         modules-left =
           if compositor == "niri" then
@@ -37,8 +37,8 @@ in
             ]
           else if compositor == "hyprland" then
             [
-              "ext/workspaces"
-              "dwl/window"
+              "hyprland/workspaces"
+              "hyprland/window"
             ]
           else
             throw "Unsupported compositor: ${compositor}";
@@ -179,7 +179,7 @@ in
         };
 
         pulseaudio = {
-          format = "{icon} {volume}%";
+          format = "{icon}";
           format-muted = "󰝟";
           format-icons = {
             headphone = "󰋋";
@@ -215,7 +215,7 @@ in
 
         clock = {
           interval = 1;
-          format = "{:%a %d %b · %H:%M}";
+          format = "{:%a %d %b  %H:%M}";
           on-click =
             if compositor == "niri" then
               "niri-launch-or-focus-webapp calendar.proton.me"
@@ -273,39 +273,47 @@ in
 
     style = lib.mkAfter ''
       * {
-          font-family: "JetBrains Mono", "Symbols Nerd Font Mono";
+        font-family: "JetBrains Mono", "Symbols Nerd Font Mono";
       }
 
       window#waybar {
-          border-bottom: 1px solid @base02;
+        background-color: transparent;
+      }
+
+      .modules-center, .modules-right, .modules-left {
+        background-color: @base00;
+        border-radius: ${toString theme.borderRadius};
+        border: 1px solid @base02;
+        padding: 0 10px;
       }
 
       .module {
-          padding: 0 8px;
+        padding: 0 8px;
       }
 
       #bluetooth.connected, #network.wifi {
-          color: @base0C ;
+        color: @base0C ;
       }
 
       #battery.warning {
-          color: @base08 ;
+        color: @base08 ;
       }
 
       #privacy {
-          color: @base09 ;
+        color: @base09 ;
       }
 
       #workspaces button {
-          transition: color 0.1s ease;
-          padding: 0 5px;
-          background: transparent;
-          border-radius: ${toString theme.borderRadius};
+        transition: color 0.1s ease;
+        padding: 0 5px;
+        background: transparent;
+        border-radius: ${toString theme.borderRadius};
       }
 
       #custom-tray {
-          background: @base02;
-          border-radius: ${toString theme.borderRadius};
+        background: @base02;
+        border-radius: ${toString theme.borderRadius};
+        border: 1px solid @base02;
       }
 
       #workspaces button.empty, 
@@ -324,43 +332,43 @@ in
       }
 
       #idle_inhibitor.deactivated {
-          color: @base03;
+        color: @base03;
       }
 
       #idle_inhibitor.activated {
-          color: @base09;
+        color: @base09;
       }
 
       /* overrides for stylix */
       .modules-left #workspaces button {
-          border-bottom: 0;
+        border-bottom: 0;
       }
       .modules-left #workspaces button.focused,
       .modules-left #workspaces button.active {
-          border-bottom: 0;
+        border-bottom: 0;
       }
       .modules-left #workspaces button.urgent {
-          border-bottom: 0;
+        border-bottom: 0;
       }
       .modules-center #workspaces button {
-          border-bottom: 0;
+        border-bottom: 0;
       }
       .modules-center #workspaces button.focused,
       .modules-center #workspaces button.active {
-          border-bottom: 0;
+        border-bottom: 0;
       }
       .modules-center #workspaces button.urgent {
-          border-bottom: 0;
+        border-bottom: 0;
       }
       .modules-right #workspaces button {
-          border-bottom: 0;
+        border-bottom: 0;
       }
       .modules-right #workspaces button.focused,
       .modules-right #workspaces button.active {
-          border-bottom: 0;
+        border-bottom: 0;
       }
       .modules-right #workspaces button.urgent {
-          border-bottom: 0;
+        border-bottom: 0;
       }
     '';
   };

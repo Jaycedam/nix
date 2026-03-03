@@ -144,7 +144,7 @@ window-rule {
 
 window-rule {
     // rounded corners
-    geometry-corner-radius 5 
+    geometry-corner-radius 10
     clip-to-geometry true
 }
 

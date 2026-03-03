@@ -54,7 +54,7 @@
       };
 
       theme = {
-        borderRadius = 5;
+        borderRadius = 10;
       };
 
       commonArgs = {
