@@ -24,6 +24,7 @@ let
       theme
       compositor
       mangowc
+      apple-silicon
       ;
   };
   hostModule = ../modules/hosts/${host};
@@ -32,9 +33,7 @@ let
   ];
 in
 nixpkgs.lib.nixosSystem {
-  specialArgs = commonArgs // {
-    inherit apple-silicon;
-  };
+  specialArgs = commonArgs;
   modules = [
     hostModule
     ../modules/nixos
