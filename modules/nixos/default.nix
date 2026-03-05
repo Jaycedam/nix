@@ -1,4 +1,9 @@
-{ compositor, ... }:
+{
+  compositor,
+  apple-silicon ? null,
+  lib,
+  ...
+}:
 {
   imports = [
     ./options.nix
@@ -7,7 +12,6 @@
     ./network.nix
     ./services.nix
     ./chromium.nix
-    ./gaming.nix
     ./keyboard.nix
     ./greeter.nix
     ./virtualization.nix
@@ -25,5 +29,8 @@
       else
         throw "Unsupported compositor: ${compositor}"
     )
+  ]
+  ++ lib.optionals (apple-silicon == null) [
+    ./gaming.nix
   ];
 }
