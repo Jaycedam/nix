@@ -30,12 +30,12 @@ in
     polarity = "dark";
     base16Scheme = themes.black;
 
-    # opacity = {
-    #   applications = 0.9;
-    #   terminal = 0.9;
-    #   popups = 0.9;
-    #   desktop = 0.9;
-    # };
+    opacity = {
+      applications = 0.9;
+      terminal = 0.9;
+      popups = 0.9;
+      desktop = 0.9;
+    };
 
     icons = {
       enable = true;
