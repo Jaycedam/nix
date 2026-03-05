@@ -30,7 +30,7 @@
       else if compositor == "mango" then
         ./mango.nix
       else
-        null
+        throw "Unsupported compositor: ${compositor}"
     )
   ]
   ++ lib.optional desktop ./homelab.nix

@@ -102,9 +102,7 @@
             hostModule
             ./modules/nixos
 
-            inputs.stylix.nixosModules.stylix
             inputs.home-manager.nixosModules.home-manager
-            inputs.apple-silicon.nixosModules.apple-silicon-support
             {
               home-manager = {
                 useGlobalPkgs = true;
