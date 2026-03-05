@@ -1,5 +1,17 @@
-{ compositor, ... }:
 {
+  compositor,
+  apple-silicon ? null,
+  lib,
+  desktop,
+  ...
+}:
+{
+  # Required for home-manager with useUserPackages enabled (for xdg-portal integration)
+  environment.pathsToLink = [
+    "/share/applications"
+    "/share/xdg-desktop-portal"
+  ];
+
   imports = [
     ./options.nix
     ./users.nix
@@ -7,14 +19,13 @@
     ./network.nix
     ./services.nix
     ./chromium.nix
-    ./gaming.nix
     ./keyboard.nix
     ./greeter.nix
     ./virtualization.nix
-    ./homelab.nix
     ../common/stylix.nix
-
-    # Compositor
+  ]
+  ++ lib.optional desktop ./homelab.nix
+  ++ lib.optionals (apple-silicon == null) [
     (
       if compositor == "niri" then
         ./niri.nix
@@ -25,5 +36,6 @@
       else
         throw "Unsupported compositor: ${compositor}"
     )
+    ./gaming.nix
   ];
 }

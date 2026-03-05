@@ -1,5 +1,4 @@
-{ pkgs, lib, ... }:
-{
+_: {
   boot = {
     loader = {
       # Bootloader.
@@ -11,11 +10,7 @@
       timeout = 1;
     };
 
-    # Use latest kernel.
-    kernelPackages = pkgs.linuxPackages_latest;
-
     # silent boot with animation
-
     plymouth.enable = true;
 
     # Enable "Silent boot"

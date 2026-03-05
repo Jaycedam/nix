@@ -18,14 +18,19 @@
       url = "github:mangowm/mango";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    apple-silicon = {
+      url = "github:tpwrules/nixos-apple-silicon";
+    };
   };
 
   nixConfig = {
     extra-substituters = [
       "https://nix-community.cachix.org"
+      "https://nixos-apple-silicon.cachix.org"
     ];
     extra-trusted-public-keys = [
       "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+      "nixos-apple-silicon.cachix.org-1:8psDu5SA5dAD7qA0zMy5UT292TxeEPzIz8VVEr2Js20="
     ];
   };
 
@@ -36,6 +41,7 @@
       home-manager,
       nixvim,
       stylix,
+      apple-silicon,
       ...
     }:
     let
@@ -66,9 +72,11 @@
           mangowc
           theme
           home-manager
+          lib
           ;
         nixos = true; # default nixos system
         system = systems.linux; # default x86_64-linux
+        desktop = false; # check to enable homelab and other services to reduce battery usage on laptops
       };
 
       homeCommonArgs = commonArgs // {
@@ -77,12 +85,37 @@
 
       nixosVariants = {
         nixos-niri = {
+          host = "nixos";
           compositor = compositors.niri;
+          desktop = true;
         };
         nixos-mango = {
+          host = "nixos";
           compositor = compositors.mango;
+          desktop = true;
         };
         nixos-hypr = {
+          host = "nixos";
+          compositor = compositors.hypr;
+          desktop = true;
+        };
+
+        asahi-niri = {
+          host = "asahi";
+          system = systems.linux-arm;
+          inherit apple-silicon;
+          compositor = compositors.niri;
+        };
+        asahi-mango = {
+          host = "asahi";
+          system = systems.linux-arm;
+          inherit apple-silicon;
+          compositor = compositors.mango;
+        };
+        asahi-hypr = {
+          host = "asahi";
+          system = systems.linux-arm;
+          inherit apple-silicon;
           compositor = compositors.hypr;
         };
       };

@@ -9,6 +9,10 @@
   compositor,
   home-manager,
   system,
+  host,
+  desktop,
+  lib,
+  apple-silicon ? null,
   ...
 }:
 let
@@ -21,21 +25,27 @@ let
       theme
       compositor
       mangowc
+      desktop
+      apple-silicon
       ;
   };
+  hostModule = ../modules/hosts/${host};
+  appleSiliconModules = lib.optionals (apple-silicon != null) [
+    apple-silicon.nixosModules.apple-silicon-support
+  ];
 in
 nixpkgs.lib.nixosSystem {
   specialArgs = commonArgs;
   modules = [
-    ../modules/hosts/nixos
+    hostModule
     ../modules/nixos
 
     stylix.nixosModules.stylix
     home-manager.nixosModules.home-manager
     {
       home-manager = {
-        useUserPackages = true;
         useGlobalPkgs = true;
+        useUserPackages = true;
         backupFileExtension = "backup";
         users.${user} = ../modules/home;
         extraSpecialArgs = commonArgs // {
@@ -43,5 +53,6 @@ nixpkgs.lib.nixosSystem {
         };
       };
     }
-  ];
+  ]
+  ++ appleSiliconModules;
 }

@@ -1,4 +1,9 @@
-{ lib, compositor, ... }:
+{
+  lib,
+  pkgs,
+  compositor,
+  ...
+}:
 let
   monitorCmds =
     if compositor == "niri" then
@@ -8,8 +13,8 @@ let
       }
     else if compositor == "mango" then
       {
-        powerOn = "mmsg -d enable_monitor";
-        powerOff = "mmsg -d disable_monitor";
+        powerOn = "${pkgs.mangowc}/bin/mmsg -d enable_monitor";
+        powerOff = "${pkgs.mangowc}/bin/mmsg -d disable_monitor";
       }
     else if compositor == "hyprland" then
       {
@@ -18,14 +23,16 @@ let
       }
     else
       throw "Unsupported compositor: ${compositor}";
+
+  lockCmd = "${pkgs.swaylock}/bin/swaylock";
 in
 {
   services.hypridle = {
     enable = true;
     settings = {
       general = {
-        lock_cmd = "swaylock"; # avoid starting multiple hyprlock instances.
-        before_sleep_cmd = "loginctl lock-session"; # lock before suspend.
+        lock_cmd = lockCmd;
+        before_sleep_cmd = lockCmd;
         after_sleep_cmd = lib.mkMerge [
           monitorCmds.powerOn
         ]; # to avoid having to press a key twice to turn on the display.
@@ -47,7 +54,7 @@ in
 
         {
           timeout = 180;
-          on-timeout = "loginctl lock-session"; # lock screen when timeout has passed
+          on-timeout = lockCmd; # lock screen when timeout has passed
         }
 
         {

@@ -1,6 +1,8 @@
 {
+  lib,
   pkgs,
   user,
+  apple-silicon ? null,
   ...
 }:
 {
@@ -10,6 +12,9 @@
     ./services
     ./scripts
     ../common/stylix.nix
+  ]
+  ++ lib.optionals (apple-silicon != null) [
+    ./asahi.nix
   ];
 
   home = {
