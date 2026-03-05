@@ -29,7 +29,7 @@ let
       apple-silicon
       ;
   };
-  hostModule = ../modules/hosts/${host};
+  hostModule = ../hosts/${host};
   appleSiliconModules = lib.optionals (apple-silicon != null) [
     apple-silicon.nixosModules.apple-silicon-support
   ];
