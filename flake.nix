@@ -76,6 +76,7 @@
           ;
         nixos = true; # default nixos system
         system = systems.linux; # default x86_64-linux
+        homelab = false; # whether to use homelab services like plex, jellyfin, etc
       };
 
       homeCommonArgs = commonArgs // {
@@ -86,14 +87,17 @@
         nixos-niri = {
           host = "nixos";
           compositor = compositors.niri;
+          homelab = true;
         };
         nixos-mango = {
           host = "nixos";
           compositor = compositors.mango;
+          homelab = true;
         };
         nixos-hypr = {
           host = "nixos";
           compositor = compositors.hypr;
+          homelab = true;
         };
 
         asahi-niri = {

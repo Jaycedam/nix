@@ -2,6 +2,7 @@
   compositor,
   apple-silicon ? null,
   lib,
+  homelab,
   ...
 }:
 {
@@ -15,10 +16,10 @@
     ./keyboard.nix
     ./greeter.nix
     ./virtualization.nix
-    ./homelab.nix
     ../common/stylix.nix
-
-    # Compositor
+  ]
+  ++ lib.optional homelab ./homelab.nix
+  ++ lib.optionals (apple-silicon == null) [
     (
       if compositor == "niri" then
         ./niri.nix
@@ -29,8 +30,6 @@
       else
         throw "Unsupported compositor: ${compositor}"
     )
-  ]
-  ++ lib.optionals (apple-silicon == null) [
     ./gaming.nix
   ];
 }

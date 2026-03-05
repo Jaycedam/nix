@@ -10,8 +10,9 @@
   home-manager,
   system,
   host,
-  apple-silicon ? null,
+  homelab,
   lib,
+  apple-silicon ? null,
   ...
 }:
 let
@@ -24,6 +25,7 @@ let
       theme
       compositor
       mangowc
+      homelab
       apple-silicon
       ;
   };
