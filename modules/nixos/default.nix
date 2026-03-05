@@ -6,6 +6,12 @@
   ...
 }:
 {
+  # Required for home-manager with useUserPackages enabled (for xdg-portal integration)
+  environment.pathsToLink = [
+    "/share/applications"
+    "/share/xdg-desktop-portal"
+  ];
+
   imports = [
     ./options.nix
     ./users.nix
