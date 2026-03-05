@@ -9,7 +9,6 @@ let
     {
       niri = "${pkgs.niri}/bin/niri msg action power-off-monitors && ${pkgs.coreutils}/bin/sleep 1 && ${pkgs.niri}/bin/niri msg action power-on-monitors";
       mango = "${pkgs.mangowc}/bin/mmsg -d disable_monitor && ${pkgs.coreutils}/bin/sleep 1 && ${pkgs.mangowc}/bin/mmsg -d enable_monitor";
-      hyprland = "${pkgs.hyprland}/bin/hyprctl dispatch dpms off && ${pkgs.coreutils}/bin/sleep 1 && ${pkgs.hyprland}/bin/hyprctl dispatch dpms on";
     }
     .${compositor} or null;
 in

@@ -16,11 +16,6 @@ let
         powerOn = "${pkgs.mangowc}/bin/mmsg -d enable_monitor";
         powerOff = "${pkgs.mangowc}/bin/mmsg -d disable_monitor";
       }
-    else if compositor == "hyprland" then
-      {
-        powerOn = "hyprctl dispatch dpms on";
-        powerOff = "hyprctl dispatch dpms off";
-      }
     else
       throw "Unsupported compositor: ${compositor}";
 

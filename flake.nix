@@ -56,7 +56,6 @@
       compositors = {
         niri = "niri";
         mango = "mango";
-        hypr = "hyprland";
       };
 
       theme = {
@@ -94,11 +93,6 @@
           compositor = compositors.mango;
           desktop = true;
         };
-        nixos-hypr = {
-          host = "nixos";
-          compositor = compositors.hypr;
-          desktop = true;
-        };
 
         asahi-niri = {
           host = "asahi";
@@ -111,12 +105,6 @@
           system = systems.linux-arm;
           inherit apple-silicon;
           compositor = compositors.mango;
-        };
-        asahi-hypr = {
-          host = "asahi";
-          system = systems.linux-arm;
-          inherit apple-silicon;
-          compositor = compositors.hypr;
         };
       };
 
@@ -127,10 +115,6 @@
         };
         asahi-mango = {
           compositor = compositors.mango;
-          system = systems.linux-arm;
-        };
-        asahi-hypr = {
-          compositor = compositors.hypr;
           system = systems.linux-arm;
         };
       };
