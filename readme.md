@@ -29,6 +29,12 @@ curl -fsSL jaycem.dev/nix | bash -- nixos-mango
 | nixos-niri                | `asahi-niri` (arm64)    |
 | nixos-mango               | `asahi-mango` (arm64)   |
 | nixos-hypr                | `asahi-hypr` (arm64)    |
+| asahi-niri (arm64)        |                         |
+| asahi-mango (arm64)       |                         |
+| asahi-hypr (arm64)        |                         |
+
+> [!IMPORTANT]
+> Asahi NixOS profiles need to be run with --impure flag. eg: `nixos-rebuild switch --impure --flake .#asahi-mango`
 
 ## Software
 
