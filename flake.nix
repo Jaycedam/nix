@@ -35,18 +35,10 @@
   };
 
   outputs =
-    {
-      nixpkgs,
-      mangowc,
-      home-manager,
-      nixvim,
-      stylix,
-      apple-silicon,
-      ...
-    }:
+    { nixpkgs, ... }@inputs:
     let
       inherit (nixpkgs) lib;
-      user = "jay"; # used for home-manager config, default profile
+      user = "jay";
 
       systems = {
         linux-arm = "aarch64-linux";
@@ -64,69 +56,69 @@
 
       commonArgs = {
         inherit
-          nixpkgs
+          inputs
           user
-          nixvim
-          stylix
-          mangowc
           theme
-          home-manager
-          lib
           ;
-        nixos = true; # default nixos system
-        system = systems.linux; # default x86_64-linux
-        desktop = false; # check to enable homelab and other services to reduce battery usage on laptops
+        # you can override these on the profiles
+        compositor = compositors.mango;
+        system = systems.linux;
+        desktop = true;
+        host = null; # used to import the host config, needs to be set in the profiles
       };
 
-      homeCommonArgs = commonArgs // {
-        nixos = false;
-      };
-
-      nixosVariants = {
+      profiles = {
+        nixos-mango = {
+          host = "nixos";
+        };
         nixos-niri = {
           host = "nixos";
           compositor = compositors.niri;
-          desktop = true;
-        };
-        nixos-mango = {
-          host = "nixos";
-          compositor = compositors.mango;
-          desktop = true;
         };
 
-        asahi-niri = {
-          host = "asahi";
-          system = systems.linux-arm;
-          inherit apple-silicon;
-          compositor = compositors.niri;
-        };
         asahi-mango = {
           host = "asahi";
           system = systems.linux-arm;
-          inherit apple-silicon;
-          compositor = compositors.mango;
+          desktop = false;
         };
-      };
-
-      homeVariants = {
         asahi-niri = {
+          host = "asahi";
+          system = systems.linux-arm;
           compositor = compositors.niri;
-          system = systems.linux-arm;
-        };
-        asahi-mango = {
-          compositor = compositors.mango;
-          system = systems.linux-arm;
+          desktop = false;
         };
       };
-
     in
     {
       nixosConfigurations = lib.mapAttrs (
-        name: overrides: import ./profiles/nixos.nix (commonArgs // overrides)
-      ) nixosVariants;
+        name: overrides:
+        let
+          args = commonArgs // overrides;
+          hostModule = ./hosts/${args.host};
+        in
+        nixpkgs.lib.nixosSystem {
+          specialArgs = args;
+          modules = [
+            hostModule
+            ./modules/nixos
 
-      homeConfigurations = lib.mapAttrs (
-        name: overrides: import ./profiles/mkHome.nix (homeCommonArgs // overrides)
-      ) homeVariants;
+            inputs.stylix.nixosModules.stylix
+            inputs.home-manager.nixosModules.home-manager
+            inputs.apple-silicon.nixosModules.apple-silicon-support
+            {
+              home-manager = {
+                useGlobalPkgs = true;
+                useUserPackages = true;
+                backupFileExtension = "backup";
+                users.${args.user} = ./modules/home;
+                extraSpecialArgs = args // {
+                  inherit (args) system;
+                };
+              };
+            }
+          ];
+        }
+      ) profiles;
+
     };
 }
