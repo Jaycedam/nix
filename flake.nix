@@ -76,7 +76,7 @@
           ;
         nixos = true; # default nixos system
         system = systems.linux; # default x86_64-linux
-        homelab = false; # whether to use homelab services like plex, jellyfin, etc
+        desktop = false; # check to enable homelab and other services to reduce battery usage on laptops
       };
 
       homeCommonArgs = commonArgs // {
@@ -87,17 +87,17 @@
         nixos-niri = {
           host = "nixos";
           compositor = compositors.niri;
-          homelab = true;
+          desktop = true;
         };
         nixos-mango = {
           host = "nixos";
           compositor = compositors.mango;
-          homelab = true;
+          desktop = true;
         };
         nixos-hypr = {
           host = "nixos";
           compositor = compositors.hypr;
-          homelab = true;
+          desktop = true;
         };
 
         asahi-niri = {

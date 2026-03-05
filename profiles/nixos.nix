@@ -10,7 +10,7 @@
   home-manager,
   system,
   host,
-  homelab,
+  desktop,
   lib,
   apple-silicon ? null,
   ...
@@ -25,7 +25,7 @@ let
       theme
       compositor
       mangowc
-      homelab
+      desktop
       apple-silicon
       ;
   };
@@ -44,8 +44,8 @@ nixpkgs.lib.nixosSystem {
     home-manager.nixosModules.home-manager
     {
       home-manager = {
-        useUserPackages = true;
         useGlobalPkgs = true;
+        useUserPackages = true;
         backupFileExtension = "backup";
         users.${user} = ../modules/home;
         extraSpecialArgs = commonArgs // {

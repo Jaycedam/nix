@@ -2,7 +2,7 @@
   compositor,
   apple-silicon ? null,
   lib,
-  homelab,
+  desktop,
   ...
 }:
 {
@@ -18,7 +18,7 @@
     ./virtualization.nix
     ../common/stylix.nix
   ]
-  ++ lib.optional homelab ./homelab.nix
+  ++ lib.optional desktop ./homelab.nix
   ++ lib.optionals (apple-silicon == null) [
     (
       if compositor == "niri" then
