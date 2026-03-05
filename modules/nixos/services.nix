@@ -1,4 +1,5 @@
-_: {
+{ lib, desktop, ... }:
+{
   services = {
     openssh = {
       enable = true;
@@ -13,7 +14,7 @@ _: {
 
     udisks2.enable = true; # this is necessary for udiskie to work
 
-    sunshine = {
+    sunshine = lib.mkIf desktop {
       enable = true;
       openFirewall = true;
     };
