@@ -9,7 +9,6 @@
     ./programs
     ./services
     ./scripts
-    ../common/stylix.nix
   ];
 
   home = {

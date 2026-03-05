@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, inputs, ... }:
 let
   themes = {
     rose-pine = "${pkgs.base16-schemes}/share/themes/rose-pine.yaml";
@@ -25,6 +25,10 @@ let
   };
 in
 {
+  imports = [
+    inputs.stylix.nixosModules.stylix
+  ];
+
   stylix = {
     enable = true;
     polarity = "dark";
