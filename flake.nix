@@ -45,6 +45,8 @@
         linux = "x86_64-linux";
       };
 
+      # will be used to install only one compositor
+      # and configure bar, idle manager, etc.
       compositors = {
         niri = "niri";
         mango = "mango";
