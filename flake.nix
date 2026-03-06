@@ -40,6 +40,11 @@
         linux = "x86_64-linux";
       };
 
+      colorschemes = {
+        matte-black = "matte-black";
+        rose-pine = "rose-pine";
+      };
+
       commonArgs = {
         inherit
           inputs
@@ -48,9 +53,11 @@
         user = "jay";
         system = systems.linux;
         desktop = true;
-        host = null; # used to import the host config, needs to be set in profiles
+        # used to import the host config, needs to be set in profiles
+        host = null;
         theme = {
-          name = "matte-black"; # name of the theme file in ./modules/themes
+          # name of the theme file in ./modules/themes
+          name = colorschemes.rose-pine;
           borderRadius = 10;
           shadows = false;
         };
