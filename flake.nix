@@ -14,10 +14,6 @@
       url = "github:nix-community/stylix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    mangowc = {
-      url = "github:mangowm/mango";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     apple-silicon = {
       url = "github:tpwrules/nixos-apple-silicon";
     };
@@ -38,7 +34,6 @@
     { nixpkgs, ... }@inputs:
     let
       inherit (nixpkgs) lib;
-      user = "jay";
 
       systems = {
         linux-arm = "aarch64-linux";
@@ -49,40 +44,32 @@
       # and configure bar, idle manager, etc.
       compositors = {
         niri = "niri";
-        mango = "mango";
-      };
-
-      theme = {
-        borderRadius = 10;
       };
 
       commonArgs = {
         inherit
           inputs
-          user
-          theme
           ;
-        # you can override these on the profiles
-        compositor = compositors.mango;
+        # you can override these per profile bellow
+        user = "jay";
+        compositor = compositors.niri;
         system = systems.linux;
         desktop = true;
-        host = null; # used to import the host config, needs to be set in the profiles
+        host = null; # used to import the host config, needs to be set in profiles
+        theme = {
+          name = "matte-black"; # name of the theme file in ./modules/themes
+          borderRadius = 10;
+          shadows = false;
+        };
+
       };
 
       profiles = {
-        nixos-mango = {
-          host = "nixos";
-        };
         nixos-niri = {
           host = "nixos";
           compositor = compositors.niri;
         };
 
-        asahi-mango = {
-          host = "asahi";
-          system = systems.linux-arm;
-          desktop = false;
-        };
         asahi-niri = {
           host = "asahi";
           system = systems.linux-arm;

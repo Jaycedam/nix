@@ -30,11 +30,6 @@ in
               "niri/workspaces"
               "niri/window"
             ]
-          else if compositor == "mango" then
-            [
-              "ext/workspaces"
-              "dwl/window"
-            ]
           else
             throw "Unsupported compositor: ${compositor}";
         modules-center = [

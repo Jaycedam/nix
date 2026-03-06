@@ -11,11 +11,6 @@ let
         powerOn = "niri msg action power-on-monitors";
         powerOff = "niri msg action power-off-monitors";
       }
-    else if compositor == "mango" then
-      {
-        powerOn = "${pkgs.mangowc}/bin/mmsg -d enable_monitor";
-        powerOff = "${pkgs.mangowc}/bin/mmsg -d disable_monitor";
-      }
     else
       throw "Unsupported compositor: ${compositor}";
 
