@@ -1,18 +1,13 @@
 {
   lib,
   pkgs,
-  compositor,
   ...
 }:
 let
-  monitorCmds =
-    if compositor == "niri" then
-      {
-        powerOn = "niri msg action power-on-monitors";
-        powerOff = "niri msg action power-off-monitors";
-      }
-    else
-      throw "Unsupported compositor: ${compositor}";
+  monitorCmds = {
+    powerOn = "niri msg action power-on-monitors";
+    powerOff = "niri msg action power-off-monitors";
+  };
 
   lockCmd = "${pkgs.swaylock}/bin/swaylock";
 in

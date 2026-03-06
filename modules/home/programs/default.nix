@@ -8,10 +8,11 @@ let
 in
 {
   imports = [
+    ./niri
+    ./nixvim
     ./waybar.nix
     ./fuzzel.nix
     ./desktop-entries.nix
-    ./nixvim
     ./tmux.nix
     ./kitty.nix
     ./yazi.nix

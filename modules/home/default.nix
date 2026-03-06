@@ -5,7 +5,6 @@
 }:
 {
   imports = [
-    ./compositors
     ./programs
     ./services
     ./scripts
