@@ -40,19 +40,12 @@
         linux = "x86_64-linux";
       };
 
-      # will be used to install only one compositor
-      # and configure bar, idle manager, etc.
-      compositors = {
-        niri = "niri";
-      };
-
       commonArgs = {
         inherit
           inputs
           ;
         # you can override these per profile bellow
         user = "jay";
-        compositor = compositors.niri;
         system = systems.linux;
         desktop = true;
         host = null; # used to import the host config, needs to be set in profiles
@@ -65,15 +58,13 @@
       };
 
       profiles = {
-        nixos-niri = {
+        nixos = {
           host = "nixos";
-          compositor = compositors.niri;
         };
 
-        asahi-niri = {
+        asahi = {
           host = "asahi";
           system = systems.linux-arm;
-          compositor = compositors.niri;
           desktop = false;
         };
       };

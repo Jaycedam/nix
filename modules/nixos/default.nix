@@ -1,5 +1,4 @@
 {
-  compositor,
   lib,
   desktop,
   system,
@@ -23,8 +22,7 @@
     ./greeter.nix
     ./virtualization.nix
     ./stylix.nix
-
-    (if compositor == "niri" then ./niri.nix else throw "Unsupported compositor: ${compositor}")
+    ./niri.nix
   ]
   ++ lib.optional desktop ./homelab.nix
   # don't enable gaming on arm, it requires 32bit support
