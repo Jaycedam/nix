@@ -14,17 +14,6 @@
     preferXdgDirectories = true;
     username = user;
     homeDirectory = "/home/${user}";
-    pointerCursor = {
-      enable = true;
-      package = pkgs.bibata-cursors;
-      name = "Bibata-Modern-Classic";
-      size = 24;
-      gtk.enable = true;
-      x11 = {
-        defaultCursor = "Bibata-Modern-Classic";
-        enable = true;
-      };
-    };
     # don't change this!
     stateVersion = "25.11";
   };

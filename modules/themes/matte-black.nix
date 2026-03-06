@@ -21,17 +21,9 @@ let
 in
 {
   stylix = {
-    enable = true;
     polarity = "dark";
     image = ./matte-black.jpg;
     base16Scheme = colors;
-
-    opacity = {
-      applications = 0.9;
-      terminal = 0.9;
-      popups = 0.9;
-      desktop = 0.9;
-    };
 
     icons = {
       enable = true;
@@ -40,26 +32,9 @@ in
       light = "candy-icons";
     };
 
-    fonts = {
-      serif = {
-        package = pkgs.dejavu_fonts;
-        name = "DejaVu Serif";
-      };
-
-      sansSerif = {
-        package = pkgs.dejavu_fonts;
-        name = "DejaVu Sans";
-      };
-
-      monospace = {
-        package = pkgs.jetbrains-mono;
-        name = "JetBrains Mono";
-      };
-
-      emoji = {
-        package = pkgs.noto-fonts-color-emoji;
-        name = "Noto Color Emoji";
-      };
+    cursor = {
+      name = "Bibata-Modern-Classic";
+      package = pkgs.bibata-cursors;
     };
   };
 }
