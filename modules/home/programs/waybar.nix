@@ -1,5 +1,4 @@
 {
-  pkgs,
   lib,
   theme,
   ...
@@ -7,10 +6,6 @@
 let
   iconSize = 15;
   spacing = 10;
-  brave = "${pkgs.brave}/bin/brave";
-  kitty = "${pkgs.kitty}/bin/kitty -1";
-  impala = "${pkgs.impala}/bin/impala";
-  bluetui = "${pkgs.bluetui}/bin/bluetui";
 in
 {
   programs.waybar = {
@@ -36,22 +31,6 @@ in
           "privacy"
           "group/system"
         ];
-
-        # modules customization
-        "ext/workspaces" = {
-          format = "{icon}";
-          ignore-hidden = true;
-          on-click = "activate";
-          on-click-right = "deactivate";
-          sort-by-id = true;
-        };
-
-        "dwl/window" = {
-          format = "[{layout}] {title}";
-          max-length = 30;
-          icon = true;
-          icon-size = iconSize;
-        };
 
         "niri/workspaces" = {
           format = "{icon}";
