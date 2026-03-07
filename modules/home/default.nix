@@ -1,8 +1,4 @@
-{
-  pkgs,
-  user,
-  ...
-}:
+{ user, config, ... }:
 {
   imports = [
     ./programs
@@ -21,5 +17,11 @@
   fonts.fontconfig.enable = true;
 
   # autocreate user dirs
-  xdg.userDirs.enable = true;
+  xdg.userDirs = {
+    enable = true;
+    createDirectories = true;
+    extraConfig = {
+      XDG_WALLPAPERS_DIR = "${config.home.homeDirectory}/Pictures/Wallpapers";
+    };
+  };
 }
