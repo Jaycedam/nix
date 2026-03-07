@@ -10,7 +10,7 @@
       "/dev/disk/by-uuid/9b198792-4f79-44e0-a9d0-d9cdbbaa08fb";
   };
 
-  networking.hostName = "nixos"; # Define your hostname.
+  networking.hostName = "desktop"; # Define your hostname.
 
   # other ssd/hdd mounts
   fileSystems."/mnt/ssd" = {

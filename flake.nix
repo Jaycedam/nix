@@ -65,8 +65,8 @@
       };
 
       profiles = {
-        nixos = {
-          host = "nixos";
+        desktop = {
+          host = "desktop";
         };
 
         asahi = {
