@@ -14,9 +14,9 @@ in
     settings = {
       mainBar = {
         layer = "top";
-        position = "top";
+        position = "bottom";
         spacing = 10;
-        margin = "5 10 0 10";
+        # margin = "5 10 0 10";
 
         modules-left = [
           "niri/workspaces"
@@ -229,13 +229,10 @@ in
       }
 
       window#waybar {
-        background-color: transparent;
+        border-bottom: 1px solid @base02;
       }
 
       .modules-center, .modules-right, .modules-left {
-        background-color: @base00;
-        border-radius: ${toString theme.borderRadius};
-        border: 1px solid @base02;
         padding: 0 10px;
       }
 
@@ -258,7 +255,6 @@ in
       #workspaces button {
         transition: color 0.1s ease;
         padding: 0 5px;
-        background: transparent;
         border-radius: ${toString theme.borderRadius};
       }
 
