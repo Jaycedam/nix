@@ -11,6 +11,7 @@ in
   programs.waybar = {
     enable = true;
     systemd.enable = true;
+    # todo: check default module settings to reduce loc
     settings = {
       mainBar = {
         layer = "top";
