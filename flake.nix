@@ -57,7 +57,7 @@
         host = null;
         theme = {
           # name of the theme file in ./modules/themes
-          name = colorschemes.rose-pine;
+          name = colorschemes.matte-black;
           borderRadius = 10;
           shadows = false;
         };

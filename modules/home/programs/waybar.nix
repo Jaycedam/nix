@@ -48,7 +48,7 @@ in
 
         "dwl/window" = {
           format = "[{layout}] {title}";
-          max-length = 40;
+          max-length = 30;
           icon = true;
           icon-size = iconSize;
         };
@@ -65,7 +65,7 @@ in
 
         "niri/window" = {
           format = "{title}";
-          max-length = 40;
+          max-length = 30;
           icon = true;
           icon-size = iconSize;
         };
@@ -102,7 +102,7 @@ in
             "title"
             "artist"
           ];
-          dynamic-len = 40;
+          dynamic-len = 30;
           player-icons = {
             default = "󰐍";
           };
