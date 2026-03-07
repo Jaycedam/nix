@@ -27,7 +27,7 @@ sudo NIX_CONFIG="experimental-features = nix-command flakes" \
 
 | NixOS (with HM as module) | Home Manager standalone |
 | ------------------------- | ----------------------- |
-| nixos                     | jay                     |
+| desktop                   | jay                     |
 | asahi (arm64)             |                         |
 
 ## Software
