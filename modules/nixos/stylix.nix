@@ -10,14 +10,16 @@
     ../themes/${theme.name}.nix
   ];
 
+  # global stylix settings
+  # the rest is set per theme
   stylix = {
     enable = true;
 
     opacity = {
-      applications = 0.9;
-      terminal = 0.9;
-      popups = 0.9;
-      desktop = 0.9;
+      applications = 0.95;
+      terminal = 0.95;
+      popups = 0.95;
+      desktop = 0.95;
     };
 
     cursor.size = 24;

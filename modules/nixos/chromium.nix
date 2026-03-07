@@ -32,4 +32,7 @@ _: {
       "ShoppingListEnabled" = false;
     };
   };
+
+  # chromium doesn't uses the exact color, it uses an approximation and it looks bad
+  stylix.targets.chromium.enable = false;
 }
