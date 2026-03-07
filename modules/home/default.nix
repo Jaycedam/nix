@@ -21,7 +21,7 @@
     enable = true;
     createDirectories = true;
     extraConfig = {
-      XDG_WALLPAPERS_DIR = "${config.home.homeDirectory}/Pictures/Wallpapers";
+      WALLPAPERS = "${config.home.homeDirectory}/Pictures/Wallpapers";
     };
   };
 }
