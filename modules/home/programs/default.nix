@@ -96,7 +96,6 @@ in
       seahorse
       transmission_4-gtk
       bitwarden-desktop
-      spotube
       moonlight-qt
       freetube
     ]

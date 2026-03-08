@@ -24,14 +24,19 @@
   systemd.user.services.fix-apple-backlight = {
     Unit = {
       Description = "Power cycle display to fix Apple backlight on boot";
-      After = [ "graphical.target" ];
+      After = [ "graphical-session.target" ];
     };
     Service = {
       Type = "oneshot";
-      ExecStart = "${pkgs.bash}/bin/bash -c 'niri msg action power-off-monitors; sleep 1; niri msg action power-on-monitors'";
+      ExecStart = pkgs.writeShellScript "fix-apple-backlight.sh" ''
+        export PATH="${pkgs.coreutils}/bin:${pkgs.bash}/bin"
+        ${pkgs.niri}/bin/niri msg output eDP-1 off
+        sleep 1
+        ${pkgs.niri}/bin/niri msg output eDP-1 on
+      '';
     };
     Install = {
-      WantedBy = [ "graphical.target" ];
+      WantedBy = [ "graphical-session.target" ];
     };
   };
 }
