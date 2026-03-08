@@ -15,9 +15,9 @@ in
     settings = {
       mainBar = {
         layer = "top";
-        position = "top";
+        position = "bottom";
         spacing = 10;
-        # margin = "5 10 0 10";
+        # margin = "0 10 5 10";
 
         modules-left = [
           "niri/workspaces"
@@ -28,9 +28,9 @@ in
         ];
         modules-right = [
           "mpris"
-          "group/custom-tray"
+          "tray"
+          "group/actions"
           "privacy"
-          "power-profiles-daemon"
           "group/system"
         ];
 
@@ -214,10 +214,10 @@ in
           inherit spacing;
         };
 
-        "group/custom-tray" = {
+        "group/actions" = {
           orientation = "horizontal";
           modules = [
-            "tray"
+            "power-profiles-daemon"
             "idle_inhibitor"
           ];
         };
@@ -243,7 +243,7 @@ in
       }
 
       window#waybar {
-        border-bottom: 1px solid @base02;
+        border-top: 1px solid @base02;
       }
 
       .modules-center, .modules-right, .modules-left {
@@ -272,7 +272,7 @@ in
         border-radius: ${toString theme.borderRadius};
       }
 
-      #custom-tray {
+      #actions {
         background: @base02;
         border-radius: ${toString theme.borderRadius};
         border: 1px solid @base02;
