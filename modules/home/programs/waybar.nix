@@ -15,7 +15,7 @@ in
     settings = {
       mainBar = {
         layer = "top";
-        position = "bottom";
+        position = "top";
         spacing = 10;
         # margin = "5 10 0 10";
 
@@ -30,6 +30,7 @@ in
           "mpris"
           "group/custom-tray"
           "privacy"
+          "power-profiles-daemon"
           "group/system"
         ];
 
@@ -40,6 +41,18 @@ in
             dev = "󰞷";
             chat = "󰻞";
             default = "󰝥";
+          };
+        };
+
+        power-profiles-daemon = {
+          "format" = "{icon}";
+          "tooltip-format" = "Power profile: {profile}\nDriver: {driver}";
+          "tooltip" = true;
+          "format-icons" = {
+            "default" = "󰾅";
+            "performance" = "󰓅";
+            "balanced" = "󰾅";
+            "power-saver" = "󰾆";
           };
         };
 
