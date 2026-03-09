@@ -40,11 +40,6 @@
         linux = "x86_64-linux";
       };
 
-      colorschemes = {
-        matte-black = "matte-black";
-        rose-pine = "rose-pine";
-      };
-
       commonArgs = {
         inherit
           inputs
@@ -57,7 +52,7 @@
         host = null;
         theme = {
           # name of the theme file in ./modules/themes
-          name = colorschemes.matte-black;
+          name = "matte-black";
           borderRadius = 10;
           shadows = false;
         };
