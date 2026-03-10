@@ -271,7 +271,7 @@
       # Mouse Button Bindings
       # btn_left and btn_right can't bind none mod key
       mousebind=super,btn_left,moveresize,curmove
-      mousebind=NONE,btn_middle,togglemaximizescreen,0
+      mousebind=super,btn_middle,togglemaximizescreen,0
       mousebind=super,btn_right,moveresize,curresize
 
       # 3-finger: Workspace navigation, niri like gestures
