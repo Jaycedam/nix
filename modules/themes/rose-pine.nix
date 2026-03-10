@@ -23,6 +23,13 @@
       base0F = "524f67"; # Deprecated, Opening/Closing Embedded Language Tags, e.g. <?php ?>
     };
 
+    icons = {
+      enable = true;
+      package = pkgs.candy-icons;
+      dark = "candy-icons";
+      light = "candy-icons";
+    };
+
     cursor = {
       name = "BreezeX-RosePine-Linux";
       package = pkgs.rose-pine-cursor;
