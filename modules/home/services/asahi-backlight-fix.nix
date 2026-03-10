@@ -1,18 +1,17 @@
 { pkgs, compositor, ... }:
 let
   monitorCmds =
-    if compositor == "niri" then
-      {
+    {
+      niri = {
         powerOn = "${pkgs.niri}/bin/niri msg action power-on-monitors";
         powerOff = "${pkgs.niri}/bin/niri msg action power-off-monitors";
-      }
-    else if compositor == "mango" then
-      {
+      };
+      mango = {
         powerOn = "${pkgs.mangowc}/bin/mmsg -d enable_monitor";
         powerOff = "${pkgs.mangowc}/bin/mmsg -d disable_monitor";
-      }
-    else
-      null;
+      };
+    }
+    .${compositor};
 in
 {
   # workaraound for Apple backlight not working on boot

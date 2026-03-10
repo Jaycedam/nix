@@ -20,24 +20,25 @@ in
         spacing = 10;
         # margin = "0 10 5 10";
 
-        modules-left = [
+        modules-left =
           {
-            "niri" = "niri/window";
-            "mango" = "dwl/window";
+            "niri" = [
+              "niri/workspaces"
+              "niri/window"
+            ];
+            "mango" = [
+              "ext/workspaces"
+              "dwl/window"
+            ];
           }
-          .${compositor}
-        ];
+          .${compositor};
 
         modules-center = [
-          {
-            "niri" = "niri/workspaces";
-            "mango" = "ext/workspaces";
-          }
-          .${compositor}
+          "clock"
         ];
         modules-right = [
           "mpris"
-          "tray"
+          "group/tray-expander"
           "group/actions"
           "privacy"
           "group/system"
@@ -144,7 +145,11 @@ in
           format-disconnected = "󰀦 Disconnected";
           interval = 3;
           on-click =
-            if compositor == "niri" then "niri-launch-or-focus --tui impala" else "launch-tui impala";
+            {
+              niri = "niri-launch-or-focus --tui impala";
+              mango = "launch-tui impala";
+            }
+            .${compositor};
         };
 
         battery = {
@@ -224,25 +229,26 @@ in
           interval = 1;
           format = "{:%a %d %b  %H:%M}";
           on-click =
-            if compositor == "niri" then
-              "niri-launch-or-focus-webapp calendar.proton.me"
-            else
-              "launch-webapp https://calendar.proton.me";
+            {
+              niri = "niri-launch-or-focus-webapp calendar.proton.me";
+              mango = "launch-webapp https://calendar.proton.me";
+            }
+            .${compositor};
 
-          "tooltip-format" = "<tt>{calendar}</tt>";
+          tooltip-format = "<tt>{calendar}</tt>";
           calendar = {
-            "format" = {
-              "months" = "<span color='#ffead3'><b>{}</b></span>";
-              "days" = "<span color='#ecc6d9'><b>{}</b></span>";
-              "weeks" = "<span color='#99ffdd'><b>W{}</b></span>";
-              "weekdays" = "<span color='#ffcc66'><b>{}</b></span>";
-              "today" = "<span color='#ff6699'><b><u>{}</u></b></span>";
+            format = {
+              months = "<span color='#ffead3'><b>{}</b></span>";
+              days = "<span color='#ecc6d9'><b>{}</b></span>";
+              weeks = "<span color='#99ffdd'><b>W{}</b></span>";
+              weekdays = "<span color='#ffcc66'><b>{}</b></span>";
+              today = "<span color='#ff6699'><b><u>{}</u></b></span>";
             };
           };
-          "actions" = {
-            "on-click-right" = "shift_reset";
-            "on-scroll-up" = "shift_up";
-            "on-scroll-down" = "shift_down";
+          actions = {
+            on-click-right = "shift_reset";
+            on-scroll-up = "shift_up";
+            on-scroll-down = "shift_down";
           };
         };
 
@@ -250,6 +256,26 @@ in
           icon-size = iconSize;
           inherit spacing;
           show-passive-items = true;
+        };
+
+        "group/tray-expander" = {
+          orientation = "inherit";
+          drawer = {
+            transition-duration = 600;
+            children-class = "tray-group-item";
+          };
+          modules = [
+            "custom/expand-icon"
+            "tray"
+          ];
+        };
+        "custom/expand-icon" = {
+          format = "";
+          tooltip = false;
+          on-scroll-up = "";
+          on-scroll-down = "";
+          on-scroll-left = "";
+          on-scroll-right = "";
         };
 
         "group/actions" = {
@@ -270,7 +296,11 @@ in
           tooltip-format-enumerate-connected = "{device_alias}";
           tooltip-format-enumerate-connected-battery = "{device_alias}\t{device_battery_percentage}%";
           on-click =
-            if compositor == "niri" then "niri-launch-or-focus --tui bluetui" else "launch-tui bluetui";
+            {
+              niri = "niri-launch-or-focus --tui bluetui";
+              mango = "launch-tui bluetui";
+            }
+            .${compositor};
         };
 
       };
@@ -311,7 +341,7 @@ in
         border-radius: ${toString theme.borderRadius};
       }
 
-      #actions {
+      #actions, #tray-expander {
         background: @base02;
         border-radius: ${toString theme.borderRadius};
         border: 1px solid @base02;

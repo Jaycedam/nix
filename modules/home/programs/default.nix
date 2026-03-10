@@ -26,14 +26,11 @@ in
     ./eza.nix
     ./dev.nix
 
-    (
-      if compositor == "niri" then
-        ./niri
-      else if compositor == "mango" then
-        ./mango
-      else
-        throw "Unsupported compositor: ${compositor}"
-    )
+    {
+      niri = ./niri;
+      mango = ./mango;
+    }
+    .${compositor}
   ];
 
   programs = {

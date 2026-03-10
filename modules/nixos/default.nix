@@ -24,14 +24,11 @@
     ./virtualization.nix
     ./stylix.nix
 
-    (
-      if compositor == "niri" then
-        ./niri.nix
-      else if compositor == "mango" then
-        ./mango.nix
-      else
-        throw "Unsupported compositor: ${compositor}"
-    )
+    {
+      "niri" = ./niri.nix;
+      "mango" = ./mango.nix;
+    }
+    .${compositor}
   ]
   ++ lib.optional desktop ./homelab.nix
   # don't enable gaming on arm, it requires 32bit support
