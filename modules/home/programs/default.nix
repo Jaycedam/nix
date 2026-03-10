@@ -1,4 +1,5 @@
 {
+  compositor,
   pkgs,
   ...
 }:
@@ -8,7 +9,6 @@ let
 in
 {
   imports = [
-    ./niri
     ./nixvim
     ./waybar.nix
     ./fuzzel.nix
@@ -25,6 +25,15 @@ in
     ./swaylock.nix
     ./eza.nix
     ./dev.nix
+
+    (
+      if compositor == "niri" then
+        ./niri
+      else if compositor == "mango" then
+        ./mango
+      else
+        throw "Unsupported compositor: ${compositor}"
+    )
   ];
 
   programs = {

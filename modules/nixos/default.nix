@@ -2,6 +2,7 @@
   lib,
   desktop,
   system,
+  compositor,
   ...
 }:
 {
@@ -22,7 +23,15 @@
     ./greeter.nix
     ./virtualization.nix
     ./stylix.nix
-    ./niri.nix
+
+    (
+      if compositor == "niri" then
+        ./niri.nix
+      else if compositor == "mango" then
+        ./mango.nix
+      else
+        throw "Unsupported compositor: ${compositor}"
+    )
   ]
   ++ lib.optional desktop ./homelab.nix
   # don't enable gaming on arm, it requires 32bit support

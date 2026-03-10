@@ -17,6 +17,10 @@
     apple-silicon = {
       url = "github:tpwrules/nixos-apple-silicon";
     };
+    mangowc = {
+      url = "github:mangowm/mango";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   nixConfig = {
@@ -40,6 +44,12 @@
         linux = "x86_64-linux";
       };
 
+      compositors = {
+        niri = "niri";
+        mango = "mango";
+        hypr = "hyprland";
+      };
+
       commonArgs = {
         inherit
           inputs
@@ -49,7 +59,8 @@
         system = systems.linux;
         desktop = true;
         # used to import the host config, needs to be set in profiles
-        host = null;
+        host = throw "host must be set in the current profile";
+        compositor = throw "compositor must be set in the current profile";
         theme = {
           # name of the theme file in ./modules/themes
           name = "matte-black";
@@ -60,15 +71,28 @@
       };
 
       profiles = {
-        desktop = {
+        desktop-mango = {
           host = "desktop";
+          compositor = compositors.mango;
+        };
+        desktop-niri = {
+          host = "desktop";
+          compositor = compositors.niri;
         };
 
-        asahi = {
+        asahi-mango = {
           host = "asahi";
           system = systems.linux-arm;
           desktop = false;
+          compositor = compositors.mango;
         };
+        asahi-niri = {
+          host = "asahi";
+          system = systems.linux-arm;
+          desktop = false;
+          compositor = compositors.niri;
+        };
+
       };
     in
     {
