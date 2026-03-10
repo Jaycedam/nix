@@ -1,12 +1,12 @@
 {
-  mangowc,
+  inputs,
   config,
   theme,
   ...
 }:
 {
   imports = [
-    mangowc.hmModules.mango
+    inputs.mangowc.hmModules.mango
   ];
 
   wayland.windowManager.mango = {
@@ -341,4 +341,5 @@
       # Note: here no need to add shebang
     '';
   };
+
 }
