@@ -27,11 +27,13 @@ sudo NIX_CONFIG="experimental-features = nix-command flakes" \
 
 | NixOS (with HM as module) | Home Manager standalone |
 | ------------------------- | ----------------------- |
-| desktop                   | jay                     |
-| asahi (arm64)             |                         |
+| desktop (mangowc)         | jay                     |
+| desktop-niri (niri)       |                         |
+| asahi (mangowc arm64)     |                         |
+| asahi-niri (niri arm64)   |                         |
 
 ## Software
 
-- Compositor and tools: niri, fuzzel, waybar, mako, swayidle, swaylock
+- Compositor and tools: mangowc/niri, fuzzel, waybar, mako, swayidle, swaylock
 - Main programs: kitty, fish, neovim
 - Theming: stylix
