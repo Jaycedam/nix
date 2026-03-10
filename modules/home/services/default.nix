@@ -1,7 +1,11 @@
-_: {
+{ lib, host, ... }:
+{
   imports = [
     ./hypridle.nix
     ./mako.nix
+  ]
+  ++ lib.optionals (host == "asahi") [
+    ./asahi-backlight-fix.nix
   ];
 
   services = {

@@ -63,15 +63,15 @@
         compositor = throw "compositor must be set in the current profile";
         theme = {
           # name of the theme file in ./modules/themes
-          name = "matte-black";
-          borderRadius = 10;
+          name = "rose-pine";
+          borderRadius = 5;
           shadows = false;
         };
 
       };
 
       profiles = {
-        desktop-mango = {
+        desktop = {
           host = "desktop";
           compositor = compositors.mango;
         };
@@ -80,7 +80,7 @@
           compositor = compositors.niri;
         };
 
-        asahi-mango = {
+        asahi = {
           host = "asahi";
           system = systems.linux-arm;
           desktop = false;
