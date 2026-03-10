@@ -20,22 +20,20 @@ in
         spacing = 10;
         # margin = "0 10 5 10";
 
-        modules-left =
-          if compositor == "niri" then
-            [
-              "niri/workspaces"
-              "niri/window"
-            ]
-          else if compositor == "mango" then
-            [
-              "ext/workspaces"
-              "dwl/window"
-            ]
-          else
-            null;
+        modules-left = [
+          {
+            "niri" = "niri/window";
+            "mango" = "dwl/window";
+          }
+          .${compositor}
+        ];
 
         modules-center = [
-          "clock"
+          {
+            "niri" = "niri/workspaces";
+            "mango" = "ext/workspaces";
+          }
+          .${compositor}
         ];
         modules-right = [
           "mpris"
@@ -48,10 +46,17 @@ in
         # modules customization
         "ext/workspaces" = {
           format = "{icon}";
-          ignore-hidden = true;
+          ignore-hidden = false;
           on-click = "activate";
           on-click-right = "deactivate";
           sort-by-id = true;
+          persistent-workspaces = {
+            "1" = [ ];
+            "2" = [ ];
+            "3" = [ ];
+            "4" = [ ];
+            "5" = [ ];
+          };
         };
 
         "dwl/window" = {
@@ -244,6 +249,7 @@ in
         tray = {
           icon-size = iconSize;
           inherit spacing;
+          show-passive-items = true;
         };
 
         "group/actions" = {
