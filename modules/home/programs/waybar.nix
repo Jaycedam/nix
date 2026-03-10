@@ -45,6 +45,22 @@ in
           "group/system"
         ];
 
+        # modules customization
+        "ext/workspaces" = {
+          format = "{icon}";
+          ignore-hidden = true;
+          on-click = "activate";
+          on-click-right = "deactivate";
+          sort-by-id = true;
+        };
+
+        "dwl/window" = {
+          format = "[{layout}] {title}";
+          max-length = 40;
+          icon = true;
+          icon-size = iconSize;
+        };
+
         "niri/workspaces" = {
           format = "{icon}";
           format-icons = {
