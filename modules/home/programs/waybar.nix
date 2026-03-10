@@ -1,4 +1,5 @@
 {
+  compositor,
   lib,
   theme,
   ...
@@ -19,10 +20,20 @@ in
         spacing = 10;
         # margin = "0 10 5 10";
 
-        modules-left = [
-          "niri/workspaces"
-          "niri/window"
-        ];
+        modules-left =
+          if compositor == "niri" then
+            [
+              "niri/workspaces"
+              "niri/window"
+            ]
+          else if compositor == "mango" then
+            [
+              "ext/workspaces"
+              "dwl/window"
+            ]
+          else
+            null;
+
         modules-center = [
           "clock"
         ];
@@ -111,7 +122,8 @@ in
           format-linked = "󱎔 {ifname} (No IP)";
           format-disconnected = "󰀦 Disconnected";
           interval = 3;
-          on-click = "niri-launch-or-focus --tui impala";
+          on-click =
+            if compositor == "niri" then "niri-launch-or-focus --tui impala" else "launch-tui impala";
         };
 
         battery = {
@@ -190,7 +202,11 @@ in
         clock = {
           interval = 1;
           format = "{:%a %d %b  %H:%M}";
-          on-click = "niri-launch-or-focus-webapp calendar.proton.me";
+          on-click =
+            if compositor == "niri" then
+              "niri-launch-or-focus-webapp calendar.proton.me"
+            else
+              "launch-webapp https://calendar.proton.me";
 
           "tooltip-format" = "<tt>{calendar}</tt>";
           calendar = {
@@ -231,7 +247,8 @@ in
           tooltip-format-connected = "{controller_alias}\n\n{num_connections} connected\n\n{device_enumerate}";
           tooltip-format-enumerate-connected = "{device_alias}";
           tooltip-format-enumerate-connected-battery = "{device_alias}\t{device_battery_percentage}%";
-          on-click = "niri-launch-or-focus --tui bluetui";
+          on-click =
+            if compositor == "niri" then "niri-launch-or-focus --tui bluetui" else "launch-tui bluetui";
         };
 
       };
