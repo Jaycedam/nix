@@ -47,17 +47,9 @@ in
         # modules customization
         "ext/workspaces" = {
           format = "{icon}";
-          ignore-hidden = false;
           on-click = "activate";
           on-click-right = "deactivate";
           sort-by-id = true;
-          persistent-workspaces = {
-            "1" = [ ];
-            "2" = [ ];
-            "3" = [ ];
-            "4" = [ ];
-            "5" = [ ];
-          };
         };
 
         "dwl/window" = {
