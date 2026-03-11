@@ -27,7 +27,7 @@ sudo NIX_CONFIG="experimental-features = nix-command flakes" \
 
 | NixOS (with HM as module) | Home Manager standalone |
 | ------------------------- | ----------------------- |
-| desktop (mangowc)         | jay                     |
+| desktop (mangowc)         | TODO                    |
 | desktop-niri (niri)       |                         |
 | asahi (mangowc arm64)     |                         |
 | asahi-niri (niri arm64)   |                         |
