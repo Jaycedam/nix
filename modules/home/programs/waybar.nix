@@ -5,7 +5,7 @@
   ...
 }:
 let
-  iconSize = 15;
+  icon-size = 15;
   spacing = 10;
 in
 {
@@ -56,7 +56,7 @@ in
           format = "[{layout}] {title}";
           max-length = 40;
           icon = true;
-          icon-size = iconSize;
+          inherit icon-size;
         };
 
         "niri/workspaces" = {
@@ -85,23 +85,23 @@ in
           format = "{title}";
           max-length = 30;
           icon = true;
-          icon-size = iconSize;
+          inherit icon-size;
         };
 
         privacy = {
           icon-spacing = spacing;
-          icon-size = 18;
+          inherit icon-size;
           transition-duration = 250;
           modules = [
             {
               type = "screenshare";
               tooltip = true;
-              tooltip-icon-size = 24;
+              tooltip-icon-size = icon-size;
             }
             {
               type = "audio-in";
               tooltip = true;
-              tooltip-icon-size = 24;
+              tooltip-icon-size = icon-size;
             }
           ];
           ignore-monitor = true;
@@ -245,8 +245,7 @@ in
         };
 
         tray = {
-          icon-size = iconSize;
-          inherit spacing;
+          inherit icon-size spacing;
           show-passive-items = true;
         };
 
@@ -330,12 +329,12 @@ in
       #workspaces button {
         transition: color 0.1s ease;
         padding: 0 5px;
-        border-radius: ${toString theme.borderRadius};
+        border-radius: ${toString theme.border-radius};
       }
 
       #actions, #tray-expander {
         background: @base02;
-        border-radius: ${toString theme.borderRadius};
+        border-radius: ${toString theme.border-radius};
         border: 1px solid @base02;
       }
 

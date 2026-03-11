@@ -17,7 +17,7 @@
         [
           config.lib.stylix.colors.base0D
           config.lib.stylix.colors.base03
-          (builtins.toString theme.borderRadius)
+          (builtins.toString theme.border-radius)
 
         ]
         (builtins.readFile ./niri.kdl)

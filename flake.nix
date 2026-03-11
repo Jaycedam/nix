@@ -65,7 +65,7 @@
         theme = {
           # name of the theme file in ./modules/themes
           name = "rose-pine";
-          borderRadius = 5;
+          border-radius = 5;
           shadows = false;
         };
 

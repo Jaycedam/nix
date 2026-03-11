@@ -49,7 +49,7 @@
       shadows_position_y = 0
       shadowscolor= 0x000000ff
 
-      border_radius=${toString theme.borderRadius}
+      border_radius=${toString theme.border-radius}
       no_radius_when_single=0
       focused_opacity=1.0
       unfocused_opacity=0.8
@@ -329,6 +329,8 @@
       windowrule=tags:1,appid:brave-browser
       windowrule=tags:1,appid:brave-youtube.com__-Default
       windowrule=tags:2,appid:kitty
+      windowrule=tags:2,appid:nvim-projects
+      windowrule=tags:2,appid:nvim
       windowrule=tags:3,appid:brave-open.spotify.com__-Default
       windowrule=tags:4,appid:brave-web.whatsapp.com__-Default
       windowrule=tags:4,appid:brave-web.mail.proton.me__-Default
