@@ -2,11 +2,16 @@
   compositor,
   lib,
   theme,
+  pkgs,
   ...
 }:
 let
   icon-size = 15;
   spacing = 10;
+  launch-tui = import ../scripts/programs/launch-tui.nix { inherit pkgs; };
+  launch-webapp = import ../scripts/programs/launch-webapp.nix { inherit pkgs; };
+  niri-launch-or-focus = import ../scripts/niri/launch-or-focus.nix { inherit pkgs; };
+  niri-launch-or-focus-webapp = import ../scripts/niri/launch-or-focus-webapp.nix { inherit pkgs; };
 in
 {
   programs.waybar = {
@@ -38,7 +43,6 @@ in
         ];
         modules-right = [
           "mpris"
-          "group/tray-expander"
           "group/actions"
           "privacy"
           "group/system"
@@ -138,8 +142,8 @@ in
           interval = 3;
           on-click =
             {
-              niri = "niri-launch-or-focus --tui impala";
-              mango = "launch-tui impala";
+              niri = "${niri-launch-or-focus}/bin/niri-launch-or-focus --tui impala";
+              mango = "${launch-tui}/bin/launch-tui impala";
             }
             .${compositor};
         };
@@ -195,8 +199,8 @@ in
               "󰕾"
             ];
           };
-          on-click = "pavucontrol -t 3";
-          on-click-right = "pactl --set-sink-mute 0 toggle";
+          on-click = "${pkgs.pavucontrol}/bin/pavucontrol -t 3";
+          on-click-right = "${pkgs.pulseaudio}/bin/pactl --set-sink-mute 0 toggle";
         };
 
         idle_inhibitor = {
@@ -222,8 +226,8 @@ in
           format = "{:%a %d %b  %H:%M}";
           on-click =
             {
-              niri = "niri-launch-or-focus-webapp calendar.proton.me";
-              mango = "launch-webapp https://calendar.proton.me";
+              niri = "${niri-launch-or-focus-webapp}/bin/niri-launch-or-focus-webapp calendar.proton.me";
+              mango = "${launch-webapp}/bin/launch-webapp https://calendar.proton.me";
             }
             .${compositor};
 
@@ -272,6 +276,7 @@ in
         "group/actions" = {
           orientation = "horizontal";
           modules = [
+            "group/tray-expander"
             "power-profiles-daemon"
             "idle_inhibitor"
           ];
@@ -288,8 +293,8 @@ in
           tooltip-format-enumerate-connected-battery = "{device_alias}\t{device_battery_percentage}%";
           on-click =
             {
-              niri = "niri-launch-or-focus --tui bluetui";
-              mango = "launch-tui bluetui";
+              niri = "${niri-launch-or-focus}/bin/niri-launch-or-focus --tui bluetui";
+              mango = "${launch-tui}/bin/launch-tui bluetui";
             }
             .${compositor};
         };
@@ -332,7 +337,7 @@ in
         border-radius: ${toString theme.border-radius};
       }
 
-      #actions, #tray-expander {
+      #actions {
         background: @base02;
         border-radius: ${toString theme.border-radius};
         border: 1px solid @base02;
