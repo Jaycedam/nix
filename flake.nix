@@ -64,8 +64,8 @@
         compositor = throw "compositor must be set in the current profile";
         theme = {
           # name of the theme file in ./modules/themes
-          name = "rose-pine";
-          border-radius = 5;
+          name = "matte-black";
+          border-radius = 10;
           shadows = false;
         };
 
