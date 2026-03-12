@@ -142,8 +142,8 @@ in
           interval = 3;
           on-click =
             {
-              niri = "${niri-launch-or-focus}/bin/niri-launch-or-focus --tui impala";
-              mango = "${launch-tui}/bin/launch-tui impala";
+              niri = "${niri-launch-or-focus}/bin/niri-launch-or-focus --tui ${pkgs.impala}/bin/impala";
+              mango = "${launch-tui}/bin/launch-tui ${pkgs.impala}/bin/impala";
             }
             .${compositor};
         };
@@ -293,8 +293,8 @@ in
           tooltip-format-enumerate-connected-battery = "{device_alias}\t{device_battery_percentage}%";
           on-click =
             {
-              niri = "${niri-launch-or-focus}/bin/niri-launch-or-focus --tui bluetui";
-              mango = "${launch-tui}/bin/launch-tui bluetui";
+              niri = "${niri-launch-or-focus}/bin/niri-launch-or-focus --tui ${pkgs.bluetui}/bin/bluetui";
+              mango = "${launch-tui}/bin/launch-tui ${pkgs.bluetui}/bin/bluetui";
             }
             .${compositor};
         };
