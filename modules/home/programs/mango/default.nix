@@ -335,6 +335,10 @@
       windowrule=tags:4,appid:brave-web.whatsapp.com__-Default
       windowrule=tags:4,appid:brave-web.mail.proton.me__-Default
       windowrule=tags:5,appid:steam
+      # floating global window (settings)
+      windowrule=width:1000,height:800,isfloating:1,offsetx:0,offsety:0,isglobal:1,isoverlay=1,appid:impala$
+      windowrule=width:1000,height:800,isfloating:1,offsetx:0,offsety:0,isglobal:1,isoverlay=1,appid:bluetui$
+      windowrule=width:1000,height:800,isfloating:1,offsetx:0,offsety:0,isglobal:1,isoverlay=1,appid:org.pulseaudio.pavucontrol
       # pip
       windowrule=width:400,height:225,isfloating:1,isglobal:1,isoverlay:1,offsetx:100,offsety:-100,noblur:1,isnoborder:1,unfocused_opacity:1,title:Picture in picture
 
