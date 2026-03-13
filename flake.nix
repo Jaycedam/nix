@@ -73,24 +73,24 @@
       profiles = {
         desktop = {
           host = "desktop";
-          compositor = compositors.mango;
-        };
-        desktop-niri = {
-          host = "desktop";
           compositor = compositors.niri;
+        };
+        desktop-mango = {
+          host = "desktop";
+          compositor = compositors.mango;
         };
 
         asahi = {
           host = "asahi";
           system = systems.linux-arm;
           desktop = false;
-          compositor = compositors.mango;
+          compositor = compositors.niri;
         };
-        asahi-niri = {
+        asahi-mango = {
           host = "asahi";
           system = systems.linux-arm;
           desktop = false;
-          compositor = compositors.niri;
+          compositor = compositors.mango;
         };
 
       };

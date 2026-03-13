@@ -25,15 +25,15 @@ sudo NIX_CONFIG="experimental-features = nix-command flakes" \
 
 **Available profiles (defined in [flake.nix](./flake.nix)):**
 
-| NixOS (with HM as module) | Home Manager standalone |
-| ------------------------- | ----------------------- |
-| desktop (mangowc)         | TODO                    |
-| desktop-niri (niri)       |                         |
-| asahi (mangowc arm64)     |                         |
-| asahi-niri (niri arm64)   |                         |
+| NixOS (with HM as module)   | Home Manager standalone |
+| --------------------------- | ----------------------- |
+| desktop (niri)              | TODO                    |
+| desktop-mango (mangowc)     |                         |
+| asahi (niri arm64)          |                         |
+| asahi-mango (mangowc arm64) |                         |
 
 ## Software
 
-- Compositor and tools: mangowc/niri, fuzzel, waybar, mako, swayidle, swaylock
+- Compositor and tools:niri/mangowc, fuzzel, waybar, mako, swayidle, swaylock
 - Main programs: kitty, fish, neovim
 - Theming: stylix
