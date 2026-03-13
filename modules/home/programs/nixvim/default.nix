@@ -1,9 +1,9 @@
-{ nixvim, ... }:
+{ inputs, ... }:
 
 {
   imports = [
     # main nixvim module
-    nixvim.homeModules.nixvim
+    inputs.nixvim.homeModules.nixvim
   ];
   programs.nixvim = {
     enable = true;

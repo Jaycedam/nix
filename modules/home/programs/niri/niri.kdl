@@ -78,18 +78,20 @@ layout {
         proportion 0.2
         proportion 0.5
     }
+
     struts {
-        left 20
-        right 20
+        left 15
+        right 15
     }
+
     focus-ring {
         off
     }
     border {
         on
         width 3
-        active-color "#ffffff"
-        inactive-color "#212121"
+        active-color "__ACTIVE_COLOR__"
+        inactive-color "__INACTIVE_COLOR__"
     }
     shadow {
         off
@@ -144,7 +146,7 @@ window-rule {
 
 window-rule {
     // rounded corners
-    geometry-corner-radius 10
+    geometry-corner-radius __BORDER_RADIUS__
     clip-to-geometry true
 }
 
@@ -194,7 +196,7 @@ overview {
 
 // Put swww inside the overview backdrop.
 layer-rule {
-    match namespace="^swww-daemon$"
+    match namespace="^wpaperd.*"
     place-within-backdrop true
 }
 

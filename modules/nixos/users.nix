@@ -4,6 +4,7 @@
   users.users.${user} = {
     isNormalUser = true;
     extraGroups = [
+      "video"
       "networkmanager"
       "wheel"
       "i2c" # allow ddcutil control

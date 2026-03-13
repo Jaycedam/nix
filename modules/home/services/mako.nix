@@ -1,4 +1,5 @@
-{ theme, ... }: {
+{ theme, ... }:
+{
   services.mako = {
     enable = true;
     settings = {
@@ -6,7 +7,7 @@
       width = 400;
       padding = 10;
       border-size = 1;
-      border-radius = theme.borderRadius;
+      inherit (theme) border-radius;
       layer = "overlay";
 
       # OSD bottom-center

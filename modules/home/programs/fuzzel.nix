@@ -4,7 +4,7 @@
     enable = true;
     settings = {
       border = {
-        radius = theme.borderRadius;
+        radius = theme.border-radius;
       };
     };
   };

@@ -77,7 +77,7 @@ _: {
             "<Space>"
             "w"
           ];
-          run = "shell 'swww img -t grow --transition-duration 2 --transition-fps 60 %h'";
+          run = "shell 'wpaperctl set %h'";
           desc = "Set wallpaper (swww)";
         }
 

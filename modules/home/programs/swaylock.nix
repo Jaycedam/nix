@@ -1,12 +1,6 @@
-{
-  pkgs,
-  nixos,
-  ...
-}:
-{
+_: {
   programs.swaylock = {
     enable = true;
-    package = if nixos then pkgs.swaylock else null;
     settings = {
       ignore-empty-password = true;
       indicator-idle-visible = true;

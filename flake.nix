@@ -14,12 +14,13 @@
       url = "github:nix-community/stylix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    apple-silicon = {
+      url = "github:nix-community/nixos-apple-silicon";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     mangowc = {
       url = "github:mangowm/mango";
       inputs.nixpkgs.follows = "nixpkgs";
-    };
-    apple-silicon = {
-      url = "github:tpwrules/nixos-apple-silicon";
     };
   };
 
@@ -35,18 +36,9 @@
   };
 
   outputs =
-    {
-      nixpkgs,
-      mangowc,
-      home-manager,
-      nixvim,
-      stylix,
-      apple-silicon,
-      ...
-    }:
+    { nixpkgs, ... }@inputs:
     let
       inherit (nixpkgs) lib;
-      user = "jay"; # used for home-manager config, default profile
 
       systems = {
         linux-arm = "aarch64-linux";
@@ -59,90 +51,79 @@
         hypr = "hyprland";
       };
 
-      theme = {
-        borderRadius = 10;
-      };
-
       commonArgs = {
         inherit
-          nixpkgs
-          user
-          nixvim
-          stylix
-          mangowc
-          theme
-          home-manager
-          lib
+          inputs
           ;
-        nixos = true; # default nixos system
-        system = systems.linux; # default x86_64-linux
-        desktop = false; # check to enable homelab and other services to reduce battery usage on laptops
-      };
-
-      homeCommonArgs = commonArgs // {
-        nixos = false;
-      };
-
-      nixosVariants = {
-        nixos-niri = {
-          host = "nixos";
-          compositor = compositors.niri;
-          desktop = true;
+        # you can override these per profile bellow
+        user = "jay";
+        system = systems.linux;
+        desktop = true;
+        # used to import the host config, needs to be set in profiles
+        host = throw "host must be set in the current profile";
+        compositor = throw "compositor must be set in the current profile";
+        theme = {
+          # name of the theme file in ./modules/themes
+          name = "matte-black";
+          border-radius = 10;
+          shadows = false;
         };
-        nixos-mango = {
-          host = "nixos";
+
+      };
+
+      profiles = {
+        desktop = {
+          host = "desktop";
           compositor = compositors.mango;
-          desktop = true;
         };
-        nixos-hypr = {
-          host = "nixos";
-          compositor = compositors.hypr;
-          desktop = true;
+        desktop-niri = {
+          host = "desktop";
+          compositor = compositors.niri;
         };
 
+        asahi = {
+          host = "asahi";
+          system = systems.linux-arm;
+          desktop = false;
+          compositor = compositors.mango;
+        };
         asahi-niri = {
           host = "asahi";
           system = systems.linux-arm;
-          inherit apple-silicon;
+          desktop = false;
           compositor = compositors.niri;
         };
-        asahi-mango = {
-          host = "asahi";
-          system = systems.linux-arm;
-          inherit apple-silicon;
-          compositor = compositors.mango;
-        };
-        asahi-hypr = {
-          host = "asahi";
-          system = systems.linux-arm;
-          inherit apple-silicon;
-          compositor = compositors.hypr;
-        };
-      };
 
-      homeVariants = {
-        asahi-niri = {
-          compositor = compositors.niri;
-          system = systems.linux-arm;
-        };
-        asahi-mango = {
-          compositor = compositors.mango;
-          system = systems.linux-arm;
-        };
-        asahi-hypr = {
-          compositor = compositors.hypr;
-          system = systems.linux-arm;
-        };
       };
-
     in
     {
       nixosConfigurations = lib.mapAttrs (
-        name: overrides: import ./profiles/nixos.nix (commonArgs // overrides)
-      ) nixosVariants;
+        name: overrides:
+        let
+          args = commonArgs // overrides;
+          hostModule = ./hosts/${args.host};
+        in
+        nixpkgs.lib.nixosSystem {
+          specialArgs = args;
+          modules = [
+            hostModule
+            ./modules/nixos
 
-      homeConfigurations = lib.mapAttrs (
-        name: overrides: import ./profiles/mkHome.nix (homeCommonArgs // overrides)
-      ) homeVariants;
+            inputs.home-manager.nixosModules.home-manager
+            {
+              home-manager = {
+                useGlobalPkgs = true;
+                useUserPackages = true;
+                backupFileExtension = "backup";
+                users.${args.user} = ./modules/home;
+                extraSpecialArgs = args // {
+                  inherit (args) system;
+                };
+              };
+            }
+          ];
+        }
+      ) profiles;
+
     };
 }

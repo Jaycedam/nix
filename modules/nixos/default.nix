@@ -1,8 +1,8 @@
 {
-  compositor,
-  apple-silicon ? null,
   lib,
   desktop,
+  system,
+  compositor,
   ...
 }:
 {
@@ -22,20 +22,17 @@
     ./keyboard.nix
     ./greeter.nix
     ./virtualization.nix
-    ../common/stylix.nix
+    ./stylix.nix
+
+    {
+      "niri" = ./niri.nix;
+      "mango" = ./mango.nix;
+    }
+    .${compositor}
   ]
   ++ lib.optional desktop ./homelab.nix
-  ++ lib.optionals (apple-silicon == null) [
-    (
-      if compositor == "niri" then
-        ./niri.nix
-      else if compositor == "mango" then
-        ./mango.nix
-      else if compositor == "hyprland" then
-        ./hyprland.nix
-      else
-        throw "Unsupported compositor: ${compositor}"
-    )
+  # don't enable gaming on arm, it requires 32bit support
+  ++ lib.optionals (system == "x86_64-linux") [
     ./gaming.nix
   ];
 }

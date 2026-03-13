@@ -74,5 +74,25 @@ _: {
         "Audio"
       ];
     };
+
+    bluetooth-settings = {
+      name = "Bluetooth Settings";
+      genericName = "Bluetooth Settings";
+      exec = "launch-tui bluetui";
+      categories = [
+        "Settings"
+        "HardwareSettings"
+      ];
+    };
+
+    wifi-settings = {
+      name = "Wifi Settings";
+      genericName = "Wifi Settings";
+      exec = "launch-tui impala";
+      categories = [
+        "Settings"
+        "HardwareSettings"
+      ];
+    };
   };
 }

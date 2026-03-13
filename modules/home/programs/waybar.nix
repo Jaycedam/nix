@@ -1,53 +1,49 @@
 {
-  pkgs,
   compositor,
   lib,
   theme,
+  pkgs,
   ...
 }:
 let
-  iconSize = 15;
+  icon-size = 15;
   spacing = 10;
-  brave = "${pkgs.brave}/bin/brave";
-  kitty = "${pkgs.kitty}/bin/kitty -1";
-  impala = "${pkgs.impala}/bin/impala";
-  bluetui = "${pkgs.bluetui}/bin/bluetui";
+  launch-tui = import ../scripts/programs/launch-tui.nix { inherit pkgs; };
+  launch-webapp = import ../scripts/programs/launch-webapp.nix { inherit pkgs; };
+  niri-launch-or-focus = import ../scripts/niri/launch-or-focus.nix { inherit pkgs; };
+  niri-launch-or-focus-webapp = import ../scripts/niri/launch-or-focus-webapp.nix { inherit pkgs; };
 in
 {
   programs.waybar = {
     enable = true;
     systemd.enable = true;
+    # todo: check default module settings to reduce loc
     settings = {
       mainBar = {
         layer = "top";
         position = "top";
         spacing = 10;
-        margin = "5 10 0 10";
+        # margin = "0 10 5 10";
 
         modules-left =
-          if compositor == "niri" then
-            [
+          {
+            "niri" = [
               "niri/workspaces"
               "niri/window"
-            ]
-          else if compositor == "mango" then
-            [
+            ];
+            "mango" = [
               "ext/workspaces"
               "dwl/window"
-            ]
-          else if compositor == "hyprland" then
-            [
-              "hyprland/workspaces"
-              "hyprland/window"
-            ]
-          else
-            throw "Unsupported compositor: ${compositor}";
+            ];
+          }
+          .${compositor};
+
         modules-center = [
           "clock"
         ];
         modules-right = [
           "mpris"
-          "group/custom-tray"
+          "group/actions"
           "privacy"
           "group/system"
         ];
@@ -55,7 +51,6 @@ in
         # modules customization
         "ext/workspaces" = {
           format = "{icon}";
-          ignore-hidden = true;
           on-click = "activate";
           on-click-right = "deactivate";
           sort-by-id = true;
@@ -65,7 +60,7 @@ in
           format = "[{layout}] {title}";
           max-length = 40;
           icon = true;
-          icon-size = iconSize;
+          inherit icon-size;
         };
 
         "niri/workspaces" = {
@@ -78,27 +73,39 @@ in
           };
         };
 
+        power-profiles-daemon = {
+          "format" = "{icon}";
+          "tooltip-format" = "Power profile: {profile}\nDriver: {driver}";
+          "tooltip" = true;
+          "format-icons" = {
+            "default" = "󰾅";
+            "performance" = "󰓅";
+            "balanced" = "󰾅";
+            "power-saver" = "󰾆";
+          };
+        };
+
         "niri/window" = {
           format = "{title}";
-          max-length = 40;
+          max-length = 30;
           icon = true;
-          icon-size = iconSize;
+          inherit icon-size;
         };
 
         privacy = {
           icon-spacing = spacing;
-          icon-size = 18;
+          inherit icon-size;
           transition-duration = 250;
           modules = [
             {
               type = "screenshare";
               tooltip = true;
-              tooltip-icon-size = 24;
+              tooltip-icon-size = icon-size;
             }
             {
               type = "audio-in";
               tooltip = true;
-              tooltip-icon-size = 24;
+              tooltip-icon-size = icon-size;
             }
           ];
           ignore-monitor = true;
@@ -117,7 +124,7 @@ in
             "title"
             "artist"
           ];
-          dynamic-len = 40;
+          dynamic-len = 30;
           player-icons = {
             default = "󰐍";
           };
@@ -134,10 +141,11 @@ in
           format-disconnected = "󰀦 Disconnected";
           interval = 3;
           on-click =
-            if compositor == "niri" then
-              "niri-launch-or-focus --tui impala"
-            else
-              "${kitty} --class impala ${impala}";
+            {
+              niri = "${niri-launch-or-focus}/bin/niri-launch-or-focus --tui ${pkgs.impala}/bin/impala";
+              mango = "${launch-tui}/bin/launch-tui ${pkgs.impala}/bin/impala";
+            }
+            .${compositor};
         };
 
         battery = {
@@ -191,8 +199,8 @@ in
               "󰕾"
             ];
           };
-          on-click = "pavucontrol -t 3";
-          on-click-right = "pactl --set-sink-mute 0 toggle";
+          on-click = "${pkgs.pavucontrol}/bin/pavucontrol -t 3";
+          on-click-right = "${pkgs.pulseaudio}/bin/pactl --set-sink-mute 0 toggle";
         };
 
         idle_inhibitor = {
@@ -217,37 +225,59 @@ in
           interval = 1;
           format = "{:%a %d %b  %H:%M}";
           on-click =
-            if compositor == "niri" then
-              "niri-launch-or-focus-webapp calendar.proton.me"
-            else
-              "${brave} --focus='https://calendar.proton.me/*' https://calendar.proton.me";
+            {
+              niri = "${niri-launch-or-focus-webapp}/bin/niri-launch-or-focus-webapp calendar.proton.me";
+              mango = "${launch-webapp}/bin/launch-webapp https://calendar.proton.me";
+            }
+            .${compositor};
 
-          "tooltip-format" = "<tt>{calendar}</tt>";
+          tooltip-format = "<tt>{calendar}</tt>";
           calendar = {
-            "format" = {
-              "months" = "<span color='#ffead3'><b>{}</b></span>";
-              "days" = "<span color='#ecc6d9'><b>{}</b></span>";
-              "weeks" = "<span color='#99ffdd'><b>W{}</b></span>";
-              "weekdays" = "<span color='#ffcc66'><b>{}</b></span>";
-              "today" = "<span color='#ff6699'><b><u>{}</u></b></span>";
+            format = {
+              months = "<span color='#ffead3'><b>{}</b></span>";
+              days = "<span color='#ecc6d9'><b>{}</b></span>";
+              weeks = "<span color='#99ffdd'><b>W{}</b></span>";
+              weekdays = "<span color='#ffcc66'><b>{}</b></span>";
+              today = "<span color='#ff6699'><b><u>{}</u></b></span>";
             };
           };
-          "actions" = {
-            "on-click-right" = "shift_reset";
-            "on-scroll-up" = "shift_up";
-            "on-scroll-down" = "shift_down";
+          actions = {
+            on-click-right = "shift_reset";
+            on-scroll-up = "shift_up";
+            on-scroll-down = "shift_down";
           };
         };
 
         tray = {
-          icon-size = iconSize;
-          inherit spacing;
+          inherit icon-size spacing;
+          show-passive-items = true;
         };
 
-        "group/custom-tray" = {
+        "group/tray-expander" = {
+          orientation = "inherit";
+          drawer = {
+            transition-duration = 600;
+            children-class = "tray-group-item";
+          };
+          modules = [
+            "custom/expand-icon"
+            "tray"
+          ];
+        };
+        "custom/expand-icon" = {
+          format = "";
+          tooltip = false;
+          on-scroll-up = "";
+          on-scroll-down = "";
+          on-scroll-left = "";
+          on-scroll-right = "";
+        };
+
+        "group/actions" = {
           orientation = "horizontal";
           modules = [
-            "tray"
+            "group/tray-expander"
+            "power-profiles-daemon"
             "idle_inhibitor"
           ];
         };
@@ -262,10 +292,11 @@ in
           tooltip-format-enumerate-connected = "{device_alias}";
           tooltip-format-enumerate-connected-battery = "{device_alias}\t{device_battery_percentage}%";
           on-click =
-            if compositor == "niri" then
-              "niri-launch-or-focus --tui bluetui"
-            else
-              "${kitty} --class bluetui ${bluetui}";
+            {
+              niri = "${niri-launch-or-focus}/bin/niri-launch-or-focus --tui ${pkgs.bluetui}/bin/bluetui";
+              mango = "${launch-tui}/bin/launch-tui ${pkgs.bluetui}/bin/bluetui";
+            }
+            .${compositor};
         };
 
       };
@@ -277,13 +308,10 @@ in
       }
 
       window#waybar {
-        background-color: transparent;
+        border-bottom: 1px solid @base02;
       }
 
       .modules-center, .modules-right, .modules-left {
-        background-color: @base00;
-        border-radius: ${toString theme.borderRadius};
-        border: 1px solid @base02;
         padding: 0 10px;
       }
 
@@ -306,13 +334,12 @@ in
       #workspaces button {
         transition: color 0.1s ease;
         padding: 0 5px;
-        background: transparent;
-        border-radius: ${toString theme.borderRadius};
+        border-radius: ${toString theme.border-radius};
       }
 
-      #custom-tray {
+      #actions {
         background: @base02;
-        border-radius: ${toString theme.borderRadius};
+        border-radius: ${toString theme.border-radius};
         border: 1px solid @base02;
       }
 

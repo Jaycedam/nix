@@ -1,4 +1,5 @@
 {
+  compositor,
   pkgs,
   ...
 }:
@@ -8,10 +9,10 @@ let
 in
 {
   imports = [
+    ./nixvim
     ./waybar.nix
     ./fuzzel.nix
     ./desktop-entries.nix
-    ./nixvim
     ./tmux.nix
     ./kitty.nix
     ./yazi.nix
@@ -24,6 +25,12 @@ in
     ./swaylock.nix
     ./eza.nix
     ./dev.nix
+
+    {
+      niri = ./niri;
+      mango = ./mango;
+    }
+    .${compositor}
   ];
 
   programs = {
@@ -95,7 +102,6 @@ in
       seahorse
       transmission_4-gtk
       bitwarden-desktop
-      spotube
       moonlight-qt
       freetube
     ]
