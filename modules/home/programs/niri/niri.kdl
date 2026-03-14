@@ -182,14 +182,6 @@ window-rule {
     open-on-workspace "chat"
 }
 
-// niri startup, don't focus autostarted apps
-window-rule {
-    match at-startup=true app-id=r#"brave-web.whatsapp.com__-Default"#
-    match at-startup=true app-id=r#"brave-mail.proton.me__-Default"#
-    open-on-workspace "chat"
-    open-focused false
-}
-
 // disable the workspace shadows in the overview. 
 overview {
     workspace-shadow {
