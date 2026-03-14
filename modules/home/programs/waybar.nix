@@ -58,7 +58,7 @@ in
 
         "dwl/window" = {
           format = "[{layout}] {title}";
-          max-length = 40;
+          max-length = 50;
           icon = true;
           inherit icon-size;
         };
@@ -124,7 +124,7 @@ in
             "title"
             "artist"
           ];
-          dynamic-len = 40;
+          dynamic-len = 50;
           player-icons = {
             default = "󰐍";
           };
