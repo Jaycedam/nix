@@ -35,4 +35,6 @@
   ++ lib.optionals (system == "x86_64-linux") [
     ./gaming.nix
   ];
+
+  programs.fish.enable = true;
 }
