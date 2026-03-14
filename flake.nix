@@ -64,7 +64,7 @@
         theme = {
           # name of the theme file in ./modules/themes
           name = "matte-black";
-          border-radius = 10;
+          border-radius = 0;
           shadows = false;
         };
 

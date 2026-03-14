@@ -65,7 +65,7 @@ output "HDMI-A-1" {
 // https://yalter.github.io/niri/Configuration:-Layout
 layout {
     background-color "transparent"
-    gaps 10
+    gaps 15
     // options: never, always, on-overflow
     center-focused-column "never"
     always-center-single-column

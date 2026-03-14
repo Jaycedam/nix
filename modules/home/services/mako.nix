@@ -12,7 +12,7 @@
 
       # OSD bottom-center
       "category=osd" = {
-        anchor = "bottom-center";
+        anchor = "top-center";
         padding = 5;
         width = 200;
         height = 30;

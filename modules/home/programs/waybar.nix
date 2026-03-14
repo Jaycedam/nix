@@ -21,40 +21,32 @@ in
     settings = {
       mainBar = {
         layer = "top";
-        position = "top";
+        position = "bottom";
         spacing = 10;
-        margin = "0 10 0 10";
+        # margin = "0 10 0 10";
 
-        modules-center =
+        modules-left =
           {
             "niri" = [
               "niri/workspaces"
-              "clock"
-              "mpris"
-              "group/actions"
-              "privacy"
-              "group/system"
+              "niri/window"
             ];
             "mango" = [
               "ext/workspaces"
-              "clock"
-              "mpris"
-              "group/actions"
-              "privacy"
-              "group/system"
+              "dwl/window"
             ];
           }
           .${compositor};
 
-        # modules-center = [
-        #   "clock"
-        # ];
-        # modules-right = [
-        #   "mpris"
-        #   "group/actions"
-        #   "privacy"
-        #   "group/system"
-        # ];
+        modules-center = [
+          "clock"
+        ];
+        modules-right = [
+          "mpris"
+          "group/actions"
+          "privacy"
+          "group/system"
+        ];
 
         # modules customization
         "ext/workspaces" = {
@@ -94,8 +86,8 @@ in
         };
 
         "niri/window" = {
-          format = "";
-          max-length = 30;
+          format = "{title}";
+          max-length = 40;
           icon = true;
           inherit icon-size;
         };
@@ -132,7 +124,7 @@ in
             "title"
             "artist"
           ];
-          dynamic-len = 30;
+          dynamic-len = 40;
           player-icons = {
             default = "󰐍";
           };
@@ -316,15 +308,11 @@ in
       }
 
       window#waybar {
-        background-color: transparent;
-        transition: all 0.2s ease;
+        border-top: 1px solid @base02;
       }
 
-      .modules-center {
+      .modules-center, .modules-right, .modules-left {
         padding: 0 10px;
-        background-color: @base00;
-        border: 1px solid @base02;
-        border-radius: ${toString theme.border-radius};
       }
 
       .module {
