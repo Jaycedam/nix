@@ -80,15 +80,18 @@ layout {
     }
 
     struts {
-        left 15
-        right 15
+        left 20
+        right 20
     }
 
     focus-ring {
-        off
+        on
+        width 3
+        active-color "__ACTIVE_COLOR__"
+        inactive-color "__INACTIVE_COLOR__"
     }
     border {
-        on
+        off
         width 3
         active-color "__ACTIVE_COLOR__"
         inactive-color "__INACTIVE_COLOR__"

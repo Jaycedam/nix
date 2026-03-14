@@ -23,30 +23,38 @@ in
         layer = "top";
         position = "top";
         spacing = 10;
-        # margin = "0 10 5 10";
+        margin = "0 10 0 10";
 
-        modules-left =
+        modules-center =
           {
             "niri" = [
               "niri/workspaces"
-              "niri/window"
+              "clock"
+              "mpris"
+              "group/actions"
+              "privacy"
+              "group/system"
             ];
             "mango" = [
               "ext/workspaces"
-              "dwl/window"
+              "clock"
+              "mpris"
+              "group/actions"
+              "privacy"
+              "group/system"
             ];
           }
           .${compositor};
 
-        modules-center = [
-          "clock"
-        ];
-        modules-right = [
-          "mpris"
-          "group/actions"
-          "privacy"
-          "group/system"
-        ];
+        # modules-center = [
+        #   "clock"
+        # ];
+        # modules-right = [
+        #   "mpris"
+        #   "group/actions"
+        #   "privacy"
+        #   "group/system"
+        # ];
 
         # modules customization
         "ext/workspaces" = {
@@ -86,7 +94,7 @@ in
         };
 
         "niri/window" = {
-          format = "{title}";
+          format = "";
           max-length = 30;
           icon = true;
           inherit icon-size;
@@ -308,15 +316,19 @@ in
       }
 
       window#waybar {
-        border-bottom: 1px solid @base02;
+        background-color: transparent;
+        transition: all 0.2s ease;
       }
 
-      .modules-center, .modules-right, .modules-left {
+      .modules-center {
         padding: 0 10px;
+        background-color: @base00;
+        border: 1px solid @base02;
+        border-radius: ${toString theme.border-radius};
       }
 
       .module {
-        padding: 0 8px;
+        padding: 0 10px;
       }
 
       #bluetooth.connected, #network.wifi {
@@ -332,9 +344,9 @@ in
       }
 
       #workspaces button {
-        transition: color 0.1s ease;
         padding: 0 5px;
         border-radius: ${toString theme.border-radius};
+        transition: color 0.2s ease;
       }
 
       #actions {
@@ -350,7 +362,8 @@ in
       }
 
       #workspaces button.active {
-        color: @base09;
+        background-color: @base0D;
+        color: @base00;
       }
 
       window#waybar.empty #window {
