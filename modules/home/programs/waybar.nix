@@ -28,24 +28,31 @@ in
         modules-left =
           {
             "niri" = [
-              "niri/workspaces"
               "niri/window"
             ];
             "mango" = [
-              "ext/workspaces"
               "dwl/window"
             ];
           }
           .${compositor};
 
-        modules-center = [
-          "clock"
-        ];
+        modules-center =
+          {
+            "niri" = [
+              "niri/workspaces"
+            ];
+            "mango" = [
+              "ext/workspaces"
+            ];
+          }
+          .${compositor};
+
         modules-right = [
           "mpris"
           "group/actions"
           "privacy"
           "group/system"
+          "clock"
         ];
 
         # modules customization
@@ -87,7 +94,7 @@ in
 
         "niri/window" = {
           format = "{title}";
-          max-length = 40;
+          max-length = 50;
           icon = true;
           inherit icon-size;
         };
@@ -124,7 +131,7 @@ in
             "title"
             "artist"
           ];
-          dynamic-len = 50;
+          dynamic-len = 40;
           player-icons = {
             default = "󰐍";
           };
@@ -319,15 +326,15 @@ in
         padding: 0 10px;
       }
 
-      #bluetooth.connected, #network.wifi {
-        color: @base0C ;
+      #bluetooth.connected, 
+      #network.wifi, 
+      #power-profiles-daemon.performance {
+        color: @base0B ;
       }
 
-      #battery.warning {
-        color: @base08 ;
-      }
-
-      #privacy {
+      #battery.warning, 
+      #privacy,
+      #power-profiles-daemon.power-saver {
         color: @base09 ;
       }
 
@@ -345,6 +352,7 @@ in
 
       #workspaces button.empty, 
       #workspaces button.hidden,
+      #idle_inhibitor.deactivated,
       #bluetooth.off {
         color: @base03;
       }
@@ -357,14 +365,6 @@ in
       window#waybar.empty #window {
         border: transparent;
         background-color: transparent;
-      }
-
-      #idle_inhibitor.deactivated {
-        color: @base03;
-      }
-
-      #idle_inhibitor.activated {
-        color: @base09;
       }
 
       /* overrides for stylix */
