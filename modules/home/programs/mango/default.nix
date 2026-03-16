@@ -16,9 +16,9 @@
       exec-once=~/.config/mango/autostart.sh
 
       # Misc
+      focus_on_activate=0
       no_border_when_single=0
       axis_bind_apply_timeout=100
-      focus_on_activate=1
       idleinhibit_ignore_visible=0
       sloppyfocus=1
       warpcursor=1
