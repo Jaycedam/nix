@@ -28,31 +28,25 @@ in
         modules-left =
           {
             "niri" = [
+              "niri/workspaces"
               "niri/window"
             ];
             "mango" = [
+              "ext/workspaces"
               "dwl/window"
             ];
           }
           .${compositor};
 
-        modules-center =
-          {
-            "niri" = [
-              "niri/workspaces"
-            ];
-            "mango" = [
-              "ext/workspaces"
-            ];
-          }
-          .${compositor};
+        modules-center = [
+          "clock"
+        ];
 
         modules-right = [
           "mpris"
           "group/actions"
           "privacy"
           "group/system"
-          "clock"
         ];
 
         # modules customization
@@ -65,7 +59,7 @@ in
 
         "dwl/window" = {
           format = "[{layout}] {title}";
-          max-length = 50;
+          max-length = 40;
           icon = true;
           inherit icon-size;
         };
@@ -94,7 +88,7 @@ in
 
         "niri/window" = {
           format = "{title}";
-          max-length = 50;
+          max-length = 40;
           icon = true;
           inherit icon-size;
         };
@@ -230,7 +224,7 @@ in
 
         clock = {
           interval = 1;
-          format = "{:%a %d %b  %H:%M}";
+          format = "{:%a, %d %b %H:%M}";
           on-click =
             {
               niri = "${niri-launch-or-focus-webapp}/bin/niri-launch-or-focus-webapp calendar.proton.me";
