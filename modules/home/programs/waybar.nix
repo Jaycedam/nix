@@ -27,25 +27,29 @@ in
           {
             "mango" = [
               "ext/workspaces"
+            ];
+          }
+          .${compositor};
+
+        modules-center =
+          {
+            "mango" = [
               "dwl/window"
             ];
           }
           .${compositor};
 
-        modules-center = [
-          "clock"
-        ];
-
         modules-right = [
-          "mpris"
           "group/actions"
           "privacy"
           "group/system"
+          "clock"
         ];
 
         # modules customization
         "ext/workspaces" = {
           format = "{icon}";
+          ignore-hidden = false;
           on-click = "activate";
           on-click-right = "deactivate";
           sort-by-id = true;
@@ -53,8 +57,6 @@ in
 
         "dwl/window" = {
           format = "[{layout}] {title}";
-          max-length = 40;
-          icon = true;
           inherit icon-size;
         };
 
@@ -102,7 +104,7 @@ in
             "title"
             "artist"
           ];
-          dynamic-len = 40;
+          dynamic-len = 30;
           player-icons = {
             default = "󰐍";
           };
@@ -200,7 +202,7 @@ in
 
         clock = {
           interval = 1;
-          format = "{:%a, %d %b %H:%M}";
+          format = "{:%a, %b %d %H:%M}";
           on-click =
             {
               mango = "${launch-webapp}/bin/launch-webapp https://calendar.proton.me";
@@ -241,7 +243,7 @@ in
           ];
         };
         "custom/expand-icon" = {
-          format = "";
+          format = "";
           tooltip = false;
           on-scroll-up = "";
           on-scroll-down = "";
@@ -253,8 +255,8 @@ in
           orientation = "horizontal";
           modules = [
             "group/tray-expander"
-            "power-profiles-daemon"
             "idle_inhibitor"
+            "power-profiles-daemon"
           ];
         };
 
@@ -294,8 +296,7 @@ in
         padding: 0 10px;
       }
 
-      #bluetooth.connected, 
-      #network.wifi, 
+      #idle_inhibitor.activated,
       #power-profiles-daemon.performance {
         color: @base0B ;
       }
@@ -320,7 +321,6 @@ in
 
       #workspaces button.empty, 
       #workspaces button.hidden,
-      #idle_inhibitor.deactivated,
       #bluetooth.off {
         color: @base03;
       }
