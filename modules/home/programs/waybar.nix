@@ -10,8 +10,6 @@ let
   spacing = 10;
   launch-tui = import ../scripts/programs/launch-tui.nix { inherit pkgs; };
   launch-webapp = import ../scripts/programs/launch-webapp.nix { inherit pkgs; };
-  niri-launch-or-focus = import ../scripts/niri/launch-or-focus.nix { inherit pkgs; };
-  niri-launch-or-focus-webapp = import ../scripts/niri/launch-or-focus-webapp.nix { inherit pkgs; };
 in
 {
   programs.waybar = {
@@ -27,10 +25,6 @@ in
 
         modules-left =
           {
-            "niri" = [
-              "niri/workspaces"
-              "niri/window"
-            ];
             "mango" = [
               "ext/workspaces"
               "dwl/window"
@@ -64,16 +58,6 @@ in
           inherit icon-size;
         };
 
-        "niri/workspaces" = {
-          format = "{icon}";
-          format-icons = {
-            browser = "󰊯";
-            dev = "󰞷";
-            chat = "󰻞";
-            default = "󰝥";
-          };
-        };
-
         power-profiles-daemon = {
           "format" = "{icon}";
           "tooltip-format" = "Power profile: {profile}\nDriver: {driver}";
@@ -84,13 +68,6 @@ in
             "balanced" = "󰾅";
             "power-saver" = "󰾆";
           };
-        };
-
-        "niri/window" = {
-          format = "{title}";
-          max-length = 40;
-          icon = true;
-          inherit icon-size;
         };
 
         privacy = {
@@ -143,7 +120,6 @@ in
           interval = 3;
           on-click =
             {
-              niri = "${niri-launch-or-focus}/bin/niri-launch-or-focus --tui ${pkgs.impala}/bin/impala";
               mango = "${launch-tui}/bin/launch-tui ${pkgs.impala}/bin/impala";
             }
             .${compositor};
@@ -227,7 +203,6 @@ in
           format = "{:%a, %d %b %H:%M}";
           on-click =
             {
-              niri = "${niri-launch-or-focus-webapp}/bin/niri-launch-or-focus-webapp calendar.proton.me";
               mango = "${launch-webapp}/bin/launch-webapp https://calendar.proton.me";
             }
             .${compositor};
@@ -294,7 +269,6 @@ in
           tooltip-format-enumerate-connected-battery = "{device_alias}\t{device_battery_percentage}%";
           on-click =
             {
-              niri = "${niri-launch-or-focus}/bin/niri-launch-or-focus --tui ${pkgs.bluetui}/bin/bluetui";
               mango = "${launch-tui}/bin/launch-tui ${pkgs.bluetui}/bin/bluetui";
             }
             .${compositor};

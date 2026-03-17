@@ -27,7 +27,6 @@ in
     ./dev.nix
 
     {
-      niri = ./niri;
       mango = ./mango;
     }
     .${compositor}

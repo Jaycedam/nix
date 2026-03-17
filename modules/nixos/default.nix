@@ -25,7 +25,6 @@
     ./stylix.nix
 
     {
-      "niri" = ./niri.nix;
       "mango" = ./mango.nix;
     }
     .${compositor}

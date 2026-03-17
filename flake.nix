@@ -46,7 +46,6 @@
       };
 
       compositors = {
-        niri = "niri";
         mango = "mango";
       };
 
@@ -75,10 +74,6 @@
           host = "desktop";
           compositor = compositors.mango;
         };
-        desktop-niri = {
-          host = "desktop";
-          compositor = compositors.niri;
-        };
 
         asahi = {
           host = "asahi";
@@ -86,13 +81,6 @@
           desktop = false;
           compositor = compositors.mango;
         };
-        asahi-niri = {
-          host = "asahi";
-          system = systems.linux-arm;
-          desktop = false;
-          compositor = compositors.niri;
-        };
-
       };
     in
     {
