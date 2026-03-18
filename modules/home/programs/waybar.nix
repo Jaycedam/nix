@@ -1,5 +1,4 @@
 {
-  compositor,
   lib,
   theme,
   pkgs,
@@ -23,21 +22,13 @@ in
         spacing = 10;
         # margin = "0 10 0 10";
 
-        modules-left =
-          {
-            "mango" = [
-              "ext/workspaces"
-            ];
-          }
-          .${compositor};
+        modules-left = [
+          "ext/workspaces"
+        ];
 
-        modules-center =
-          {
-            "mango" = [
-              "dwl/window"
-            ];
-          }
-          .${compositor};
+        modules-center = [
+          "dwl/window"
+        ];
 
         modules-right = [
           "group/actions"
@@ -120,11 +111,7 @@ in
           format-linked = "󱎔 {ifname} (No IP)";
           format-disconnected = "󰀦 Disconnected";
           interval = 3;
-          on-click =
-            {
-              mango = "${launch-tui}/bin/launch-tui ${pkgs.impala}/bin/impala";
-            }
-            .${compositor};
+          on-click = "${launch-tui}/bin/launch-tui ${pkgs.impala}/bin/impala";
         };
 
         battery = {
@@ -203,11 +190,7 @@ in
         clock = {
           interval = 1;
           format = "{:%a, %b %d %H:%M}";
-          on-click =
-            {
-              mango = "${launch-webapp}/bin/launch-webapp https://calendar.proton.me";
-            }
-            .${compositor};
+          on-click = "${launch-webapp}/bin/launch-webapp https://calendar.proton.me";
 
           tooltip-format = "<tt>{calendar}</tt>";
           calendar = {
@@ -269,11 +252,7 @@ in
           tooltip-format-connected = "{controller_alias}\n\n{num_connections} connected\n\n{device_enumerate}";
           tooltip-format-enumerate-connected = "{device_alias}";
           tooltip-format-enumerate-connected-battery = "{device_alias}\t{device_battery_percentage}%";
-          on-click =
-            {
-              mango = "${launch-tui}/bin/launch-tui ${pkgs.bluetui}/bin/bluetui";
-            }
-            .${compositor};
+          on-click = "${launch-tui}/bin/launch-tui ${pkgs.bluetui}/bin/bluetui";
         };
 
       };

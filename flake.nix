@@ -45,10 +45,6 @@
         linux = "x86_64-linux";
       };
 
-      compositors = {
-        mango = "mango";
-      };
-
       commonArgs = {
         inherit
           inputs
@@ -59,7 +55,6 @@
         desktop = true;
         # used to import the host config, needs to be set in profiles
         host = throw "host must be set in the current profile";
-        compositor = throw "compositor must be set in the current profile";
         theme = {
           # name of the theme file in ./modules/themes
           name = "matte-black";
@@ -72,14 +67,12 @@
       profiles = {
         desktop = {
           host = "desktop";
-          compositor = compositors.mango;
         };
 
         asahi = {
           host = "asahi";
           system = systems.linux-arm;
           desktop = false;
-          compositor = compositors.mango;
         };
       };
     in

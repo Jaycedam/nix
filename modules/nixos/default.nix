@@ -2,7 +2,6 @@
   lib,
   desktop,
   system,
-  compositor,
   ...
 }:
 {
@@ -23,11 +22,7 @@
     ./greeter.nix
     ./virtualization.nix
     ./stylix.nix
-
-    {
-      "mango" = ./mango.nix;
-    }
-    .${compositor}
+    ./mango.nix
   ]
   ++ lib.optional desktop ./homelab.nix
   # don't enable gaming on arm, it requires 32bit support

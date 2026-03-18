@@ -1,18 +1,13 @@
 {
   lib,
   pkgs,
-  compositor,
   ...
 }:
 let
-  monitorCmds =
-    {
-      mango = {
-        powerOn = "${pkgs.mangowc}/bin/mmsg -d enable_monitor";
-        powerOff = "${pkgs.mangowc}/bin/mmsg -d disable_monitor";
-      };
-    }
-    .${compositor};
+  monitorCmds = {
+    powerOn = "${pkgs.mangowc}/bin/mmsg -d enable_monitor";
+    powerOff = "${pkgs.mangowc}/bin/mmsg -d disable_monitor";
+  };
 
   lockCmd = "${pkgs.swaylock}/bin/swaylock";
 in

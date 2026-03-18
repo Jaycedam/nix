@@ -1,5 +1,4 @@
 {
-  compositor,
   pkgs,
   ...
 }:
@@ -25,11 +24,7 @@ in
     ./swaylock.nix
     ./eza.nix
     ./dev.nix
-
-    {
-      mango = ./mango;
-    }
-    .${compositor}
+    ./mango
   ];
 
   programs = {
