@@ -20,10 +20,11 @@ in
         layer = "top";
         position = "top";
         spacing = 10;
-        margin = "3 10 0 10";
+        # margin = "0 10 0 10";
 
         modules-left = [
           "ext/workspaces"
+          "dwl/window"
         ];
 
         modules-center = [
@@ -40,18 +41,17 @@ in
         # modules customization
         "ext/workspaces" = {
           format = "{icon}";
-          ignore-hidden = false;
+          # ignore-hidden = false;
           on-click = "activate";
           on-click-right = "deactivate";
           sort-by-id = true;
-          "format-icons" = {
-            "1" = "󰊯";
-            "2" = "";
-            "3" = "󰝚";
-            "4" = "󰭹";
-            "5" = "󰊗";
-            "default" = "󰧞";
-          };
+        };
+
+        "dwl/window" = {
+          format = "[{layout}] {title}";
+          max-length = 50;
+          # icon = true;
+          inherit icon-size;
         };
 
         power-profiles-daemon = {
@@ -247,11 +247,10 @@ in
       }
 
       window#waybar {
-        border: 1px solid @base02;
-        border-radius: ${toString theme.border-radius};
+        border-bottom: 1px solid @base02;
       }
 
-      .modules-center, .modules-right, .modules-left {
+      .modules-left, .modules-right, .modules-center {
         padding: 0 10px;
       }
 
@@ -281,7 +280,6 @@ in
       #actions {
         background: @base02;
         border-radius: ${toString theme.border-radius};
-        border: 1px solid @base02;
       }
 
       #workspaces button.empty, 
