@@ -2,7 +2,6 @@
   lib,
   desktop,
   system,
-  compositor,
   ...
 }:
 {
@@ -23,16 +22,13 @@
     ./greeter.nix
     ./virtualization.nix
     ./stylix.nix
-
-    {
-      "niri" = ./niri.nix;
-      "mango" = ./mango.nix;
-    }
-    .${compositor}
+    ./mango.nix
   ]
   ++ lib.optional desktop ./homelab.nix
   # don't enable gaming on arm, it requires 32bit support
   ++ lib.optionals (system == "x86_64-linux") [
     ./gaming.nix
   ];
+
+  programs.fish.enable = true;
 }

@@ -1,5 +1,4 @@
 {
-  compositor,
   pkgs,
   ...
 }:
@@ -25,12 +24,7 @@ in
     ./swaylock.nix
     ./eza.nix
     ./dev.nix
-
-    {
-      niri = ./niri;
-      mango = ./mango;
-    }
-    .${compositor}
+    ./mango
   ];
 
   programs = {
@@ -55,6 +49,8 @@ in
       brightnessctl
       impala
       wl-clipboard
+      grim
+      slurp
       libnotify
       ddcutil
       wiremix

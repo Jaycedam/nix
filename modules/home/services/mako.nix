@@ -3,7 +3,7 @@
   services.mako = {
     enable = true;
     settings = {
-      outer-margin = 15;
+      outer-margin = 10;
       width = 400;
       padding = 10;
       border-size = 1;

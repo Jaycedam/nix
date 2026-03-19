@@ -1,5 +1,4 @@
 {
-  compositor,
   lib,
   theme,
   pkgs,
@@ -10,8 +9,6 @@ let
   spacing = 10;
   launch-tui = import ../scripts/programs/launch-tui.nix { inherit pkgs; };
   launch-webapp = import ../scripts/programs/launch-webapp.nix { inherit pkgs; };
-  niri-launch-or-focus = import ../scripts/niri/launch-or-focus.nix { inherit pkgs; };
-  niri-launch-or-focus-webapp = import ../scripts/niri/launch-or-focus-webapp.nix { inherit pkgs; };
 in
 {
   programs.waybar = {
@@ -23,24 +20,17 @@ in
         layer = "top";
         position = "top";
         spacing = 10;
-        # margin = "0 10 5 10";
+        # margin = "0 10 0 10";
 
-        modules-left =
-          {
-            "niri" = [
-              "niri/workspaces"
-              "niri/window"
-            ];
-            "mango" = [
-              "ext/workspaces"
-              "dwl/window"
-            ];
-          }
-          .${compositor};
+        modules-left = [
+          "ext/workspaces"
+          "dwl/window"
+        ];
 
         modules-center = [
           "clock"
         ];
+
         modules-right = [
           "mpris"
           "group/actions"
@@ -51,6 +41,7 @@ in
         # modules customization
         "ext/workspaces" = {
           format = "{icon}";
+          # ignore-hidden = false;
           on-click = "activate";
           on-click-right = "deactivate";
           sort-by-id = true;
@@ -58,19 +49,9 @@ in
 
         "dwl/window" = {
           format = "[{layout}] {title}";
-          max-length = 40;
-          icon = true;
+          max-length = 50;
+          # icon = true;
           inherit icon-size;
-        };
-
-        "niri/workspaces" = {
-          format = "{icon}";
-          format-icons = {
-            browser = "󰊯";
-            dev = "󰞷";
-            chat = "󰻞";
-            default = "󰝥";
-          };
         };
 
         power-profiles-daemon = {
@@ -83,13 +64,6 @@ in
             "balanced" = "󰾅";
             "power-saver" = "󰾆";
           };
-        };
-
-        "niri/window" = {
-          format = "{title}";
-          max-length = 30;
-          icon = true;
-          inherit icon-size;
         };
 
         privacy = {
@@ -140,12 +114,7 @@ in
           format-linked = "󱎔 {ifname} (No IP)";
           format-disconnected = "󰀦 Disconnected";
           interval = 3;
-          on-click =
-            {
-              niri = "${niri-launch-or-focus}/bin/niri-launch-or-focus --tui ${pkgs.impala}/bin/impala";
-              mango = "${launch-tui}/bin/launch-tui ${pkgs.impala}/bin/impala";
-            }
-            .${compositor};
+          on-click = "${launch-tui}/bin/launch-tui ${pkgs.impala}/bin/impala";
         };
 
         battery = {
@@ -223,13 +192,8 @@ in
 
         clock = {
           interval = 1;
-          format = "{:%a %d %b  %H:%M}";
-          on-click =
-            {
-              niri = "${niri-launch-or-focus-webapp}/bin/niri-launch-or-focus-webapp calendar.proton.me";
-              mango = "${launch-webapp}/bin/launch-webapp https://calendar.proton.me";
-            }
-            .${compositor};
+          format = "{:%a, %b %d  %H:%M}";
+          on-click = "${launch-webapp}/bin/launch-webapp https://calendar.proton.me";
 
           tooltip-format = "<tt>{calendar}</tt>";
           calendar = {
@@ -253,32 +217,12 @@ in
           show-passive-items = true;
         };
 
-        "group/tray-expander" = {
-          orientation = "inherit";
-          drawer = {
-            transition-duration = 600;
-            children-class = "tray-group-item";
-          };
-          modules = [
-            "custom/expand-icon"
-            "tray"
-          ];
-        };
-        "custom/expand-icon" = {
-          format = "";
-          tooltip = false;
-          on-scroll-up = "";
-          on-scroll-down = "";
-          on-scroll-left = "";
-          on-scroll-right = "";
-        };
-
         "group/actions" = {
           orientation = "horizontal";
           modules = [
-            "group/tray-expander"
-            "power-profiles-daemon"
+            "tray"
             "idle_inhibitor"
+            "power-profiles-daemon"
           ];
         };
 
@@ -286,17 +230,12 @@ in
           format = "󰂯";
           format-off = "󰂲";
           format-no-controller = "";
-          format-connected = "󰂱";
+          format-connected = "󰂰";
           tooltip-format = "{controller_alias}\n\n{num_connections} connected";
           tooltip-format-connected = "{controller_alias}\n\n{num_connections} connected\n\n{device_enumerate}";
           tooltip-format-enumerate-connected = "{device_alias}";
           tooltip-format-enumerate-connected-battery = "{device_alias}\t{device_battery_percentage}%";
-          on-click =
-            {
-              niri = "${niri-launch-or-focus}/bin/niri-launch-or-focus --tui ${pkgs.bluetui}/bin/bluetui";
-              mango = "${launch-tui}/bin/launch-tui ${pkgs.bluetui}/bin/bluetui";
-            }
-            .${compositor};
+          on-click = "${launch-tui}/bin/launch-tui ${pkgs.bluetui}/bin/bluetui";
         };
 
       };
@@ -311,36 +250,36 @@ in
         border-bottom: 1px solid @base02;
       }
 
-      .modules-center, .modules-right, .modules-left {
+      .modules-left, .modules-right, .modules-center {
         padding: 0 10px;
       }
 
       .module {
-        padding: 0 8px;
+        padding: 0 10px;
       }
 
-      #bluetooth.connected, #network.wifi {
-        color: @base0C ;
+      #idle_inhibitor.activated,
+      #network.wifi,
+      #bluetooth.connected,
+      #power-profiles-daemon.performance {
+        color: @base0C;
       }
 
-      #battery.warning {
-        color: @base08 ;
-      }
-
-      #privacy {
-        color: @base09 ;
+      #battery.warning, 
+      #privacy,
+      #power-profiles-daemon.power-saver {
+        color: @base09;
       }
 
       #workspaces button {
-        transition: color 0.1s ease;
         padding: 0 5px;
         border-radius: ${toString theme.border-radius};
+        transition: color 0.2s ease;
       }
 
       #actions {
         background: @base02;
         border-radius: ${toString theme.border-radius};
-        border: 1px solid @base02;
       }
 
       #workspaces button.empty, 
@@ -350,20 +289,8 @@ in
       }
 
       #workspaces button.active {
-        color: @base09;
-      }
-
-      window#waybar.empty #window {
-        border: transparent;
-        background-color: transparent;
-      }
-
-      #idle_inhibitor.deactivated {
-        color: @base03;
-      }
-
-      #idle_inhibitor.activated {
-        color: @base09;
+        background-color: @base0D;
+        color: @base00;
       }
 
       /* overrides for stylix */

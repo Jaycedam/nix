@@ -32,5 +32,4 @@ _: {
       "ShoppingListEnabled" = false;
     };
   };
-
 }

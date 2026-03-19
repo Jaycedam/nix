@@ -1,8 +1,6 @@
-{ pkgs, ... }:
-{
+_: {
   opts = {
     number = true;
-    shell = "${pkgs.fish}/bin/fish";
     relativenumber = true;
     winborder = "rounded";
     cursorline = true;
