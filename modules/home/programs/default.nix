@@ -49,6 +49,8 @@ in
       brightnessctl
       impala
       wl-clipboard
+      grim
+      slurp
       libnotify
       ddcutil
       wiremix
