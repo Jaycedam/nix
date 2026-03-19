@@ -22,7 +22,7 @@ in
 {
   stylix = {
     polarity = "dark";
-    image = ./3.jpg;
+    image = ./matte-black.jpg;
     base16Scheme = colors;
 
     icons = {

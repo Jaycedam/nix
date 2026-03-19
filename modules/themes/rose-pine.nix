@@ -37,6 +37,6 @@
 
     polarity = "dark";
 
-    image = ./rose-pine.png;
+    image = ./rose-pine.jpg;
   };
 }
