@@ -32,6 +32,4 @@ _: {
       "ShoppingListEnabled" = false;
     };
   };
-
-  stylix.targets.chromium.enable = false;
 }

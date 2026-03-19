@@ -55,14 +55,13 @@
       unfocused_opacity=0.8
 
       # Animation Configuration(support type:zoom,slide)
-      # tag_animation_direction: 1-horizontal,0-vertical
       animations=1
       layer_animations=1
       animation_type_open=slide
       animation_type_close=slide
       animation_fade_in=1
       animation_fade_out=1
-      tag_animation_direction=0 # 1-horizontal,0-vertical
+      tag_animation_direction=1 # 1-horizontal,0-vertical
       zoom_initial_ratio=0.3
       zoom_end_ratio=0.8
       fadein_begin_opacity=0.5
@@ -87,7 +86,7 @@
       gappov=10
       scratchpad_width_ratio=0.8
       scratchpad_height_ratio=0.9
-      borderpx=3
+      borderpx=2
       rootcolor=0x${config.lib.stylix.colors.base00}ff
       bordercolor=0x${config.lib.stylix.colors.base03}ff
       focuscolor=0x${config.lib.stylix.colors.base0D}ff
@@ -164,8 +163,8 @@
 
       # tag directional switch
       # options: viewtoleft, viewtoright, viewtoleft_have_client, viewtoright_have_client
-      bind=ctrl+shift,up,viewtoleft_have_client,0
-      bind=ctrl+shift,down,viewtoright_have_client,0
+      bind=super+ctrl,left,viewtoleft_have_client,0
+      bind=super+ctrl,right,viewtoright_have_client,0
 
       binds=super,1,view,1,0
       binds=super,2,view,2,0
@@ -274,11 +273,11 @@
       mousebind=super,btn_middle,togglemaximizescreen,0
       mousebind=super,btn_right,moveresize,curresize
 
-      # 3-finger: Workspace navigation, niri like gestures
-      gesturebind=none,right,3,focusdir,left
-      gesturebind=none,left,3,focusdir,right
-      gesturebind=none,down,3,viewtoleft_have_client
-      gesturebind=none,up,3,viewtoright_have_client
+      # 3-finger: Workspace navigation
+      gesturebind=none,right,4,focusdir,left
+      gesturebind=none,left,4,focusdir,right
+      gesturebind=none,right,3,viewtoleft_have_client
+      gesturebind=none,left,3,viewtoright_have_client
 
       # Axis Bindings
       axisbind=super,UP,viewtoleft_have_client

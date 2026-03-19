@@ -18,23 +18,23 @@ in
     settings = {
       mainBar = {
         layer = "top";
-        position = "bottom";
+        position = "top";
         spacing = 10;
-        # margin = "0 10 0 10";
+        margin = "3 10 0 10";
 
         modules-left = [
           "ext/workspaces"
         ];
 
         modules-center = [
-          "dwl/window"
+          "clock"
         ];
 
         modules-right = [
+          "mpris"
           "group/actions"
           "privacy"
           "group/system"
-          "clock"
         ];
 
         # modules customization
@@ -44,11 +44,14 @@ in
           on-click = "activate";
           on-click-right = "deactivate";
           sort-by-id = true;
-        };
-
-        "dwl/window" = {
-          format = "[{layout}] {title}";
-          inherit icon-size;
+          "format-icons" = {
+            "1" = "󰊯";
+            "2" = "";
+            "3" = "󰝚";
+            "4" = "󰭹";
+            "5" = "󰊗";
+            "default" = "󰧞";
+          };
         };
 
         power-profiles-daemon = {
@@ -189,7 +192,7 @@ in
 
         clock = {
           interval = 1;
-          format = "{:%a, %b %d %H:%M}";
+          format = "{:%a, %b %d  %H:%M}";
           on-click = "${launch-webapp}/bin/launch-webapp https://calendar.proton.me";
 
           tooltip-format = "<tt>{calendar}</tt>";
@@ -214,30 +217,10 @@ in
           show-passive-items = true;
         };
 
-        "group/tray-expander" = {
-          orientation = "inherit";
-          drawer = {
-            transition-duration = 600;
-            children-class = "tray-group-item";
-          };
-          modules = [
-            "custom/expand-icon"
-            "tray"
-          ];
-        };
-        "custom/expand-icon" = {
-          format = "";
-          tooltip = false;
-          on-scroll-up = "";
-          on-scroll-down = "";
-          on-scroll-left = "";
-          on-scroll-right = "";
-        };
-
         "group/actions" = {
           orientation = "horizontal";
           modules = [
-            "group/tray-expander"
+            "tray"
             "idle_inhibitor"
             "power-profiles-daemon"
           ];
@@ -247,7 +230,7 @@ in
           format = "󰂯";
           format-off = "󰂲";
           format-no-controller = "";
-          format-connected = "󰂱";
+          format-connected = "󰂰";
           tooltip-format = "{controller_alias}\n\n{num_connections} connected";
           tooltip-format-connected = "{controller_alias}\n\n{num_connections} connected\n\n{device_enumerate}";
           tooltip-format-enumerate-connected = "{device_alias}";
@@ -264,7 +247,8 @@ in
       }
 
       window#waybar {
-        border-top: 1px solid @base02;
+        border: 1px solid @base02;
+        border-radius: ${toString theme.border-radius};
       }
 
       .modules-center, .modules-right, .modules-left {
@@ -276,14 +260,16 @@ in
       }
 
       #idle_inhibitor.activated,
+      #network.wifi,
+      #bluetooth.connected,
       #power-profiles-daemon.performance {
-        color: @base0B ;
+        color: @base0C;
       }
 
       #battery.warning, 
       #privacy,
       #power-profiles-daemon.power-saver {
-        color: @base09 ;
+        color: @base09;
       }
 
       #workspaces button {
@@ -307,11 +293,6 @@ in
       #workspaces button.active {
         background-color: @base0D;
         color: @base00;
-      }
-
-      window#waybar.empty #window {
-        border: transparent;
-        background-color: transparent;
       }
 
       /* overrides for stylix */
