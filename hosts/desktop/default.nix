@@ -6,8 +6,8 @@
 
   boot = {
     kernelPackages = pkgs.linuxPackages_latest;
-    initrd.luks.devices."luks-9b198792-4f79-44e0-a9d0-d9cdbbaa08fb".device =
-      "/dev/disk/by-uuid/9b198792-4f79-44e0-a9d0-d9cdbbaa08fb";
+    initrd.luks.devices."luks-b87d2a5d-6163-4568-8a83-01361aeb8ee9".device =
+      "/dev/disk/by-uuid/b87d2a5d-6163-4568-8a83-01361aeb8ee9";
   };
 
   networking.hostName = "desktop"; # Define your hostname.
