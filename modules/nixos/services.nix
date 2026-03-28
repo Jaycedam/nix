@@ -1,6 +1,11 @@
-{ lib, desktop, ... }:
+{
+  lib,
+  desktop,
+  ...
+}:
 {
   services = {
+    userdbd.enable = lib.mkDefault false; # avoids systemd's age verification change
     openssh = {
       enable = true;
       startWhenNeeded = true;
