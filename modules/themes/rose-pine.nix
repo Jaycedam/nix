@@ -31,8 +31,8 @@
     };
 
     cursor = {
-      name = "BreezeX-RosePine-Linux";
-      package = pkgs.rose-pine-cursor;
+      name = "Bibata-Modern-Ice";
+      package = pkgs.bibata-cursors;
     };
 
     polarity = "dark";

@@ -57,7 +57,7 @@
         host = throw "host must be set in the current profile";
         theme = {
           # name of the theme file in ./modules/themes
-          name = "matte-black";
+          name = "rose-pine";
           border-radius = 0;
         };
 
