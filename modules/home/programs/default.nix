@@ -9,7 +9,7 @@ in
 {
   imports = [
     ./nixvim
-    # ./waybar.nix
+    ./ashell.nix
     ./fuzzel.nix
     ./desktop-entries.nix
     ./tmux.nix
