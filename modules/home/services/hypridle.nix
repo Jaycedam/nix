@@ -5,8 +5,8 @@
 }:
 let
   monitorCmds = {
-    powerOn = "${pkgs.mangowc}/bin/mmsg -d enable_monitor";
-    powerOff = "${pkgs.mangowc}/bin/mmsg -d disable_monitor";
+    powerOn = "${pkgs.niri}/bin/niri msg action power-on-monitors";
+    powerOff = "${pkgs.niri}/bin/niri msg action power-off-monitors";
   };
 
   lockCmd = "${pkgs.swaylock}/bin/swaylock";
