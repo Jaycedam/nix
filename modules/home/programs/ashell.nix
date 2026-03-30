@@ -3,23 +3,38 @@ _: {
     enable = true;
     systemd.enable = true;
     settings = {
+      position = "Top";
+      layer = "Top";
+
+      appearance = {
+        style = "Solid";
+      };
+
       modules = {
-        center = [
-          "Window Title"
-        ];
         left = [
-          "Workspaces"
+          [
+            "Workspaces"
+            "WindowTitle"
+          ]
+        ];
+        center = [
+          "Clock"
         ];
         right = [
+          "MediaPlayer"
           [
-            "Clock"
+            "Tray"
             "Privacy"
             "Settings"
           ]
         ];
       };
-      workspaces = {
-        visibilityMode = "MonitorSpecific";
+
+      window_title = {
+        truncate_title_after_length = 50;
+      };
+      media_player = {
+        max_title_length = 50;
       };
     };
   };
