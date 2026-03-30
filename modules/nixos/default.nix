@@ -22,7 +22,7 @@
     ./greeter.nix
     ./virtualization.nix
     ./stylix.nix
-    ./mango.nix
+    ./niri.nix
   ]
   ++ lib.optional desktop ./homelab.nix
   # don't enable gaming on arm, it requires 32bit support

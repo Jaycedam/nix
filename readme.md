@@ -35,6 +35,6 @@ sudo NIX_CONFIG="experimental-features = nix-command flakes" \
 
 ## Software
 
-- Compositor and tools: mangowc, fuzzel, waybar, mako, swayidle, swaylock
+- Compositor and tools: niri, fuzzel, waybar, mako, swayidle, swaylock
 - Main programs: kitty, fish, neovim
 - Theming: stylix

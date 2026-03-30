@@ -10,5 +10,7 @@
     (import ./system/volume.nix { inherit pkgs; })
     (import ./system/nix-utils.nix { inherit pkgs; })
     (import ./tmux/sessions.nix { inherit pkgs; })
+    (import ./niri/launch-or-focus-webapp.nix { inherit pkgs; })
+    (import ./niri/launch-or-focus.nix { inherit pkgs; })
   ];
 }

@@ -9,7 +9,7 @@ in
 {
   imports = [
     ./nixvim
-    ./waybar.nix
+    # ./waybar.nix
     ./fuzzel.nix
     ./desktop-entries.nix
     ./tmux.nix
@@ -23,8 +23,8 @@ in
     ./gaming.nix
     ./swaylock.nix
     ./eza.nix
+    ./niri
     ./dev.nix
-    ./mango
   ];
 
   programs = {
