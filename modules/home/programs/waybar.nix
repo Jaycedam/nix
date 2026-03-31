@@ -17,7 +17,7 @@ in
     settings = {
       mainBar = {
         layer = "top";
-        position = "top";
+        position = "bottom";
         spacing = 10;
         # margin = "0 10 0 10";
 
@@ -241,7 +241,7 @@ in
       }
 
       window#waybar {
-        border-bottom: 1px solid @base02;
+        border-top: 1px solid @base02;
       }
 
       .modules-left, .modules-right, .modules-center {
