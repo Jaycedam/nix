@@ -187,7 +187,7 @@ in
         clock = {
           interval = 1;
           format = "{:%a, %b %d  %H:%M}";
-          on-click = "${launch-or-focus}/bin/niri-launch-or-focus --webapp https://calendar.proton.me";
+          on-click = "${launch-or-focus}/bin/niri-launch-or-focus --webapp calendar.proton.me";
 
           tooltip-format = "<tt>{calendar}</tt>";
           calendar = {
