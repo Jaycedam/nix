@@ -214,10 +214,10 @@ binds {
     Mod+Space repeat=false hotkey-overlay-title="Search apps" { spawn "fuzzel"; }
 
     // launch or focus webapps
-    Mod+W repeat=false hotkey-overlay-title="Open Whatsapp (Webapp)" { spawn-sh "niri-launch-or-focus-webapp web.whatsapp.com"; }
-    Mod+Shift+M repeat=false hotkey-overlay-title="Open ProtonMail (Webapp)" { spawn-sh "niri-launch-or-focus-webapp mail.proton.me"; }
-    Mod+Y repeat=false hotkey-overlay-title="Open YouTube (Webapp)" { spawn-sh "niri-launch-or-focus-webapp youtube.com"; }
-    Mod+S repeat=false hotkey-overlay-title="Open Spotify (Webapp)" { spawn-sh "niri-launch-or-focus-webapp open.spotify.com"; }
+    Mod+W repeat=false hotkey-overlay-title="Open Whatsapp (Webapp)" { spawn-sh "niri-launch-or-focus --webapp web.whatsapp.com"; }
+    Mod+Shift+M repeat=false hotkey-overlay-title="Open ProtonMail (Webapp)" { spawn-sh "niri-launch-or-focus --webapp mail.proton.me"; }
+    Mod+Y repeat=false hotkey-overlay-title="Open YouTube (Webapp)" { spawn-sh "niri-launch-or-focus --webapp youtube.com"; }
+    Mod+S repeat=false hotkey-overlay-title="Open Spotify (Webapp)" { spawn-sh "niri-launch-or-focus --webapp open.spotify.com"; }
 
     Mod+O repeat=false { toggle-overview; }
     Mod+Q repeat=false { close-window; }
