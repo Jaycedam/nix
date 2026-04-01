@@ -14,6 +14,7 @@
   # the rest is set per theme
   stylix = {
     enable = true;
+    polarity = "dark";
 
     opacity = {
       applications = 0.9;
@@ -22,7 +23,18 @@
       desktop = 0.9;
     };
 
-    cursor.size = 24;
+    icons = {
+      enable = true;
+      package = pkgs.papirus-icon-theme;
+      dark = "Papirus-Dark";
+      light = "Papirus-Light";
+    };
+
+    cursor = {
+      size = 24;
+      name = "Bibata-Modern-Ice";
+      package = pkgs.bibata-cursors;
+    };
 
     fonts = {
       serif = {
