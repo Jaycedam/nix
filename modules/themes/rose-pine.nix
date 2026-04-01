@@ -1,8 +1,5 @@
-{ pkgs, ... }:
-{
+_: {
   config.stylix = {
-    enable = true;
-
     # See https://tinted-theming.github.io/tinted-gallery/ for more schemes
     base16Scheme = {
       base00 = "151320"; # Default Background
@@ -22,20 +19,6 @@
       base0E = "f6c177"; # Keywords, Storage, Selector, Markup Italic, Diff Changed
       base0F = "524f67"; # Deprecated, Opening/Closing Embedded Language Tags, e.g. <?php ?>
     };
-
-    icons = {
-      enable = true;
-      package = pkgs.candy-icons;
-      dark = "candy-icons";
-      light = "candy-icons";
-    };
-
-    cursor = {
-      name = "Bibata-Modern-Ice";
-      package = pkgs.bibata-cursors;
-    };
-
-    polarity = "dark";
 
     image = ./rose-pine.jpg;
   };
