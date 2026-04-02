@@ -22,7 +22,18 @@
       desktop = 0.9;
     };
 
-    cursor.size = 24;
+    icons = {
+      enable = true;
+      package = pkgs.papirus-icon-theme;
+      dark = "Papirus";
+      light = "Papirus";
+    };
+
+    cursor = {
+      name = "Bibata-Modern-Ice";
+      package = pkgs.bibata-cursors;
+      size = 24;
+    };
 
     fonts = {
       serif = {

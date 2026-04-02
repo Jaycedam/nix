@@ -23,18 +23,6 @@
       base0F = "524f67"; # Deprecated, Opening/Closing Embedded Language Tags, e.g. <?php ?>
     };
 
-    icons = {
-      enable = true;
-      package = pkgs.candy-icons;
-      dark = "candy-icons";
-      light = "candy-icons";
-    };
-
-    cursor = {
-      name = "Bibata-Modern-Ice";
-      package = pkgs.bibata-cursors;
-    };
-
     polarity = "dark";
 
     image = ./rose-pine.jpg;

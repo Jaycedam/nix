@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+_:
 let
   colors = {
     base00 = "#0f0f0f"; # Default Background
@@ -24,17 +24,5 @@ in
     polarity = "dark";
     image = ./matte-black.jpg;
     base16Scheme = colors;
-
-    icons = {
-      enable = true;
-      package = pkgs.candy-icons;
-      dark = "candy-icons";
-      light = "candy-icons";
-    };
-
-    cursor = {
-      name = "Bibata-Modern-Ice";
-      package = pkgs.bibata-cursors;
-    };
   };
 }
