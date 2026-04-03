@@ -13,7 +13,6 @@
       conform-nvim
       nvim-lspconfig
       nvim-web-devicons
-      rose-pine
       which-key-nvim
       gitsigns-nvim
       nvim-lint
