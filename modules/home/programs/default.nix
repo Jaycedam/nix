@@ -8,7 +8,6 @@ let
 in
 {
   imports = [
-    ./nixvim
     ./waybar.nix
     ./fuzzel.nix
     ./desktop-entries.nix
@@ -24,6 +23,7 @@ in
     ./swaylock.nix
     ./eza.nix
     ./dev.nix
+./neovim
     ./mango
   ];
 

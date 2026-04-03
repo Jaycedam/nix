@@ -1,0 +1,28 @@
+require("mini.pairs").setup()
+require("mini.surround").setup()
+require("gitsigns").setup()
+require("supermaven-nvim").setup({})
+require("mini.icons").setup()
+require("which-key").setup()
+require("mini.statusline").setup()
+
+require("oil").setup({})
+vim.keymap.set("n", "<leader>e", "<cmd>lua require('oil').toggle_float()<CR>", { noremap = true, silent = true })
+
+-- TODO: remap quickfix list to ctrl-q
+-- local actions = require("fzf-lua.actions")
+
+require("fzf-lua").setup()
+vim.keymap.set("n", "<leader>f", require("fzf-lua").files, { desc = "Find files" })
+vim.keymap.set("n", "<leader>/", require("fzf-lua").live_grep_native, { desc = "Grep project" })
+vim.keymap.set("v", "<leader>/", require("fzf-lua").grep_visual, { desc = "Grep visual selection" })
+vim.keymap.set("n", "<leader>b", require("fzf-lua").buffers, { desc = "Find buffers" })
+vim.keymap.set("n", "<leader>k", require("fzf-lua").keymaps, { desc = "Find keymaps" })
+vim.keymap.set("n", "<leader>h", require("fzf-lua").helptags, { desc = "Find help" })
+vim.keymap.set("n", "<leader>r", require("fzf-lua").lsp_references, { desc = "Find references (LSP)" })
+vim.keymap.set("n", "<leader>i", require("fzf-lua").lsp_implementations, { desc = "Find implementations (LSP)" })
+vim.keymap.set("n", "<leader>d", require("fzf-lua").diagnostics_workspace, { desc = "Workspace diagnostics (LSP)" })
+vim.keymap.set("n", "<leader>s", require("fzf-lua").lsp_document_symbols, { desc = "Document symbols (LSP)" })
+vim.keymap.set("n", "<leader>S", require("fzf-lua").lsp_workspace_symbols, { desc = "Workspace symbols (LSP)" })
+vim.keymap.set("n", "<leader>a", require("fzf-lua").lsp_code_actions, { desc = "Code actions" })
+vim.keymap.set("n", "<leader>m", require("fzf-lua").marks, { desc = "Find marks" })
