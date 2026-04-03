@@ -18,6 +18,7 @@ vim.lsp.enable("nil_ls") -- nix lsp
 require("conform").setup({
 	formatters_by_ft = {
 		python = { "ruff" },
+		rust = { "rustfmt" },
 		htmldjango = { "djlint" },
 		javascript = { "prettier" },
 		astro = { "prettier" },
@@ -30,13 +31,10 @@ require("conform").setup({
 		sh = { "shfmt" },
 		zsh = { "shfmt" },
 		nix = { "nixfmt" },
-
-		-- to be reviewed
 		markdown = { "prettier" },
 		json = { "prettier" },
 		jsonc = { "prettier_jsonc" },
 		lua = { "stylua" },
-		-- TODO: add the rest of ft
 	},
 	format_after_save = {
 		lsp_format = "fallback",
@@ -80,6 +78,12 @@ lint.linters_by_ft = {
 	},
 	sh = {
 		"shellcheck",
+	},
+	rust = {
+		"clippy",
+	},
+	nix = {
+		"statix",
 	},
 }
 
