@@ -33,7 +33,7 @@
       openFirewall = true;
       group = "media";
     };
-    jellyseerr = {
+    seerr = {
       enable = true;
       openFirewall = true;
     };
