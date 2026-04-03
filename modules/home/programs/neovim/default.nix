@@ -9,6 +9,7 @@
     plugins = with pkgs.vimPlugins; [
       nvim-treesitter.withAllGrammars
       fzf-lua
+      flash-nvim
       conform-nvim
       nvim-lspconfig
       rose-pine
@@ -17,6 +18,7 @@
       nvim-lint
       supermaven-nvim
       oil-nvim
+      nvim-surround
     ];
 
     initLua = ''

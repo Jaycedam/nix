@@ -1,10 +1,7 @@
-require("mini.pairs").setup()
-require("mini.surround").setup()
 require("gitsigns").setup()
 require("supermaven-nvim").setup({})
-require("mini.icons").setup()
 require("which-key").setup()
-require("mini.statusline").setup()
+require("nvim-surround").setup({})
 
 require("oil").setup({})
 vim.keymap.set("n", "<leader>e", "<cmd>lua require('oil').toggle_float()<CR>", { noremap = true, silent = true })
@@ -26,3 +23,8 @@ vim.keymap.set("n", "<leader>s", require("fzf-lua").lsp_document_symbols, { desc
 vim.keymap.set("n", "<leader>S", require("fzf-lua").lsp_workspace_symbols, { desc = "Workspace symbols (LSP)" })
 vim.keymap.set("n", "<leader>a", require("fzf-lua").lsp_code_actions, { desc = "Code actions" })
 vim.keymap.set("n", "<leader>m", require("fzf-lua").marks, { desc = "Find marks" })
+
+require("flash").setup()
+vim.keymap.set({ "n", "x", "o" }, "s", require("flash").jump, { desc = "Flash" })
+vim.keymap.set({ "n", "x", "o" }, "S", require("flash").treesitter, { desc = "Flash Treesitter" })
+vim.keymap.set("o", "R", require("flash").treesitter_search, { desc = "Treesitter Search" })
