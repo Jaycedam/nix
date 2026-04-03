@@ -25,10 +25,10 @@ vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>", { noremap = true, silent = t
 -- buffer navigation, similar to tmux
 vim.keymap.set("n", "<leader>l", ":buffer #<CR>", { desc = "Last buffer", noremap = true, silent = true })
 
--- -- map <c-space> to activate completion
--- map("i", "<c-space>", function()
--- 	vim.lsp.completion.get()
--- end)
+-- manually activate completion
+vim.keymap.set("i", "<c-space>", function()
+	vim.lsp.completion.get()
+end)
 
 -- Map <leader>y to yank to system clipboard
 vim.keymap.set({ "v" }, "<leader>y", '"+y', { desc = "Yank to system clipboard" })
