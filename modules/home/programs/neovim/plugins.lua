@@ -2,6 +2,7 @@ require("gitsigns").setup()
 require("supermaven-nvim").setup({})
 require("which-key").setup()
 require("nvim-surround").setup({})
+require("nvim-web-devicons").setup()
 
 require("oil").setup({})
 vim.keymap.set("n", "<leader>e", "<cmd>lua require('oil').toggle_float()<CR>", { noremap = true, silent = true })
