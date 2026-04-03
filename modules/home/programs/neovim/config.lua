@@ -20,10 +20,10 @@ vim.o.completeopt = "menuone,noinsert,popup"
 vim.g.mapleader = " "
 
 -- clear highlights on search when pressing <Esc> in normal mode
-vim.keymap.set("n", "<Esc>", "<cmd>nvim.o.lsearch<CR>")
+vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>", { noremap = true, silent = true })
 
 -- buffer navigation, similar to tmux
-vim.keymap.set("n", "<leader>l", ":buffer #<CR>", { desc = "Last buffer" })
+vim.keymap.set("n", "<leader>l", ":buffer #<CR>", { desc = "Last buffer", noremap = true, silent = true })
 
 -- -- map <c-space> to activate completion
 -- map("i", "<c-space>", function()
