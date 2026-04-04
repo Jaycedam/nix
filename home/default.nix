@@ -1,4 +1,6 @@
 {
+  user,
+  config,
   pkgs,
   ...
 }:
@@ -8,26 +10,34 @@ let
 in
 {
   imports = [
+    ./hypridle.nix
+    ./mako.nix
     ./nixvim
     ./waybar.nix
     ./fuzzel.nix
     ./desktop-entries.nix
     ./tmux.nix
-    ./kitty.nix
+    ./terminal.nix
     ./yazi.nix
-    ./anki.nix
     ./fish.nix
-    ./git.nix
-    ./ghostty.nix
-    ./brave.nix
+    ./browser.nix
     ./gaming.nix
     ./swaylock.nix
-    ./eza.nix
     ./dev.nix
-    ./mango
+    ./mango.nix
+
+    ../scripts
   ];
 
+  services = {
+    udiskie.enable = true;
+    polkit-gnome.enable = true;
+    gnome-keyring.enable = true;
+    wpaperd.enable = true;
+  };
+
   programs = {
+    anki.enable = true;
     btop.enable = true;
     bat.enable = true;
     zoxide = {
@@ -37,6 +47,16 @@ in
     fzf = {
       enable = true;
       enableFishIntegration = true;
+    };
+    eza = {
+      enable = true;
+      enableFishIntegration = true;
+      colors = "auto";
+      icons = "auto";
+      extraOptions = [
+        "--group-directories-first"
+        "--header"
+      ];
     };
   };
 
@@ -105,4 +125,23 @@ in
       proton-pass
       cryptomator
     ];
+
+  home = {
+    preferXdgDirectories = true;
+    username = user;
+    homeDirectory = "/home/${user}";
+    # don't change this!
+    stateVersion = "25.11";
+  };
+
+  fonts.fontconfig.enable = true;
+
+  # autocreate user dirs
+  xdg.userDirs = {
+    enable = true;
+    createDirectories = true;
+    extraConfig = {
+      WALLPAPERS = "${config.home.homeDirectory}/Pictures/Wallpapers";
+    };
+  };
 }

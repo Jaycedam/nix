@@ -6,9 +6,26 @@
   programs = {
     opencode.enable = true;
     gemini-cli.enable = true;
+
     lazygit = {
       enable = true;
       enableFishIntegration = true;
+    };
+
+    git = {
+      enable = true;
+      settings = {
+        user = {
+          name = "jaycem";
+          email = "45575946+jaycem-dev@users.noreply.github.com";
+        };
+      };
+    };
+
+    # remote and related tools
+    gh = {
+      enable = true;
+      gitCredentialHelper.enable = true; # Defaults to github.com and gist.github.com
     };
   };
 

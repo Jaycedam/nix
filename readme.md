@@ -4,7 +4,7 @@ My nix config for NixOS and Home Manager (NixOS module and standalone options).
 
 **Note:** This uses Colemak-DH-ISO keyboard layout by default.
 
-Related files: [keyboard.nix](./modules/nixos/keyboard.nix)
+Related files: [keyboard.nix](./nixos/keyboard.nix)
 
 ![Screenshot](assets/screenshot.avif)
 

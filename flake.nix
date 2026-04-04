@@ -56,7 +56,7 @@
         # used to import the host config, needs to be set in profiles
         host = throw "host must be set in the current profile";
         theme = {
-          # name of the theme file in ./modules/themes
+          # name of the theme file in ./themes
           name = "rose-pine";
           border-radius = 0;
         };
@@ -86,7 +86,7 @@
           specialArgs = args;
           modules = [
             hostModule
-            ./modules/nixos
+            ./nixos
 
             inputs.home-manager.nixosModules.home-manager
             {
@@ -94,7 +94,7 @@
                 useGlobalPkgs = true;
                 useUserPackages = true;
                 backupFileExtension = "backup";
-                users.${args.user} = ./modules/home;
+                users.${args.user} = ./home;
                 extraSpecialArgs = args // {
                   inherit (args) system;
                 };
