@@ -15,7 +15,7 @@
     settings = {
       # More option see https://github.com/DreamMaoMao/mango/wiki/
       # Misc
-      focus_on_activate = 0;
+      # focus_on_activate = 0; # TODO: disable for games
       no_border_when_single = 0;
       axis_bind_apply_timeout = 100;
       idleinhibit_ignore_visible = 0;
@@ -114,7 +114,6 @@
         "super,p,spawn,dmenu-power"
         "super,e,spawn,launch-tui yazi"
         "super,m,spawn,launch-tui rmpc"
-        "super,n,spawn,launch-tui nvim-projects"
         # webapps
         "super,s,spawn,launch-webapp open.spotify.com"
         "super,y,spawn,launch-webapp youtube.com"
@@ -315,7 +314,6 @@
         "tags:1,appid:brave-browser"
         "tags:1,appid:brave-youtube.com__-Default"
         "tags:2,appid:kitty"
-        "tags:2,appid:nvim-projects"
         "tags:2,appid:nvim"
         "tags:3,appid:brave-open.spotify.com__-Default"
         "tags:4,appid:brave-web.whatsapp.com__-Default"
