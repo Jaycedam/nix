@@ -18,7 +18,7 @@ in
     settings = {
       mainBar = {
         layer = "top";
-        position = "top";
+        position = "bottom";
         spacing = 10;
         # margin = "0 10 0 10";
 
