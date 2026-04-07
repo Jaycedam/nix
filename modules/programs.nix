@@ -1,34 +1,18 @@
 { pkgs, ... }:
 {
   programs = {
-    anki.enable = true;
     foot.enable = true;
-    btop.enable = true;
     tmux.enable = true;
     bat.enable = true;
     yazi.enable = true;
-    zoxide = {
-      enable = true;
-      enableFishIntegration = true;
-    };
-    fzf = {
-      enable = true;
-      enableFishIntegration = true;
-    };
-    eza = {
-      enable = true;
-      enableFishIntegration = true;
-      colors = "auto";
-      icons = "auto";
-      extraOptions = [
-        "--group-directories-first"
-        "--header"
-      ];
-    };
+    zoxide.enable = true;
   };
 
   environment.systemPackages = with pkgs; [
     # cli
+    btop
+    eza
+    fzf
     fwupd
     playerctl
     brightnessctl
@@ -71,6 +55,7 @@
     localsend
     thunar
     thunar-archive-plugin
+    anki
     thunar-media-tags-plugin
     thunar-volman
     thunar-vcs-plugin

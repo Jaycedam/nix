@@ -1,4 +1,8 @@
-_: {
+{ pkgs, ... }:
+{
+  environment.systemPackages = with pkgs; [
+    brave
+  ];
   programs.chromium = {
     # enables policy config, not for installing chromium
     enable = true;
