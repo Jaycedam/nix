@@ -7,7 +7,6 @@
     (import ./programs/launch-webapp.nix { inherit pkgs; })
     (import ./system/brightness.nix { inherit pkgs; })
     (import ./system/volume.nix { inherit pkgs; })
-    (import ./system/nix-utils.nix { inherit pkgs; })
     (import ./tmux/sessions.nix { inherit pkgs; })
   ];
 }
