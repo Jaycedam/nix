@@ -9,7 +9,6 @@
     # udiskie.enable = true;
     # polkit-gnome.enable = true;
     gnome.gnome-keyring.enable = true;
-    # wpaperd.enable = true;
     openssh = {
       enable = true;
       startWhenNeeded = true;

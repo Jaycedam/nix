@@ -7,5 +7,7 @@
 
   environment.systemPackages = with pkgs; [
     swaylock
+    swaybg
+    polkit_gnome
   ];
 }
