@@ -1,6 +1,6 @@
 { pkgs, ... }:
 {
-  home.packages = [
+  environment.systemPackages = [
     (import ./dmenu/dmenu-power.nix { inherit pkgs; })
     (import ./programs/chromium-focus-site.nix { inherit pkgs; })
     (import ./programs/launch-tui.nix { inherit pkgs; })

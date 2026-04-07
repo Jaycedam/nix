@@ -5,12 +5,6 @@
   ...
 }:
 {
-  # Required for home-manager with useUserPackages enabled (for xdg-portal integration)
-  environment.pathsToLink = [
-    "/share/applications"
-    "/share/xdg-desktop-portal"
-  ];
-
   imports = [
     ./options.nix
     ./users.nix
@@ -21,8 +15,8 @@
     ./keyboard.nix
     ./greeter.nix
     ./virtualization.nix
-    ./stylix.nix
-    ./mango.nix
+    ./compositor.nix
+    ./scripts
   ]
   ++ lib.optional desktop ./homelab.nix
   # don't enable gaming on arm, it requires 32bit support
@@ -31,4 +25,5 @@
   ];
 
   programs.fish.enable = true;
+  fonts.fontconfig.enable = true;
 }

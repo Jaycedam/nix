@@ -1,25 +1,10 @@
 {
-  description = "Main flake configuration for NixOS, and home-manager";
+  description = "Main flake configuration for NixOS";
 
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-unstable";
-    home-manager = {
-      url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    nixvim = {
-      url = "github:nix-community/nixvim";
-    };
-    stylix = {
-      url = "github:nix-community/stylix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     apple-silicon = {
       url = "github:nix-community/nixos-apple-silicon";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    mangowc = {
-      url = "github:mangowm/mango";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
@@ -55,12 +40,6 @@
         desktop = true;
         # used to import the host config, needs to be set in profiles
         host = throw "host must be set in the current profile";
-        theme = {
-          # name of the theme file in ./themes
-          name = "rose-pine";
-          border-radius = 0;
-        };
-
       };
 
       profiles = {
@@ -86,20 +65,7 @@
           specialArgs = args;
           modules = [
             hostModule
-            ./nixos
-
-            inputs.home-manager.nixosModules.home-manager
-            {
-              home-manager = {
-                useGlobalPkgs = true;
-                useUserPackages = true;
-                backupFileExtension = "backup";
-                users.${args.user} = ./home;
-                extraSpecialArgs = args // {
-                  inherit (args) system;
-                };
-              };
-            }
+            ./modules
           ];
         }
       ) profiles;

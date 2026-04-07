@@ -1,6 +1,6 @@
 # Nix Setup
 
-My nix config for NixOS and Home Manager (NixOS module and standalone options).
+My NixOS config.
 
 **Note:** This uses Colemak-DH-ISO keyboard layout by default.
 
@@ -28,13 +28,10 @@ sudo NIX_CONFIG="experimental-features = nix-command flakes" \
 
 **Available profiles (defined in [flake.nix](./flake.nix)):**
 
-| NixOS (with HM as module) | Home Manager standalone |
-| ------------------------- | ----------------------- |
-| desktop                   | TODO                    |
-| asahi (arm64)             |                         |
+- desktop
+- asahi (arm64)
 
 ## Software
 
 - Compositor and tools: mangowc, fuzzel, waybar, mako, swayidle, swaylock
 - Main programs: kitty, fish, neovim
-- Theming: stylix
