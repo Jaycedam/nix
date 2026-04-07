@@ -6,6 +6,9 @@
 }:
 {
   imports = [
+    ./editor.nix
+    ./dev.nix
+    ./programs.nix
     ./options.nix
     ./users.nix
     ./boot.nix
