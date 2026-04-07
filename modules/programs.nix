@@ -8,8 +8,20 @@
     zoxide.enable = true;
   };
 
+  fonts.packages = with pkgs; [
+    jetbrains-mono
+    nerd-fonts.symbols-only
+    noto-fonts
+    noto-fonts-cjk-sans
+    noto-fonts-color-emoji
+    liberation_ttf
+    dejavu_fonts
+    font-awesome
+  ];
+
   environment.systemPackages = with pkgs; [
     # cli
+    stow
     btop
     eza
     fzf
@@ -38,17 +50,10 @@
     ffmpeg
     unrar
 
-    # fonts and icons
-    noto-fonts
-    noto-fonts-cjk-sans
-    noto-fonts-color-emoji
-    liberation_ttf
-    dejavu_fonts
-    jetbrains-mono
-    nerd-fonts.symbols-only
-    font-awesome
+    # icons
     adwaita-icon-theme
     kdePackages.breeze-icons
+    bibata-cursors
 
     # desktop
     pavucontrol
