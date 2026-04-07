@@ -8,7 +8,7 @@
     userdbd.enable = lib.mkDefault false; # avoids systemd's age verification change
     # udiskie.enable = true;
     # polkit-gnome.enable = true;
-    gnome-keyring.enable = true;
+    gnome.gnome-keyring.enable = true;
     # wpaperd.enable = true;
     openssh = {
       enable = true;
