@@ -1,18 +1,17 @@
-{ pkgs, ... }:
+{ pkgs, inputs, ... }:
 {
-  programs = {
-    mangowc.enable = true;
-    waybar.enable = true;
-  };
-  services = {
-    hypridle.enable = true;
-    gnome.gnome-keyring.enable = true;
-  };
-
   environment.systemPackages = with pkgs; [
-    mako
-    swaylock
-    swaybg
+    inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default
     polkit_gnome
   ];
+
+  programs = {
+    niri = {
+      enable = true;
+      useNautilus = false;
+    };
+  };
+  services = {
+    gnome.gnome-keyring.enable = true;
+  };
 }
