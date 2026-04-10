@@ -4,7 +4,6 @@
     foot.enable = true;
     tmux.enable = true;
     bat.enable = true;
-    yazi.enable = true;
     zoxide.enable = true;
   };
 
@@ -21,6 +20,7 @@
 
   environment.systemPackages = with pkgs; [
     # cli
+    yazi
     stow
     btop
     eza
@@ -30,8 +30,6 @@
     brightnessctl
     impala
     wl-clipboard
-    grim
-    slurp
     libnotify
     ddcutil
     wiremix
@@ -50,10 +48,11 @@
     ffmpeg
     unrar
 
-    # icons
+    # style
     adwaita-icon-theme
     kdePackages.breeze-icons
     bibata-cursors
+    adw-gtk3
 
     # desktop
     pavucontrol
@@ -72,9 +71,7 @@
     gimp
     seahorse
     transmission_4-gtk
-    bitwarden-desktop
     moonlight-qt
     freetube
-    fuzzel
   ];
 }
