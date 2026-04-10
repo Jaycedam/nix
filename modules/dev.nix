@@ -4,32 +4,17 @@
 }:
 {
   programs = {
-    opencode.enable = true;
-    gemini-cli.enable = true;
-
-    lazygit = {
-      enable = true;
-      enableFishIntegration = true;
-    };
-
-    git = {
-      enable = true;
-      settings = {
-        user = {
-          name = "jaycem";
-          email = "45575946+jaycem-dev@users.noreply.github.com";
-        };
-      };
-    };
-
-    # remote and related tools
-    gh = {
-      enable = true;
-      gitCredentialHelper.enable = true; # Defaults to github.com and gist.github.com
-    };
+    lazygit.enable = true;
+    git.enable = true;
   };
 
-  home.packages = with pkgs; [
+  environment.systemPackages = with pkgs; [
+    # tools
+    opencode
+    gemini-cli
+    gh
+    android-tools
+
     # Go
     go # compiler
     gopls # LSP
@@ -87,9 +72,5 @@
 
     # Django
     djlint # formatter
-
-    # Dev tools
-    lazygit
-    android-tools
   ];
 }

@@ -1,0 +1,77 @@
+{ pkgs, ... }:
+{
+  programs = {
+    foot.enable = true;
+    tmux.enable = true;
+    bat.enable = true;
+    zoxide.enable = true;
+  };
+
+  fonts.packages = with pkgs; [
+    jetbrains-mono
+    nerd-fonts.symbols-only
+    noto-fonts
+    noto-fonts-cjk-sans
+    noto-fonts-color-emoji
+    liberation_ttf
+    dejavu_fonts
+    font-awesome
+  ];
+
+  environment.systemPackages = with pkgs; [
+    # cli
+    yazi
+    stow
+    btop
+    eza
+    fzf
+    fwupd
+    playerctl
+    brightnessctl
+    impala
+    wl-clipboard
+    libnotify
+    ddcutil
+    wiremix
+    tree
+    pstree
+    bluetui
+    trash-cli
+    tldr
+    ripgrep
+    yt-dlp
+    fd
+    jq
+    imagemagick
+    fastfetch
+    bitwarden-cli
+    ffmpeg
+    unrar
+
+    # style
+    adwaita-icon-theme
+    kdePackages.breeze-icons
+    bibata-cursors
+    adw-gtk3
+
+    # desktop
+    pavucontrol
+    localsend
+    thunar
+    thunar-archive-plugin
+    anki
+    thunar-media-tags-plugin
+    thunar-volman
+    thunar-vcs-plugin
+    libreoffice-fresh
+    signal-desktop
+    ente-desktop
+    jellyfin-desktop
+    mpv
+    gimp
+    seahorse
+    transmission_4-gtk
+    moonlight-qt
+    freetube
+  ];
+}

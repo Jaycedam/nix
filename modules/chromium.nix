@@ -1,7 +1,17 @@
-_: {
+{ pkgs, ... }:
+{
+  environment.systemPackages = with pkgs; [
+    brave
+  ];
   programs.chromium = {
     # enables policy config, not for installing chromium
     enable = true;
+    extensions = [
+      "eimadpbcbfnmbkopoojfekhnkhdbieeh" # dark reader
+      "hfjbmagddngcpeloejdejnfgbamkjaeg" # vimium
+      "ghmbeldphafepmbegfdlkpapadhbakde" # protonpass
+      "mnjggcdmjocbbbhaepdhchncahnbgone" # sponsorblock
+    ];
     extraOpts = {
       "BraveRewardsDisabled" = true;
       "BraveWalletDisabled" = true;
