@@ -19,6 +19,8 @@ Related files: [keyboard.nix](./nixos/keyboard.nix)
 > [!NOTE]
 > You need to add --impure flag if you are using an Asahi profile, because the flake references external firmware directory.
 
+1. NixOS Configuration:
+
 ```bash
 sudo NIX_CONFIG="experimental-features = nix-command flakes" \
     nixos-rebuild switch --flake github:jaycem-dev/nix#profile
@@ -31,7 +33,13 @@ sudo NIX_CONFIG="experimental-features = nix-command flakes" \
 - desktop
 - asahi (arm64)
 
+    2.Dotfiles managed with GNU Stow:\*\*
+
+```bash
+git clone https://github.com/jaycem-dev/dotfiles.git ~/dev/dotfiles --depth=1 && cd ~/dev/dotfiles && stow .
+```
+
 ## Software
 
-- Compositor and tools: mangowc, fuzzel, waybar, mako, swayidle, swaylock
-- Main programs: kitty, fish, neovim
+- Compositor and tools: Niri with Noctalia Shell
+- Main programs: Foot, Neovim, Yazi
