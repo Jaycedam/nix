@@ -7,6 +7,7 @@
     swaybg
     swayidle
     swaylock
+    xwayland-satellite
   ];
 
   programs = {
