@@ -26,9 +26,7 @@ sudo NIX_CONFIG="experimental-features = nix-command flakes" \
     nixos-rebuild switch --flake github:jaycem-dev/nix#profile
 ```
 
-**Replace `profile` with one of the profiles below.**
-
-**Available profiles (defined in [flake.nix](./flake.nix)):**
+**Replace `profile` with one of the profiles below (defined in [flake.nix](./flake.nix)):**
 
 - desktop
 - asahi (arm64)
@@ -41,5 +39,6 @@ git clone https://github.com/jaycem-dev/dotfiles.git ~/dev/dotfiles --depth=1 &&
 
 ## Software
 
-- Compositor and tools: Niri with Noctalia Shell
+- Compositor and tools: Niri, Waybar, Fuzzel, Swayidle, Swaybg, Swaylock
 - Main programs: Foot, Neovim, Yazi
+- Theming: Matugen
