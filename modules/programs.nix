@@ -20,6 +20,7 @@
 
   environment.systemPackages = with pkgs; [
     # cli
+    matugen
     yazi
     stow
     btop

@@ -1,8 +1,12 @@
-{ pkgs, inputs, ... }:
+{ pkgs, ... }:
 {
   environment.systemPackages = with pkgs; [
-    inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default
-    polkit_gnome
+    mako
+    fuzzel
+    waybar
+    swaybg
+    swayidle
+    swaylock
   ];
 
   programs = {
