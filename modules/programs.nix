@@ -75,5 +75,7 @@
     transmission_4-gtk
     moonlight-qt
     freetube
+    foot
+    kitty
   ];
 }
