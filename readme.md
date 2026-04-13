@@ -34,7 +34,7 @@ sudo NIX_CONFIG="experimental-features = nix-command flakes" \
 ### Dotfiles managed with GNU Stow:
 
 ```bash
-git clone https://github.com/jaycem-dev/dotfiles.git ~/dev/dotfiles --depth=1 && cd ~/dev/dotfiles && stow .
+git clone https://github.com/jaycem-dev/dotfiles.git ~/dev/dotfiles && cd ~/dev/dotfiles && stow */
 ```
 
 ## Software
