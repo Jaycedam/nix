@@ -1,7 +1,6 @@
 { pkgs, ... }:
 {
   programs = {
-    foot.enable = true;
     tmux.enable = true;
     bat.enable = true;
     zoxide.enable = true;
@@ -56,6 +55,8 @@
     adw-gtk3
 
     # desktop
+    kitty
+    foot
     pavucontrol
     localsend
     thunar
