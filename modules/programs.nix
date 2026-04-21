@@ -19,6 +19,8 @@
 
   environment.systemPackages = with pkgs; [
     # cli
+    slurp
+    grim
     matugen
     yazi
     stow
