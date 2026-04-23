@@ -21,6 +21,7 @@
     # cli
     slurp
     grim
+    parallel
     matugen
     yazi
     stow
