@@ -74,6 +74,7 @@
     jellyfin-desktop
     mpv
     gimp
+    nwg-look
     seahorse
     transmission_4-gtk
     moonlight-qt
