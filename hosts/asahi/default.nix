@@ -10,6 +10,8 @@
   ];
 
   boot.loader.efi.canTouchEfiVariables = lib.mkDefault false;
+  # workaraound until https://github.com/NixOS/nixpkgs/issues/513512 lands on unstable
+  boot.kernel.sysctl."vm.mmap_rnd_bits" = 31;
 
   hardware.bluetooth.enable = true;
   zramSwap.enable = true;
