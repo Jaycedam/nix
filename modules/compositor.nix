@@ -8,6 +8,7 @@
     swayidle
     swaylock
     xwayland-satellite
+    nirius
   ];
 
   programs = {

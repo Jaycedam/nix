@@ -19,6 +19,7 @@
 
   environment.systemPackages = with pkgs; [
     # cli
+    nh
     slurp
     grim
     parallel

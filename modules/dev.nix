@@ -12,6 +12,8 @@
     # tools
     opencode
     gemini-cli
+    codex
+    claude-code
     gh
     android-tools
 
