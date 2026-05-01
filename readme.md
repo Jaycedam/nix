@@ -2,11 +2,7 @@
 
 My NixOS config.
 
-**Note:** This uses Colemak-DH-ISO keyboard layout by default.
-
-Related files: [keyboard.nix](./nixos/keyboard.nix)
-
-![Screenshot](assets/screenshot.avif)
+I use Colemak-DH-ISO keyboard layout by default, modify in [keyboard.nix](./modules/keyboard.nix)
 
 ## Install
 
@@ -15,9 +11,6 @@ Related files: [keyboard.nix](./nixos/keyboard.nix)
 
 > [!IMPORTANT]
 > If you reinstall NixOS with encryption, you will need to copy the hardware-configuration.nix file from `/etc/nixos/hardware-configuration.nix` to the profile directory and update the UUIDs in `host/{profile}/default.nix` or you won't be able to boot.
-
-> [!NOTE]
-> You need to add --impure flag if you are using an Asahi profile, because the flake references external firmware directory.
 
 ### NixOS Configuration:
 
@@ -29,18 +22,13 @@ sudo NIX_CONFIG="experimental-features = nix-command flakes" \
 **Replace `profile` with one of the profiles below (defined in [flake.nix](./flake.nix)):**
 
 - desktop
-- asahi (arm64)
+- asahi (ARM64, needs --impure flag)
 
 ### Dotfiles managed with GNU Stow:
 
-See repo [dotfiles](https://github.com/jaycem-dev/dotfiles).
-
-```bash
-git clone https://github.com/jaycem-dev/dotfiles.git ~/dev/dotfiles && cd ~/dev/dotfiles && stow */
-```
+See instructions in [dotfiles](https://github.com/jaycem-dev/dotfiles).
 
 ## Software
 
 - Compositor and tools: Niri, Waybar, Fuzzel, Swayidle, Swaybg, Swaylock
-- Main programs: Foot, Neovim, Yazi
-- Theming: Matugen
+- Main programs: Kitty, Neovim, Yazi
