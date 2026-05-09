@@ -16,6 +16,7 @@
     claude-code
     gh
     android-tools
+    tree-sitter
 
     # Go
     go # compiler

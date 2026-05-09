@@ -20,6 +20,7 @@
   environment.systemPackages = with pkgs; [
     # cli
     nh
+    zed-editor
     slurp
     grim
     parallel
@@ -63,6 +64,7 @@
     foot
     pavucontrol
     localsend
+    emacs
     thunar
     thunar-archive-plugin
     anki
