@@ -1,5 +1,6 @@
 {
   lib,
+  pkgs,
   desktop,
   ...
 }:
@@ -26,4 +27,29 @@
       openFirewall = true;
     };
   };
+
+  # low battery notification
+  systemd.user.services.low-battery-notify = lib.mkIf (!desktop) {
+    description = "Low battery notification";
+    path = [
+      pkgs.upower
+      pkgs.libnotify
+      pkgs.gnugrep
+      pkgs.gawk
+    ];
+    serviceConfig.ExecStart = pkgs.writeShellScript "low-battery-notify" ''
+      lvl=$(upower -b 2>/dev/null | grep percentage | awk '{print int($2)}')
+      state=$(upower -b 2>/dev/null | grep state | awk '{print $2}')
+      [ "$state" != discharging ] && exit 0
+      [ "$lvl" -le 10 ] && notify-send -u critical "Battery critical" "$lvl%"
+      [ "$lvl" -le 20 ] && notify-send -u critical "Battery low" "$lvl%"
+      exit 0
+    '';
+  };
+  systemd.user.timers.low-battery-notify = lib.mkIf (!desktop) {
+    description = "Check battery every 5min";
+    timerConfig.OnCalendar = "*:0/10";
+    wantedBy = [ "timers.target" ];
+  };
+
 }
