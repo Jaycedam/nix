@@ -6,6 +6,7 @@
     "d /DATA 0775 ${user} media -"
     "d /DATA/Shows 0775 ${user} media -"
     "d /DATA/Movies 0775 ${user} media -"
+    "d /DATA/Peliculas 0775 ${user} media -"
     "d /DATA/Downloads 0775 ${user} media -"
   ];
 
