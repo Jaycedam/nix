@@ -28,8 +28,7 @@
     rust-analyzer # LSP
 
     # TypeScript/JavaScript
-    nodejs_24 # runtime
-    bun # runtime/package manager
+    nodejs # runtime
     typescript-language-server # LSP
     prettier # formatter
     eslint # linter
