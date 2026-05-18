@@ -19,60 +19,62 @@
     tree-sitter
 
     # Go
-    go # compiler
-    gopls # LSP
+    go
+    gopls
 
     # Rust
-    rustc # compiler
-    cargo # package manager
-    rust-analyzer # LSP
+    rustc
+    cargo
+    rust-analyzer
 
     # TypeScript/JavaScript
-    nodejs # runtime
-    typescript-language-server # LSP
-    prettier # formatter
-    eslint # linter
+    oxfmt
+    oxlint
+    nodejs
+    typescript-language-server
+    prettier
+    eslint
 
     # Python
-    pyright # LSP
-    ruff # formatter/linter
+    pyright
+    ruff
 
     # C/C++
     gcc # compiler
 
     # Bash
-    bash-language-server # LSP
-    shfmt # formatter
-    shellcheck # linter
+    bash-language-server
+    shfmt
+    shellcheck
 
     # Astro
-    astro-language-server # LSP
+    astro-language-server
 
     # HTML/CSS
-    vscode-langservers-extracted # LSP (HTML, CSS, JSON)
+    vscode-langservers-extracted
 
     # Tailwind
-    tailwindcss-language-server # LSP
+    tailwindcss-language-server
 
     # Markdown
-    marksman # LSP
+    marksman
 
     # Lua
-    lua-language-server # LSP
-    stylua # formatter
+    lua-language-server
+    stylua
 
     # TOML
-    taplo # LSP
+    taplo
 
     # YAML
-    yaml-language-server # LSP
+    yaml-language-server
 
     # Nix
-    nil # LSP
-    nixfmt # formatter
-    statix # linter
+    nil
+    nixfmt
+    statix
 
     # Django
-    djlint # formatter
+    djlint
   ];
 }

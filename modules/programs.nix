@@ -71,7 +71,7 @@
     thunar-media-tags-plugin
     thunar-volman
     thunar-vcs-plugin
-    libreoffice-fresh
+    libreoffice
     signal-desktop
     ente-desktop
     jellyfin-desktop
