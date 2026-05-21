@@ -9,6 +9,7 @@
     swaylock
     xwayland-satellite
     nirius
+    hyprsunset
   ];
 
   programs = {
