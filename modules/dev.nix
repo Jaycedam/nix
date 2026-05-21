@@ -11,7 +11,7 @@
   environment.systemPackages = with pkgs; [
     # tools
     opencode
-    gemini-cli
+    antigravity
     codex
     claude-code
     gh

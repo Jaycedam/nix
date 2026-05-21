@@ -16,6 +16,7 @@
     xwayland-satellite
     nirius
     hyprsunset
+    hyprshutdown
   ];
 
   programs = {
