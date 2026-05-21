@@ -1,5 +1,11 @@
 { pkgs, ... }:
 {
+  # https://wiki.hypr.land/Configuring/Start/#autocompletions
+  # symlinks from store to the expected location
+  systemd.tmpfiles.rules = [
+    "L+ /usr/share/hypr/stubs - - - - ${pkgs.hyprland}/share/hypr/stubs"
+  ];
+
   environment.systemPackages = with pkgs; [
     mako
     fuzzel
