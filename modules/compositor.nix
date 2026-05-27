@@ -17,6 +17,7 @@
     nirius
     hyprsunset
     hyprshutdown
+    hypridle
   ];
 
   programs = {
