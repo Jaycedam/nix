@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, user, ... }:
 {
   imports = [
     ./hardware-configuration.nix
@@ -20,6 +20,13 @@
       "noatime"
       "discard"
     ];
+  };
+
+  system.activationScripts.ssd-owner = {
+    deps = [ "users" "groups" ];
+    text = ''
+      chown ${user}:users /mnt/ssd
+    '';
   };
 
   # This value determines the NixOS release from which the default
