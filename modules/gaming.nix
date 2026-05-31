@@ -16,7 +16,6 @@
     gamescope
     pcsx2
     dolphin-emu
-    protonup-qt
     shadps4
     gopher64
     lsfg-vk

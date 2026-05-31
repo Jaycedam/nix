@@ -55,12 +55,15 @@
 
     # style
     adwaita-icon-theme
-    kdePackages.breeze-icons
     bibata-cursors
     adw-gtk3
     whitesur-icon-theme
     candy-icons
     papirus-icon-theme
+    kdePackages.breeze
+    kdePackages.breeze-icons
+    libsForQt5.qt5ct
+    kdePackages.qt6ct
 
     # desktop
     kitty
@@ -82,7 +85,6 @@
     gimp
     nwg-look
     seahorse
-    transmission_4-gtk
     moonlight-qt
     freetube
     foot
