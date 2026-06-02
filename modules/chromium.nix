@@ -1,15 +1,26 @@
-{ pkgs, ... }:
+{ pkgs, system, ... }:
+let
+  brave' =
+    if system == "aarch64-linux" then
+      pkgs.brave.overrideAttrs (old: {
+        installPhase = old.installPhase + ''
+          ln -sf ${pkgs.widevine-cdm}/share/google/chrome/WidevineCdm $out/opt/brave.com/brave/WidevineCdm
+        '';
+      })
+    else
+      pkgs.brave;
+in
 {
-  environment.systemPackages = with pkgs; [
-    brave
+  environment.systemPackages = [
+    brave'
   ];
   programs.chromium = {
     # enables policy config, not for installing chromium
     enable = true;
     extensions = [
+      "ghmbeldphafepmbegfdlkpapadhbakde" # protonpass
       "eimadpbcbfnmbkopoojfekhnkhdbieeh" # dark reader
       "hfjbmagddngcpeloejdejnfgbamkjaeg" # vimium
-      "ghmbeldphafepmbegfdlkpapadhbakde" # protonpass
       "mnjggcdmjocbbbhaepdhchncahnbgone" # sponsorblock
     ];
     extraOpts = {
