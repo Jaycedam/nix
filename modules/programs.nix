@@ -65,6 +65,36 @@
     libsForQt5.qt5ct
     kdePackages.qt6ct
 
+    # desktop files for Brave web app icons
+    (pkgs.makeDesktopItem {
+      name = "spotify";
+      desktopName = "Spotify";
+      exec = "brave --app=https://open.spotify.com";
+      icon = "spotify";
+      categories = [ "Audio" "Music" "Network" ];
+    })
+    (pkgs.makeDesktopItem {
+      name = "whatsapp";
+      desktopName = "WhatsApp";
+      exec = "brave --app=https://web.whatsapp.com";
+      icon = "whatsapp";
+      categories = [ "Chat" "Network" ];
+    })
+    (pkgs.makeDesktopItem {
+      name = "proton-mail";
+      desktopName = "Proton Mail";
+      exec = "brave --app=https://mail.proton.me";
+      icon = "proton-mail";
+      categories = [ "Office" "Network" ];
+    })
+    (pkgs.makeDesktopItem {
+      name = "youtube";
+      desktopName = "YouTube";
+      exec = "brave --app=https://www.youtube.com";
+      icon = "youtube";
+      categories = [ "AudioVideo" "Network" ];
+    })
+
     # desktop
     kitty
     foot
