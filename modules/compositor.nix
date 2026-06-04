@@ -18,11 +18,13 @@
     hyprsunset
     hyprshutdown
     hypridle
+    wlrctl
   ];
 
   programs = {
     niri.enable = true;
     hyprland.enable = true;
+    mangowc.enable = true;
   };
   services = {
     gnome.gnome-keyring.enable = true;
