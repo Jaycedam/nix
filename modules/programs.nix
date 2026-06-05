@@ -4,6 +4,14 @@
     tmux.enable = true;
     bat.enable = true;
     zoxide.enable = true;
+    nh = {
+      enable = true;
+      flake = "~/dev/nix";
+      clean = {
+        enable = true;
+        extraArgs = "--keep 3";
+      };
+    };
   };
 
   fonts.packages = with pkgs; [
@@ -19,7 +27,6 @@
 
   environment.systemPackages = with pkgs; [
     # cli
-    nh
     zed-editor
     slurp
     grim
@@ -71,28 +78,80 @@
       desktopName = "Spotify";
       exec = "brave --app=https://open.spotify.com";
       icon = "spotify";
-      categories = [ "Audio" "Music" "Network" ];
+      categories = [
+        "Audio"
+        "Music"
+        "Network"
+      ];
     })
     (pkgs.makeDesktopItem {
       name = "whatsapp";
       desktopName = "WhatsApp";
       exec = "brave --app=https://web.whatsapp.com";
       icon = "whatsapp";
-      categories = [ "Chat" "Network" ];
+      categories = [
+        "Chat"
+        "Network"
+      ];
     })
     (pkgs.makeDesktopItem {
       name = "proton-mail";
       desktopName = "Proton Mail";
       exec = "brave --app=https://mail.proton.me";
       icon = "proton-mail";
-      categories = [ "Office" "Network" ];
+      categories = [
+        "Office"
+        "Network"
+      ];
     })
     (pkgs.makeDesktopItem {
       name = "youtube";
       desktopName = "YouTube";
       exec = "brave --app=https://www.youtube.com";
       icon = "youtube";
-      categories = [ "AudioVideo" "Network" ];
+      categories = [
+        "AudioVideo"
+        "Network"
+      ];
+    })
+    (pkgs.makeDesktopItem {
+      name = "lazygit";
+      desktopName = "Lazygit";
+      exec = "kitty --app-id git lazygit";
+      icon = "git";
+      categories = [
+        "Development"
+      ];
+    })
+    (pkgs.makeDesktopItem {
+      name = "bluetui";
+      desktopName = "Bluetui (bluetooth settings)";
+      exec = "kitty --app-id bluetui bluetui";
+      icon = "preferences-bluetooth";
+      categories = [
+        "Settings"
+      ];
+    })
+    (pkgs.makeDesktopItem {
+      name = "impala";
+      desktopName = "Impala (wifi settings)";
+      exec = "kitty --app-id impala impala";
+      icon = "nm-device-wireless";
+      categories = [
+        "Settings"
+      ];
+    })
+    (pkgs.makeDesktopItem {
+      name = "opencode";
+      desktopName = "OpenCode";
+      exec = "kitty --app-id opencode opencode";
+      icon = pkgs.fetchurl {
+        url = "https://opencode.ai/favicon.svg";
+        hash = "sha256-4pu+MzgK0cGtqRNLUvIp0w6XdtYEgVEsnYHyu2833vk=";
+      };
+      categories = [
+        "Development"
+      ];
     })
 
     # desktop

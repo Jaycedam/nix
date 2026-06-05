@@ -10,11 +10,8 @@ _: {
         "@wheel"
         "@admin"
       ];
+      auto-optimise-store = true;
     };
-
-    # Automatic garbage collection (generations)
-    gc.automatic = true;
-    optimise.automatic = true;
   };
 
   nixpkgs.config.allowUnfree = true;
