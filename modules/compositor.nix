@@ -1,5 +1,9 @@
-{ pkgs, ... }:
+{ pkgs, inputs, ... }:
 {
+  imports = [
+    inputs.mangowm.nixosModules.mango
+  ];
+
   # https://wiki.hypr.land/Configuring/Start/#autocompletions
   # symlinks from store to the expected location
   systemd.tmpfiles.rules = [
@@ -24,7 +28,7 @@
   programs = {
     niri.enable = true;
     hyprland.enable = true;
-    mangowc.enable = true;
+    mango.enable = true;
   };
   services = {
     gnome.gnome-keyring.enable = true;
