@@ -53,5 +53,16 @@
       openFirewall = true;
       group = "media";
     };
+    tdarr = {
+      enable = true;
+      group = "media";
+      server.openFirewall = true;
+      nodes.main = {
+        workers = {
+          transcodeCPU = 2;
+          healthcheckCPU = 1;
+        };
+      };
+    };
   };
 }

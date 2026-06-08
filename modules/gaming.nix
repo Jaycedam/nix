@@ -15,6 +15,7 @@
     gamemode
     gamescope
     pcsx2
+    rpcs3
     dolphin-emu
     shadps4
     gopher64
