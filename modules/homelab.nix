@@ -3,11 +3,11 @@
   users.groups.media = { };
 
   systemd.tmpfiles.rules = [
-    "d /DATA 0775 ${user} media -"
-    "d /DATA/Shows 0775 ${user} media -"
-    "d /DATA/Movies 0775 ${user} media -"
-    "d /DATA/Peliculas 0775 ${user} media -"
-    "d /DATA/Downloads 0775 ${user} media -"
+    "d /DATA 2775 ${user} media -"
+    "d /DATA/Shows 2775 ${user} media -"
+    "d /DATA/Movies 2775 ${user} media -"
+    "d /DATA/Peliculas 2775 ${user} media -"
+    "d /DATA/Downloads 2775 ${user} media -"
   ];
 
   services = {
