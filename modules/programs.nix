@@ -72,9 +72,11 @@
     libsForQt5.qt5ct
     kdePackages.qt6ct
 
-    # desktop files for Brave web app icons
+    # desktop files
+    # for webapps we use the format `brave-<url>__-Default` to match the class name since it can't be changed
+    # this way waybar can detect the correct icon
     (pkgs.makeDesktopItem {
-      name = "spotify";
+      name = "brave-open.spotify.com__-Default";
       desktopName = "Spotify";
       exec = "brave --app=https://open.spotify.com";
       icon = "spotify";
@@ -85,7 +87,7 @@
       ];
     })
     (pkgs.makeDesktopItem {
-      name = "whatsapp";
+      name = "brave-web.whatsapp.com__-Default";
       desktopName = "WhatsApp";
       exec = "brave --app=https://web.whatsapp.com";
       icon = "whatsapp";
@@ -95,7 +97,7 @@
       ];
     })
     (pkgs.makeDesktopItem {
-      name = "proton-mail";
+      name = "brave-mail.proton.me__-Default";
       desktopName = "Proton Mail";
       exec = "brave --app=https://mail.proton.me";
       icon = "proton-mail";
@@ -105,7 +107,7 @@
       ];
     })
     (pkgs.makeDesktopItem {
-      name = "youtube";
+      name = "brave-www.youtube.com__-Default";
       desktopName = "YouTube";
       exec = "brave --app=https://www.youtube.com";
       icon = "youtube";
