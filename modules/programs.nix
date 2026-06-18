@@ -103,7 +103,15 @@
       icon = "proton-mail";
       categories = [
         "Office"
-        "Network"
+      ];
+    })
+    (pkgs.makeDesktopItem {
+      name = "brave-drive.proton.me__-Default";
+      desktopName = "Proton Drive";
+      exec = "brave --app=https://drive.proton.me";
+      icon = ../assets/icons/proton-drive.svg;
+      categories = [
+        "Office"
       ];
     })
     (pkgs.makeDesktopItem {
@@ -147,10 +155,7 @@
       name = "opencode";
       desktopName = "OpenCode";
       exec = "kitty --app-id opencode opencode";
-      icon = pkgs.fetchurl {
-        url = "https://opencode.ai/favicon.svg";
-        hash = "sha256-4pu+MzgK0cGtqRNLUvIp0w6XdtYEgVEsnYHyu2833vk=";
-      };
+      icon = ../assets/icons/opencode.svg;
       categories = [
         "Development"
       ];
