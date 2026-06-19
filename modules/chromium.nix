@@ -1,6 +1,12 @@
-{ pkgs, system, ... }:
+{
+  pkgs,
+  lib,
+  system,
+  host,
+  ...
+}:
 let
-  brave' =
+  brave-with-widevine =
     if system == "aarch64-linux" then
       pkgs.brave.overrideAttrs (old: {
         installPhase = old.installPhase + ''
@@ -12,7 +18,7 @@ let
 in
 {
   environment.systemPackages = [
-    brave'
+    brave-with-widevine
   ];
   programs.chromium = {
     # enables policy config, not for installing chromium
@@ -22,6 +28,9 @@ in
       "eimadpbcbfnmbkopoojfekhnkhdbieeh" # dark reader
       "hfjbmagddngcpeloejdejnfgbamkjaeg" # vimium
       "mnjggcdmjocbbbhaepdhchncahnbgone" # sponsorblock
+    ]
+    ++ lib.optionals (host == "asahi") [
+      "aleakchihdccplidncghkekgioiakgal" # h264ify, asahi video decoder is wip
     ];
     extraOpts = {
       "BraveRewardsDisabled" = true;
@@ -47,7 +56,7 @@ in
       "AutofillAddressEnabled" = false;
       "AutofillCreditCardEnabled" = false;
       "BrowserSignin" = 0; # Disables browser sign-in
-      # "BraveAIChatEnabled" = false;
+      "BraveAIChatEnabled" = false;
       "TorDisabled" = true;
       "MediaRecommendationsEnabled" = true;
       "ShoppingListEnabled" = false;
