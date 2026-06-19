@@ -1,8 +1,4 @@
-{
-  lib,
-  inputs,
-  ...
-}:
+{ lib, inputs, ... }:
 {
   imports = [
     inputs.apple-silicon.nixosModules.apple-silicon-support

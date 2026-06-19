@@ -23,7 +23,10 @@
   };
 
   system.activationScripts.ssd-owner = {
-    deps = [ "users" "groups" ];
+    deps = [
+      "users"
+      "groups"
+    ];
     text = ''
       chown ${user}:users /mnt/ssd
     '';
