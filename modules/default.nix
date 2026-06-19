@@ -1,9 +1,4 @@
-{
-  lib,
-  desktop,
-  system,
-  ...
-}:
+{ lib, desktop, ... }:
 {
   imports = [
     ./editor.nix
@@ -19,12 +14,9 @@
     ./greeter.nix
     ./virtualization.nix
     ./compositor.nix
-  ]
-  ++ lib.optional desktop ./homelab.nix
-  # don't enable gaming on arm, it requires 32bit support
-  ++ lib.optionals (system == "x86_64-linux") [
     ./gaming.nix
-  ];
+  ]
+  ++ lib.optional desktop ./homelab.nix;
 
   programs.fish.enable = true;
   fonts.fontconfig.enable = true;
