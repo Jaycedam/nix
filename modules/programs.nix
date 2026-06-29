@@ -4,6 +4,12 @@
     tmux.enable = true;
     bat.enable = true;
     zoxide.enable = true;
+    neovim = {
+      enable = true;
+      vimAlias = true;
+      viAlias = true;
+      defaultEditor = true;
+    };
     nh = {
       enable = true;
       flake = "~/dev/nix";
@@ -59,6 +65,7 @@
     bitwarden-cli
     ffmpeg
     unrar
+    exfatprogs
 
     # style
     adwaita-icon-theme
@@ -163,19 +170,19 @@
 
     # desktop
     kitty
-    foot
     pavucontrol
     localsend
-    emacs
     thunar
     thunar-archive-plugin
     anki
     thunar-media-tags-plugin
     thunar-volman
+    udiskie
     thunar-vcs-plugin
     libreoffice
     signal-desktop
     ente-desktop
+    openrgb
     jellyfin-desktop
     mpv
     gimp
@@ -183,7 +190,5 @@
     seahorse
     moonlight-qt
     freetube
-    foot
-    kitty
   ];
 }

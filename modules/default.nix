@@ -1,7 +1,6 @@
 { lib, desktop, ... }:
 {
   imports = [
-    ./editor.nix
     ./dev.nix
     ./programs.nix
     ./options.nix
