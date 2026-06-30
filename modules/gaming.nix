@@ -10,6 +10,7 @@
 
   environment.systemPackages = with pkgs; [
     gamemode
+    mangohud
     gamescope
     lsfg-vk
     ryubing
@@ -18,6 +19,6 @@
     pcsx2
     shadps4
     heroic
-    rpcs3
+    # rpcs3
   ];
 }

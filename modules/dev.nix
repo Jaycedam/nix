@@ -29,7 +29,6 @@
     oxlint
     nodejs
     typescript-language-server
-    prettier
     eslint
 
     # Python

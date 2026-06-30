@@ -10,14 +10,6 @@
       viAlias = true;
       defaultEditor = true;
     };
-    nh = {
-      enable = true;
-      flake = "~/dev/nix";
-      clean = {
-        enable = true;
-        extraArgs = "--keep 3";
-      };
-    };
   };
 
   fonts.packages = with pkgs; [
@@ -33,7 +25,7 @@
 
   environment.systemPackages = with pkgs; [
     # cli
-    zed-editor
+    nh
     slurp
     grim
     parallel
@@ -78,6 +70,31 @@
     kdePackages.breeze-icons
     libsForQt5.qt5ct
     kdePackages.qt6ct
+
+    # desktop
+    kitty
+    pavucontrol
+    localsend
+    thunar
+    thunar-archive-plugin
+    anki
+    thunar-media-tags-plugin
+    thunar-volman
+    udiskie
+    thunar-vcs-plugin
+    libreoffice
+    signal-desktop
+    transmission_4-gtk
+    ente-desktop
+    openrgb
+    jellyfin-desktop
+    mpv
+    gimp
+    nwg-look
+    seahorse
+    moonlight-qt
+    freetube
+    zed-editor
 
     # desktop files
     # for webapps we use the format `brave-<url>__-Default` to match the class name since it can't be changed
@@ -159,6 +176,15 @@
       ];
     })
     (pkgs.makeDesktopItem {
+      name = "neovim";
+      desktopName = "Neovim";
+      exec = "kitty --app-id neovim neovim";
+      icon = "nvim";
+      categories = [
+        "Development"
+      ];
+    })
+    (pkgs.makeDesktopItem {
       name = "opencode";
       desktopName = "OpenCode";
       exec = "kitty --app-id opencode opencode";
@@ -167,28 +193,5 @@
         "Development"
       ];
     })
-
-    # desktop
-    kitty
-    pavucontrol
-    localsend
-    thunar
-    thunar-archive-plugin
-    anki
-    thunar-media-tags-plugin
-    thunar-volman
-    udiskie
-    thunar-vcs-plugin
-    libreoffice
-    signal-desktop
-    ente-desktop
-    openrgb
-    jellyfin-desktop
-    mpv
-    gimp
-    nwg-look
-    seahorse
-    moonlight-qt
-    freetube
   ];
 }
