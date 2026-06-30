@@ -8,21 +8,16 @@
     ];
   };
 
-  environment.systemPackages =
-    with pkgs;
-    [
-      ryubing
-      gamemode
-      gamescope
-      dolphin-emu
-      gopher64
-      lsfg-vk
-    ]
-    ++ lib.optionals pkgs.stdenv.hostPlatform.isx86_64 [
-      # not available on arm/asahi
-      pcsx2
-      shadps4
-      heroic
-      rpcs3 # works on arm, but usually fails to build
-    ];
+  environment.systemPackages = with pkgs; [
+    gamemode
+    gamescope
+    lsfg-vk
+    ryubing
+    dolphin-emu
+    gopher64
+    pcsx2
+    shadps4
+    heroic
+    rpcs3
+  ];
 }

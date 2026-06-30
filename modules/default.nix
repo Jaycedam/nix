@@ -1,4 +1,9 @@
-{ lib, desktop, ... }:
+{
+  lib,
+  desktop,
+  system,
+  ...
+}:
 {
   imports = [
     ./dev.nix
@@ -13,8 +18,8 @@
     ./greeter.nix
     ./virtualization.nix
     ./compositor.nix
-    ./gaming.nix
   ]
+  ++ lib.optional (system == "x86_64-linux") ./gaming.nix
   ++ lib.optional desktop ./homelab.nix;
 
   programs.fish.enable = true;
