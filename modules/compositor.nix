@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, inputs, ... }:
 {
   # https://wiki.hypr.land/Configuring/Start/#autocompletions
   # symlinks from store to the expected location
@@ -9,7 +9,7 @@
   environment.systemPackages = with pkgs; [
     mako
     fuzzel
-    waybar
+    inputs.waybar.packages.${pkgs.system}.default
     swaybg
     swayidle
     swaylock

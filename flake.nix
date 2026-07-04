@@ -3,10 +3,8 @@
 
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-unstable";
-    apple-silicon = {
-      url = "github:nix-community/nixos-apple-silicon";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    apple-silicon.url = "github:nix-community/nixos-apple-silicon";
+    waybar.url = "github:Alexays/Waybar/master";
   };
 
   nixConfig = {
