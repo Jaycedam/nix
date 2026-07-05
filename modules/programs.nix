@@ -23,7 +23,6 @@
     slurp
     grim
     parallel
-    matugen
     yazi
     stow
     btop
@@ -57,8 +56,6 @@
     adwaita-icon-theme
     bibata-cursors
     adw-gtk3
-    whitesur-icon-theme
-    candy-icons
     papirus-icon-theme
     kdePackages.breeze
     kdePackages.breeze-icons

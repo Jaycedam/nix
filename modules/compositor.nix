@@ -15,17 +15,27 @@
     swaylock
     xwayland-satellite
     nirius
-    hyprsunset
-    hyprshutdown
-    hypridle
-    wlrctl
   ];
 
   programs = {
     niri.enable = true;
-    hyprland.enable = true;
   };
   services = {
     gnome.gnome-keyring.enable = true;
+  };
+
+  # manual polkit agent, no nixos option is available yet
+  systemd.user.services.polkit-gnome-authentication-agent-1 = {
+    description = "MATE PolicyKit authentication agent";
+    wantedBy = [ "graphical-session.target" ];
+    wants = [ "graphical-session.target" ];
+    after = [ "graphical-session.target" ];
+    serviceConfig = {
+      Type = "simple";
+      ExecStart = "${pkgs.mate-polkit}/libexec/polkit-mate-authentication-agent-1";
+      Restart = "on-failure";
+      RestartSec = 1;
+      TimeoutStopSec = 10;
+    };
   };
 }
