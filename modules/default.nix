@@ -22,6 +22,5 @@
   ++ lib.optional (system == "x86_64-linux") ./gaming.nix
   ++ lib.optional desktop ./homelab.nix;
 
-  programs.fish.enable = true;
   fonts.fontconfig.enable = true;
 }

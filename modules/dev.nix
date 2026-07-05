@@ -1,12 +1,9 @@
 { pkgs, ... }:
 {
-  programs = {
-    lazygit.enable = true;
-    git.enable = true;
-  };
-
   environment.systemPackages = with pkgs; [
     # tools
+    lazygit
+    git
     opencode
     antigravity
     codex

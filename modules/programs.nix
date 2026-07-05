@@ -1,17 +1,5 @@
 { pkgs, ... }:
 {
-  programs = {
-    tmux.enable = true;
-    bat.enable = true;
-    zoxide.enable = true;
-    neovim = {
-      enable = true;
-      vimAlias = true;
-      viAlias = true;
-      defaultEditor = true;
-    };
-  };
-
   fonts.packages = with pkgs; [
     jetbrains-mono
     nerd-fonts.symbols-only
@@ -23,8 +11,14 @@
     font-awesome
   ];
 
+  programs.fish.enable = true;
+
   environment.systemPackages = with pkgs; [
     # cli
+    zoxide
+    tmux
+    bat
+    neovim
     nh
     slurp
     grim
