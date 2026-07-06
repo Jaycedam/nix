@@ -2,6 +2,7 @@
 {
   services = {
     userdbd.enable = lib.mkDefault false; # avoids systemd's age verification change
+    gvfs.enable = true; # needed for nautilus
     openssh = {
       enable = true;
       startWhenNeeded = true;
