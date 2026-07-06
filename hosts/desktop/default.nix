@@ -1,4 +1,4 @@
-{ pkgs, user, ... }:
+{ pkgs, lib, user, ... }:
 {
   imports = [
     ./hardware-configuration.nix
@@ -6,9 +6,15 @@
 
   boot = {
     kernelPackages = pkgs.linuxPackages_latest;
+    # Disable scatter/gather display — avoids IOMMU scanout corruption on Raven2/Picasso APUs
+    # https://docs.kernel.org/6.8/gpu/amdgpu/module-parameters.html (sg_display)
+    kernelParams = lib.mkAfter [ "amdgpu.sg_display=0" ];
     initrd.luks.devices."luks-b87d2a5d-6163-4568-8a83-01361aeb8ee9".device =
       "/dev/disk/by-uuid/b87d2a5d-6163-4568-8a83-01361aeb8ee9";
   };
+
+  # Load amdgpu in initrd — fixes low resolution in boot screen / Plymouth
+  hardware.amdgpu.initrd.enable = true;
 
   networking.hostName = "desktop"; # Define your hostname.
 
