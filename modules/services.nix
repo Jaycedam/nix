@@ -19,6 +19,7 @@
     sunshine = lib.mkIf desktop {
       enable = true;
       openFirewall = true;
+      capSysAdmin = true; # KMS/DRM capture, no portal needed
     };
   };
 }
