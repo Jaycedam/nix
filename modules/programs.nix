@@ -1,90 +1,98 @@
 { pkgs, ... }:
 {
+  programs = {
+    fish.enable = true;
+    thunar = {
+      enable = true;
+      plugins = with pkgs; [
+        thunar-archive-plugin
+        thunar-media-tags-plugin
+        thunar-volman
+      ];
+    };
+  };
+
   fonts.packages = with pkgs; [
+    dejavu_fonts
+    font-awesome
     jetbrains-mono
+    liberation_ttf
     nerd-fonts.symbols-only
     noto-fonts
     noto-fonts-cjk-sans
     noto-fonts-color-emoji
-    liberation_ttf
-    dejavu_fonts
-    font-awesome
   ];
-
-  programs.fish.enable = true;
 
   environment.systemPackages = with pkgs; [
     # cli
-    zoxide
-    tmux
     bat
+    bitwarden-cli
+    bluetui
+    brightnessctl
+    btop
+    ddcutil
+    exfatprogs
+    eza
+    fastfetch
+    fd
+    ffmpeg
+    fwupd
+    fzf
+    grim
+    imagemagick
+    impala
+    jq
+    libnotify
     neovim
     nh
-    slurp
-    grim
     parallel
-    yazi
-    stow
-    btop
-    eza
-    fzf
-    fwupd
     playerctl
-    brightnessctl
-    impala
-    wl-clipboard
-    libnotify
-    ddcutil
-    wiremix
-    tree
     pstree
-    bluetui
-    trash-cli
-    tldr
     ripgrep
-    yt-dlp
-    fd
-    jq
-    imagemagick
-    fastfetch
-    bitwarden-cli
-    ffmpeg
+    slurp
+    stow
+    tldr
+    tmux
+    trash-cli
+    tree
     unrar
-    exfatprogs
+    wiremix
+    wl-clipboard
+    yazi
+    yt-dlp
+    zoxide
 
     # style
+    adw-gtk3
     adwaita-icon-theme
     bibata-cursors
-    adw-gtk3
-    papirus-icon-theme
     kdePackages.breeze
     kdePackages.breeze-icons
-    libsForQt5.qt5ct
     kdePackages.qt6ct
+    libsForQt5.qt5ct
+    papirus-icon-theme
 
     # desktop
-    kitty
-    pavucontrol
-    localsend
-    thunar
-    thunar-archive-plugin
     anki
-    thunar-media-tags-plugin
-    thunar-volman
-    udiskie
-    thunar-vcs-plugin
+    ente-auth
+    ente-desktop
+    freetube
+    gimp
+    jellyfin-desktop
+    kitty
     libreoffice
+    localsend
+    moonlight-qt
+    mpris-notifier
+    mpv
+    newsflash
+    nwg-look
+    openrgb
+    pavucontrol
+    seahorse
     signal-desktop
     transmission_4-gtk
-    ente-desktop
-    openrgb
-    jellyfin-desktop
-    mpv
-    gimp
-    nwg-look
-    seahorse
-    moonlight-qt
-    freetube
+    udiskie
     zed-editor
 
     # desktop files
