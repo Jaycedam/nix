@@ -17,10 +17,16 @@ let
       name,
       desktopName,
       icon,
+      noDisplay ? false,
     }:
     pkgs.makeDesktopItem {
       exec = "kitty --app-id ${name} ${name}";
-      inherit name desktopName icon;
+      inherit
+        name
+        desktopName
+        icon
+        noDisplay
+        ;
     };
 in
 {
@@ -69,11 +75,25 @@ in
       name = "neovim";
       desktopName = "Neovim";
       icon = "nvim";
+      noDisplay = true;
+    })
+    (tui {
+      name = "neovim2";
+      desktopName = "Neovim (2nd instance)";
+      icon = "nvim";
+      noDisplay = true;
     })
     (tui {
       name = "opencode";
       desktopName = "OpenCode";
       icon = ../assets/icons/opencode.svg;
+      noDisplay = true;
+    })
+    (tui {
+      name = "opencode2";
+      desktopName = "OpenCode (2nd instance)";
+      icon = ../assets/icons/opencode.svg;
+      noDisplay = true;
     })
   ];
 }
