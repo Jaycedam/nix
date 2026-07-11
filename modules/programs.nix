@@ -109,6 +109,7 @@
     mpris-notifier
     mpv
     nautilus # niri portal dependency
+    nirius
     newsflash
     nwg-look
     openrgb
