@@ -3,6 +3,7 @@
   programs = {
     niri.enable = true;
     fish.enable = true;
+    zoxide.enable = true;
   };
 
   fonts.packages = with pkgs; [
@@ -68,7 +69,6 @@
     wl-clipboard
     yazi
     yt-dlp
-    zoxide
 
     # style
     adw-gtk3
@@ -117,6 +117,9 @@
     signal-desktop
     swaybg
     swayidle
+    stasis
+    hypridle
+    sway-audio-idle-inhibit
     swaylock
     transmission_4-gtk
     udiskie
