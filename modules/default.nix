@@ -18,8 +18,8 @@
     ./keyboard.nix
     ./greeter.nix
     ./virtualization.nix
+    ./gaming.nix
   ]
-  ++ lib.optional (system == "x86_64-linux") ./gaming.nix
   ++ lib.optional desktop ./homelab.nix;
 
   fonts.fontconfig.enable = true;
