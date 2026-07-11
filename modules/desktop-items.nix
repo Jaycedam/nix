@@ -78,20 +78,8 @@ in
       noDisplay = true;
     })
     (tui {
-      name = "neovim2";
-      desktopName = "Neovim (2nd instance)";
-      icon = "nvim";
-      noDisplay = true;
-    })
-    (tui {
       name = "opencode";
       desktopName = "OpenCode";
-      icon = ../assets/icons/opencode.svg;
-      noDisplay = true;
-    })
-    (tui {
-      name = "opencode2";
-      desktopName = "OpenCode (2nd instance)";
       icon = ../assets/icons/opencode.svg;
       noDisplay = true;
     })
