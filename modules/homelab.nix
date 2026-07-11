@@ -10,17 +10,17 @@
       "d /DATA/Peliculas 2775 ${user} media -"
       "d /DATA/Downloads 2775 ${user} media -"
     ];
-
-    # Tdarr node needs write access to /DATA
-    # Without this, ProtectSystem=strict blocks all writes outside the node's dataDir
-    services."tdarr-node-main".serviceConfig = {
-      ReadWritePaths = [ "/DATA" ];
+    services = {
+      # Tdarr node needs write access to /DATA
+      # Without this, ProtectSystem=strict blocks all writes outside the node's dataDir
+      "tdarr-node-main".serviceConfig = {
+        ReadWritePaths = [ "/DATA" ];
+      };
+      # Sonarr and Radarr hardcode UMask=0022, creating files as 644 (no group write)
+      # Override to 0002 so media group can write (needed by Tdarr's replaceOriginalFile)
+      sonarr.serviceConfig.UMask = lib.mkForce "0002";
+      radarr.serviceConfig.UMask = lib.mkForce "0002";
     };
-
-    # Sonarr and Radarr hardcode UMask=0022, creating files as 644 (no group write)
-    # Override to 0002 so media group can write (needed by Tdarr's replaceOriginalFile)
-    services.sonarr.serviceConfig.UMask = lib.mkForce "0002";
-    services.radarr.serviceConfig.UMask = lib.mkForce "0002";
   };
 
   services = {
