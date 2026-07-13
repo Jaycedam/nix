@@ -1,4 +1,9 @@
-{ pkgs, lib, user, ... }:
+{
+  pkgs,
+  lib,
+  user,
+  ...
+}:
 {
   imports = [
     ./hardware-configuration.nix
@@ -36,6 +41,27 @@
     text = ''
       chown ${user}:users /mnt/ssd
     '';
+  };
+
+  services.samba = {
+    enable = true;
+    openFirewall = true;
+    settings = {
+      global = {
+        "map to guest" = "bad user";
+        "server string" = "desktop";
+      };
+      ssd = {
+        path = "/mnt/ssd";
+        "guest ok" = true;
+        writable = true;
+      };
+      games = {
+        path = "/home/${user}/Games";
+        "guest ok" = true;
+        writable = true;
+      };
+    };
   };
 
   # This value determines the NixOS release from which the default
