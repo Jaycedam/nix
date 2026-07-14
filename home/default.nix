@@ -32,9 +32,10 @@
     ./swaylock.nix
     ./tmux.nix
     ./waybar
-    ./programs
+    ./programs.nix
     ./dev.nix
     ./desktop-items.nix
+    ./services.nix
   ];
 
   home.shell.enableFishIntegration = true;

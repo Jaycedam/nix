@@ -7,21 +7,13 @@
     gh.enable = true;
     git = {
       enable = true;
-      settings = [
-        {
-          user.name = "Jay";
-          user.email = "45575946+jaycem-dev@users.noreply.github.com";
-        }
-        {
-          pull.rebase = true;
-        }
-        {
-          credential."https://github.com".helper = "!${pkgs.gh}/bin/gh auth git-credential";
-        }
-        {
-          credential."https://gist.github.com".helper = "!${pkgs.gh}/bin/gh auth git-credential";
-        }
-      ];
+      settings = {
+        user = {
+          name = "Jay";
+          email = "45575946+jaycem-dev@users.noreply.github.com";
+        };
+        pull.rebase = true;
+      };
     };
     opencode = {
       enable = true;
