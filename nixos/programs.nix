@@ -55,15 +55,12 @@
     slurp
     stow
     tldr
-    tmux
     trash-cli
     tree
     unrar
     wiremix
     wl-clipboard
     yt-dlp
-
-    # style
     adw-gtk3
     adwaita-icon-theme
     bibata-cursors
@@ -91,14 +88,10 @@
     ente-desktop
     freetube
     nicotine-plus
-    fuzzel
     gimp
-    inputs.waybar.packages.${pkgs.system}.default
     jellyfin-desktop
-    kitty
     libreoffice
     localsend
-    mako
     moonlight-qt
     mpris-notifier
     mpv
@@ -112,9 +105,6 @@
     swaybg
     swayidle
     stasis
-    hypridle
-    sway-audio-idle-inhibit
-    swaylock
     transmission_4-gtk
     udiskie
     xwayland-satellite

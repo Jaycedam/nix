@@ -27,6 +27,12 @@
     ./niri
     ./neovim
     ./scripts
+    ./fuzzel.nix
+    ./mako.nix
+    ./hypridle.nix
+    ./swaylock.nix
+    ./tmux.nix
+    ./waybar
   ];
 
   home.shell.enableFishIntegration = true;
