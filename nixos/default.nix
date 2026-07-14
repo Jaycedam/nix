@@ -5,7 +5,6 @@
 }:
 {
   imports = [
-    ./dev.nix
     ./programs.nix
     ./options.nix
     ./users.nix
@@ -13,7 +12,6 @@
     ./network.nix
     ./services.nix
     ./browser.nix
-    ./desktop-items.nix
     ./keyboard.nix
     ./greeter.nix
     ./stylix.nix
