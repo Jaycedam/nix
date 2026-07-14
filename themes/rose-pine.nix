@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-{
+_: {
   config.stylix = {
     enable = true;
 

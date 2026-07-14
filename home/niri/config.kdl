@@ -1,5 +1,3 @@
-spawn-at-startup "hypridle"
-spawn-at-startup "waybar"
 spawn-at-startup "niriusd"
 // Workaraound for Asahi NixOS issues 
 spawn-at-startup "asahi-fixes"
