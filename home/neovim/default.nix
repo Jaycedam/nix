@@ -29,7 +29,7 @@ in {
       conform-nvim
     ];
 
-    extraLuaConfig = concat [
+    initLua = concat [
       (lua ./config/options.lua)
       (lua ./config/keymaps.lua)
       (lua ./config/autocmd.lua)

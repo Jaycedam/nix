@@ -1,41 +1,26 @@
 { pkgs, ... }: {
   programs.git = {
     enable = true;
-    userName = "Jay";
-    userEmail = "45575946+jaycem-dev@users.noreply.github.com";
-
-    extraConfig = {
-      pull.rebase = true;
-    };
 
     settings = [
       {
-        credential = {
-          "https://github.com" = {
-            helper = "";
-          };
-        };
+        user.name = "Jay";
+        user.email = "45575946+jaycem-dev@users.noreply.github.com";
       }
       {
-        credential = {
-          "https://github.com" = {
-            helper = "!${pkgs.gh}/bin/gh auth git-credential";
-          };
-        };
+        pull.rebase = true;
       }
       {
-        credential = {
-          "https://gist.github.com" = {
-            helper = "";
-          };
-        };
+        credential."https://github.com".helper = "";
       }
       {
-        credential = {
-          "https://gist.github.com" = {
-            helper = "!${pkgs.gh}/bin/gh auth git-credential";
-          };
-        };
+        credential."https://github.com".helper = "!${pkgs.gh}/bin/gh auth git-credential";
+      }
+      {
+        credential."https://gist.github.com".helper = "";
+      }
+      {
+        credential."https://gist.github.com".helper = "!${pkgs.gh}/bin/gh auth git-credential";
       }
     ];
   };
