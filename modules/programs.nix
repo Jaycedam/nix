@@ -39,6 +39,7 @@
     bluetui
     brightnessctl
     btop
+    beets
     ddcutil
     exfatprogs
     eza
@@ -97,6 +98,7 @@
     ente-auth
     ente-desktop
     freetube
+    nicotine-plus
     fuzzel
     gimp
     inputs.waybar.packages.${pkgs.system}.default
