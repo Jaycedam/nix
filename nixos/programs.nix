@@ -2,8 +2,6 @@
 {
   programs = {
     niri.enable = true;
-    fish.enable = true;
-    zoxide.enable = true;
   };
 
   fonts.packages = with pkgs; [
@@ -34,26 +32,20 @@
 
   environment.systemPackages = with pkgs; [
     # cli
-    bat
     bitwarden-cli
     bluetui
     brightnessctl
-    btop
     beets
     ddcutil
     exfatprogs
-    eza
-    fastfetch
     fd
     ffmpeg
     fwupd
-    fzf
     grim
     imagemagick
     impala
     jq
     libnotify
-    neovim
     nh
     parallel
     playerctl
@@ -68,7 +60,6 @@
     unrar
     wiremix
     wl-clipboard
-    yazi
     yt-dlp
 
     # style

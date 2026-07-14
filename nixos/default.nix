@@ -13,9 +13,11 @@
     ./network.nix
     ./services.nix
     ./browser.nix
+    ./shell.nix
     ./desktop-items.nix
     ./keyboard.nix
     ./greeter.nix
+    ./stylix.nix
     ./virtualization.nix
     ./gaming.nix
   ]

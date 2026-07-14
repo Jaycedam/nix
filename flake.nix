@@ -5,6 +5,8 @@
     nixpkgs.url = "nixpkgs/nixos-unstable";
     apple-silicon.url = "github:nix-community/nixos-apple-silicon";
     waybar.url = "github:Alexays/Waybar/master";
+    home-manager.url = "github:nix-community/home-manager";
+    stylix.url = "github:nix-community/stylix";
   };
 
   nixConfig = {
@@ -38,6 +40,11 @@
         desktop = true;
         # used to import the host config, needs to be set in profiles
         host = throw "host must be set in the current profile";
+        theme = {
+          # name of the theme file in ./themes
+          name = "rose-pine";
+          border-radius = 5;
+        };
       };
 
       profiles = {
@@ -63,10 +70,21 @@
           specialArgs = args;
           modules = [
             hostModule
-            ./modules
+            ./nixos
+            inputs.home-manager.nixosModules.home-manager
+            {
+              home-manager = {
+                useGlobalPkgs = true;
+                useUserPackages = true;
+                backupFileExtension = "backup";
+                users.${args.user} = ./home;
+                extraSpecialArgs = args // {
+                  inherit (args) system;
+                };
+              };
+            }
           ];
         }
       ) profiles;
-
     };
 }
