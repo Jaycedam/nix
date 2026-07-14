@@ -1,50 +1,104 @@
-{ pkgs, ... }: let
+{ pkgs, ... }:
+let
   lua = builtins.readFile;
-  concat = builtins.concatStringsSep "\n\n";
-in {
+in
+{
   programs.neovim = {
     enable = true;
     viAlias = true;
     vimAlias = true;
 
     plugins = with pkgs.vimPlugins; [
-      nvim-colorizer-lua
-      nvim-web-devicons
-      supermaven-nvim
-      nvim-surround
-      nvim-autopairs
-      which-key-nvim
       gitsigns-nvim
       render-markdown-nvim
-      nvim-treesitter
-      nvim-lspconfig
-      catppuccin-nvim
-      fzf-lua
-      flash-nvim
-      oil-nvim
-      neogit
       diffview-nvim
-      blink-cmp
+      nvim-surround
       friendly-snippets
-      conform-nvim
+      {
+        plugin = blink-cmp;
+        config = lua ./plugins/blink.lua;
+      }
+      {
+        plugin = conform-nvim;
+        config = lua ./plugins/conform.lua;
+      }
+      {
+        plugin = nvim-lspconfig;
+        config = lua ./plugins/lsp.lua;
+      }
+      {
+        plugin = fzf-lua;
+        config = lua ./plugins/fzf.lua;
+      }
+      {
+        plugin = flash-nvim;
+        config = lua ./plugins/flash.lua;
+      }
+      {
+        plugin = nvim-colorizer-lua;
+        config = ''
+          require("colorizer").setup()
+        '';
+      }
+      {
+        plugin = nvim-web-devicons;
+        config = ''
+          require("nvim-web-devicons").setup()
+        '';
+      }
+      {
+        plugin = supermaven-nvim;
+        config = ''
+          require("supermaven-nvim").setup({})
+        '';
+      }
+      {
+        plugin = nvim-autopairs;
+        config = ''
+          require("nvim-autopairs").setup({})
+        '';
+      }
+      {
+        plugin = which-key-nvim;
+        config = ''
+          require("which-key").setup({
+          	preset = "helix",
+          	delay = 500,
+          })
+        '';
+      }
+      {
+        plugin = pkgs.vimPlugins.nvim-treesitter.withAllGrammars;
+        config = ''
+          require("nvim-treesitter").setup({})
+        '';
+      }
+      {
+        plugin = oil-nvim;
+        config = ''
+          require("oil").setup({
+          	view_options = {
+          		show_hidden = true,
+          	},
+          })
+          vim.keymap.set("n", "<leader>e", "<CMD>Oil<CR>", { desc = "Open parent directory" })
+        '';
+      }
+      {
+        plugin = neogit;
+        config = ''
+          vim.keymap.set("n", "<leader>g", "<cmd>Neogit<cr>", { desc = "Open Neogit UI" })
+        '';
+      }
     ];
 
-    initLua = concat [
-      (lua ./config/options.lua)
-      (lua ./config/keymaps.lua)
-      (lua ./config/autocmd.lua)
-      (lua ./config/statusline.lua)
-      (lua ./config/terminal.lua)
-      (lua ./plugins/treesitter.lua)
-      (lua ./plugins/lsp.lua)
-      (lua ./plugins/misc.lua)
-      (lua ./plugins/theme.lua)
-      (lua ./plugins/fzf.lua)
-      (lua ./plugins/flash.lua)
-      (lua ./plugins/oil.lua)
-      (lua ./plugins/neogit.lua)
-      (lua ./plugins/blink.lua)
-      (lua ./plugins/conform.lua)
-    ];
+    initLua = ''
+      ${lua ./config/options.lua}
+      ${lua ./config/keymaps.lua}
+      ${lua ./config/autocmd.lua}
+      ${lua ./config/statusline.lua}
+      ${lua ./config/terminal.lua}
+      ${lua ./config/builtin.lua}
+    '';
   };
 }
