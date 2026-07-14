@@ -26,6 +26,7 @@
     ./yazi.nix
     ./niri
     ./neovim
+    ./scripts
   ];
 
   home.shell.enableFishIntegration = true;
