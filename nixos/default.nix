@@ -13,7 +13,6 @@
     ./network.nix
     ./services.nix
     ./browser.nix
-    ./shell.nix
     ./desktop-items.nix
     ./keyboard.nix
     ./greeter.nix
