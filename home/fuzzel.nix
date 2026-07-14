@@ -17,8 +17,9 @@
   };
 
   stylix.targets.fuzzel.fonts.override = {
+    sansSerif = config.stylix.fonts.monospace;
     sizes = {
-      popups = config.stylix.fonts.sizes.applications;
+      popups = config.stylix.fonts.sizes.terminal;
     };
   };
 }

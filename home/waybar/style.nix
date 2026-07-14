@@ -1,4 +1,4 @@
-{ lib, theme, ... }: {
+{ config, lib, theme, ... }: {
   stylix.targets.waybar.addCss = false;
 
   programs.waybar.style = lib.mkAfter ''
@@ -13,7 +13,7 @@
 
     * {
       font-family: "JetBrains Mono", "Symbols Nerd Font Mono";
-      font-size: 10pt;
+      font-size: ${toString config.stylix.fonts.sizes.desktop}pt;
       font-weight: bold;
       border-radius: ${toString theme.border-radius};
       min-height: 0;
