@@ -1,19 +1,10 @@
 {
   lib,
   desktop,
-  user,
   ...
 }:
 {
   services = {
-    syncthing = {
-      enable = true;
-      inherit user;
-      dataDir = "/home/${user}/.local/share/syncthing";
-      guiAddress = "0.0.0.0:8384";
-      openDefaultPorts = true;
-    };
-
     userdbd.enable = lib.mkDefault false; # avoids systemd's age verification change
     gvfs.enable = true; # needed for nautilus
     openssh = {
