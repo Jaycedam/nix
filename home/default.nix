@@ -44,6 +44,13 @@
     btop.enable = true;
     eza.enable = true;
     fastfetch.enable = true;
+    opencode = {
+      enable = true;
+      tui.attention = {
+        enabled = true;
+        sound = false;
+      };
+    };
     npm = {
       enable = true;
       settings = {
