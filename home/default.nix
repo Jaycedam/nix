@@ -34,8 +34,11 @@
     ./waybar
     ./programs.nix
     ./dev.nix
+    ./browser.nix
     ./desktop-items.nix
     ./services.nix
+    ./gaming.nix
+    ./beets.nix
   ];
 
   home.shell.enableFishIntegration = true;

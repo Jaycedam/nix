@@ -25,7 +25,6 @@
     # cli
     bluetui
     brightnessctl
-    beets
     ddcutil
     exfatprogs
     fd
@@ -93,7 +92,6 @@
     swayidle
     stasis
     transmission_4-gtk
-    udiskie
     zed-editor
   ];
 }

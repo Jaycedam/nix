@@ -11,7 +11,7 @@
     ./boot.nix
     ./network.nix
     ./services.nix
-    ./browser.nix
+    # ./browser.nix
     ./keyboard.nix
     ./greeter.nix
     ./stylix.nix
@@ -20,6 +20,5 @@
   ]
   ++ lib.optional desktop ./homelab.nix;
 
-  fonts.fontconfig.enable = true;
   environment.pathsToLink = [ "share/thumbnailers" ];
 }
