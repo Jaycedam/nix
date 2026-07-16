@@ -11,6 +11,7 @@
       "podman"
       "libvirtd"
       "kvm"
+      "gamemode" # allows gamemode to change power screme
     ];
     # packages = with pkgs; [ ];
   };
