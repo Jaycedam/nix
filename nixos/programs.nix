@@ -2,6 +2,7 @@
   programs = {
     niri.enable = true;
     fish.enable = true;
+    gamemode.enable = true;
     steam = lib.mkIf pkgs.stdenv.hostPlatform.isx86_64 {
       enable = true;
       protontricks.enable = true;
