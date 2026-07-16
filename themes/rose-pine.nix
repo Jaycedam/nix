@@ -21,6 +21,6 @@ _: {
 
     polarity = "dark";
 
-    image = ./default.jpg;
+    image = ../assets/wallpaper.jpg;
   };
 }
