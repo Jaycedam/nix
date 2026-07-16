@@ -4,6 +4,12 @@
     username = user;
     homeDirectory = "/home/${user}";
     pointerCursor.enable = true;
+    sessionVariables = {
+      EDITOR = "nvim";
+      TERMINAL = "kitty";
+      PAGER = "nvim +Man!";
+      BROWSER = "brave";
+    };
     # don't change this!
     stateVersion = "26.05";
   };
@@ -40,6 +46,4 @@
     ./gaming.nix
     ./beets.nix
   ];
-
-  home.shell.enableFishIntegration = true;
 }

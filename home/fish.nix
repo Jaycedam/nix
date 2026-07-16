@@ -1,10 +1,4 @@
 _: {
-  home.sessionVariables = {
-    TERMINAL = "kitty";
-    PAGER = "nvim +Man!";
-    BROWSER = "brave";
-  };
-
   programs.fish = {
     enable = true;
 
