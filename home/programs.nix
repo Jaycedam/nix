@@ -6,6 +6,20 @@
     btop.enable = true;
     eza.enable = true;
     fastfetch.enable = true;
+    fd.enable = true;
+    jq.enable = true;
+    parallel.enable = true;
+    ripgrep.enable = true;
+    yt-dlp.enable = true;
+    anki.enable = true;
+    freetube.enable = true;
+    mpv.enable = true;
+    zed-editor.enable = true;
+    nh = {
+      enable = true;
+      # check correct syntax
+      flake = "$HOME/Projects/nix";
+    };
   };
 
   home.packages = with pkgs; [
@@ -14,28 +28,18 @@
     brightnessctl
     ddcutil
     exfatprogs
-    fd
     ffmpeg
     fwupd
-    grim
     imagemagick
     impala
-    jq
     libnotify
-    nh
-    parallel
-    playerctl
-    pstree
-    ripgrep
-    slurp
-    stow
     tldr
     trash-cli
-    tree
     unrar
     wiremix
     wl-clipboard
-    yt-dlp
+
+    # style
     adw-gtk3
     adwaita-icon-theme
     bibata-cursors
@@ -56,31 +60,21 @@
     noto-fonts-color-emoji
 
     # desktop
-    anki
     ente-auth
     ente-desktop
-    freetube
-    nicotine-plus
     gimp
     jellyfin-desktop
+    kopuz
     libreoffice
     localsend
+    lollypop
     moonlight-qt
-    mpris-notifier
-    mpv
     nautilus
+    nicotine-plus
     nirius
-    nwg-look
-    openrgb
     pavucontrol
     seahorse
     signal-desktop
-    swayidle
-    stasis
     transmission_4-gtk
-    zed-editor
-    lollypop
-    strawberry
-    kopuz
   ];
 }
