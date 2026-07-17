@@ -3,6 +3,7 @@ let
   unstablePackages = [
     "kopuz"
     "antigravity-cli"
+    "wpaperd" # set cmd is on 1.3.0
   ];
 in
 {
