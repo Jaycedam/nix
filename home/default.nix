@@ -4,6 +4,7 @@
     username = user;
     homeDirectory = "/home/${user}";
     pointerCursor.enable = true;
+    sessionPath = [ "$HOME/.local/bin" ];
     sessionVariables = {
       EDITOR = "nvim";
       TERMINAL = "kitty";
@@ -27,7 +28,7 @@
 
   imports = [
     ./terminal.nix
-    ./fish.nix
+    ./shell.nix
     ./yazi.nix
     ./niri
     ./neovim
