@@ -1,11 +1,19 @@
 {
   lib,
   desktop,
+  user,
   ...
 }:
 {
   services = {
-    displayManager.ly.enable = true;
+    displayManager = {
+      ly.enable = true;
+      defaultSession = "niri";
+      autoLogin = {
+        enable = true;
+        user = user;
+      };
+    };
     userdbd.enable = lib.mkDefault false; # avoids systemd's age verification change
     gvfs.enable = true; # needed for nautilus
     udisks2.enable = true; # this is necessary for udiskie to work
