@@ -12,7 +12,6 @@
     (import ./system/fix-audio.nix { inherit pkgs; })
     (import ./system/asahi-fixes.nix { inherit pkgs; })
     (import ./system/set-wallpaper.nix { inherit pkgs; })
-    (import ./system/theme-switcher.nix { inherit pkgs; })
     (import ./system/manpages.nix { inherit pkgs; })
     (import ./tmux/sessions.nix { inherit pkgs; })
   ];
