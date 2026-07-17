@@ -20,36 +20,37 @@ require("fzf-lua").setup({
 	},
 })
 -- buffers and files
-vim.keymap.set("n", "<leader>b", require("fzf-lua").buffers, { desc = "Find buffers" })
-vim.keymap.set("n", "<leader>f", require("fzf-lua").files, { desc = "Find files" })
+vim.keymap.set("n", "<leader>fb", require("fzf-lua").buffers, { desc = "Find buffers" })
+vim.keymap.set("n", "<leader>ff", require("fzf-lua").files, { desc = "Find files" })
 
 -- search
+vim.keymap.set("n", "<leader>fg", require("fzf-lua").live_grep_native, { desc = "Grep project" })
 vim.keymap.set("n", "<leader>/", require("fzf-lua").live_grep_native, { desc = "Grep project" })
 vim.keymap.set("v", "<leader>/", require("fzf-lua").grep_visual, { desc = "Find visual selection" })
-vim.keymap.set("n", "<leader>w", require("fzf-lua").grep_cword, { desc = "Find word under cursor" })
+vim.keymap.set("n", "<leader>fw", require("fzf-lua").grep_cword, { desc = "Find word under cursor" })
 
-vim.keymap.set("n", "<leader>k", require("fzf-lua").keymaps, { desc = "Find keymaps" })
-vim.keymap.set("n", "<leader>h", require("fzf-lua").helptags, { desc = "Find help" })
+vim.keymap.set("n", "<leader>fk", require("fzf-lua").keymaps, { desc = "Find keymaps" })
+vim.keymap.set("n", "<leader>fh", require("fzf-lua").helptags, { desc = "Find help" })
 -- LSP keymaps
-vim.keymap.set("n", "<leader>r", require("fzf-lua").lsp_references, { desc = "Find references (LSP)" })
-vim.keymap.set("n", "<leader>i", require("fzf-lua").lsp_implementations, { desc = "Find implementations (LSP)" })
+vim.keymap.set("n", "<leader>fr", require("fzf-lua").lsp_references, { desc = "Find references (LSP)" })
+vim.keymap.set("n", "<leader>fi", require("fzf-lua").lsp_implementations, { desc = "Find implementations (LSP)" })
 vim.keymap.set(
 	"n",
-	"<leader>D",
+	"<leader>fD",
 	require("fzf-lua").diagnostics_workspace,
 	{ desc = "Find diagnostics on workspace (LSP)" }
 )
 vim.keymap.set(
 	"n",
-	"<leader>d",
+	"<leader>fd",
 	require("fzf-lua").diagnostics_document,
 	{ desc = "Find diagnostics on current buffer (LSP)" }
 )
-vim.keymap.set("n", "<leader>s", require("fzf-lua").lsp_document_symbols, { desc = "Find document symbols (LSP)" })
-vim.keymap.set("n", "<leader>S", require("fzf-lua").lsp_workspace_symbols, { desc = "Find workspace symbols (LSP)" })
-vim.keymap.set("n", "<leader>a", require("fzf-lua").lsp_code_actions, { desc = "Code actions" })
+vim.keymap.set("n", "<leader>fs", require("fzf-lua").lsp_document_symbols, { desc = "Find document symbols (LSP)" })
+vim.keymap.set("n", "<leader>fS", require("fzf-lua").lsp_workspace_symbols, { desc = "Find workspace symbols (LSP)" })
+vim.keymap.set("n", "<leader>fa", require("fzf-lua").lsp_code_actions, { desc = "Code actions" })
 -- Neovim
-vim.keymap.set("n", "<leader>m", require("fzf-lua").marks, { desc = "Find marks" })
+vim.keymap.set("n", "<leader>fm", require("fzf-lua").marks, { desc = "Find marks" })
 
 -- Custom
 _G.fzf_projects = function(opts)
@@ -66,4 +67,4 @@ _G.fzf_projects = function(opts)
 	}
 	fzf_lua.fzf_exec("fd --type d --max-depth 1", opts)
 end
-vim.keymap.set("n", "<leader>p", _G.fzf_projects)
+vim.keymap.set("n", "<leader>fp", _G.fzf_projects)
