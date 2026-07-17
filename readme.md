@@ -4,6 +4,8 @@ NixOS flake config with Home Manager.
 
 I use Colemak-DH-ISO keyboard layout by default, modify in [keyboard.nix](./modules/keyboard.nix)
 
+![Screenshot](./assets/screenshot.avif)
+
 ## Install
 
 > [!WARNING]
@@ -11,8 +13,6 @@ I use Colemak-DH-ISO keyboard layout by default, modify in [keyboard.nix](./modu
 
 > [!IMPORTANT]
 > If you reinstall NixOS with encryption, you will need to copy the hardware-configuration.nix file from `/etc/nixos/hardware-configuration.nix` to the profile directory and update the UUIDs in `host/{profile}/default.nix` or you won't be able to boot.
-
-![Screenshot](./assets/screenshot.avif)
 
 ### NixOS Configuration:
 
@@ -30,4 +30,4 @@ sudo NIX_CONFIG="experimental-features = nix-command flakes" \
 
 - Compositor and tools: Niri, Waybar, Fuzzel, Hypridle, Wpaperd, Swaylock
 - Main programs: Kitty, Neovim, Yazi
-- Theming: stylix
+- Theming: Stylix
