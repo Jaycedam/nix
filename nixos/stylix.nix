@@ -1,20 +1,20 @@
-{
-  inputs,
-  theme,
-  pkgs,
-  ...
-}:
+{ pkgs, inputs, ... }:
+let
+  # See https://tinted-theming.github.io/tinted-gallery/ for more schemes
+  theme = "rose-pine";
+in
 {
   imports = [
     inputs.stylix.nixosModules.stylix
-    ../themes/${theme.name}.nix
   ];
 
-  # See https://tinted-theming.github.io/tinted-gallery/ for more schemes
   # global stylix settings
   # the rest is set per theme
   stylix = {
     enable = true;
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/${theme}.yaml";
+    polarity = "dark";
+    image = ../assets/wallpaper.jpg;
 
     opacity = {
       applications = 0.9;

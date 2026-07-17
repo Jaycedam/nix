@@ -42,8 +42,6 @@
         # used to import the host config, needs to be set in profiles
         host = throw "host must be set in the current profile";
         theme = {
-          # name of the theme file in ./themes
-          name = "rose-pine";
           border-radius = 5;
         };
       };
