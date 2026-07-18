@@ -10,7 +10,6 @@
     settings = {
       plugins = [
         "fetchart"
-        "embedart"
         "musicbrainz"
         "convert"
         "lastgenre"
@@ -19,11 +18,11 @@
         "fish"
       ];
       fetchart = {
-        maxwidth = 500;
+        # CAA pre-sized thumbnails 250, 500, and 1200px
+        maxwidth = 1200;
         enforce_ratio = true;
         quality = 75;
       };
-      embedart.remove_art_file = true;
       import.incremental = true;
       lyrics.synced = true;
       convert = {
