@@ -26,12 +26,12 @@ vim.keymap.set("v", "<C-k>", ":m '<-2<CR>gv=gv", { silent = true, desc = "Moves 
 
 -- center after actions and QoL
 vim.keymap.set("n", "J", "mzJ`z", { silent = true, desc = "Join lines without moving cursor" })
-vim.keymap.set("v", "<", "<gv", { desc = "Unindent and keep selection" })
-vim.keymap.set("v", ">", ">gv", { desc = "Indent and keep selection" })
-vim.keymap.set("n", "<C-d>", "<C-d>zz", { desc = "Move down in buffer with cursor centered" })
-vim.keymap.set("n", "<C-u>", "<C-u>zz", { desc = "Move up in buffer with cursor centered" })
-vim.keymap.set("n", "n", "nzzzv", { desc = "Next search result cursor centered" })
-vim.keymap.set("n", "N", "Nzzzv", { desc = "Previous search result cursor centered" })
+vim.keymap.set("v", "<", "<gv", { silent = true, desc = "Unindent and keep selection" })
+vim.keymap.set("v", ">", ">gv", { silent = true, desc = "Indent and keep selection" })
+vim.keymap.set("n", "<C-d>", "<C-d>zz", { silent = true, desc = "Move down in buffer with cursor centered" })
+vim.keymap.set("n", "<C-u>", "<C-u>zz", { silent = true, desc = "Move up in buffer with cursor centered" })
+vim.keymap.set("n", "n", "nzzzv", { silent = true, desc = "Next search result cursor centered" })
+vim.keymap.set("n", "N", "Nzzzv", { silent = true, desc = "Previous search result cursor centered" })
 
 -- remap macro to Q
 vim.keymap.set("n", "q", "<Nop>", { noremap = true })

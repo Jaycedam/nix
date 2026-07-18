@@ -21,6 +21,13 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 	end,
 })
 
+-- refresh gitsigns on focus to update branch in statusline
+vim.api.nvim_create_autocmd("FocusGained", {
+	callback = function()
+		vim.cmd("silent! Gitsigns refresh")
+	end,
+})
+
 -- markdown task checkboxes
 vim.api.nvim_create_autocmd("FileType", {
 	pattern = "markdown",

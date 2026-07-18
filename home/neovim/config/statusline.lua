@@ -21,6 +21,13 @@ local function macro_status()
 	return reg
 end
 
+-- removes bg from diagnostics hl
+for _, sev in ipairs({ "Error", "Warn", "Info", "Hint" }) do
+	local hl = vim.api.nvim_get_hl(0, { name = "DiagnosticFloating" .. sev })
+	hl.bg = nil
+	vim.api.nvim_set_hl(0, "DiagnosticSign" .. sev, hl)
+end
+
 function _G.statusline()
 	-- %= separates sections, %* resets hl groups
 	return table.concat({
@@ -36,6 +43,7 @@ function _G.statusline()
 		"%h",
 		"%=",
 		vim.diagnostic.status(),
+		vim.ui.progress_status(),
 		"%p%%",
 		"%#String#" .. "%y" .. "%*",
 		"%l:%c ",
