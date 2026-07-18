@@ -15,11 +15,6 @@
     freetube.enable = true;
     mpv.enable = true;
     zed-editor.enable = true;
-    nh = {
-      enable = true;
-      # check correct syntax
-      flake = "$HOME/Projects/nix";
-    };
   };
 
   home.packages = with pkgs; [
