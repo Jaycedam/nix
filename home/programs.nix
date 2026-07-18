@@ -63,6 +63,7 @@
     ente-auth
     ente-desktop
     gimp
+    proton-vpn
     jellyfin-desktop
     kopuz
     libreoffice
