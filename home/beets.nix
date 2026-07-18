@@ -1,4 +1,10 @@
-{ ... }: {
+{ lib, pkgs, ... }: {
+  # generate fish completions for beets
+  # https://beets.readthedocs.io/en/stable/plugins/fish.html
+  home.activation.beetsFishCompletions = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+    ${pkgs.beets}/bin/beet fish
+  '';
+
   programs.beets = {
     enable = true;
     settings = {
@@ -10,9 +16,10 @@
         "lastgenre"
         "lyrics"
         "missing"
+        "fish"
       ];
       fetchart = {
-        maxwidth = 1200;
+        maxwidth = 500;
         enforce_ratio = true;
         quality = 75;
       };
