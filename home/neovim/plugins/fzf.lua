@@ -1,5 +1,6 @@
 local actions = require("fzf-lua.actions")
 require("fzf-lua").setup({
+	ui_select = true,
 	keymap = {
 		fzf = {
 			["ctrl-a"] = "toggle-all",
