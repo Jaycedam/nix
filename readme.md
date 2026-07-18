@@ -12,7 +12,7 @@ I use Colemak-DH-ISO keyboard layout by default, modify in [keyboard.nix](./nixo
 > Do not use this flake if you don't know how to use NixOS. You will end up with a broken generation because of the hardware specific files.
 
 > [!IMPORTANT]
-> If you reinstall NixOS with encryption, you will need to copy the hardware-configuration.nix file from `/etc/nixos/hardware-configuration.nix` to the profile directory and update the UUIDs in `host/{profile}/default.nix` or you won't be able to boot.
+> NixOS installs usually require copying `/etc/nixos/hardware-configuration.nix` to the profile directory or you won't be able to boot. You should also check that the per host filesystem.nix works on your machine.
 
 ### NixOS Configuration:
 
@@ -20,10 +20,7 @@ I use Colemak-DH-ISO keyboard layout by default, modify in [keyboard.nix](./nixo
 # Clone this repo using nix-shell:
 nix-shell -p git neovim --command "git clone https://github.com/jaycem-dev/nix ~/Projects/nix && cd ~/Projects/nix; return"
 
-# Update config if necessary:
-nvim .
-
-# Rebuild NixOS:
+# Update config if necessary then rebuild:
 sudo nixos-rebuild switch --flake .#profile
 ```
 
