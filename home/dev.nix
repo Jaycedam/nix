@@ -35,6 +35,7 @@
     # tools
     android-tools
     tree-sitter
+    grok-build
 
     # Go
     go
