@@ -1,8 +1,22 @@
-{ pkgs, lib, ... }: {
+{
+  pkgs,
+  lib,
+  user,
+  ...
+}:
+{
   programs = {
     niri.enable = true;
     fish.enable = true;
     gamemode.enable = true;
+    nh = {
+      enable = true;
+      clean = {
+        enable = true;
+        extraArgs = "--keep 2";
+      };
+      flake = "/home/${user}/Projects/nix";
+    };
     steam = lib.mkIf pkgs.stdenv.hostPlatform.isx86_64 {
       enable = true;
       protontricks.enable = true;
