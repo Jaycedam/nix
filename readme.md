@@ -2,7 +2,7 @@
 
 NixOS flake config with Home Manager.
 
-I use Colemak-DH-ISO keyboard layout by default, modify in [keyboard.nix](./modules/keyboard.nix)
+I use Colemak-DH-ISO keyboard layout by default, modify in [keyboard.nix](./nixos/keyboard.nix) and [niri.kdl](./home/niri/config.kdl)
 
 ![Screenshot](./assets/screenshot.avif)
 
@@ -17,14 +17,20 @@ I use Colemak-DH-ISO keyboard layout by default, modify in [keyboard.nix](./modu
 ### NixOS Configuration:
 
 ```bash
-sudo NIX_CONFIG="experimental-features = nix-command flakes" \
-    nixos-rebuild switch --flake github:jaycem-dev/nix#profile
+# Clone this repo using nix-shell:
+nix-shell -p git neovim --command "git clone https://github.com/jaycem-dev/nix ~/Projects/nix && cd ~/Projects/nix; return"
+
+# Update config if necessary:
+nvim .
+
+# Rebuild NixOS:
+sudo nixos-rebuild switch --flake .#profile
 ```
 
-**Replace `profile` with one of the profiles below (defined in [flake.nix](./flake.nix)):**
+**Replace `#profile` with one of the profiles below (defined in [flake.nix](./flake.nix)):**
 
-- desktop
-- asahi (ARM64, needs --impure flag)
+- #desktop
+- #asahi (ARM64, needs --impure flag)
 
 ## Software
 
