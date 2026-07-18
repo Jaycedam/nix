@@ -161,7 +161,7 @@
           format-wifi = "󰖩";
           format-ethernet = "󰈀";
           tooltip-format = "Connected to {essid}";
-          format-linked = "󱎔 {ifname} (No IP)";
+          format-linked = "󱎔";
           format-disconnected = "󰀦";
           interval = 3;
           on-click = "launch-or-focus --tui impala";
