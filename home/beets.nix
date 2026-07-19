@@ -16,6 +16,7 @@
         "lyrics"
         "missing"
         "fish"
+        "permissions"
       ];
       fetchart = {
         # CAA pre-sized thumbnails 250, 500, and 1200px
