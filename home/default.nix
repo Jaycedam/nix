@@ -46,6 +46,6 @@
     ./services.nix
     ./gaming.nix
     ./beets.nix
-    ./supersonic.nix
+    ./supersonic
   ];
 }
