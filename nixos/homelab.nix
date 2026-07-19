@@ -20,6 +20,7 @@
       # Override to 0002 so media group can write (needed by Tdarr's replaceOriginalFile)
       sonarr.serviceConfig.UMask = lib.mkForce "0002";
       radarr.serviceConfig.UMask = lib.mkForce "0002";
+      navidrome.serviceConfig.ProtectHome = lib.mkForce "tmpfs";
     };
   };
 
@@ -65,6 +66,15 @@
       enable = true;
       openFirewall = true;
       group = "media";
+    };
+    navidrome = {
+      enable = true;
+      openFirewall = true;
+      settings = {
+        Address = "0.0.0.0";
+        MusicFolder = "/home/${user}/Music";
+        DefaultTheme = "Rosé Pine";
+      };
     };
     tdarr = {
       enable = true;
