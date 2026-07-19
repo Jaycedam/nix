@@ -74,6 +74,7 @@
         Address = "0.0.0.0";
         MusicFolder = "/home/${user}/Music";
         DefaultTheme = "Rosé Pine";
+        "Subsonic.AppendAlbumVersion" = false;
       };
     };
     tdarr = {
