@@ -5,7 +5,7 @@
     nixpkgs.url = "nixpkgs/nixos-26.05";
     nixpkgs-unstable.url = "nixpkgs/nixos-unstable";
     apple-silicon.url = "github:nix-community/nixos-apple-silicon";
-    waybar.url = "github:Alexays/Waybar";
+    waybar.url = "github:Alexays/Waybar/456f78ecb1cf16e5397a29691e69fc2906843387";
     home-manager.url = "github:nix-community/home-manager/release-26.05";
     stylix.url = "github:nix-community/stylix/release-26.05";
   };
