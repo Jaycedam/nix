@@ -1,6 +1,6 @@
 # Nix Setup
 
-NixOS flake config with Home Manager.
+NixOS flake config
 
 I use Colemak-DH-ISO keyboard layout by default, modify in [keyboard.nix](./nixos/keyboard.nix) and [niri.kdl](./home/niri/config.kdl)
 
@@ -29,8 +29,13 @@ sudo nixos-rebuild switch --flake .#profile
 - #desktop
 - #asahi (ARM64, needs --impure flag)
 
+My dotfiles are managed with Stow in [this repo](https://github.com/jaycem-dev/dotfiles).
+
+```bash
+git clone https://github.com/jaycem-dev/dotfiles
+```
+
 ## Software
 
-- Compositor and tools: Niri, Waybar, Fuzzel, Hypridle, Wpaperd, Swaylock
+- Compositor and tools: Niri, Waybar, Fuzzel, Hypridle, Swaybg, Swaylock
 - Main programs: Kitty, Neovim, Yazi
-- Theming: Stylix
