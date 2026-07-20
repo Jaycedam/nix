@@ -9,6 +9,7 @@
     with pkgs;
     [
       mangohud
+      duckstation
       gamescope
       lsfg-vk
       ryubing
