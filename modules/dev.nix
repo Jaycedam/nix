@@ -1,37 +1,15 @@
 { pkgs, ... }: {
-  programs = {
-    lazygit.enable = true;
-    antigravity-cli.enable = true;
-    codex.enable = true;
-    claude-code.enable = true;
-    gh.enable = true;
-    git = {
-      enable = true;
-      lfs.enable = true;
-      settings = {
-        user = {
-          name = "Jay";
-          email = "45575946+jaycem-dev@users.noreply.github.com";
-        };
-        pull.rebase = true;
-      };
-    };
-    opencode = {
-      enable = true;
-      tui.attention = {
-        enabled = true;
-        sound = false;
-      };
-    };
-    npm = {
-      enable = true;
-      settings = {
-        "min-release-age" = 30;
-      };
-    };
-  };
+  environment.systemPackages = with pkgs; [
+    # previously programs.<x>.enable
+    lazygit
+    antigravity-cli
+    codex
+    claude-code
+    gh
+    git
+    git-lfs
+    opencode
 
-  home.packages = with pkgs; [
     # tools
     android-tools
     tree-sitter
