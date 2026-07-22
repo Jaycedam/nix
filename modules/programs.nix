@@ -82,7 +82,7 @@
     fuzzel
     gimp
     hypridle
-    inputs.waybar.packages.${pkgs.system}.default
+    inputs.waybar.packages.${pkgs.stdenv.hostPlatform.system}.default
     jellyfin-desktop
     kitty
     kopuz

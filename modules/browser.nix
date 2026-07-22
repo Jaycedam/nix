@@ -1,14 +1,13 @@
 {
   pkgs,
   lib,
-  system,
   host,
   ...
 }:
 let
   # Symlink WidevineCDM to brave output
   bravePkg =
-    if system == "aarch64-linux" then
+    if pkgs.stdenv.hostPlatform.system == "aarch64-linux" then
       pkgs.brave.overrideAttrs (old: {
         installPhase = (old.installPhase or "") + ''
           ln -s ${pkgs.widevine-cdm}/share/google/chrome/WidevineCdm $out/opt/brave.com/brave/WidevineCdm
