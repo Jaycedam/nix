@@ -22,31 +22,23 @@
     let
       inherit (nixpkgs) lib;
 
+      user = "jay";
       systems = {
         linux-arm = "aarch64-linux";
         linux = "x86_64-linux";
       };
 
       commonArgs = {
-        inherit
-          inputs
-          ;
+        inherit inputs user;
         # you can override these per profile bellow
-        user = "jay";
         system = systems.linux;
         desktop = true;
         # used to import the host config, needs to be set in profiles
         host = throw "host must be set in the current profile";
-        theme = {
-          border-radius = 5;
-        };
       };
 
       profiles = {
-        desktop = {
-          host = "desktop";
-        };
-
+        desktop.host = "desktop";
         asahi = {
           host = "asahi";
           system = systems.linux-arm;
