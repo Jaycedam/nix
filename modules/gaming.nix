@@ -1,7 +1,6 @@
 {
   pkgs,
   lib,
-  pkgs-pinned,
   ...
 }:
 {
@@ -26,7 +25,7 @@
       ryubing
       dolphin-emu
       gopher64
-      pkgs-pinned.rpcs3
+      rpcs3
     ]
     ++ lib.optionals pkgs.stdenv.hostPlatform.isx86_64 [
       pcsx2

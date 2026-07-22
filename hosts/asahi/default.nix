@@ -16,17 +16,7 @@
   ];
 
   hardware = {
-    asahi = {
-      enable = true;
-      # use the input's own versions instead of my nixpkgs
-      # this avoids asahi pkgs long builds
-      pkgs = lib.mkForce (
-        import inputs.apple-silicon.inputs.nixpkgs {
-          system = "aarch64-linux";
-          overlays = [ inputs.apple-silicon.overlays.default ];
-        }
-      );
-    };
+    asahi.enable = true;
     bluetooth.enable = true;
   };
 
