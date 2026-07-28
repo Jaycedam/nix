@@ -162,8 +162,8 @@ binds {
     Mod+E repeat=false hotkey-overlay-title="Yazi" { spawn "launch-or-focus" "--tui" "yazi"; }
     Mod+B repeat=false hotkey-overlay-title="Browser" { spawn "launch-or-focus" "brave" "--id" "brave-browser"; }
     Mod+W repeat=false hotkey-overlay-title="Whatsapp" { spawn "launch-or-focus" "--webapp" "web.whatsapp.com"; }
-    Mod+M repeat=false hotkey-overlay-title="Music" { spawn "launch-or-focus" "kopuz"; }
-    Mod+Shift+M repeat=false hotkey-overlay-title="Music (Spotify)" { spawn "launch-or-focus" "--webapp" "open.spotify.com"; }
+    Mod+M repeat=false hotkey-overlay-title="Spotify" { spawn "launch-or-focus" "--webapp" "open.spotify.com"; }
+    Mod+Shift+M repeat=false hotkey-overlay-title="ProtonMail" { spawn "launch-or-focus" "--webapp" "mail.proton.me"; }
     Mod+Y repeat=false hotkey-overlay-title="YouTube" { spawn "launch-or-focus" "--webapp" "www.youtube.com"; }
     Mod+P repeat=false { spawn "dmenu-power"; }
     Mod+N repeat=false hotkey-overlay-title="Neovim" { spawn "launch-or-focus" "--tui" "neovim"; }
