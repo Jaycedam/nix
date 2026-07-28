@@ -69,19 +69,36 @@
           modules = [
             hostModule
             ./nixos
-            inputs.home-manager.nixosModules.home-manager
-            {
-              home-manager = {
-                useGlobalPkgs = true;
-                useUserPackages = true;
-                backupFileExtension = "backup";
-                users.${args.user} = ./home;
-                extraSpecialArgs = args // {
-                  inherit (args) system;
-                };
-              };
-            }
           ];
+        }
+      ) profiles;
+
+      homeConfigurations = lib.mapAttrs (
+        name: overrides:
+        let
+          args =
+            commonArgs
+            // overrides
+            // {
+              pkgs-unstable = import inputs.nixpkgs-unstable {
+                system = args.system;
+                config.allowUnfree = true;
+              };
+            };
+        in
+        inputs.home-manager.lib.homeManagerConfiguration {
+          pkgs = inputs.nixpkgs.legacyPackages.${args.system};
+          modules = [ ./home ];
+          extraSpecialArgs = {
+            inherit (args)
+              inputs
+              user
+              theme
+              system
+              host
+              pkgs-unstable
+              ;
+          };
         }
       ) profiles;
     };

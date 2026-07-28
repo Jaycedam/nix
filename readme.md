@@ -1,6 +1,6 @@
 # Nix Setup
 
-NixOS flake config with Home Manager.
+NixOS flake config with Home Manager standalone.
 
 I use Colemak-DH-ISO keyboard layout by default, modify in [keyboard.nix](./nixos/keyboard.nix) and [niri.kdl](./home/niri/config.kdl)
 
@@ -24,10 +24,20 @@ nix-shell -p git neovim --command "git clone https://github.com/jaycem-dev/nix ~
 sudo nixos-rebuild switch --flake .#profile
 ```
 
-**Replace `#profile` with one of the profiles below (defined in [flake.nix](./flake.nix)):**
+### Home Manager:
+
+```bash
+# First install (home-manager not yet installed):
+nix run home-manager -- switch --flake .#profile
+
+# Subsequent updates:
+home-manager switch --flake .#profile
+```
+
+**Replace `#profile` with one of the profiles below (defined in [flake.nix](./flake.nix)). Profile names are shared between NixOS and Home Manager:**
 
 - #desktop
-- #asahi (ARM64, needs --impure flag)
+- #asahi (ARM64, --impure flag only needed for nixos-rebuild)
 
 ## Software
 
