@@ -12,6 +12,9 @@
 
   stylix = {
     enable = true;
+    # qt is not enabled on hm standalone
+    targets.qt.enable = true;
+
     opacity = {
       applications = 0.95;
       terminal = 0.95;
