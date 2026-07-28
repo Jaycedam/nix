@@ -31,7 +31,7 @@
 
   imports = [
     ./terminal.nix
-    ./shell.nix
+    ./sh.nix
     ./yazi.nix
     ./niri
     ./neovim
