@@ -1,19 +1,20 @@
 { pkgs, ... }:
 
 pkgs.writeShellScriptBin "tmux-sessions" ''
-  paths="$HOME/dev"
+  paths="$HOME/Projects"
 
-  selection=$(fd -t d . "$paths" --max-depth 1 | fzf --popup center --border-label '  Session Manager ' --input-label ' Search Project ')
+  selection=$(fd -t d . "$paths" --max-depth 1 --format '{/}' | fzf --popup center --border-label ' Session Manager ')
 
   if [ -z "$selection" ]; then
       exit 0
   fi
 
-  session_name=$(basename "$selection" | tr . _)
+  project_path="$paths/$selection"
+  session_name=$(echo "$selection" | tr . _)
 
   if ! tmux has-session -t "$session_name" 2>/dev/null; then
-      tmux new-session -d -s "$session_name" -c "$selection" -n " " "nvim"
-      tmux new-window -d -t "$session_name" -c "$selection"
+      tmux new-session -d -s "$session_name" -c "$project_path" -n " " "nvim"
+      tmux new-window -d -t "$session_name" -c "$project_path"
   fi
 
   if [ -z "$TMUX" ]; then
