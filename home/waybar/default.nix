@@ -5,7 +5,7 @@
 
   programs.waybar = {
     enable = true;
-    package = inputs.waybar.packages.${pkgs.system}.default;
+    package = inputs.waybar.packages.${pkgs.stdenv.hostPlatform.system}.default;
     systemd.enable = true;
     settings = {
       mainBar = {

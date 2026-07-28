@@ -30,7 +30,7 @@ in
       let
         v = "0.1-11515";
         src = prev.fetchurl (
-          if prev.system == "aarch64-linux" then
+          if prev.stdenv.hostPlatform.system == "aarch64-linux" then
             {
               url = "https://github.com/stenzek/duckstation/releases/download/v${v}/DuckStation-arm64.AppImage";
               hash = "sha256-MlV2V3+lC8bVbH9wx/Nypby6nZ1F9L5tJphhj3pau1Y=";
