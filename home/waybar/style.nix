@@ -13,7 +13,6 @@ in
     * {
       font-family: "JetBrains Mono", "Symbols Nerd Font Mono";
       font-size: ${toString config.stylix.fonts.sizes.desktop}pt;
-      font-weight: bold;
       border-radius: ${toString theme.border-radius};
       min-height: 0;
       min-width: 0;
@@ -29,7 +28,7 @@ in
 
     window#waybar {
       background-color: ${bg_alpha};
-      color: @text;
+      color: @base05;
       border-radius: 0;
     }
     #idle_inhibitor.activated,
@@ -54,6 +53,7 @@ in
     #workspaces.main button {
       padding: 0 5px;
       border-radius: 0;
+      color: @base05;
     }
 
     #workspaces.main button.empty,
@@ -74,7 +74,7 @@ in
     }
 
     #tray {
-      background-color: @base01;
+      background-color: @base02;
       padding: 0 10px;
     }
 
@@ -82,7 +82,7 @@ in
       background: @base00;
     }
     tooltip label {
-      color: @text;
+      color: @base05;
     }
   '';
 }
