@@ -4,7 +4,6 @@
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-26.05";
     nixpkgs-unstable.url = "nixpkgs/nixos-unstable";
-    nixpkgs-pinned.url = "github:NixOS/nixpkgs/293d6abedf0478e681a4dfcfcb35b30fc796a32f";
     apple-silicon.url = "github:nix-community/nixos-apple-silicon";
     waybar.url = "github:Alexays/Waybar/456f78ecb1cf16e5397a29691e69fc2906843387";
     home-manager.url = "github:nix-community/home-manager/release-26.05";
@@ -14,11 +13,9 @@
   nixConfig = {
     extra-substituters = [
       "https://nix-community.cachix.org"
-      "https://nixos-apple-silicon.cachix.org"
     ];
     extra-trusted-public-keys = [
       "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
-      "nixos-apple-silicon.cachix.org-1:8psDu5SA5dAD7qA0zMy5UT292TxeEPzIz8VVEr2Js20="
     ];
   };
 
@@ -27,31 +24,23 @@
     let
       inherit (nixpkgs) lib;
 
+      user = "jay";
       systems = {
         linux-arm = "aarch64-linux";
         linux = "x86_64-linux";
       };
 
       commonArgs = {
-        inherit
-          inputs
-          ;
+        inherit inputs user;
         # you can override these per profile bellow
-        user = "jay";
         system = systems.linux;
         desktop = true;
         # used to import the host config, needs to be set in profiles
         host = throw "host must be set in the current profile";
-        theme = {
-          border-radius = 5;
-        };
       };
 
       profiles = {
-        desktop = {
-          host = "desktop";
-        };
-
+        desktop.host = "desktop";
         asahi = {
           host = "asahi";
           system = systems.linux-arm;
@@ -66,10 +55,6 @@
           baseArgs = commonArgs // overrides;
           args = baseArgs // {
             pkgs-unstable = import inputs.nixpkgs-unstable {
-              system = baseArgs.system;
-              config.allowUnfree = true;
-            };
-            pkgs-pinned = import inputs.nixpkgs-pinned {
               system = baseArgs.system;
               config.allowUnfree = true;
             };
