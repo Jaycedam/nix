@@ -1,4 +1,4 @@
-{ lib, inputs, ... }:
+{ lib, inputs, host, ... }:
 {
   imports = [
     inputs.apple-silicon.nixosModules.apple-silicon-support
@@ -29,6 +29,6 @@
     }
   ];
 
-  networking.hostName = "asahi";
+  networking.hostName = host;
   system.stateVersion = "25.05";
 }

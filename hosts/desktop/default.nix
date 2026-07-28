@@ -1,24 +1,15 @@
-{
-  pkgs,
-  lib,
-  ...
-}:
+{ pkgs, host, ... }:
 {
   imports = [
     ./hardware-configuration.nix
     ./filesystem.nix
   ];
 
-  networking.hostName = "desktop"; # Define your hostname.
+  networking.hostName = host;
   # Load amdgpu in initrd — fixes low resolution in boot screen / Plymouth
   hardware.amdgpu.initrd.enable = true;
 
-  boot = {
-    kernelPackages = pkgs.linuxPackages_latest;
-    # Disable scatter/gather display — avoids IOMMU scanout corruption on Raven2/Picasso APUs
-    # https://docs.kernel.org/6.8/gpu/amdgpu/module-parameters.html (sg_display)
-    kernelParams = lib.mkAfter [ "amdgpu.sg_display=0" ];
-  };
+  boot.kernelPackages = pkgs.linuxPackages_latest;
 
   # Swap file on the encrypted root (no separate LUKS volume needed), plus zram.
   zramSwap.enable = true;

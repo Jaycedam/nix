@@ -30,6 +30,8 @@
         linux = "x86_64-linux";
       };
       theme = {
+        # name for theme file to import in home/stylix/themes/
+        name = "rose-pine";
         border-radius = 5;
       };
 
@@ -73,7 +75,7 @@
         }
       ) profiles;
 
-      homeConfigurations = lib.mapAttrs (
+      homeConfigurations = lib.mapAttrs' (
         name: overrides:
         let
           args =
@@ -86,18 +88,21 @@
               };
             };
         in
-        inputs.home-manager.lib.homeManagerConfiguration {
-          pkgs = inputs.nixpkgs.legacyPackages.${args.system};
-          modules = [ ./home ];
-          extraSpecialArgs = {
-            inherit (args)
-              inputs
-              user
-              theme
-              system
-              host
-              pkgs-unstable
-              ;
+        {
+          name = "${user}@${name}";
+          value = inputs.home-manager.lib.homeManagerConfiguration {
+            pkgs = inputs.nixpkgs.legacyPackages.${args.system};
+            modules = [ ./home ];
+            extraSpecialArgs = {
+              inherit (args)
+                inputs
+                user
+                theme
+                system
+                host
+                pkgs-unstable
+                ;
+            };
           };
         }
       ) profiles;
