@@ -41,8 +41,6 @@
     bibata-cursors
     kdePackages.breeze
     kdePackages.breeze-icons
-    kdePackages.qt6ct
-    libsForQt5.qt5ct
     papirus-icon-theme
 
     # fonts
