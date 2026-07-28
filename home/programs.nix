@@ -1,5 +1,6 @@
 { pkgs, ... }: {
   programs = {
+    home-manager.enable = true;
     fzf.enable = true;
     zoxide.enable = true;
     bat.enable = true;

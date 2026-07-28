@@ -1,4 +1,7 @@
 { config, user, ... }: {
+  nixpkgs.config.allowUnfree = true;
+  fonts.fontconfig.enable = true;
+
   home = {
     preferXdgDirectories = true;
     username = user;
@@ -15,8 +18,6 @@
     stateVersion = "26.05";
   };
 
-  fonts.fontconfig.enable = true;
-
   xdg = {
     localBinInPath = true;
     # autocreate user dirs
@@ -30,6 +31,8 @@
   };
 
   imports = [
+    ../shared/overlays.nix
+    ./stylix
     ./terminal.nix
     ./sh.nix
     ./yazi.nix

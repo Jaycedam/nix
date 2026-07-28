@@ -44,13 +44,3 @@ vim.api.nvim_create_autocmd("FileType", {
 		end, { buffer = true, desc = "Toggle markdown task checkbox" })
 	end,
 })
-
--- save session on exit
-vim.api.nvim_create_autocmd("VimLeavePre", {
-	desc = "Save session on exit",
-	callback = function()
-		if vim.fn.getcwd() ~= vim.fn.expand("~") then
-			require("config.sessions").save_session()
-		end
-	end,
-})
