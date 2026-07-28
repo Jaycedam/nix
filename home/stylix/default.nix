@@ -1,12 +1,13 @@
-{ pkgs, inputs, ... }:
-let
-  # See https://tinted-theming.github.io/tinted-gallery/ for more schemes
-  theme = "catppuccin-mocha";
-in
+{
+  pkgs,
+  theme,
+  inputs,
+  ...
+}:
 {
   imports = [
     inputs.stylix.homeModules.stylix
-    ./themes/${theme}.nix
+    ./themes/${theme.name}.nix
   ];
 
   stylix = {
