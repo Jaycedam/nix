@@ -1,4 +1,4 @@
-vim.opt.shell = "fish"
+vim.opt.showmode = false
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.scrolloff = 10
@@ -17,7 +17,8 @@ vim.opt.termguicolors = true
 vim.opt.cursorline = true
 vim.opt.laststatus = 3 -- global statusline
 vim.opt.signcolumn = "yes"
--- vim.opt.cmdheight = 0 -- hides cmd until used
+vim.opt.fillchars = "eob: "
+vim.opt.cmdheight = 0 -- hides cmd until used
 vim.opt.pumheight = 10 -- popup menu items
 -- Search
 vim.opt.ignorecase = true -- Ignore case in search patterns.
@@ -40,3 +41,5 @@ vim.opt.swapfile = false
 vim.opt.backup = false
 vim.opt.undodir = vim.fn.stdpath("data") .. "/undodir"
 vim.opt.undofile = true
+-- sessions
+vim.g.session_dir = vim.fn.stdpath("data") .. "/sessions"

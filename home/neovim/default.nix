@@ -9,10 +9,8 @@ in
     vimAlias = true;
 
     plugins = with pkgs.vimPlugins; [
-      gitsigns-nvim
       render-markdown-nvim
       diffview-nvim
-      nvim-surround
       friendly-snippets
       {
         plugin = blink-cmp;
@@ -35,27 +33,34 @@ in
         config = lua ./plugins/flash.lua;
       }
       {
+        plugin = copilot-vim;
+      }
+      {
+        plugin = pkgs.vimPlugins.nvim-treesitter;
+        config = lua ./plugins/treesitter.lua;
+      }
+      {
         plugin = nvim-colorizer-lua;
         config = ''
           require("colorizer").setup()
         '';
       }
       {
-        plugin = nvim-web-devicons;
+        plugin = mini-surround;
         config = ''
-          require("nvim-web-devicons").setup()
+          require("mini.surround").setup()
         '';
       }
       {
-        plugin = supermaven-nvim;
+        plugin = mini-diff;
         config = ''
-          require("supermaven-nvim").setup({})
+          require("mini.diff").setup()
         '';
       }
       {
-        plugin = nvim-autopairs;
+        plugin = mini-pairs;
         config = ''
-          require("nvim-autopairs").setup({})
+          require("mini.pairs").setup()
         '';
       }
       {
@@ -65,12 +70,6 @@ in
           	preset = "helix",
           	delay = 500,
           })
-        '';
-      }
-      {
-        plugin = pkgs.vimPlugins.nvim-treesitter.withAllGrammars;
-        config = ''
-          require("nvim-treesitter").setup({})
         '';
       }
       {

@@ -1,15 +1,16 @@
-vim.keymap.set({ "n", "x", "o" }, "s", function()
+require("flash").setup({
+	jump = {
+		autojump = true,
+	},
+	rainbow = {
+		enabled = true,
+	},
+})
+
+-- flash
+vim.keymap.set({ "n", "x", "o" }, "gw", function()
 	require("flash").jump()
-end, { desc = "Flash" })
-vim.keymap.set({ "n", "x", "o" }, "S", function()
+end, { desc = "Go to word" })
+vim.keymap.set({ "n", "x", "o" }, "gW", function()
 	require("flash").treesitter()
-end, { desc = "Flash Treesitter" })
-vim.keymap.set("o", "r", function()
-	require("flash").remote()
-end, { desc = "Remote Flash" })
-vim.keymap.set("o", "R", function()
-	require("flash").treesitter_search()
-end, { desc = "Treesitter Search" })
-vim.keymap.set("c", "<c-s>", function()
-	require("flash").toggle()
-end, { desc = "Toggle Flash Search" })
+end, { desc = "Go to word (treesitter)" })
