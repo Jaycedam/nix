@@ -9,7 +9,6 @@ pkgs.writeShellScriptBin "launch-or-focus" ''
       echo "  <command>                        Run command directly (default)"
       echo "  --tui <command>                  Launch command in kitty terminal"
       echo "  --webapp <url>                   Launch webapp for URL (needs a Chromium-based browser, default: brave)"
-      echo "  --website <url>                  Focus existing tab matching URL or open new tab (needs Chromium --focus support)"
       echo ""
       echo "Options:"
       echo "  --id <app_id>                    App ID for window matching (defaults to command/url)"
@@ -19,7 +18,7 @@ pkgs.writeShellScriptBin "launch-or-focus" ''
   MODE=""
   ID=""
   CMD_ARGS=()
-  WEBAPP_BROWSER="''${WEBAPP_BROWSER:-brave}"
+  WEBAPP_BROWSER="''${WEBAPP_BROWSER:-brave}" # needs to be a Chromium-based browser
 
   while [ $# -gt 0 ]; do
       case "$1" in
@@ -32,28 +31,33 @@ pkgs.writeShellScriptBin "launch-or-focus" ''
           shift 2
           ;;
       --tui)
-          [ -n "$MODE" ] && { echo "Error: conflicting modes"; usage; exit 1; }
+          [ -n "$MODE" ] && {
+              echo "Error: conflicting modes"
+              usage
+              exit 1
+          }
           MODE=tui
-          CMD_ARGS=(${pkgs.kitty}/bin/kitty -1 --app-id "$2" "$2")
+          CMD_ARGS=(kitty -1 --app-id "''${ID:-$2}" "$2")
           [ -z "$ID" ] && ID="$2"
           shift 2
           ;;
       --webapp)
-          [ -n "$MODE" ] && { echo "Error: conflicting modes"; usage; exit 1; }
+          [ -n "$MODE" ] && {
+              echo "Error: conflicting modes"
+              usage
+              exit 1
+          }
           MODE=webapp
           CMD_ARGS=("$WEBAPP_BROWSER" --app="https://$2")
           [ -z "$ID" ] && ID="$WEBAPP_BROWSER-$2__-Default"
           shift 2
           ;;
-      --website)
-          [ -n "$MODE" ] && { echo "Error: conflicting modes"; usage; exit 1; }
-          MODE=website
-          CMD_ARGS=("$WEBAPP_BROWSER" --focus="https://$2/*" "https://$2")
-          ID=""
-          shift 2
-          ;;
       *)
-          [ -n "$MODE" ] && { echo "Error: conflicting modes"; usage; exit 1; }
+          [ -n "$MODE" ] && {
+              echo "Error: conflicting modes"
+              usage
+              exit 1
+          }
           MODE=default
           CMD_ARGS=("$1")
           shift
@@ -61,12 +65,16 @@ pkgs.writeShellScriptBin "launch-or-focus" ''
       esac
   done
 
+  # if no id is provided, use cmd as the id
   [ -z "$ID" ] && ID="''${CMD_ARGS[0]}"
 
-  if [ "$MODE" != website ]; then
-      ID=$(niri msg --json windows | jq -r '.[] | select(.app_id == "'"$ID"'") | .id' | head -1)
+  # niri's focus-window requires a numeric window ID, not an app_id
+  ID=$(niri msg --json windows | jq -r --arg id "$ID" '[.[] | select(.app_id == $id) | .id][0] // empty')
+
+  if [ -n "$ID" ]; then
+      niri msg action focus-window --id "$ID"
+      exit
   fi
 
-  niri msg action focus-window --id "$ID" && exit 0
   niri msg action spawn -- "''${CMD_ARGS[@]}"
 ''
