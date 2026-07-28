@@ -28,7 +28,7 @@
     imagemagick
     impala
     libnotify
-    tldr
+    tealdeer
     trash-cli
     unrar
     wiremix
@@ -60,6 +60,7 @@
     gimp
     proton-vpn
     jellyfin-desktop
+    smassh
     kopuz
     libreoffice
     localsend
