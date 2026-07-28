@@ -5,7 +5,7 @@ let
 in
 {
   imports = [
-    inputs.stylix.nixosModules.stylix
+    inputs.stylix.homeManagerModules.stylix
   ];
 
   # global stylix settings
@@ -14,7 +14,7 @@ in
     enable = true;
     base16Scheme = "${pkgs.base16-schemes}/share/themes/${theme}.yaml";
     polarity = "dark";
-    image = ../assets/wallpaper.jpg;
+    image = ../../assets/wallpaper.jpg;
 
     opacity = {
       applications = 0.95;
