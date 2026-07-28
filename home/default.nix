@@ -17,12 +17,15 @@
 
   fonts.fontconfig.enable = true;
 
-  # autocreate user dirs
-  xdg.userDirs = {
-    enable = true;
-    createDirectories = true;
-    extraConfig = {
-      WALLPAPERS = "${config.home.homeDirectory}/Pictures/Wallpapers";
+  xdg = {
+    localBinInPath = true;
+    # autocreate user dirs
+    userDirs = {
+      enable = true;
+      createDirectories = true;
+      extraConfig = {
+        WALLPAPERS = "${config.home.homeDirectory}/Pictures/Wallpapers";
+      };
     };
   };
 
