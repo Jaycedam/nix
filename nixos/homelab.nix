@@ -16,6 +16,9 @@
       "tdarr-node-main".serviceConfig = {
         ReadWritePaths = [ "/DATA" ];
       };
+      "tdarr-server".serviceConfig = {
+        ReadWritePaths = [ "/DATA" ];
+      };
       # Sonarr and Radarr hardcode UMask=0022, creating files as 644 (no group write)
       # Override to 0002 so media group can write (needed by Tdarr's replaceOriginalFile)
       sonarr.serviceConfig.UMask = lib.mkForce "0002";
