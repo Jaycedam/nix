@@ -29,9 +29,12 @@
         linux-arm = "aarch64-linux";
         linux = "x86_64-linux";
       };
+      theme = {
+        border-radius = 5;
+      };
 
       commonArgs = {
-        inherit inputs user;
+        inherit inputs user theme;
         # you can override these per profile bellow
         system = systems.linux;
         desktop = true;
