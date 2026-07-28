@@ -100,9 +100,4 @@ in
       ${lua ./config/builtin.lua}
     '';
   };
-  stylix.targets.neovim = {
-    transparentBackground.main = true;
-    transparentBackground.numberLine = true;
-    transparentBackground.signColumn = true;
-  };
 }

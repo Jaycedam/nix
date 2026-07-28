@@ -23,7 +23,7 @@ vim.api.nvim_create_autocmd("BufEnter", {
 local function git_branch()
 	local branch = vim.b.gitsigns_head or vim.b.git_branch or ""
 	if branch ~= "" then
-		return "%#NeogitBranch#󰘬 " .. branch .. "%*"
+		return "%#gitcommitBranch#󰘬 " .. branch .. "%*"
 	end
 	return ""
 end
@@ -46,7 +46,7 @@ end
 function _G.statusline()
 	-- %= separates sections, %* resets hl groups
 	return table.concat({
-		"%#MiniStatuslineModeOther# " .. vim.api.nvim_get_mode().mode:upper() .. " %*",
+		"%#MiniStatuslineModeNormal# " .. vim.api.nvim_get_mode().mode:upper() .. " %*",
 		root_dir(),
 		git_branch(),
 		macro_status(),
