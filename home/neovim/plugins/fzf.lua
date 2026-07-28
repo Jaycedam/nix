@@ -1,71 +1,78 @@
-local actions = require("fzf-lua.actions")
-require("fzf-lua").setup({
-	ui_select = true,
-	keymap = {
-		fzf = {
-			["ctrl-a"] = "toggle-all",
-		},
+local fzf = require("fzf-lua")
+
+fzf.setup({
+	ui_select = {},
+	winopts = {
+		-- disable background
+		backdrop = 100,
 	},
-	actions = {
-		files = {
-			true, -- inherit defaults
-			["ctrl-q"] = actions.file_sel_to_qf,
-		},
+	hls = {
+		normal = "Normal",
+		border = "Normal",
+		preview_normal = "Normal",
+		preview_border = "Normal",
 	},
 	fzf_colors = {
 		true, -- inherit from nvim theme
+		["bg"] = "-1",
+		["gutter"] = "-1",
 	},
 	grep = {
-		hidden = true,
-		rg_opts = "--glob '!.git' --column --line-number --no-heading --color=always --smart-case --max-columns=4096 -e",
+		rg_opts = "--hidden --glob=!.git/* --column --line-number --no-heading --color=always --smart-case --max-columns=4096 -e",
+	},
+	keymap = {
+		fzf = {
+			true,
+			["ctrl-d"] = "preview-page-down",
+			["ctrl-u"] = "preview-page-up",
+			["ctrl-q"] = "select-all+accept",
+		},
+		builtin = {
+			true,
+			["<C-d>"] = "preview-page-down",
+			["<C-u>"] = "preview-page-up",
+		},
 	},
 })
 -- buffers and files
-vim.keymap.set("n", "<leader>fb", require("fzf-lua").buffers, { desc = "Find buffers" })
-vim.keymap.set("n", "<leader>ff", require("fzf-lua").files, { desc = "Find files" })
+vim.keymap.set("n", "<leader>fb", fzf.buffers, { desc = "Find buffers" })
+vim.keymap.set("n", "<leader>ff", fzf.files, { desc = "Find files" })
 
 -- search
-vim.keymap.set("n", "<leader>fg", require("fzf-lua").live_grep_native, { desc = "Grep project" })
-vim.keymap.set("n", "<leader>/", require("fzf-lua").live_grep_native, { desc = "Grep project" })
-vim.keymap.set("v", "<leader>/", require("fzf-lua").grep_visual, { desc = "Find visual selection" })
-vim.keymap.set("n", "<leader>fw", require("fzf-lua").grep_cword, { desc = "Find word under cursor" })
+vim.keymap.set("n", "<leader>fg", fzf.live_grep_native, { desc = "Grep project" })
+vim.keymap.set("v", "<leader>fg", fzf.grep_visual, { desc = "Find visual selection" })
+vim.keymap.set("n", "<leader>/", fzf.live_grep_native, { desc = "Grep project" })
+vim.keymap.set("v", "<leader>/", fzf.grep_visual, { desc = "Find visual selection" })
+vim.keymap.set("n", "<leader>fw", fzf.grep_cword, { desc = "Find word under cursor" })
+vim.keymap.set("n", "<leader>fW", fzf.grep_cWORD, { desc = "Find WORD under cursor" })
 
-vim.keymap.set("n", "<leader>fk", require("fzf-lua").keymaps, { desc = "Find keymaps" })
-vim.keymap.set("n", "<leader>fh", require("fzf-lua").helptags, { desc = "Find help" })
+vim.keymap.set("n", "<leader>fz", fzf.zoxide, { desc = "Find zoxide directory" })
+
+vim.keymap.set("n", "<leader>fk", fzf.keymaps, { desc = "Find keymaps" })
+vim.keymap.set("n", "<leader>fh", fzf.helptags, { desc = "Find help" })
 -- LSP keymaps
-vim.keymap.set("n", "<leader>fr", require("fzf-lua").lsp_references, { desc = "Find references (LSP)" })
-vim.keymap.set("n", "<leader>fi", require("fzf-lua").lsp_implementations, { desc = "Find implementations (LSP)" })
-vim.keymap.set(
-	"n",
-	"<leader>fD",
-	require("fzf-lua").diagnostics_workspace,
-	{ desc = "Find diagnostics on workspace (LSP)" }
-)
-vim.keymap.set(
-	"n",
-	"<leader>fd",
-	require("fzf-lua").diagnostics_document,
-	{ desc = "Find diagnostics on current buffer (LSP)" }
-)
-vim.keymap.set("n", "<leader>fs", require("fzf-lua").lsp_document_symbols, { desc = "Find document symbols (LSP)" })
-vim.keymap.set("n", "<leader>fS", require("fzf-lua").lsp_workspace_symbols, { desc = "Find workspace symbols (LSP)" })
-vim.keymap.set("n", "<leader>fa", require("fzf-lua").lsp_code_actions, { desc = "Code actions" })
+vim.keymap.set("n", "<leader>fr", fzf.lsp_references, { desc = "Find references (LSP)" })
+vim.keymap.set("n", "<leader>fi", fzf.lsp_implementations, { desc = "Find implementations (LSP)" })
+vim.keymap.set("n", "<leader>fD", fzf.diagnostics_workspace, { desc = "Find diagnostics on workspace (LSP)" })
+vim.keymap.set("n", "<leader>fd", fzf.diagnostics_document, { desc = "Find diagnostics on current buffer (LSP)" })
+vim.keymap.set("n", "<leader>fs", fzf.lsp_document_symbols, { desc = "Find document symbols (LSP)" })
+vim.keymap.set("n", "<leader>fS", fzf.lsp_workspace_symbols, { desc = "Find workspace symbols (LSP)" })
+vim.keymap.set("n", "<leader>fa", fzf.lsp_code_actions, { desc = "Code actions" })
 -- Neovim
-vim.keymap.set("n", "<leader>fm", require("fzf-lua").marks, { desc = "Find marks" })
+vim.keymap.set("n", "<leader>fm", fzf.marks, { desc = "Find marks" })
 
 -- Custom
 _G.fzf_projects = function(opts)
-	local fzf_lua = require("fzf-lua")
-	local projects_dir = vim.fn.expand("~/Projects")
 	opts = opts or {}
-	opts.prompt = "Projects > "
-	opts.cwd = opts.cwd or projects_dir
+	opts.prompt = "Change Project > "
+	opts.cwd = opts.cwd or vim.fn.expand("~/Projects")
 	opts.actions = {
 		["default"] = function(selected)
-			vim.cmd("cd " .. projects_dir .. "/" .. selected[1])
+			local project_path = vim.fn.expand(opts.cwd) .. "/" .. selected[1]
+			vim.cmd("cd " .. project_path)
 			vim.cmd("edit .")
 		end,
 	}
-	fzf_lua.fzf_exec("fd --type d --max-depth 1", opts)
+	fzf.fzf_exec("fd --type d --max-depth 1 --format '{/}'", opts)
 end
-vim.keymap.set("n", "<leader>fp", _G.fzf_projects)
+vim.keymap.set("n", "<leader>fp", _G.fzf_projects, { desc = "Find projects" })

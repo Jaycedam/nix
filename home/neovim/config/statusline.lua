@@ -2,13 +2,28 @@ vim.opt.statusline = "%!v:lua.statusline()"
 
 local function root_dir()
 	local dir = vim.fn.getcwd()
-	return vim.fn.fnamemodify(dir, ":t")
+	return "%#Directory#󰉋 " .. vim.fn.fnamemodify(dir, ":t") .. "%*"
 end
 
+vim.api.nvim_create_autocmd("BufEnter", {
+	callback = function(ev)
+		local buf = ev.buf
+		vim.system(
+			{ "git", "branch", "--show-current" },
+			{ text = true },
+			vim.schedule_wrap(function(out)
+				if vim.api.nvim_buf_is_valid(buf) then
+					vim.b[buf].git_branch = out.code == 0 and vim.trim(out.stdout) or ""
+				end
+			end)
+		)
+	end,
+})
+
 local function git_branch()
-	local head = vim.b.gitsigns_head
-	if head and head ~= "" then
-		return "󰘬 " .. head
+	local branch = vim.b.gitsigns_head or vim.b.git_branch or ""
+	if branch ~= "" then
+		return "%#NeogitBranch#󰘬 " .. branch .. "%*"
 	end
 	return ""
 end
@@ -16,7 +31,7 @@ end
 local function macro_status()
 	local reg = vim.fn.reg_recording()
 	if reg ~= "" then
-		return "%#Macro#%* rec:" .. reg
+		return "%#Macro#󰑊 rec:" .. reg .. "%*"
 	end
 	return reg
 end
@@ -31,21 +46,19 @@ end
 function _G.statusline()
 	-- %= separates sections, %* resets hl groups
 	return table.concat({
-		"%#Cursor# " .. vim.api.nvim_get_mode().mode:upper() .. " %*",
-		"%#Directory#" .. root_dir() .. "%*",
-		"%#gitcommitBranch#" .. git_branch() .. "%*",
+		"%#MiniStatuslineModeOther# " .. vim.api.nvim_get_mode().mode:upper() .. " %*",
+		root_dir(),
+		git_branch(),
 		macro_status(),
 		"%=",
 		"%<",
-		"%q",
 		"%f",
 		"%m",
 		"%h",
 		"%=",
-		vim.diagnostic.status(),
 		vim.ui.progress_status(),
-		"%p%%",
+		vim.diagnostic.status(),
 		"%#String#" .. "%y" .. "%*",
-		"%l:%c ",
+		"%p%% %l:%c ",
 	}, " ")
 end
