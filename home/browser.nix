@@ -1,5 +1,4 @@
 {
-  pkgs,
   lib,
   host,
   ...
@@ -17,11 +16,4 @@
       "aleakchihdccplidncghkekgioiakgal" # h264ify, asahi video decoder is wip
     ];
   };
-
-  # Widevine CDM for aarch64 (DRM support)
-  xdg.configFile."BraveSoftware/Brave-Browser/WidevineCdm/latest-component-updated-widevine-cdm" =
-    lib.mkIf (pkgs.stdenv.hostPlatform.system == "aarch64-linux")
-      {
-        text = ''{"Path":"${pkgs.widevine-cdm}/share/google/chrome/WidevineCdm"}'';
-      };
 }
