@@ -41,36 +41,27 @@ in
       }
       {
         plugin = nvim-colorizer-lua;
-        config = ''
-          require("colorizer").setup()
-        '';
+        config = "require('colorizer').setup()";
       }
       {
         plugin = mini-surround;
-        config = ''
-          require("mini.surround").setup()
-        '';
+        config = "require('mini.surround').setup()";
       }
       {
         plugin = mini-diff;
-        config = ''
-          require("mini.diff").setup()
-        '';
+        config = "require('mini.diff').setup()";
       }
       {
         plugin = mini-pairs;
-        config = ''
-          require("mini.pairs").setup()
-        '';
+        config = "require('mini.pairs').setup()";
       }
       {
         plugin = which-key-nvim;
-        config = ''
-          require("which-key").setup({
-          	preset = "helix",
-          	delay = 500,
-          })
-        '';
+        config = "require('which-key').setup({ preset = 'helix', delay = 500 })";
+      }
+      {
+        plugin = neogit;
+        config = "vim.keymap.set('n', '<leader>g', '<cmd>Neogit<cr>', { desc = 'Open Neogit UI' })";
       }
       {
         plugin = oil-nvim;
@@ -81,12 +72,6 @@ in
           	},
           })
           vim.keymap.set("n", "<leader>e", "<CMD>Oil<CR>", { desc = "Open parent directory" })
-        '';
-      }
-      {
-        plugin = neogit;
-        config = ''
-          vim.keymap.set("n", "<leader>g", "<cmd>Neogit<cr>", { desc = "Open Neogit UI" })
         '';
       }
     ];
