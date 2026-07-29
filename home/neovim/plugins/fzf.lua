@@ -26,6 +26,7 @@ fzf.setup({
 			["ctrl-d"] = "preview-page-down",
 			["ctrl-u"] = "preview-page-up",
 			["ctrl-q"] = "select-all+accept",
+			["ctrl-a"] = "select-all",
 		},
 		builtin = {
 			true,
