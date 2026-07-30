@@ -70,8 +70,8 @@ pkgs.writeShellScriptBin "volume" ''
 
   if [ "$1" = "up" ] || [ "$1" = "down" ]; then
       wpctl set-mute @DEFAULT_AUDIO_SINK@ 0
-      dir=$([ "$1" = "up" ] && echo "+" || echo "-")
-      wpctl set-volume @DEFAULT_AUDIO_SINK@ "''${step}%''${dir}"
+      [ "$1" = "down" ] && dir="-" || dir="+"
+      wpctl set-volume @DEFAULT_AUDIO_SINK@ "''${step}%''${dir}" -l 1.0
       NEW_VOL=$(wpctl get-volume @DEFAULT_AUDIO_SINK@ | awk '{print $2}')
       NEW_PERCENT=$(awk "BEGIN {printf \"%.0f\", $NEW_VOL * 100}")
   fi
