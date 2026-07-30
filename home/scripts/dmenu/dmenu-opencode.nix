@@ -1,5 +1,6 @@
 { pkgs, ... }:
 
-pkgs.writeShellScriptBin "dmenu-opencode" ''
-  dmenu-projects opencode
-''
+pkgs.writeShellApplication {
+  name = "dmenu-opencode";
+  text = "dmenu-projects opencode";
+}
