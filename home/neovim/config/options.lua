@@ -17,7 +17,6 @@ vim.opt.termguicolors = true
 vim.opt.cursorline = true
 vim.opt.laststatus = 3 -- global statusline
 vim.opt.signcolumn = "yes"
-vim.opt.fillchars = "eob: "
 vim.opt.cmdheight = 0 -- hides cmd until used
 vim.opt.pumheight = 10 -- popup menu items
 -- Search
