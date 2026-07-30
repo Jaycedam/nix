@@ -52,6 +52,7 @@
     ./services.nix
     ./gaming.nix
     ./beets.nix
+    ./activation.nix
     ./supersonic
   ];
 }
