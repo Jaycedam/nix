@@ -34,7 +34,7 @@ in
       ${lua ./config/autocmd.lua}
       ${lua ./config/statusline.lua}
       ${lua ./config/terminal.lua}
-      ${lua ./plugins/misc.lua} 
+      ${lua ./plugins/misc.lua}
       ${lua ./plugins/blink.lua}
       ${lua ./plugins/conform.lua}
       ${lua ./plugins/fff.lua}
