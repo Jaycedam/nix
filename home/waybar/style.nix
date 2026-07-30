@@ -13,6 +13,7 @@ in
     * {
       font-family: "JetBrains Mono", "Symbols Nerd Font Mono";
       font-size: ${toString config.stylix.fonts.sizes.desktop}pt;
+      font-weight: bold;
       border-radius: ${toString theme.border-radius};
       min-height: 0;
       min-width: 0;
@@ -52,7 +53,6 @@ in
     }
     #workspaces.main button {
       padding: 0 5px;
-      border-radius: 0;
       color: @base05;
     }
 
@@ -62,7 +62,8 @@ in
       color: @base03;
     }
     #workspaces.main button.active {
-      color: @base0D;
+      background-color: @base0D;
+      color: @base00;
       border-bottom: 2px solid @base0D;
     }
 
