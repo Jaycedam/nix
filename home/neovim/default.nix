@@ -7,73 +7,25 @@ in
     enable = true;
     viAlias = true;
     vimAlias = true;
-
     plugins = with pkgs.vimPlugins; [
       render-markdown-nvim
       diffview-nvim
       friendly-snippets
-      {
-        plugin = blink-cmp;
-        config = lua ./plugins/blink.lua;
-      }
-      {
-        plugin = conform-nvim;
-        config = lua ./plugins/conform.lua;
-      }
-      {
-        plugin = nvim-lspconfig;
-        config = lua ./plugins/lsp.lua;
-      }
-      {
-        plugin = fzf-lua;
-        config = lua ./plugins/fzf.lua;
-      }
-      {
-        plugin = flash-nvim;
-        config = lua ./plugins/flash.lua;
-      }
-      {
-        plugin = copilot-vim;
-      }
-      {
-        plugin = pkgs.vimPlugins.nvim-treesitter;
-        config = lua ./plugins/treesitter.lua;
-      }
-      {
-        plugin = nvim-colorizer-lua;
-        config = "require('colorizer').setup()";
-      }
-      {
-        plugin = mini-surround;
-        config = "require('mini.surround').setup()";
-      }
-      {
-        plugin = mini-diff;
-        config = "require('mini.diff').setup()";
-      }
-      {
-        plugin = mini-pairs;
-        config = "require('mini.pairs').setup()";
-      }
-      {
-        plugin = which-key-nvim;
-        config = "require('which-key').setup({ preset = 'helix', delay = 500 })";
-      }
-      {
-        plugin = neogit;
-        config = "vim.keymap.set('n', '<leader>g', '<cmd>Neogit<cr>', { desc = 'Open Neogit UI' })";
-      }
-      {
-        plugin = oil-nvim;
-        config = ''
-          require("oil").setup({
-          	view_options = {
-          		show_hidden = true,
-          	},
-          })
-          vim.keymap.set("n", "<leader>e", "<CMD>Oil<CR>", { desc = "Open parent directory" })
-        '';
-      }
+      blink-cmp
+      conform-nvim
+      nvim-lspconfig
+      fzf-lua
+      flash-nvim
+      copilot-vim
+      nvim-treesitter
+      fff-nvim
+      nvim-colorizer-lua
+      mini-surround
+      mini-diff
+      mini-pairs
+      which-key-nvim
+      neogit
+      oil-nvim
     ];
 
     initLua = ''
@@ -82,7 +34,14 @@ in
       ${lua ./config/autocmd.lua}
       ${lua ./config/statusline.lua}
       ${lua ./config/terminal.lua}
-      ${lua ./config/builtin.lua}
+      ${lua ./plugins/misc.lua} 
+      ${lua ./plugins/blink.lua}
+      ${lua ./plugins/conform.lua}
+      ${lua ./plugins/fff.lua}
+      ${lua ./plugins/flash.lua}
+      ${lua ./plugins/fzf.lua}
+      ${lua ./plugins/lsp.lua}
+      ${lua ./plugins/treesitter.lua}
     '';
   };
 }

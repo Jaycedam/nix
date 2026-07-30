@@ -37,15 +37,15 @@ fzf.setup({
 })
 -- buffers and files
 vim.keymap.set("n", "<leader>fb", fzf.buffers, { desc = "Find buffers" })
-vim.keymap.set("n", "<leader>ff", fzf.files, { desc = "Find files" })
+-- vim.keymap.set("n", "<leader>ff", fzf.files, { desc = "Find files" })
 
 -- search
-vim.keymap.set("n", "<leader>fg", fzf.live_grep_native, { desc = "Grep project" })
-vim.keymap.set("v", "<leader>fg", fzf.grep_visual, { desc = "Find visual selection" })
-vim.keymap.set("n", "<leader>/", fzf.live_grep_native, { desc = "Grep project" })
-vim.keymap.set("v", "<leader>/", fzf.grep_visual, { desc = "Find visual selection" })
-vim.keymap.set("n", "<leader>fw", fzf.grep_cword, { desc = "Find word under cursor" })
-vim.keymap.set("n", "<leader>fW", fzf.grep_cWORD, { desc = "Find WORD under cursor" })
+-- vim.keymap.set("n", "<leader>fg", fzf.live_grep_native, { desc = "Grep project" })
+-- vim.keymap.set("v", "<leader>fg", fzf.grep_visual, { desc = "Find visual selection" })
+-- vim.keymap.set("n", "<leader>/", fzf.live_grep_native, { desc = "Grep project" })
+-- vim.keymap.set("v", "<leader>/", fzf.grep_visual, { desc = "Find visual selection" })
+-- vim.keymap.set("n", "<leader>fw", fzf.grep_cword, { desc = "Find word under cursor" })
+-- vim.keymap.set("n", "<leader>fW", fzf.grep_cWORD, { desc = "Find WORD under cursor" })
 
 vim.keymap.set("n", "<leader>fz", fzf.zoxide, { desc = "Find zoxide directory" })
 

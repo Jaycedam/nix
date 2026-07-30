@@ -1,16 +1,3 @@
--- treesitter, install
-vim.api.nvim_create_autocmd("PackChanged", {
-	callback = function(ev)
-		local name, kind = ev.data.spec.name, ev.data.kind
-		if name == "nvim-treesitter" and (kind == "install" or kind == "update") then
-			if not ev.data.active then
-				vim.cmd.packadd("nvim-treesitter")
-			end
-			vim.cmd("TSUpdate")
-		end
-	end,
-})
-
 -- Highlight when yanking (copying) text
 --  See `:help vim.hl.on_yank()`
 vim.api.nvim_create_autocmd("TextYankPost", {
@@ -18,13 +5,6 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 	group = vim.api.nvim_create_augroup("highlight-yank", { clear = true }),
 	callback = function()
 		vim.hl.on_yank()
-	end,
-})
-
--- refresh gitsigns on focus to update branch in statusline
-vim.api.nvim_create_autocmd("FocusGained", {
-	callback = function()
-		vim.cmd("silent! Gitsigns refresh")
 	end,
 })
 
