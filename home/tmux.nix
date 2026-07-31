@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-{
+_: {
   programs.tmux = {
     enable = true;
     baseIndex = 1;
@@ -7,7 +6,6 @@
     focusEvents = true;
     mouse = true;
     extraConfig = ''
-      set -g default-shell ${pkgs.fish}/bin/fish
       set -g default-terminal "$TERM"
       set -ag terminal-overrides ",$TERM:Tc"
       set -g allow-passthrough on

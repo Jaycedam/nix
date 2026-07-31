@@ -3,12 +3,10 @@ _: {
     kitty = {
       enable = true;
       enableGitIntegration = true;
-      shellIntegration.enableFishIntegration = true;
       settings = {
         cursor_trail = 1;
         tab_bar_edge = "top";
         background_blur = 1;
-        shell = "fish";
       };
       actionAliases = {
         launch_window = "launch --cwd current --type os-window";
@@ -25,7 +23,6 @@ _: {
       enable = true;
       settings = {
         mouse-hide-while-typing = "true";
-        command = "fish";
       };
     };
 
