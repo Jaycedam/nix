@@ -1,9 +1,4 @@
-{
-  lib,
-  pkgs-unstable,
-  pkgs-pinned,
-  ...
-}:
+{ lib, pkgs-unstable, ... }:
 let
   unstablePackages = [
     "kopuz"
@@ -13,16 +8,11 @@ let
     "neovim"
     "vimPlugins"
   ];
-  pinnedPackages = [
-    "rpcs3"
-  ];
 in
 {
   nixpkgs.overlays = [
     # packages to pull from nixpkgs-unstable instead of the default nixpkgs
     (final: prev: lib.genAttrs unstablePackages (name: pkgs-unstable.${name}))
-    # packages to pull from a pinned nixpkgs. Useful for pkgs that have no bin cache
-    (final: prev: lib.genAttrs pinnedPackages (name: pkgs-pinned.${name}))
 
     # gstreamer fix for nautilus, prevents installing the plugins manually
     (final: prev: {
