@@ -4,7 +4,6 @@
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-26.05";
     nixpkgs-unstable.url = "nixpkgs/nixos-unstable";
-    nixpkgs-pinned.url = "github:NixOS/nixpkgs/293d6abedf0478e681a4dfcfcb35b30fc796a32f";
     apple-silicon.url = "github:nix-community/nixos-apple-silicon";
     waybar.url = "github:Alexays/Waybar/456f78ecb1cf16e5397a29691e69fc2906843387";
     home-manager.url = "github:nix-community/home-manager/release-26.05";
@@ -65,10 +64,6 @@
               system = baseArgs.system;
               config.allowUnfree = true;
             };
-            pkgs-pinned = import inputs.nixpkgs-pinned {
-              system = baseArgs.system;
-              config.allowUnfree = true;
-            };
           };
           hostModule = ./hosts/${args.host};
         in
@@ -92,10 +87,6 @@
                 system = args.system;
                 config.allowUnfree = true;
               };
-              pkgs-pinned = import inputs.nixpkgs-pinned {
-                system = args.system;
-                config.allowUnfree = true;
-              };
             };
         in
         {
@@ -111,7 +102,6 @@
                 system
                 host
                 pkgs-unstable
-                pkgs-pinned
                 ;
             };
           };
