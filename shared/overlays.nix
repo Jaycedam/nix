@@ -7,6 +7,7 @@ let
     "grok-build"
     "neovim"
     "vimPlugins"
+    "brave-origin"
   ];
 in
 {

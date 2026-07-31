@@ -160,7 +160,7 @@ binds {
     // temporary fix until niri support is added, causes cpu spikes
     Mod+G hotkey-overlay-title="Make current window global (pin)" { spawn "nirius" "toggle-follow-mode"; }
     Mod+E repeat=false hotkey-overlay-title="Yazi" { spawn "launch-or-focus" "--tui" "yazi"; }
-    Mod+B repeat=false hotkey-overlay-title="Browser" { spawn "launch-or-focus" "brave" "--id" "brave-browser"; }
+    Mod+B repeat=false hotkey-overlay-title="Browser" { spawn "launch-or-focus" "brave-origin"; }
     Mod+W repeat=false hotkey-overlay-title="Whatsapp" { spawn "launch-or-focus" "--webapp" "web.whatsapp.com"; }
     Mod+M repeat=false hotkey-overlay-title="Spotify" { spawn "launch-or-focus" "--webapp" "open.spotify.com"; }
     Mod+Shift+M repeat=false hotkey-overlay-title="ProtonMail" { spawn "launch-or-focus" "--webapp" "mail.proton.me"; }
@@ -255,6 +255,7 @@ window-rule {
 // browser workspace apps
 window-rule {
     match app-id=r#"brave-browser"#
+    match app-id=r#"brave-origin"#
     match app-id=r#"zen-beta"#
     open-on-workspace "browser"
     open-focused true

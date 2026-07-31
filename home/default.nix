@@ -12,7 +12,7 @@
       EDITOR = "nvim";
       TERMINAL = "kitty";
       PAGER = "nvim +Man!";
-      BROWSER = "brave";
+      BROWSER = "brave-origin";
     };
     # don't change this!
     stateVersion = "26.05";

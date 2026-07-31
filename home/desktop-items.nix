@@ -2,27 +2,27 @@ _: {
   xdg.desktopEntries = {
     "brave-open.spotify.com__-Default" = {
       name = "Spotify";
-      exec = "brave --app=https://open.spotify.com";
+      exec = "brave-origin --app=https://open.spotify.com";
       icon = "spotify";
     };
     "brave-web.whatsapp.com__-Default" = {
       name = "WhatsApp";
-      exec = "brave --app=https://web.whatsapp.com";
+      exec = "brave-origin --app=https://web.whatsapp.com";
       icon = "whatsapp";
     };
     "brave-mail.proton.me__-Default" = {
       name = "Proton Mail";
-      exec = "brave --app=https://mail.proton.me";
+      exec = "brave-origin --app=https://mail.proton.me";
       icon = "proton-mail";
     };
     "brave-drive.proton.me__-Default" = {
       name = "Proton Drive";
-      exec = "brave --app=https://drive.proton.me";
+      exec = "brave-origin --app=https://drive.proton.me";
       icon = ../assets/icons/proton-drive.svg;
     };
     "brave-www.youtube.com__-Default" = {
       name = "YouTube";
-      exec = "brave --app=https://www.youtube.com";
+      exec = "brave-origin --app=https://www.youtube.com";
       icon = "youtube";
     };
     "lazygit" = {

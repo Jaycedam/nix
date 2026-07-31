@@ -13,7 +13,7 @@ pkgs.writeShellApplication {
         echo "Modes:"
         echo "  <command>                        Run command directly (default)"
         echo "  --tui <command>                  Launch command in kitty terminal"
-        echo "  --webapp <url>                   Launch webapp for URL (needs a Chromium-based browser, default: brave)"
+        echo "  --webapp <url>                   Launch webapp for URL (needs a Chromium-based browser, default: brave-origin)"
         echo ""
         echo "Options:"
         echo "  --id <app_id>                    App ID for window matching (defaults to command/url)"
@@ -23,7 +23,8 @@ pkgs.writeShellApplication {
     MODE=""
     ID=""
     CMD_ARGS=()
-    WEBAPP_BROWSER="''${WEBAPP_BROWSER:-brave}" # needs to be a Chromium-based browser
+    WEBAPP_BROWSER="''${WEBAPP_BROWSER:-brave-origin}" # needs to be a Chromium-based browser
+    WEBAPP_BROWSER_ID="''${WEBAPP_BROWSER_ID:-brave}" # the string that's added to the ID
 
     while [ $# -gt 0 ]; do
         case "$1" in
@@ -54,7 +55,7 @@ pkgs.writeShellApplication {
             }
             MODE=webapp
             CMD_ARGS=("$WEBAPP_BROWSER" --app="https://$2")
-            [ -z "$ID" ] && ID="$WEBAPP_BROWSER-$2__-Default"
+            [ -z "$ID" ] && ID="$WEBAPP_BROWSER_ID-$2__-Default"
             shift 2
             ;;
         *)
