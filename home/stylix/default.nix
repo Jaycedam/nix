@@ -16,10 +16,10 @@
     targets.qt.enable = true;
 
     opacity = {
-      applications = 0.9;
-      terminal = 0.9;
-      popups = 0.9;
-      desktop = 0.9;
+      applications = theme.opacity;
+      terminal = theme.opacity;
+      popups = theme.opacity;
+      desktop = theme.opacity;
     };
 
     icons = {
