@@ -8,24 +8,24 @@ in
     viAlias = true;
     vimAlias = true;
     plugins = with pkgs.vimPlugins; [
-      render-markdown-nvim
-      diffview-nvim
-      friendly-snippets
       blink-cmp
       conform-nvim
-      nvim-lspconfig
-      fzf-lua
-      flash-nvim
       copilot-vim
-      nvim-treesitter
-      fff-nvim
-      nvim-colorizer-lua
-      mini-surround
+      diffview-nvim
+      flash-nvim
+      friendly-snippets
+      fzf-lua
       mini-diff
+      mini-icons
       mini-pairs
-      which-key-nvim
+      mini-surround
       neogit
+      nvim-colorizer-lua
+      nvim-lspconfig
+      nvim-treesitter
       oil-nvim
+      render-markdown-nvim
+      which-key-nvim
     ];
 
     initLua = ''
@@ -37,7 +37,6 @@ in
       ${lua ./plugins/misc.lua}
       ${lua ./plugins/blink.lua}
       ${lua ./plugins/conform.lua}
-      ${lua ./plugins/fff.lua}
       ${lua ./plugins/flash.lua}
       ${lua ./plugins/fzf.lua}
       ${lua ./plugins/lsp.lua}
