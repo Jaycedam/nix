@@ -1,10 +1,12 @@
 {
   lib,
   host,
+  pkgs,
   ...
 }:
 {
   programs.brave = {
+    package = pkgs.brave-origin;
     enable = true;
     extensions = [
       "ghmbeldphafepmbegfdlkpapadhbakde" # protonpass
