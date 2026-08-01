@@ -1,13 +1,15 @@
 { lib, pkgs-unstable, ... }:
 let
   unstablePackages = [
-    "kopuz"
     "antigravity-cli"
-    "wpaperd" # set cmd is on 1.3.0
-    "grok-build"
-    "neovim"
-    "vimPlugins"
     "brave-origin"
+    "grok-build"
+    "codex"
+    "kopuz"
+    "neovim"
+    "opencode"
+    "vimPlugins"
+    "wpaperd" # set cmd is on 1.3.0
   ];
 in
 {
