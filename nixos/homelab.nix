@@ -19,10 +19,12 @@
       "tdarr-server".serviceConfig = {
         ReadWritePaths = [ "/DATA" ];
       };
-      # Sonarr and Radarr hardcode UMask=0022, creating files as 644 (no group write)
-      # Override to 0002 so media group can write (needed by Tdarr's replaceOriginalFile)
+      # Fix RW permissions for media group services
       sonarr.serviceConfig.UMask = lib.mkForce "0002";
       radarr.serviceConfig.UMask = lib.mkForce "0002";
+      qbittorrent.serviceConfig.UMask = lib.mkForce "0002";
+      bazarr.serviceConfig.UMask = lib.mkForce "0002";
+      # allow reading from home dir
       navidrome.serviceConfig.ProtectHome = lib.mkForce "tmpfs";
     };
   };
