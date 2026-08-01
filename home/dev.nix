@@ -3,7 +3,6 @@
     lazygit.enable = true;
     antigravity-cli.enable = true;
     codex.enable = true;
-    claude-code.enable = true;
     gh.enable = true;
     git = {
       enable = true;
