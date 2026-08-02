@@ -33,8 +33,15 @@
         # name for theme file to import in home/stylix/themes/
         name = "rose-pine";
         border-radius = 5;
-        opacity = 1.0;
+        opacity = 0.9;
       };
+
+      mkPkgsUnstable =
+        system:
+        import inputs.nixpkgs-unstable {
+          inherit system;
+          config.allowUnfree = true;
+        };
 
       commonArgs = {
         inherit inputs user theme;
@@ -58,19 +65,14 @@
       nixosConfigurations = lib.mapAttrs (
         name: overrides:
         let
-          baseArgs = commonArgs // overrides;
-          args = baseArgs // {
-            pkgs-unstable = import inputs.nixpkgs-unstable {
-              system = baseArgs.system;
-              config.allowUnfree = true;
-            };
-          };
-          hostModule = ./hosts/${args.host};
+          args = commonArgs // overrides;
         in
         nixpkgs.lib.nixosSystem {
-          specialArgs = args;
+          specialArgs = args // {
+            pkgs-unstable = mkPkgsUnstable args.system;
+          };
           modules = [
-            hostModule
+            ./hosts/${args.host}
             ./nixos
           ];
         }
@@ -79,15 +81,7 @@
       homeConfigurations = lib.mapAttrs' (
         name: overrides:
         let
-          args =
-            commonArgs
-            // overrides
-            // {
-              pkgs-unstable = import inputs.nixpkgs-unstable {
-                system = args.system;
-                config.allowUnfree = true;
-              };
-            };
+          args = commonArgs // overrides;
         in
         {
           name = "${user}@${name}";
@@ -101,8 +95,8 @@
                 theme
                 system
                 host
-                pkgs-unstable
                 ;
+              pkgs-unstable = mkPkgsUnstable args.system;
             };
           };
         }
