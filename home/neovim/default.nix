@@ -11,7 +11,6 @@ in
       blink-cmp
       conform-nvim
       copilot-vim
-      diffview-nvim
       flash-nvim
       friendly-snippets
       fzf-lua
@@ -33,7 +32,6 @@ in
       ${lua ./config/keymaps.lua}
       ${lua ./config/autocmd.lua}
       ${lua ./config/statusline.lua}
-      ${lua ./config/terminal.lua}
       ${lua ./plugins/misc.lua}
       ${lua ./plugins/blink.lua}
       ${lua ./plugins/conform.lua}
