@@ -1,9 +1,4 @@
-{
-  lib,
-  host,
-  pkgs,
-  ...
-}:
+{ pkgs, ... }:
 {
   programs.brave = {
     package = pkgs.brave-origin;
@@ -13,9 +8,6 @@
       "eimadpbcbfnmbkopoojfekhnkhdbieeh" # dark reader
       "hfjbmagddngcpeloejdejnfgbamkjaeg" # vimium
       "mnjggcdmjocbbbhaepdhchncahnbgone" # sponsorblock
-    ]
-    ++ lib.optionals (host == "asahi") [
-      "aleakchihdccplidncghkekgioiakgal" # h264ify, asahi video decoder is wip
     ];
   };
 }
