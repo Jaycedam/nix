@@ -20,6 +20,10 @@ fzf.setup({
 	grep = {
 		rg_opts = "--hidden --glob=!.git/* --column --line-number --no-heading --color=always --smart-case --max-columns=4096 -e",
 	},
+	marks = {
+		-- show only user marks
+		marks = "%a",
+	},
 	keymap = {
 		fzf = {
 			true,
