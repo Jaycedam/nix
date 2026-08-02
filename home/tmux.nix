@@ -1,6 +1,7 @@
 _: {
   programs.tmux = {
     enable = true;
+    newSession = true;
     baseIndex = 1;
     escapeTime = 0;
     focusEvents = true;
