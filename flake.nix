@@ -2,12 +2,11 @@
   description = "Main flake configuration for NixOS";
 
   inputs = {
-    nixpkgs.url = "nixpkgs/nixos-26.05";
-    nixpkgs-unstable.url = "nixpkgs/nixos-unstable";
+    nixpkgs.url = "nixpkgs/nixos-unstable";
     apple-silicon.url = "github:nix-community/nixos-apple-silicon";
     waybar.url = "github:Alexays/Waybar/456f78ecb1cf16e5397a29691e69fc2906843387";
-    home-manager.url = "github:nix-community/home-manager/release-26.05";
-    stylix.url = "github:nix-community/stylix/release-26.05";
+    home-manager.url = "github:nix-community/home-manager";
+    stylix.url = "github:nix-community/stylix";
   };
 
   nixConfig = {
@@ -37,13 +36,6 @@
         blur = true;
       };
 
-      mkPkgsUnstable =
-        system:
-        import inputs.nixpkgs-unstable {
-          inherit system;
-          config.allowUnfree = true;
-        };
-
       commonArgs = {
         inherit inputs user theme;
         # you can override these per profile bellow
@@ -69,9 +61,7 @@
           args = commonArgs // overrides;
         in
         nixpkgs.lib.nixosSystem {
-          specialArgs = args // {
-            pkgs-unstable = mkPkgsUnstable args.system;
-          };
+          specialArgs = args;
           modules = [
             ./hosts/${args.host}
             ./nixos
@@ -97,7 +87,6 @@
                 system
                 host
                 ;
-              pkgs-unstable = mkPkgsUnstable args.system;
             };
           };
         }

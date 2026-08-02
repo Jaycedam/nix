@@ -1,22 +1,5 @@
-{ lib, pkgs-unstable, ... }:
-let
-  unstablePackages = [
-    "antigravity-cli"
-    "brave-origin"
-    "grok-build"
-    "codex"
-    "kopuz"
-    "neovim"
-    "opencode"
-    "vimPlugins"
-    "wpaperd" # set cmd is on 1.3.0
-  ];
-in
-{
+_: {
   nixpkgs.overlays = [
-    # packages to pull from nixpkgs-unstable instead of the default nixpkgs
-    (final: prev: lib.genAttrs unstablePackages (name: pkgs-unstable.${name}))
-
     # gstreamer fix for nautilus, prevents installing the plugins manually
     (final: prev: {
       nautilus = prev.nautilus.overrideAttrs (nprev: {
