@@ -4,9 +4,11 @@
     bash.enable = true;
     fish = {
       enable = true;
+      binds = {
+        "ctrl-z".command = "fzf-cd-widget";
+      };
       interactiveShellInit = ''
         set fish_greeting ""
-        bind \cZ fzf-cd-widget
       '';
 
       shellAbbrs = {

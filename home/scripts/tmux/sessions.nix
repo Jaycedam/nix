@@ -21,8 +21,7 @@ pkgs.writeShellApplication {
     session_name=$(echo "$selection" | tr . _)
 
     if ! tmux has-session -t "$session_name" 2>/dev/null; then
-        tmux new-session -d -s "$session_name" -c "$project_path" -n " " "nvim"
-        tmux new-window -d -t "$session_name" -c "$project_path"
+        tmux new-session -d -s "$session_name" -c "$project_path"
     fi
 
     if [ -z "$TMUX" ]; then

@@ -1,4 +1,4 @@
-_: {
+{ theme, ... }: {
   programs = {
     kitty = {
       enable = true;
@@ -7,6 +7,9 @@ _: {
         cursor_trail = 1;
         tab_bar_edge = "top";
         background_blur = 1;
+      };
+      quickAccessTerminalConfig = {
+        background_opacity = theme.opacity;
       };
       actionAliases = {
         launch_window = "launch --cwd current --type os-window";
