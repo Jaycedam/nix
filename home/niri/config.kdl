@@ -15,13 +15,10 @@ prefer-no-csd // no client-side decorations
 output "eDP-1" {
     scale 1.7
 }
+
 output "HDMI-A-1" {
     mode "1920x1080"
     scale 1
-}
-
-blur {
-    offset 15 // default: 3.0
 }
 
 gestures {
@@ -29,8 +26,25 @@ gestures {
         off
     }
 }
+
 cursor {
     hide-after-inactive-ms 5000
+}
+
+input {
+    focus-follows-mouse max-scroll-amount="30%" // 0% only focus windows that are already fully on screen
+    keyboard {
+        xkb {
+            layout "us"
+            variant "colemak_dh_iso"
+            options "caps:escape"
+        }
+    }
+    touchpad {
+        dwt // disable-while-typing
+        natural-scroll
+        accel-speed 0.1
+    }
 }
 
 layout {
@@ -38,10 +52,10 @@ layout {
     background-color "transparent"
     center-focused-column "never" // never, always, on-overflow
     always-center-single-column
-    default-column-width { proportion 0.9; }
+    default-column-width { proportion 0.8; }
     preset-column-widths {
         proportion 0.5
-        proportion 0.9
+        proportion 0.8
     }
     preset-window-heights {
         proportion 0.2
@@ -157,6 +171,7 @@ binds {
     Mod+D repeat=false hotkey-overlay-title="Dismiss notification" { spawn "makoctl" "dismiss"; }
     Mod+Space hotkey-overlay-title="App Launcher" { spawn "fuzzel"; }
     Mod+T hotkey-overlay-title="Terminal" { spawn "launch-or-focus" "kitty"; }
+    Mod+Slash hotkey-overlay-title="Terminal (quick access)" { spawn "kitten" "quick-access-terminal" "tmux" "a"; }
     // temporary fix until niri support is added, causes cpu spikes
     Mod+G hotkey-overlay-title="Make current window global (pin)" { spawn "nirius" "toggle-follow-mode"; }
     Mod+E repeat=false hotkey-overlay-title="Yazi" { spawn "launch-or-focus" "--tui" "yazi"; }
@@ -170,48 +185,34 @@ binds {
     Mod+A repeat=false hotkey-overlay-title="Opencode" { spawn "launch-or-focus" "--id" "opencode" "dmenu-opencode"; }
 }
 
-input {
-    // warp-mouse-to-focus
-    focus-follows-mouse max-scroll-amount="30%" // 0% only focus windows that are already fully on screen
-    keyboard {
-        xkb {
-            layout "us"
-            variant "colemak_dh_iso"
-            options "caps:escape"
-        }
-    }
-    touchpad {
-        // tap
-        dwt // disable-while-typing
-        // dwtp
-        // drag false
-        // drag-lock
-        natural-scroll
-        accel-speed 0.1
-        // accel-profile "adaptive"
-        // scroll-method "two-finger"
-        // disabled-on-external-mouse
-    }
-    mouse {
-        // natural-scroll
-        // accel-speed 0.2
-        // accel-profile "flat"
-        // scroll-method "no-scroll"
-    }
-}
-
 // manual blur for apps that don't support ext-background-effect-v1
 layer-rule {
     match namespace="^launcher$"
     geometry-corner-radius {{border-radius}} 
+    shadow {
+        on
+    }
     background-effect {
-        blur true
+        blur {{blur}}
+        xray false
     }
 }
+
 layer-rule {
     match namespace="^waybar$"
     background-effect {
-        blur true
+        blur {{blur}}
+    }
+}
+
+layer-rule {
+    match namespace="^kitty-quick-access$"
+    shadow {
+        on
+    }
+    background-effect {
+        blur {{blur}}
+        xray false
     }
 }
 
@@ -227,7 +228,7 @@ window-rule {
     exclude is-floating=true
     opacity 0.9
      background-effect {
-        blur true
+        blur {{blur}}
     }
 }
 
@@ -260,6 +261,7 @@ window-rule {
     open-on-workspace "browser"
     open-focused true
 }
+
 // dev workspace apps
 window-rule {
     match app-id=r#"neovim"#
@@ -271,6 +273,7 @@ window-rule {
     open-on-workspace "dev"
     open-focused true
 }
+
 // media workspace apps
 window-rule {
     match app-id=r#"kopuz"#
@@ -279,6 +282,7 @@ window-rule {
     open-on-workspace "media"
     open-focused true
 }
+
 // chat workspace apps
 window-rule {
     match app-id=r#"brave-web.whatsapp.com__-Default"#
@@ -287,6 +291,7 @@ window-rule {
     open-on-workspace "chat"
     open-focused true
 }
+
 // gaming
 window-rule {
     match app-id=r#"steam"#

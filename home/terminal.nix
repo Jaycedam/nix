@@ -6,7 +6,7 @@
       settings = {
         cursor_trail = 1;
         tab_bar_edge = "top";
-        background_blur = 1;
+        background_blur = if theme.blur then 1 else 0;
       };
       quickAccessTerminalConfig = {
         background_opacity = theme.opacity;

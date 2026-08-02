@@ -31,9 +31,10 @@
       };
       theme = {
         # name for theme file to import in home/stylix/themes/
-        name = "rose-pine";
-        border-radius = 5;
-        opacity = 0.9;
+        name = "catppuccin-mocha";
+        border-radius = 0;
+        opacity = 1.0;
+        blur = true;
       };
 
       mkPkgsUnstable =

@@ -1,6 +1,7 @@
 {
   config,
   pkgs,
+  lib,
   theme,
   ...
 }:
@@ -52,7 +53,15 @@ let
 
   configTemplate = builtins.readFile ./config.kdl;
   configRendered =
-    builtins.replaceStrings [ "{{border-radius}}" ] [ (toString theme.border-radius) ]
+    builtins.replaceStrings
+      [
+        "{{border-radius}}"
+        "{{blur}}"
+      ]
+      [
+        (toString theme.border-radius)
+        (lib.boolToString theme.blur)
+      ]
       configTemplate;
 
   configFile = pkgs.writeText "config.kdl" configRendered;
