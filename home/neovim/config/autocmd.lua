@@ -8,6 +8,15 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 	end,
 })
 
+-- sets a more sensible statusline fg color
+-- it needs an autocmd because stylix adds the plugin at the end
+vim.api.nvim_create_autocmd("VimEnter", {
+	once = true,
+	callback = function()
+		vim.api.nvim_set_hl(0, "Statusline", { fg = "fg", update = true })
+	end,
+})
+
 -- markdown task checkboxes
 vim.api.nvim_create_autocmd("FileType", {
 	pattern = "markdown",
