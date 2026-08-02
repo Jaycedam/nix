@@ -1,4 +1,4 @@
-_: {
+{ pkgs, ... }: {
   stylix = {
     base16Scheme = {
       base00 = "#282828";
@@ -19,6 +19,9 @@ _: {
       base0F = "#d65d0e";
     };
     polarity = "dark";
-    image = ../../../assets/wallpaper.jpg;
+    image = pkgs.fetchurl {
+      url = "https://github.com/AngelJumbo/gruvbox-wallpapers/blob/main/wallpapers/photography/forest-2.jpg?raw=true";
+      hash = "sha256-RqzCCnn4b5kU7EYgaPF19Gr9I5cZrkEdsTu+wGaaMFI=";
+    };
   };
 }
