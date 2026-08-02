@@ -1,4 +1,4 @@
-_: {
+{ pkgs, ... }: {
   stylix = {
     base16Scheme = {
       base00 = "#191724";
@@ -19,6 +19,9 @@ _: {
       base0F = "#524f67";
     };
     polarity = "dark";
-    image = ../../../assets/wallpaper.jpg;
+    image = pkgs.fetchurl {
+      url = "https://rose-pine-wallpapers.pages.dev/wallpapers/mix/xavier-cuenca-w4-3.jpg";
+      hash = "sha256-67TRNxMCNlOAy/EzlXQqDzYqXKY0QCIwUrJMWbLvtTo=";
+    };
   };
 }
