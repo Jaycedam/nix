@@ -1,82 +1,69 @@
-{
-  config,
-  pkgs,
-  lib,
-  theme,
-  ...
-}:
-let
-  colors = config.lib.stylix.colors.withHashtag;
+_: {
+  imports = [
+    ./colors.nix
+    ./binds.nix
+    ./rules.nix
+  ];
 
-  colorTemplate = builtins.readFile ./colors.kdl.mustache;
-  colorsRendered =
-    builtins.replaceStrings
-      [
-        "{{base00}}"
-        "{{base01}}"
-        "{{base02}}"
-        "{{base03}}"
-        "{{base04}}"
-        "{{base05}}"
-        "{{base06}}"
-        "{{base07}}"
-        "{{base08}}"
-        "{{base09}}"
-        "{{base0A}}"
-        "{{base0B}}"
-        "{{base0C}}"
-        "{{base0D}}"
-        "{{base0E}}"
-        "{{base0F}}"
-        "{{wallpaper}}"
-      ]
-      [
-        colors.base00
-        colors.base01
-        colors.base02
-        colors.base03
-        colors.base04
-        colors.base05
-        colors.base06
-        colors.base07
-        colors.base08
-        colors.base09
-        colors.base0A
-        colors.base0B
-        colors.base0C
-        colors.base0D
-        colors.base0E
-        colors.base0F
-        config.stylix.image
-      ]
-      colorTemplate;
+  wayland.windowManager.niri = {
+    enable = true;
+    settings = {
+      prefer-no-csd = true;
+      screenshot-path = "~/Pictures/Screenshots/screenshot %Y-%m-%d %H-%M-%S.png";
+      cursor.hide-after-inactive-ms = 5000;
 
-  configTemplate = builtins.readFile ./config.kdl;
-  configRendered =
-    builtins.replaceStrings
-      [
-        "{{border-radius}}"
-        "{{blur}}"
-      ]
-      [
-        (toString theme.border-radius)
-        (lib.boolToString theme.blur)
-      ]
-      configTemplate;
+      _children = [
+        { spawn-at-startup = [ "niriusd" ]; }
+        { spawn-at-startup = "asahi-fixes"; }
 
-  configFile = pkgs.writeText "config.kdl" configRendered;
-  colorsFile = pkgs.writeText "colors.kdl" colorsRendered;
+        { workspace._args = [ "browser" ]; }
+        { workspace._args = [ "dev" ]; }
+        { workspace._args = [ "media" ]; }
+        { workspace._args = [ "chat" ]; }
+        { workspace._args = [ "gaming" ]; }
 
-  validatedConfig = pkgs.runCommand "niri-config-checked" { nativeBuildInputs = [ pkgs.niri ]; } ''
-    mkdir $out
-    cp ${configFile} $out/config.kdl
-    cp ${colorsFile} $out/colors.kdl
-    niri validate --config $out/config.kdl
-  '';
-in
-{
-  xdg.configFile = {
-    "niri/config.kdl".source = "${validatedConfig}/config.kdl";
-    "niri/colors.kdl".source = "${validatedConfig}/colors.kdl";
+        {
+          output = {
+            _args = [ "HDMI-A-1" ];
+          };
+        }
+        {
+          output = {
+            _args = [ "eDP-1" ];
+            scale = 1.8;
+          };
+        }
+      ];
+
+      input = {
+        keyboard = {
+          xkb = {
+            layout = "us";
+            variant = "colemak_dh_iso";
+            options = "caps:escape";
+          };
+        };
+        touchpad = {
+          dwt = { };
+          natural-scroll = { };
+          accel-speed = 0.1;
+        };
+      };
+
+      layout = {
+        gaps = 5;
+        center-focused-column = "never";
+        default-column-width.proportion = 0.8;
+        always-center-single-column = { };
+        preset-column-widths._children = [
+          { proportion = 0.5; }
+          { proportion = 0.8; }
+        ];
+        preset-window-heights._children = [
+          { proportion = 1.0 / 2.0; }
+          { proportion = 1.0 / 3.0; }
+        ];
+      };
+    };
   };
 }
