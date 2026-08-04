@@ -21,5 +21,8 @@
   ]
   ++ lib.optional desktop ./homelab.nix;
 
-  environment.pathsToLink = [ "share/thumbnailers" ];
+  environment = {
+    pathsToLink = [ "share/thumbnailers" ];
+    localBinInPath = true;
+  };
 }
