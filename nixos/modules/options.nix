@@ -15,13 +15,9 @@ _: {
   };
 
   nixpkgs.config.allowUnfree = true;
-
-  # Set your time zone.
   time.timeZone = "America/Santiago";
-
-  # Required for ddcutil to control ext monitor brightness
+  # Required for ddcutil
   hardware.i2c.enable = true;
-
   # enable swaylock to access pam
   security.pam.services.swaylock = { };
 }
