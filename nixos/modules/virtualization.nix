@@ -17,10 +17,4 @@
     };
   };
 
-  programs.virt-manager.enable = true;
-
-  environment.systemPackages = with pkgs; [
-    # libvirt networking
-    dnsmasq
-  ];
 }

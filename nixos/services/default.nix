@@ -5,7 +5,17 @@
   ...
 }:
 {
+  imports = [
+    ./dns.nix
+    ./keyd.nix
+  ]
+  ++ lib.optional desktop ./homelab.nix;
+
   services = {
+    xserver.xkb = {
+      layout = "us";
+      variant = "colemak_dh_iso";
+    };
     displayManager = {
       ly.enable = true;
       defaultSession = "niri";

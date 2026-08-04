@@ -9,6 +9,7 @@
     niri.enable = true;
     fish.enable = true;
     gamemode.enable = true;
+    virt-manager.enable = true;
     nh = {
       enable = true;
       clean = {
@@ -27,6 +28,8 @@
   };
 
   environment.systemPackages = with pkgs; [
+    # libvirt networking
+    dnsmasq
     # https://wiki.nixos.org/wiki/Thumbnails
     # thumbnails
     f3d
