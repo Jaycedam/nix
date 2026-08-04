@@ -2,17 +2,8 @@
 {
   imports = [
     inputs.apple-silicon.nixosModules.apple-silicon-support
+    ./overlays.nix
     ./hardware-configuration.nix
-  ];
-
-  nixpkgs.overlays = [
-    (final: prev: {
-      ryubing = prev.ryubing.overrideAttrs (old: {
-        makeWrapperArgs = (old.makeWrapperArgs or [ ]) ++ [
-          "--set AVALONIA_GLOBAL_SCALE_FACTOR 2"
-        ];
-      });
-    })
   ];
 
   hardware = {
