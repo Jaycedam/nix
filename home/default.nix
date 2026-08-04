@@ -32,27 +32,8 @@
 
   imports = [
     ../shared/overlays.nix
-    ./stylix
-    ./terminal.nix
-    ./sh.nix
-    ./yazi.nix
-    ./niri
-    ./neovim
+    ./programs
+    ./services
     ./scripts
-    ./fuzzel.nix
-    ./mako.nix
-    ./hypridle.nix
-    ./swaylock.nix
-    ./tmux.nix
-    ./waybar
-    ./programs.nix
-    ./dev.nix
-    ./browser.nix
-    ./desktop-items.nix
-    ./services.nix
-    ./gaming.nix
-    ./beets.nix
-    ./activation.nix
-    ./supersonic
   ];
 }

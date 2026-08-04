@@ -1,13 +1,11 @@
 _: {
   programs.yazi = {
     enable = true;
-
     settings = {
       manager = {
         show_hidden = true;
       };
     };
-
     keymap = {
       mgr.prepend_keymap = [
         {

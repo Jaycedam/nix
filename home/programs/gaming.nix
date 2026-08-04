@@ -10,7 +10,7 @@
       ryubing
       dolphin-emu
       gopher64
-      rpcs3
+      # rpcs3
     ]
     ++ lib.optionals pkgs.stdenv.hostPlatform.isx86_64 [
       pcsx2

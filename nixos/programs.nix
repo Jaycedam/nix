@@ -27,8 +27,6 @@
   };
 
   environment.systemPackages = with pkgs; [
-    xwayland-satellite
-
     # https://wiki.nixos.org/wiki/Thumbnails
     # thumbnails
     f3d

@@ -18,7 +18,7 @@ _: {
     "brave-drive.proton.me__-Default" = {
       name = "Proton Drive";
       exec = "brave-origin --app=https://drive.proton.me";
-      icon = ../assets/icons/proton-drive.svg;
+      icon = ../../assets/icons/proton-drive.svg;
     };
     "brave-www.youtube.com__-Default" = {
       name = "YouTube";
@@ -49,7 +49,7 @@ _: {
     "opencode" = {
       name = "OpenCode";
       exec = "kitty --app-id opencode opencode";
-      icon = ../assets/icons/opencode.svg;
+      icon = ../../assets/icons/opencode.svg;
       noDisplay = true;
     };
   };

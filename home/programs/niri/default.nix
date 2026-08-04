@@ -1,8 +1,12 @@
-_: {
+{ pkgs, ... }: {
   imports = [
     ./colors.nix
     ./binds.nix
     ./rules.nix
+  ];
+
+  home.packages = with pkgs; [
+    xwayland-satellite
   ];
 
   wayland.windowManager.niri = {
