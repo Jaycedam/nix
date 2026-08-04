@@ -1,4 +1,4 @@
-_: {
+{
   nixpkgs.overlays = [
     # gstreamer fix for nautilus, prevents installing the plugins manually
     (final: prev: {

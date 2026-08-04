@@ -1,4 +1,4 @@
-_: {
+{
   services.dnscrypt-proxy = {
     enable = true;
     settings = {

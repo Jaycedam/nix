@@ -1,4 +1,4 @@
-_: {
+{
   nixpkgs.overlays = [
     # fix scaling for ryubing
     (final: prev: {

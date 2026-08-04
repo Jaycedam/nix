@@ -1,4 +1,4 @@
-_: {
+{
   imports = [
     ./mako.nix
     ./polkit.nix
