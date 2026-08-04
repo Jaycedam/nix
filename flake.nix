@@ -30,7 +30,7 @@
       };
       theme = {
         # name for theme file to import in home/stylix/themes/
-        name = "catppuccin-mocha";
+        name = "gruvbox-material-dark-hard";
         border-radius = 0;
         opacity = 1.0;
         blur = true;
