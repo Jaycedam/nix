@@ -3,31 +3,31 @@
     (pkgs.makeDesktopItem {
       name = "brave-open.spotify.com__-Default";
       desktopName = "Spotify";
-      exec = "brave --app=https://open.spotify.com";
+      exec = "brave-origin --app=https://open.spotify.com";
       icon = "spotify";
     })
     (pkgs.makeDesktopItem {
       name = "brave-web.whatsapp.com__-Default";
       desktopName = "WhatsApp";
-      exec = "brave --app=https://web.whatsapp.com";
+      exec = "brave-origin --app=https://web.whatsapp.com";
       icon = "whatsapp";
     })
     (pkgs.makeDesktopItem {
       name = "brave-mail.proton.me__-Default";
       desktopName = "Proton Mail";
-      exec = "brave --app=https://mail.proton.me";
+      exec = "brave-origin --app=https://mail.proton.me";
       icon = "proton-mail";
     })
     (pkgs.makeDesktopItem {
       name = "brave-drive.proton.me__-Default";
       desktopName = "Proton Drive";
-      exec = "brave --app=https://drive.proton.me";
+      exec = "brave-origin --app=https://drive.proton.me";
       icon = ../assets/icons/proton-drive.svg;
     })
     (pkgs.makeDesktopItem {
       name = "brave-www.youtube.com__-Default";
       desktopName = "YouTube";
-      exec = "brave --app=https://www.youtube.com";
+      exec = "brave-origin --app=https://www.youtube.com";
       icon = "youtube";
     })
     (pkgs.makeDesktopItem {
