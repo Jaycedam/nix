@@ -1,4 +1,4 @@
-_: {
+{
   xdg.desktopEntries = {
     "brave-open.spotify.com__-Default" = {
       name = "Spotify";

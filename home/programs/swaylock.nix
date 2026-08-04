@@ -1,4 +1,4 @@
-_: {
+{
   programs.swaylock = {
     enable = true;
     settings = {

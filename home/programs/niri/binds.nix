@@ -1,4 +1,4 @@
-_: {
+{
   wayland.windowManager.niri.settings.binds = {
     # niri
     "Mod+Shift+Slash"."show-hotkey-overlay" = { };
@@ -216,8 +216,6 @@ _: {
       "spawn" = [
         "kitten"
         "quick-access-terminal"
-        "tmux"
-        "a"
       ];
     };
     "Mod+G" = {
