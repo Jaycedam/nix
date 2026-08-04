@@ -5,6 +5,10 @@ let
     "antigravity-cli"
     "wpaperd" # set cmd is on 1.3.0
     "grok-build"
+    "neovim"
+    "codex"
+    "opencode"
+    "brave-origin"
   ];
 in
 {

@@ -1,19 +1,17 @@
 { pkgs, ... }: {
   environment.systemPackages = with pkgs; [
-    # previously programs.<x>.enable
-    lazygit
+    # ai
     antigravity-cli
     codex
-    claude-code
-    gh
-    git
-    git-lfs
+    grok-build
     opencode
 
     # tools
-    android-tools
     tree-sitter
-    grok-build
+    lazygit
+    gh
+    git
+    git-lfs
 
     # Go
     go

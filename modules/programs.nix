@@ -53,7 +53,7 @@
     parallel
     ripgrep
     stow
-    tldr
+    tealdeer
     tmux
     trash-cli
     unrar
