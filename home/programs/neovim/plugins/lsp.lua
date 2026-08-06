@@ -16,4 +16,4 @@ vim.lsp.enable("cssls")
 vim.lsp.enable("marksman")
 vim.lsp.enable("taplo")
 vim.lsp.enable("yamlls")
-vim.lsp.enable("nil_ls") -- nix lsp
+vim.lsp.enable("nixd")

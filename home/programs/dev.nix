@@ -1,6 +1,7 @@
 {pkgs, ...}: {
   programs = {
     lazygit.enable = true;
+    devenv.enable = true;
     antigravity-cli.enable = true;
     codex.enable = true;
     gh.enable = true;
@@ -87,7 +88,7 @@
     yaml-language-server
 
     # Nix
-    nil
+    nixd
     nixfmt
     alejandra
     statix
