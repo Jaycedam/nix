@@ -3,8 +3,7 @@
   inputs,
   host,
   ...
-}:
-{
+}: {
   imports = [
     inputs.apple-silicon.nixosModules.apple-silicon-support
     ./overlays.nix

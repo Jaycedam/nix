@@ -1,16 +1,15 @@
-{ config, ... }:
-{
+{config, ...}: {
   wayland.windowManager.niri.settings = with config.lib.stylix.colors.withHashtag; {
     layout = {
       background-color = base00;
       focus-ring = {
-        off = { };
+        off = {};
         active-color = base0D;
         inactive-color = base01;
         urgent-color = base08;
       };
       border = {
-        on = { };
+        on = {};
         width = 3;
         active-color = base0D;
         inactive-color = base01;

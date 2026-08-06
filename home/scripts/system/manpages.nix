@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-
+{pkgs, ...}:
 pkgs.writeShellApplication {
   name = "manpages";
   runtimeInputs = with pkgs; [

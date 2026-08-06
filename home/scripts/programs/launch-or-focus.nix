@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-
+{pkgs, ...}:
 pkgs.writeShellApplication {
   name = "launch-or-focus";
   runtimeInputs = with pkgs; [

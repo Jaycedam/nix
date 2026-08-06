@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-
+{pkgs, ...}:
 pkgs.writeShellApplication {
   name = "tmux-sessions";
   runtimeInputs = with pkgs; [

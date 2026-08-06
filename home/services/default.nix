@@ -15,5 +15,4 @@
       tray.enable = true;
     };
   };
-
 }

@@ -26,7 +26,7 @@ require("conform").setup({
 		css = { "oxfmt" },
 		scss = { "oxfmt" },
 		markdown = { "oxfmt" },
-		nix = { "nixfmt" },
+		nix = { "alejandra", "nixfmt", stop_after_first = true },
 	},
 	format_on_save = {
 		-- These options will be passed to conform.format()

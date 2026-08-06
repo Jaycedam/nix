@@ -1,4 +1,8 @@
-{ config, user, ... }: {
+{
+  config,
+  user,
+  ...
+}: {
   nixpkgs.config.allowUnfree = true;
   fonts.fontconfig.enable = true;
 
@@ -7,7 +11,7 @@
     username = user;
     homeDirectory = "/home/${user}";
     pointerCursor.enable = true;
-    sessionPath = [ "$HOME/.local/bin" ];
+    sessionPath = ["$HOME/.local/bin"];
     sessionVariables = {
       EDITOR = "nvim";
       TERMINAL = "kitty";

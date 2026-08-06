@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{pkgs, ...}: {
   programs = {
     lazygit.enable = true;
     antigravity-cli.enable = true;
@@ -89,6 +89,7 @@
     # Nix
     nil
     nixfmt
+    alejandra
     statix
 
     # Django

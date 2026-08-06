@@ -3,8 +3,7 @@
   theme,
   inputs,
   ...
-}:
-{
+}: {
   imports = [
     inputs.stylix.homeModules.stylix
     ./themes/${theme.name}.nix
