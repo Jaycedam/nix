@@ -17,7 +17,7 @@
     consoleLogLevel = 0;
     initrd.verbose = false;
     initrd.systemd.enable = true; # luks gui support
-    kernelModules = [ "ntsync" ];
+    kernelModules = ["ntsync"];
     kernelParams = [
       "quiet"
       "splash"

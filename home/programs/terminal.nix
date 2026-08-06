@@ -1,4 +1,4 @@
-{ theme, ... }: {
+{theme, ...}: {
   programs = {
     kitty = {
       enable = true;
@@ -6,7 +6,7 @@
       settings = {
         cursor_trail = 1;
         tab_bar_edge = "top";
-        background_blur = if theme.blur then 1 else 0;
+        background_blur = 1;
       };
       quickAccessTerminalConfig = {
         background_opacity = theme.opacity;
@@ -28,6 +28,5 @@
         mouse-hide-while-typing = "true";
       };
     };
-
   };
 }

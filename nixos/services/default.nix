@@ -3,13 +3,13 @@
   desktop,
   user,
   ...
-}:
-{
-  imports = [
-    ./dns.nix
-    ./keyd.nix
-  ]
-  ++ lib.optional desktop ./homelab.nix;
+}: {
+  imports =
+    [
+      ./dns.nix
+      ./keyd.nix
+    ]
+    ++ lib.optional desktop ./homelab.nix;
 
   services = {
     xserver.xkb = {

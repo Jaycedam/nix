@@ -1,10 +1,8 @@
-{ pkgs, ... }:
-let
+{pkgs, ...}: let
   monitorOn = "niri msg action power-on-monitors";
   monitorOff = "niri msg action power-off-monitors";
   lockCmd = "${pkgs.swaylock}/bin/swaylock";
-in
-{
+in {
   services.hypridle = {
     enable = true;
     settings = {

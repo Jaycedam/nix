@@ -1,5 +1,8 @@
-{ config, theme, ... }:
 {
+  config,
+  theme,
+  ...
+}: {
   programs.fuzzel = {
     enable = true;
     settings = {

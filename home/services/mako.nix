@@ -3,8 +3,7 @@
   lib,
   theme,
   ...
-}:
-{
+}: {
   services.mako = {
     enable = true;
     settings = {

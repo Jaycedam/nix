@@ -3,13 +3,11 @@
   lib,
   theme,
   ...
-}:
-let
+}: let
   inherit (config.lib.stylix.colors) base00-dec-r base00-dec-g base00-dec-b;
   to255 = v: toString (builtins.floor (builtins.mul (builtins.fromJSON v) 255));
   bg_alpha = "rgba(${to255 base00-dec-r}, ${to255 base00-dec-g}, ${to255 base00-dec-b}, ${toString theme.opacity})";
-in
-{
+in {
   stylix.targets.waybar.addCss = false;
   programs.waybar.style = lib.mkAfter ''
     * {

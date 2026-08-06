@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{pkgs, ...}: {
   stylix = {
     base16Scheme = {
       base00 = "#282828";
