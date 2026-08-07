@@ -3,7 +3,7 @@
     {
       layer-rule._children = [
         {match._props.namespace = "^launcher$";}
-        {geometry-corner-radius = 1;}
+        {geometry-corner-radius = 0;}
         {shadow.on = {};}
         {
           background-effect = {
@@ -35,7 +35,7 @@
     # rounded corners
     {
       window-rule._children = [
-        {geometry-corner-radius = 1;}
+        {geometry-corner-radius = 0;}
         {clip-to-geometry = true;}
       ];
     }

@@ -10,7 +10,7 @@
       };
       border = {
         on = {};
-        width = 3;
+        width = 2;
         active-color = base0D;
         inactive-color = base01;
         urgent-color = base08;

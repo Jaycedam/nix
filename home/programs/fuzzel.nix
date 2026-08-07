@@ -3,14 +3,14 @@
     enable = true;
     settings = {
       main = {
-        terminal = "kitty -1 --app-id '{cmd}' -T '{cmd}' {cmd}";
+        terminal = "kitty --app-id '{cmd}' -T '{cmd}' {cmd}";
         width = 60;
         lines = 20;
       };
       border = {
         width = 2;
-        radius = 1;
-        selection-radius = 1;
+        radius = 0;
+        selection-radius = 0;
       };
     };
   };

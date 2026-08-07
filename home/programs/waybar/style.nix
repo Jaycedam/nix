@@ -9,7 +9,7 @@
       font-family: "JetBrains Mono", "Symbols Nerd Font Mono";
       font-size: ${toString config.stylix.fonts.sizes.desktop}pt;
       font-weight: bold;
-      border-radius: ${toString 1};
+      border-radius: ${toString 0};
       min-height: 0;
       min-width: 0;
       padding: 0;
