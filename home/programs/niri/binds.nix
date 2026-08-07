@@ -176,8 +176,9 @@
       _props.hotkey-overlay-title = "Neovim";
       "spawn" = [
         "launch-or-focus"
-        "--tui"
+        "--id"
         "neovim"
+        "dmenu-neovim"
       ];
     };
     "Mod+E" = {

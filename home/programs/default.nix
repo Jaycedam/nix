@@ -1,6 +1,6 @@
 { pkgs, ... }: {
   imports = [
-    ./neovim
+    ./nixvim
     ./niri
     ./stylix
     ./supersonic

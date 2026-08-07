@@ -7,6 +7,7 @@
     waybar.url = "github:Alexays/Waybar/456f78ecb1cf16e5397a29691e69fc2906843387";
     home-manager.url = "github:nix-community/home-manager";
     stylix.url = "github:nix-community/stylix";
+    nixvim.url = "github:nix-community/nixvim";
   };
 
   nixConfig = {
