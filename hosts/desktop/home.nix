@@ -3,5 +3,10 @@
     ../../home/default.nix
   ];
 
-  # todo: add userSettings
+  userSettings = {
+    theme = {
+      name = "catppuccin-mocha";
+      opacity = 0.9;
+    };
+  };
 }
