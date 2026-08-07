@@ -35,7 +35,7 @@
         {
           output = {
             _args = ["eDP-1"];
-            scale = 1.8;
+            scale = 1.7;
           };
         }
       ];
