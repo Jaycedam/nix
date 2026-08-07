@@ -3,6 +3,8 @@ require("colorizer").setup()
 require("mini.surround").setup()
 require("mini.icons").setup()
 require("mini.diff").setup()
+require("mini.git").setup()
+require("mini.statusline").setup()
 require("mini.pairs").setup()
 require("which-key").setup({ preset = "helix", delay = 500 })
 

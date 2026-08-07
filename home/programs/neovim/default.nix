@@ -16,6 +16,8 @@ in
       fzf-lua
       mini-diff
       mini-icons
+      mini-git
+      mini-statusline
       mini-pairs
       mini-surround
       neogit
@@ -31,7 +33,6 @@ in
       ${lua ./config/options.lua}
       ${lua ./config/keymaps.lua}
       ${lua ./config/autocmd.lua}
-      ${lua ./config/statusline.lua}
       ${lua ./plugins/misc.lua}
       ${lua ./plugins/blink.lua}
       ${lua ./plugins/conform.lua}
