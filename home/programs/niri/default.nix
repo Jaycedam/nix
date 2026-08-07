@@ -13,8 +13,6 @@
     enable = true;
     settings = {
       prefer-no-csd = true;
-      screenshot-path = "~/Pictures/Screenshots/screenshot %Y-%m-%d %H-%M-%S.png";
-
       _children = [
         { spawn-at-startup = [ "niriusd" ]; }
         { spawn-at-startup = "asahi-fixes"; }

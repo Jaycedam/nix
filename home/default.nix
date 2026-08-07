@@ -1,11 +1,17 @@
 {
-  config,
   lib,
   pkgs,
   user,
   ...
 }:
 {
+  imports = [
+    ../shared/overlays.nix
+    ./programs
+    ./services
+    ./scripts
+  ];
+
   nixpkgs.config.allowUnfree = true;
   fonts.fontconfig.enable = true;
 
@@ -38,16 +44,6 @@
     userDirs = {
       enable = true;
       createDirectories = true;
-      extraConfig = {
-        WALLPAPERS = "${config.home.homeDirectory}/Pictures/Wallpapers";
-      };
     };
   };
-
-  imports = [
-    ../shared/overlays.nix
-    ./programs
-    ./services
-    ./scripts
-  ];
 }

@@ -9,6 +9,10 @@ let
   theme = import (./themes + "/${config.userSettings.theme.name}.nix");
 in
 {
+  imports = [
+    inputs.stylix.homeModules.stylix
+  ];
+
   options.userSettings.theme = {
     name = lib.mkOption {
       type = lib.types.str;
@@ -21,10 +25,6 @@ in
       description = "Opacity applied to applications, terminal, popups and desktop";
     };
   };
-
-  imports = [
-    inputs.stylix.homeModules.stylix
-  ];
 
   config.stylix = {
     enable = true;
