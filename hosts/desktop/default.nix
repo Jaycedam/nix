@@ -1,14 +1,10 @@
-{
-  pkgs,
-  host,
-  ...
-}: {
+{pkgs, ...}: {
   imports = [
     ./hardware-configuration.nix
     ./filesystem.nix
+    ../../nixos
   ];
 
-  networking.hostName = host;
   # Load amdgpu in initrd — fixes low resolution in boot screen / Plymouth
   hardware.amdgpu.initrd.enable = true;
 
@@ -23,6 +19,7 @@
     }
   ];
 
+  networking.hostName = "desktop";
   # don't change unless you know what you're doing
   system.stateVersion = "25.11";
 }

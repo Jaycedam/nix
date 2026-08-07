@@ -1,15 +1,13 @@
 {
   lib,
-  desktop,
   user,
   ...
 }: {
-  imports =
-    [
-      ./dns.nix
-      ./keyd.nix
-    ]
-    ++ lib.optional desktop ./homelab.nix;
+  imports = [
+    ./dns.nix
+    ./keyd.nix
+    # ./homelab.nix #todo: fix import with opt
+  ];
 
   services = {
     xserver.xkb = {
@@ -37,8 +35,9 @@
       enable = true;
       settings.dynamic_tuning = true;
     };
-    sunshine = lib.mkIf desktop {
-      enable = true;
+    # todo: fix with opt
+    sunshine = {
+      enable = false;
       openFirewall = true;
       capSysAdmin = true; # KMS/DRM capture, no portal needed
     };

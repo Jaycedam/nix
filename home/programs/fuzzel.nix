@@ -1,8 +1,4 @@
-{
-  config,
-  theme,
-  ...
-}: {
+{config, ...}: {
   programs.fuzzel = {
     enable = true;
     settings = {
@@ -13,8 +9,8 @@
       };
       border = {
         width = 2;
-        radius = theme.border-radius;
-        selection-radius = theme.border-radius;
+        radius = 1;
+        selection-radius = 1;
       };
     };
   };

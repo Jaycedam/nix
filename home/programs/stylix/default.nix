@@ -1,9 +1,13 @@
 {
   pkgs,
-  theme,
   inputs,
   ...
-}: {
+}: let
+  theme = {
+    name = "gruvbox-material-dark-hard";
+    opacity = 1;
+  };
+in {
   imports = [
     inputs.stylix.homeModules.stylix
     ./themes/${theme.name}.nix

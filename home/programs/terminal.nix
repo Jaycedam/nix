@@ -1,4 +1,4 @@
-{theme, ...}: {
+{
   programs = {
     kitty = {
       enable = true;
@@ -9,7 +9,7 @@
         background_blur = 1;
       };
       quickAccessTerminalConfig = {
-        background_opacity = theme.opacity;
+        background_opacity = 1; # todo: fix with opts
       };
       actionAliases = {
         launch_window = "launch --cwd current --type os-window";

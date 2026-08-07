@@ -1,9 +1,9 @@
-{theme, ...}: {
+{
   wayland.windowManager.niri.settings._children = [
     {
       layer-rule._children = [
         {match._props.namespace = "^launcher$";}
-        {geometry-corner-radius = theme.border-radius;}
+        {geometry-corner-radius = 1;}
         {shadow.on = {};}
         {
           background-effect = {
@@ -35,7 +35,7 @@
     # rounded corners
     {
       window-rule._children = [
-        {geometry-corner-radius = theme.border-radius;}
+        {geometry-corner-radius = 1;}
         {clip-to-geometry = true;}
       ];
     }
