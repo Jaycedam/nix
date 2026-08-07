@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{ pkgs, ... }: {
   programs = {
     lazygit.enable = true;
     devenv.enable = true;
@@ -90,7 +90,6 @@
     # Nix
     nixd
     nixfmt
-    alejandra
     statix
 
     # Django

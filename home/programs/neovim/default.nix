@@ -1,6 +1,8 @@
-{pkgs, ...}: let
+{ pkgs, ... }:
+let
   lua = builtins.readFile;
-in {
+in
+{
   programs.neovim = {
     enable = true;
     viAlias = true;

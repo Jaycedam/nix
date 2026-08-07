@@ -2,7 +2,8 @@
   lib,
   user,
   ...
-}: {
+}:
+{
   imports = [
     ./dns.nix
     ./homelab.nix

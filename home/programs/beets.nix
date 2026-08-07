@@ -2,10 +2,11 @@
   lib,
   pkgs,
   ...
-}: {
+}:
+{
   # generate fish completions for beets
   # https://beets.readthedocs.io/en/stable/plugins/fish.html
-  home.activation.beetsFishCompletions = lib.hm.dag.entryAfter ["writeBoundary"] ''
+  home.activation.beetsFishCompletions = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
     ${pkgs.beets}/bin/beet fish
   '';
 

@@ -4,9 +4,11 @@
   inputs,
   lib,
   ...
-}: let
+}:
+let
   theme = import (./themes + "/${config.userSettings.theme.name}.nix");
-in {
+in
+{
   options.userSettings.theme = {
     name = lib.mkOption {
       type = lib.types.str;
@@ -31,7 +33,7 @@ in {
 
     base16Scheme = theme.base16Scheme;
     polarity = theme.polarity;
-    image = pkgs.fetchurl {inherit (theme.image) url hash;};
+    image = pkgs.fetchurl { inherit (theme.image) url hash; };
 
     opacity = {
       applications = config.userSettings.theme.opacity;

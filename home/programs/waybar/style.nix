@@ -2,7 +2,8 @@
   config,
   lib,
   ...
-}: {
+}:
+{
   stylix.targets.waybar.addCss = false;
   programs.waybar.style = lib.mkAfter ''
     * {

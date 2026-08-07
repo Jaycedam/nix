@@ -2,7 +2,8 @@
   config,
   lib,
   ...
-}: {
+}:
+{
   services.mako = {
     enable = true;
     settings = {

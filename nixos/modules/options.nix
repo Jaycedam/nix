@@ -19,5 +19,5 @@
   # Required for ddcutil
   hardware.i2c.enable = true;
   # enable swaylock to access pam
-  security.pam.services.swaylock = {};
+  security.pam.services.swaylock = { };
 }

@@ -2,7 +2,8 @@
   user,
   pkgs,
   ...
-}: {
+}:
+{
   users.users.${user} = {
     isNormalUser = true;
     shell = pkgs.fish;

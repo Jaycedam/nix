@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{ pkgs, ... }: {
   imports = [
     ./boot.nix
     ./network.nix
@@ -14,7 +14,7 @@
   };
 
   environment = {
-    pathsToLink = ["share/thumbnailers"];
+    pathsToLink = [ "share/thumbnailers" ];
     # fix for internal keyboards blocking touchpad 'disable-while-typing' action, when using keyd
     etc."libinput/local-overrides.quirks".text = pkgs.lib.mkForce ''
       [Serial Keyboards]

@@ -1,4 +1,4 @@
-{user, ...}: {
+{ user, ... }: {
   # mounts
   fileSystems."/mnt/ssd" = {
     device = "/dev/disk/by-uuid/208fa710-4554-4c04-9b2a-a7dd49cc4181";

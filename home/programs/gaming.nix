@@ -2,8 +2,10 @@
   pkgs,
   lib,
   ...
-}: {
-  home.packages = with pkgs;
+}:
+{
+  home.packages =
+    with pkgs;
     [
       mangohud
       duckstation

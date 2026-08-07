@@ -3,7 +3,8 @@
   lib,
   user,
   ...
-}: {
+}:
+{
   programs = {
     niri.enable = true;
     fish.enable = true;

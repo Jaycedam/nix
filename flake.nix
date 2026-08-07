@@ -10,43 +10,48 @@
   };
 
   nixConfig = {
-    extra-substituters = ["https://nix-community.cachix.org"];
-    extra-trusted-public-keys = ["nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="];
+    extra-substituters = [ "https://nix-community.cachix.org" ];
+    extra-trusted-public-keys = [
+      "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+    ];
   };
 
-  outputs = {nixpkgs, ...} @ inputs: let
-    systems = {
-      linux-arm = "aarch64-linux";
-      linux = "x86_64-linux";
-    };
+  outputs =
+    { nixpkgs, ... }@inputs:
+    let
+      systems = {
+        linux-arm = "aarch64-linux";
+        linux = "x86_64-linux";
+      };
 
-    user = "jay";
-    commonArgs = {inherit inputs user;};
-  in {
-    nixosConfigurations = {
-      desktop = nixpkgs.lib.nixosSystem {
-        system = systems.linux;
-        specialArgs = commonArgs;
-        modules = [./hosts/desktop];
+      user = "jay";
+      commonArgs = { inherit inputs user; };
+    in
+    {
+      nixosConfigurations = {
+        desktop = nixpkgs.lib.nixosSystem {
+          system = systems.linux;
+          specialArgs = commonArgs;
+          modules = [ ./hosts/desktop ];
+        };
+        asahi = nixpkgs.lib.nixosSystem {
+          system = systems.linux-arm;
+          specialArgs = commonArgs;
+          modules = [ ./hosts/asahi ];
+        };
       };
-      asahi = nixpkgs.lib.nixosSystem {
-        system = systems.linux-arm;
-        specialArgs = commonArgs;
-        modules = [./hosts/asahi];
-      };
-    };
 
-    homeConfigurations = {
-      "${user}@desktop" = inputs.home-manager.lib.homeManagerConfiguration {
-        pkgs = nixpkgs.legacyPackages.${systems.linux};
-        extraSpecialArgs = commonArgs;
-        modules = [./hosts/desktop/home.nix];
-      };
-      "${user}@asahi" = inputs.home-manager.lib.homeManagerConfiguration {
-        pkgs = nixpkgs.legacyPackages.${systems.linux-arm};
-        extraSpecialArgs = commonArgs;
-        modules = [./hosts/asahi/home.nix];
+      homeConfigurations = {
+        "${user}@desktop" = inputs.home-manager.lib.homeManagerConfiguration {
+          pkgs = nixpkgs.legacyPackages.${systems.linux};
+          extraSpecialArgs = commonArgs;
+          modules = [ ./hosts/desktop/home.nix ];
+        };
+        "${user}@asahi" = inputs.home-manager.lib.homeManagerConfiguration {
+          pkgs = nixpkgs.legacyPackages.${systems.linux-arm};
+          extraSpecialArgs = commonArgs;
+          modules = [ ./hosts/asahi/home.nix ];
+        };
       };
     };
-  };
 }
