@@ -15,24 +15,23 @@
   };
 
   outputs = {nixpkgs, ...} @ inputs: let
-    user = "jay";
-    commonArgs = {inherit inputs user;};
-
     systems = {
       linux-arm = "aarch64-linux";
       linux = "x86_64-linux";
     };
+
+    user = "jay";
+    commonArgs = {inherit inputs user;};
   in {
     nixosConfigurations = {
       desktop = nixpkgs.lib.nixosSystem {
         system = systems.linux;
-        specialArgs = {inherit commonArgs;};
+        specialArgs = commonArgs;
         modules = [./hosts/desktop];
       };
-
       asahi = nixpkgs.lib.nixosSystem {
         system = systems.linux-arm;
-        specialArgs = {inherit commonArgs;};
+        specialArgs = commonArgs;
         modules = [./hosts/asahi];
       };
     };
@@ -40,13 +39,12 @@
     homeConfigurations = {
       "${user}@desktop" = inputs.home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.${systems.linux};
-        extraSpecialArgs = {inherit commonArgs;};
+        extraSpecialArgs = commonArgs;
         modules = [./hosts/desktop/home.nix];
       };
-
       "${user}@asahi" = inputs.home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.${systems.linux-arm};
-        extraSpecialArgs = {inherit commonArgs;};
+        extraSpecialArgs = commonArgs;
         modules = [./hosts/asahi/home.nix];
       };
     };
