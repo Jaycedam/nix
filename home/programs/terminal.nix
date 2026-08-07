@@ -1,4 +1,4 @@
-{theme, ...}: {
+{config, ...}: {
   programs = {
     kitty = {
       enable = true;
@@ -9,7 +9,7 @@
         background_blur = 1;
       };
       quickAccessTerminalConfig = {
-        background_opacity = theme.opacity;
+        background_opacity = config.stylix.opacity.terminal;
       };
       actionAliases = {
         launch_window = "launch --cwd current --type os-window";

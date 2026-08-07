@@ -1,15 +1,13 @@
 {
   lib,
-  desktop,
   user,
   ...
 }: {
-  imports =
-    [
-      ./dns.nix
-      ./keyd.nix
-    ]
-    ++ lib.optional desktop ./homelab.nix;
+  imports = [
+    ./dns.nix
+    ./homelab.nix
+    ./keyd.nix
+  ];
 
   services = {
     xserver.xkb = {
@@ -24,7 +22,7 @@
         user = user;
       };
     };
-    userdbd.enable = lib.mkDefault false; # avoids systemd's age verification change
+    userdbd.enable = lib.mkForce false; # avoids systemd's age verification change
     gvfs.enable = true; # needed for nautilus
     udisks2.enable = true; # this is necessary for udiskie to work
     hardware.openrgb.enable = true;
@@ -37,8 +35,9 @@
       enable = true;
       settings.dynamic_tuning = true;
     };
-    sunshine = lib.mkIf desktop {
-      enable = true;
+    # todo: fix with opt
+    sunshine = {
+      enable = false;
       openFirewall = true;
       capSysAdmin = true; # KMS/DRM capture, no portal needed
     };

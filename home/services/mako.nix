@@ -1,7 +1,6 @@
 {
   config,
   lib,
-  theme,
   ...
 }: {
   services.mako = {
@@ -10,7 +9,7 @@
       width = 400;
       padding = 10;
       border-size = 2;
-      border-radius = theme.border-radius;
+      border-radius = 1;
       layer = "overlay";
       # set opacity to 1 until ext-background-effect-v1 is added https://github.com/emersion/mako/issues/631
       background-color = lib.mkForce (config.lib.stylix.colors.withHashtag.base00 + "FF");

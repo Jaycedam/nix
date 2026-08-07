@@ -1,13 +1,13 @@
 {
   lib,
   inputs,
-  host,
   ...
 }: {
   imports = [
     inputs.apple-silicon.nixosModules.apple-silicon-support
     ./overlays.nix
     ./hardware-configuration.nix
+    ../../nixos
   ];
 
   hardware = {
@@ -24,6 +24,6 @@
     }
   ];
 
-  networking.hostName = host;
+  networking.hostName = "asahi";
   system.stateVersion = "25.05";
 }

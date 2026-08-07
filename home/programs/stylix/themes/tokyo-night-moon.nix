@@ -1,24 +1,25 @@
 {
-  stylix = {
-    base16Scheme = {
-      base00 = "#222436";
-      base01 = "#1e2030";
-      base02 = "#2d3f76";
-      base03 = "#3b4261";
-      base04 = "#636da6";
-      base05 = "#828bb8";
-      base06 = "#aeb4d1";
-      base07 = "#c8d3f5";
-      base08 = "#ff757f";
-      base09 = "#ffc777";
-      base0A = "#ffdf77";
-      base0B = "#c3e88d";
-      base0C = "#86e1fc";
-      base0D = "#82aaff";
-      base0E = "#fca7ea";
-      base0F = "#c53b53";
-    };
-    polarity = "dark";
-    image = ../../../assets/wallpaper.jpg;
+  polarity = "dark";
+  base16Scheme = {
+    base00 = "#222436";
+    base01 = "#1e2030";
+    base02 = "#2d3f76";
+    base03 = "#3b4261";
+    base04 = "#636da6";
+    base05 = "#828bb8";
+    base06 = "#aeb4d1";
+    base07 = "#c8d3f5";
+    base08 = "#ff757f";
+    base09 = "#ffc777";
+    base0A = "#ffdf77";
+    base0B = "#c3e88d";
+    base0C = "#86e1fc";
+    base0D = "#82aaff";
+    base0E = "#fca7ea";
+    base0F = "#c53b53";
+  };
+  image = {
+    url = "https://github.com/AngelJumbo/gruvbox-wallpapers/blob/main/wallpapers/photography/forest-2.jpg?raw=true";
+    hash = "sha256-RqzCCnn4b5kU7EYgaPF19Gr9I5cZrkEdsTu+wGaaMFI=";
   };
 }
