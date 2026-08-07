@@ -19,6 +19,6 @@
       base0F = "#f265b5";
     };
     polarity = "dark";
-    image = ../../../assets/wallpaper.jpg;
+    image = ../../../../assets/wallpaper.jpg;
   };
 }
