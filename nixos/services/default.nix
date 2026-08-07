@@ -5,8 +5,8 @@
 }: {
   imports = [
     ./dns.nix
+    ./homelab.nix
     ./keyd.nix
-    # ./homelab.nix #todo: fix import with opt
   ];
 
   services = {
