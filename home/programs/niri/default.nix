@@ -12,7 +12,9 @@
   wayland.windowManager.niri = {
     enable = true;
     settings = {
+      blur.offset = 10; # default 3
       prefer-no-csd = true;
+
       _children = [
         { spawn-at-startup = [ "niriusd" ]; }
         { spawn-at-startup = "asahi-fixes"; }
