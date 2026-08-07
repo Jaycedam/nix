@@ -1,27 +1,25 @@
-{pkgs, ...}: {
-  stylix = {
-    base16Scheme = {
-      base00 = "#32302f";
-      base01 = "#3c3836";
-      base02 = "#5a524c";
-      base03 = "#7c6f64";
-      base04 = "#bdae93";
-      base05 = "#ddc7a1";
-      base06 = "#ebdbb2";
-      base07 = "#fbf1c7";
-      base08 = "#ea6962";
-      base09 = "#e78a4e";
-      base0A = "#d8a657";
-      base0B = "#a9b665";
-      base0C = "#89b482";
-      base0D = "#7daea3";
-      base0E = "#d3869b";
-      base0F = "#bd6f3e";
-    };
-    polarity = "dark";
-    image = pkgs.fetchurl {
-      url = "https://github.com/AngelJumbo/gruvbox-wallpapers/blob/main/wallpapers/photography/forest-2.jpg?raw=true";
-      hash = "sha256-RqzCCnn4b5kU7EYgaPF19Gr9I5cZrkEdsTu+wGaaMFI=";
-    };
+{
+  polarity = "dark";
+  base16Scheme = {
+    base00 = "#32302f";
+    base01 = "#3c3836";
+    base02 = "#5a524c";
+    base03 = "#7c6f64";
+    base04 = "#bdae93";
+    base05 = "#ddc7a1";
+    base06 = "#ebdbb2";
+    base07 = "#fbf1c7";
+    base08 = "#ea6962";
+    base09 = "#e78a4e";
+    base0A = "#d8a657";
+    base0B = "#a9b665";
+    base0C = "#89b482";
+    base0D = "#7daea3";
+    base0E = "#d3869b";
+    base0F = "#bd6f3e";
+  };
+  image = {
+    url = "https://github.com/AngelJumbo/gruvbox-wallpapers/blob/main/wallpapers/photography/forest-2.jpg?raw=true";
+    hash = "sha256-RqzCCnn4b5kU7EYgaPF19Gr9I5cZrkEdsTu+wGaaMFI=";
   };
 }
