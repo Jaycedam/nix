@@ -17,6 +17,15 @@ vim.api.nvim_create_autocmd("VimEnter", {
 	end,
 })
 
+-- reload config on SIGUSR1 (sent by home activation on switch)
+vim.api.nvim_create_autocmd("Signal", {
+	pattern = "SIGUSR1",
+	group = vim.api.nvim_create_augroup("reload-config", { clear = true }),
+	callback = function()
+		vim.cmd("source $MYVIMRC")
+	end,
+})
+
 -- markdown task checkboxes
 vim.api.nvim_create_autocmd("FileType", {
 	pattern = "markdown",

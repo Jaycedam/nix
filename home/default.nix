@@ -35,6 +35,7 @@
     reloadRunningApps = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
       run --silence ${pkgs.procps}/bin/pkill -USR2 opencode || true
       run --silence ${pkgs.procps}/bin/pkill -SIGUSR2 btop || true
+      run --silence ${pkgs.procps}/bin/pkill -USR1 nvim || true
     '';
   };
 
