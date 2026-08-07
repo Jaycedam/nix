@@ -22,7 +22,7 @@
         user = user;
       };
     };
-    userdbd.enable = lib.mkDefault false; # avoids systemd's age verification change
+    userdbd.enable = lib.mkForce false; # avoids systemd's age verification change
     gvfs.enable = true; # needed for nautilus
     udisks2.enable = true; # this is necessary for udiskie to work
     hardware.openrgb.enable = true;
