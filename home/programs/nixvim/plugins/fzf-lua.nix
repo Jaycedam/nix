@@ -1,8 +1,5 @@
 let
-  mkKeymap = (import ../lib/binds.nix).mkKeymap;
-  fzf = action: {
-    __raw = "function() require('fzf-lua').${action}() end";
-  };
+  mkRawKeymap = (import ../lib/binds.nix).mkRawKeymap;
 in
 {
   plugins.fzf-lua = {
@@ -29,6 +26,13 @@ in
         gutter = "-1";
       };
 
+      actions.files = {
+        __unkeyed-1 = true; # inherit default actions (enter, ctrl-s, alt-q, ...)
+        "ctrl-q" = {
+          __raw = "require('fzf-lua').actions.file_sel_to_qf";
+        };
+      };
+
       keymap = {
         fzf = {
           __unkeyed-1 = true;
@@ -36,6 +40,7 @@ in
           "ctrl-u" = "preview-page-up";
           "ctrl-a" = "select-all";
         };
+
         builtin = {
           __unkeyed-1 = true;
           "<C-d>" = "preview-page-down";
@@ -48,29 +53,55 @@ in
   keymaps = [
     # https://nix-community.github.io/nixvim/keymaps/index.html
     # buffers and files
-    (mkKeymap "n" "<leader>fb" (fzf "buffers") { desc = "Find buffers"; })
-    (mkKeymap "n" "<leader>ff" (fzf "files") { desc = "Find files"; })
+    (mkRawKeymap "n" "<leader>fb" "function() require('fzf-lua').buffers() end" {
+      desc = "Find buffers";
+    })
+    (mkRawKeymap "n" "<leader>ff" "function() require('fzf-lua').files() end" { desc = "Find files"; })
     # search
-    (mkKeymap "n" "<leader>/" (fzf "live_grep_native") { desc = "Grep project"; })
-    (mkKeymap "v" "<leader>/" (fzf "grep_visual") { desc = "Find visual selection"; })
-    (mkKeymap "n" "<leader>fw" (fzf "grep_cword") { desc = "Find word under cursor"; })
-    (mkKeymap "n" "<leader>fW" (fzf "grep_cWORD") { desc = "Find WORD under cursor"; })
-    (mkKeymap "n" "<leader>fz" (fzf "zoxide") { desc = "Find zoxide directory"; })
-    (mkKeymap "n" "<leader>fk" (fzf "keymaps") { desc = "Find keymaps"; })
-    (mkKeymap "n" "<leader>fh" (fzf "helptags") { desc = "Find help"; })
+    (mkRawKeymap "n" "<leader>/" "function() require('fzf-lua').live_grep_native() end" {
+      desc = "Grep project";
+    })
+    (mkRawKeymap "v" "<leader>/" "function() require('fzf-lua').grep_visual() end" {
+      desc = "Find visual selection";
+    })
+    (mkRawKeymap "n" "<leader>fw" "function() require('fzf-lua').grep_cword() end" {
+      desc = "Find word under cursor";
+    })
+    (mkRawKeymap "n" "<leader>fW" "function() require('fzf-lua').grep_cWORD() end" {
+      desc = "Find WORD under cursor";
+    })
+    (mkRawKeymap "n" "<leader>fz" "function() require('fzf-lua').zoxide() end" {
+      desc = "Find zoxide directory";
+    })
+    (mkRawKeymap "n" "<leader>fk" "function() require('fzf-lua').keymaps() end" {
+      desc = "Find keymaps";
+    })
+    (mkRawKeymap "n" "<leader>fh" "function() require('fzf-lua').helptags() end" {
+      desc = "Find help";
+    })
     # LSP keymaps
-    (mkKeymap "n" "<leader>fr" (fzf "lsp_references") { desc = "Find references (LSP)"; })
-    (mkKeymap "n" "<leader>fi" (fzf "lsp_implementations") { desc = "Find implementations (LSP)"; })
-    (mkKeymap "n" "<leader>fD" (fzf "diagnostics_workspace") {
+    (mkRawKeymap "n" "<leader>fr" "function() require('fzf-lua').lsp_references() end" {
+      desc = "Find references (LSP)";
+    })
+    (mkRawKeymap "n" "<leader>fi" "function() require('fzf-lua').lsp_implementations() end" {
+      desc = "Find implementations (LSP)";
+    })
+    (mkRawKeymap "n" "<leader>fD" "function() require('fzf-lua').diagnostics_workspace() end" {
       desc = "Find diagnostics on workspace (LSP)";
     })
-    (mkKeymap "n" "<leader>fd" (fzf "diagnostics_document") {
+    (mkRawKeymap "n" "<leader>fd" "function() require('fzf-lua').diagnostics_document() end" {
       desc = "Find diagnostics on current buffer (LSP)";
     })
-    (mkKeymap "n" "<leader>fs" (fzf "lsp_document_symbols") { desc = "Find document symbols (LSP)"; })
-    (mkKeymap "n" "<leader>fS" (fzf "lsp_workspace_symbols") { desc = "Find workspace symbols (LSP)"; })
-    (mkKeymap "n" "<leader>fa" (fzf "lsp_code_actions") { desc = "Code actions"; })
+    (mkRawKeymap "n" "<leader>fs" "function() require('fzf-lua').lsp_document_symbols() end" {
+      desc = "Find document symbols (LSP)";
+    })
+    (mkRawKeymap "n" "<leader>fS" "function() require('fzf-lua').lsp_workspace_symbols() end" {
+      desc = "Find workspace symbols (LSP)";
+    })
+    (mkRawKeymap "n" "<leader>fa" "function() require('fzf-lua').lsp_code_actions() end" {
+      desc = "Code actions";
+    })
     # Neovim
-    (mkKeymap "n" "<leader>fm" (fzf "marks") { desc = "Find marks"; })
+    (mkRawKeymap "n" "<leader>fm" "function() require('fzf-lua').marks() end" { desc = "Find marks"; })
   ];
 }

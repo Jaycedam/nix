@@ -38,36 +38,6 @@ in
     (mkKeymap "n" "<C-up>" "<C-w>k" { desc = "Move to upper window"; })
     (mkKeymap "n" "<C-right>" "<C-w>l" { desc = "Move to right window"; })
 
-    # center after actions and QoL
-    (mkKeymap "n" "J" "mzJ`z" {
-      silent = true;
-      desc = "Join lines without moving cursor";
-    })
-    (mkKeymap "v" "<" "<gv" {
-      silent = true;
-      desc = "Unindent and keep selection";
-    })
-    (mkKeymap "v" ">" ">gv" {
-      silent = true;
-      desc = "Indent and keep selection";
-    })
-    (mkKeymap "n" "<C-d>" "<C-d>zz" {
-      silent = true;
-      desc = "Move down in buffer with cursor centered";
-    })
-    (mkKeymap "n" "<C-u>" "<C-u>zz" {
-      silent = true;
-      desc = "Move up in buffer with cursor centered";
-    })
-    (mkKeymap "n" "n" "nzzzv" {
-      silent = true;
-      desc = "Next search result cursor centered";
-    })
-    (mkKeymap "n" "N" "Nzzzv" {
-      silent = true;
-      desc = "Previous search result cursor centered";
-    })
-
     # toggle quickfix list
     (mkKeymap "n" "<leader>q" "<cmd>ToggleQuickfix<CR>" { desc = "Toggle Quickfix List"; })
 

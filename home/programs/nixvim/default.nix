@@ -8,6 +8,11 @@
     enable = true;
     viAlias = true;
     vimAlias = true;
+    extraConfigLua = ''
+      require('vim._core.ui2').enable()
+      vim.cmd("packadd nvim.undotree")
+      vim.keymap.set("n", "<leader>u", require("undotree").open, { desc = "Toggle undotree" })
+    '';
     imports = [
       ./opts.nix
       ./commands.nix

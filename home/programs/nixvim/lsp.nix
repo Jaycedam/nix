@@ -1,4 +1,9 @@
+{ pkgs, ... }:
 {
+  extraPackages = with pkgs; [
+    shellcheck # bashls loads it automatically
+  ];
+
   lsp.servers = {
     html.enable = true;
     cssls.enable = true;
