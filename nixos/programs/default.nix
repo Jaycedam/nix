@@ -16,7 +16,7 @@
         enable = true;
         extraArgs = "--keep 2";
       };
-      flake = "/home/${user}/Projects/nix";
+      flake = "/home/${user}/Projects/nix-config";
     };
     steam = lib.mkIf pkgs.stdenv.hostPlatform.isx86_64 {
       enable = true;
