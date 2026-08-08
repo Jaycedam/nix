@@ -17,10 +17,6 @@ in
       listener = [
         {
           timeout = 120;
-          on-timeout = lockCmd;
-        }
-        {
-          timeout = 120;
           on-timeout = monitorOff;
           on-resume = monitorOn;
         }
@@ -31,6 +27,10 @@ in
         }
         {
           timeout = 180;
+          on-timeout = lockCmd;
+        }
+        {
+          timeout = 240;
           on-timeout = "systemctl suspend";
         }
       ];
