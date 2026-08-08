@@ -1,87 +1,24 @@
+let
+  mkKeymap = on: run: desc: {
+    inherit on run desc;
+  };
+in
 {
   programs.yazi = {
     enable = true;
-    settings = {
-      manager = {
-        show_hidden = true;
-      };
-    };
+    settings.mgr.show_hidden = true;
     keymap = {
       mgr.prepend_keymap = [
-        {
-          on = "<Tab>";
-          run = [
-            "toggle"
-            "arrow 1"
-          ];
-          desc = "Toggle selection";
-        }
-        {
-          on = [
-            "g"
-            "m"
-          ];
-          run = "cd ~/Music";
-          desc = "Go to ~/Music";
-        }
-        {
-          on = [
-            "g"
-            "p"
-          ];
-          run = "cd ~/Pictures";
-          desc = "Go to ~/Pictures";
-        }
-        {
-          on = [
-            "g"
-            "w"
-          ];
-          run = "cd ~/Pictures/Wallpapers";
-          desc = "Go to wall directory";
-        }
-        {
-          on = "i";
-          run = "spot";
-          desc = "Info hovered file";
-        }
-        {
-          on = "o";
-          run = "create";
-          desc = "Create file";
-        }
-        {
-          on = [
-            "<Space>"
-            "/"
-          ];
-          run = "search --via=rg";
-          desc = "Grep (rg)";
-        }
-        {
-          on = [
-            "<Space>"
-            "f"
-          ];
-          run = "plugin fzf";
-          desc = "Find file/directory (fzf)";
-        }
-        {
-          on = [
-            "<Space>"
-            "h"
-          ];
-          run = "help";
-          desc = "Help";
-        }
-        {
-          on = [
-            "<Space>"
-            "w"
-          ];
-          run = "shell --orphan -- set-wallpaper %H";
-          desc = "Set wallpaper";
-        }
+        (mkKeymap "<Tab>" [ "toggle" "arrow 1" ] "Toggle selection")
+        (mkKeymap [ "g" "m" ] "cd ~/Music" "Go to ~/Music")
+        (mkKeymap [ "g" "p" ] "cd ~/Pictures" "Go to ~/Pictures")
+        (mkKeymap [ "g" "w" ] "cd ~/Pictures/Wallpapers" "Go to wall directory")
+        (mkKeymap "i" "spot" "Info hovered file")
+        (mkKeymap "o" "create" "Create file")
+        (mkKeymap [ "<Space>" "/" ] "search --via=rg" "Grep (rg)")
+        (mkKeymap [ "<Space>" "f" ] "plugin fzf" "Find file/directory (fzf)")
+        (mkKeymap [ "<Space>" "h" ] "help" "Help")
+        (mkKeymap [ "<Space>" "w" ] "shell --orphan -- set-wallpaper %H" "Set wallpaper")
       ];
     };
   };

@@ -9,11 +9,11 @@
       enable = true;
       lfs.enable = true;
       settings = {
+        pull.rebase = true;
         user = {
           name = "Jay";
           email = "45575946+jaycem-dev@users.noreply.github.com";
         };
-        pull.rebase = true;
       };
     };
     opencode = {
@@ -25,18 +25,12 @@
     };
     npm = {
       enable = true;
-      settings = {
-        "min-release-age" = 30;
-      };
+      settings.min-release-age = 30;
     };
   };
 
   home.packages = with pkgs; [
-    # tools
     android-tools
-    tree-sitter
     grok-build
-
-    shellcheck
   ];
 }
