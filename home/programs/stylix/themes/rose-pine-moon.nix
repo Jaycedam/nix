@@ -19,7 +19,7 @@
     base0F = "#56526e";
   };
   image = {
-    url = "https://rose-pine-wallpapers.pages.dev/wallpapers/mix/xavier-cuenca-w4-3.jpg";
-    hash = "sha256-67TRNxMCNlOAy/EzlXQqDzYqXKY0QCIwUrJMWbLvtTo=";
+    url = "https://github.com/andrewzn69/wallpapers/blob/main/carbon/OYE0US.jpg";
+    hash = "";
   };
 }

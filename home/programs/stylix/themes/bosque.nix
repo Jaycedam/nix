@@ -19,7 +19,7 @@
     base0F = "#35503e";
   };
   image = {
-    url = "https://github.com/AngelJumbo/gruvbox-wallpapers/blob/main/wallpapers/photography/forest-2.jpg?raw=true";
-    hash = "sha256-RqzCCnn4b5kU7EYgaPF19Gr9I5cZrkEdsTu+wGaaMFI=";
+    url = "https://w.wallhaven.cc/full/qz/wallhaven-qzm89d.png";
+    hash = "sha256-QxVS2hpM9kZc8ILn+JPJN0MTn1qoFVBQZebm/1mas94=";
   };
 }

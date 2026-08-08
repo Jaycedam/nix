@@ -14,12 +14,12 @@
     base0A = "#f9e2af";
     base0B = "#a6e3a1";
     base0C = "#94e2d5";
-    base0D = "#89b4fa";
+    base0D = "#f5c2e7";
     base0E = "#cba6f7";
     base0F = "#f2cdcd";
   };
   image = {
-    url = "https://github.com/AngelJumbo/gruvbox-wallpapers/blob/main/wallpapers/photography/forest-2.jpg?raw=true";
-    hash = "sha256-RqzCCnn4b5kU7EYgaPF19Gr9I5cZrkEdsTu+wGaaMFI=";
+    url = "https://rose-pine-wallpapers.pages.dev/wallpapers/mix/xavier-cuenca-w4-3.jpg";
+    hash = "sha256-67TRNxMCNlOAy/EzlXQqDzYqXKY0QCIwUrJMWbLvtTo=";
   };
 }

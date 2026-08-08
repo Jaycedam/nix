@@ -19,7 +19,7 @@
     base0F = "#82cfff";
   };
   image = {
-    url = "https://github.com/andrewzn69/wallpapers/blob/main/carbon/17XM4H.jpg?raw=true";
-    hash = "sha256-c0cmrwJs16jO3qCXA3AsCMPoeC7bzdXkHO5BLMAkIhE=";
+    url = "https://github.com/HANCORE-linux/omarchy-oxocarbon-theme/blob/main/backgrounds/BG4.jpg?raw=true";
+    hash = "sha256-SGNbcGO/5XEiAVrbhjB+24352rFwUisV0cRTPQhH3eA=";
   };
 }
