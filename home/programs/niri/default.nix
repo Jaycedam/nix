@@ -14,6 +14,7 @@
     settings = {
       blur.offset = 10; # default 3
       prefer-no-csd = true;
+      gestures.hot-corners.off = { };
 
       _children = [
         { spawn-at-startup = [ "niriusd" ]; }
