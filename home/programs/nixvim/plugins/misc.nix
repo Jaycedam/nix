@@ -15,7 +15,7 @@ in
     mini-surround.enable = true;
     neogit.enable = true;
     highlight-colors.enable = true;
-    copilot-lua.enable = true;
+    copilot-vim.enable = true;
 
     flash = {
       enable = true;
@@ -24,13 +24,13 @@ in
 
     oil = {
       enable = true;
-      settings.view_options.show_hidden = false;
+      settings.view_options.show_hidden = true;
     };
 
     which-key = {
       enable = true;
       settings = {
-        preset = " helix";
+        preset = "helix";
         delay = 500;
       };
     };

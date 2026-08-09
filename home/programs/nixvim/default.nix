@@ -8,8 +8,9 @@
     enable = true;
     viAlias = true;
     vimAlias = true;
+    nixpkgs.config.allowUnfree = true;
     extraConfigLua = ''
-      require('vim._core.ui2').enable()
+      require("vim._core.ui2").enable({ enable = true, msg = { target = "msg" } })
       vim.cmd("packadd nvim.undotree")
       vim.keymap.set("n", "<leader>u", require("undotree").open, { desc = "Toggle undotree" })
     '';
