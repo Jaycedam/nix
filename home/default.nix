@@ -30,11 +30,13 @@
     stateVersion = "26.05";
   };
 
+  # todo: move this
   home.activation = {
     reloadRunningApps = lib.hm.dag.entryAfter ["writeBoundary"] ''
-      run --silence ${pkgs.procps}/bin/pkill -USR2 opencode || true
-      run --silence ${pkgs.procps}/bin/pkill -SIGUSR2 btop || true
-      run --silence ${pkgs.procps}/bin/pkill -USR1 nvim || true
+      run --silence ${lib.getExe' pkgs.procps "pkill"} -USR2 opencode || true
+      run --silence ${lib.getExe' pkgs.procps "pkill"} -SIGUSR2 btop || true
+      run --silence ${lib.getExe' pkgs.procps "pkill"} -USR1 nvim || true
+      run --silence ${lib.getExe pkgs.beets} fish
     '';
   };
 
