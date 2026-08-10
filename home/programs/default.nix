@@ -15,6 +15,7 @@
     ./terminal.nix
     ./tmux.nix
     ./yazi.nix
+    ./helix.nix
   ];
 
   programs = {
