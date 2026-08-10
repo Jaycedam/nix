@@ -46,7 +46,7 @@ in {
     '' {desc = "Toggle Quickfix List";})
 
     # search and replace
-    (mkKeymap "n" "<leader>vs" ''
+    (mkRawKeymap "n" "<leader>vs" ''
       function()
         local word = vim.fn.expand("<cword>")
         vim.api.nvim_feedkeys(vim.keycode(":%s/" .. word .. "//gc<Left><Left><Left>"), "n", false)
@@ -54,7 +54,7 @@ in {
     '' {desc = "Replace word under cursor";})
 
     # copy file path / selection reference
-    (mkKeymap "n" "<leader>vc" ''
+    (mkRawKeymap "n" "<leader>vc" ''
       function()
         local path = vim.fn.expand("%:.")
         vim.fn.setreg("+", path)

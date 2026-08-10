@@ -1,6 +1,6 @@
 let
   mkKeymap = (import ../lib/binds.nix).mkKeymap;
-  mkRawKeymap = (import ../lib/binds.nix).mkRawKeymap;
+  mkPluginKeymap = (import ../lib/binds.nix).mkPluginKeymap;
 in {
   plugins = {
     lspconfig.enable = true;
@@ -38,7 +38,7 @@ in {
   keymaps = [
     (mkKeymap "n" "<leader>g" "<cmd>Neogit<cr>" {desc = "Open Neogit";})
     (mkKeymap "n" "<leader>e" "<cmd>Oil<cr>" {desc = "Open File Explorer";})
-    (mkRawKeymap "n" "gw" "function() require('flash').jump() end" {desc = "Go to word";})
-    (mkRawKeymap "n" "gW" "function() require('flash').treesitter() end" {desc = "Go to word (treesitter)";})
+    (mkPluginKeymap ["n" "x" "o"] "gw" ["flash" "jump"] {desc = "Go to word";})
+    (mkPluginKeymap ["n" "x" "o"] "gW" ["flash" "treesitter"] {desc = "Go to word (treesitter)";})
   ];
 }

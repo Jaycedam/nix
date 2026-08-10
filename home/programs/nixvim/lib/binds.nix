@@ -14,4 +14,18 @@
     };
     options = opts;
   };
+
+  # like mkRawKeymap, but the action is a lua call on a plugin module:
+  # function() require('plugin').action() end
+  # usage: mkPluginKeymap mode key [plugin action] opts
+  mkPluginKeymap = mode: key: call: opts: let
+    plugin = builtins.elemAt call 0;
+    action = builtins.elemAt call 1;
+  in {
+    inherit mode key;
+    action = {
+      __raw = "function() require('${plugin}').${action}() end";
+    };
+    options = opts;
+  };
 }
