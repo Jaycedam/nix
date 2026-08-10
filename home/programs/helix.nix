@@ -8,7 +8,6 @@
         popup-border = "all";
         # todo: adjust for colemak-dh
         jump-label-alphabet = "abcdefghijklmnopqrstuvwxyz";
-        indent-guides.render = true;
         soft-wrap.enable = true;
         end-of-line-diagnostics = "hint";
         inline-diagnostics.cursor-line = "warning";
@@ -45,7 +44,7 @@
           unit = "  ";
         };
         auto-format = true;
-        formatter.command = "nixfmt";
+        formatter.command = "alejandra";
       }
     ];
   };
