@@ -2,10 +2,10 @@
   config,
   lib,
   ...
-}:
-{
+}: {
   services.mako = {
     enable = true;
+
     settings = {
       width = 400;
       padding = 10;

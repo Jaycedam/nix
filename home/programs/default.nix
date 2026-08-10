@@ -1,9 +1,8 @@
-{ pkgs, ... }: {
+{pkgs, ...}: {
   imports = [
     ./nixvim
     ./niri
     ./stylix
-    ./supersonic
     ./waybar
     ./beets.nix
     ./browser.nix

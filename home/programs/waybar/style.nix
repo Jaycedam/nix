@@ -2,9 +2,10 @@
   config,
   lib,
   ...
-}:
-{
+}: {
+  # todo: override stylix instead of defining everything
   stylix.targets.waybar.addCss = false;
+
   programs.waybar.style = lib.mkAfter ''
     * {
       font-family: "JetBrains Mono", "Symbols Nerd Font Mono";

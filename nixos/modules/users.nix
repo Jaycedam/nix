@@ -2,11 +2,11 @@
   user,
   pkgs,
   ...
-}:
-{
+}: {
   users.users.${user} = {
     isNormalUser = true;
-    shell = pkgs.fish;
+    shell = pkgs.fish; # todo: use default shell, use fish on each pkg conf
+
     extraGroups = [
       "video"
       "networkmanager"

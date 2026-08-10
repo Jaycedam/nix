@@ -1,11 +1,13 @@
-{ pkgs, ... }:
+{pkgs, ...}:
 pkgs.writeShellApplication {
   name = "brightness";
+
   runtimeInputs = with pkgs; [
     libnotify
     brightnessctl
     ddcutil
   ];
+
   text = ''
     help() {
         cat <<EOF

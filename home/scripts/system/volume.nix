@@ -1,10 +1,8 @@
-{ pkgs, ... }:
+{pkgs, ...}:
 pkgs.writeShellApplication {
   name = "volume";
-  runtimeInputs = with pkgs; [
-    libnotify
-    wireplumber
-  ];
+  runtimeInputs = with pkgs; [libnotify wireplumber];
+
   text = ''
     help() {
         cat <<EOF

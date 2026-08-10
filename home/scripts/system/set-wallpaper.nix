@@ -1,11 +1,13 @@
-{ pkgs, ... }:
+{pkgs, ...}:
 pkgs.writeShellApplication {
   name = "set-wallpaper";
+
   runtimeInputs = with pkgs; [
     wpaperd
     file
     libnotify
   ];
+
   text = ''
     path="$(readlink -f "''${1:?Usage: $0 <image-path>}")"
 

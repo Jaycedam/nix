@@ -2,15 +2,12 @@
   inputs,
   pkgs,
   ...
-}:
-{
-  imports = [
-    ./style.nix
-    ./modules.nix
-  ];
+}: {
+  imports = [./style.nix ./modules.nix];
 
   programs.waybar = {
     enable = true;
+    # todo: move this to an overlay
     package = inputs.waybar.packages.${pkgs.stdenv.hostPlatform.system}.default;
     systemd.enable = true;
     settings.mainBar = {
@@ -23,9 +20,11 @@
         "niri/workspaces#main"
         "niri/workspaces#taskbar"
       ];
+
       modules-center = [
         "clock"
       ];
+
       modules-right = [
         "privacy"
         "tray"

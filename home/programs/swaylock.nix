@@ -1,6 +1,7 @@
 {
   programs.swaylock = {
     enable = true;
+
     settings = {
       ignore-empty-password = true;
       indicator-idle-visible = true;

@@ -1,31 +1,32 @@
-{ pkgs, ... }: {
+{pkgs, ...}: {
   plugins.conform-nvim = {
     enable = true;
     autoInstall = {
       enable = true;
+      # for autoinstall
       overrides = {
-        nixfmt = pkgs.nixfmt;
+        alejandra = pkgs.alejandra;
         oxfmt = pkgs.oxfmt;
         stylua = pkgs.stylua;
       };
     };
     settings = {
       formatters_by_ft = {
-        sh = [ "shfmt" ];
-        lua = [ "stylua" ];
-        javascript = [ "oxfmt" ];
-        typescript = [ "oxfmt" ];
-        javascriptreact = [ "oxfmt" ];
-        typescriptreact = [ "oxfmt" ];
-        json = [ "oxfmt" ];
-        jsonc = [ "oxfmt" ];
-        yaml = [ "oxfmt" ];
-        toml = [ "oxfmt" ];
-        html = [ "oxfmt" ];
-        css = [ "oxfmt" ];
-        scss = [ "oxfmt" ];
-        markdown = [ "oxfmt" ];
-        nix = [ "nixfmt" ];
+        sh = ["shfmt"];
+        lua = ["stylua"];
+        javascript = ["oxfmt"];
+        typescript = ["oxfmt"];
+        javascriptreact = ["oxfmt"];
+        typescriptreact = ["oxfmt"];
+        json = ["oxfmt"];
+        jsonc = ["oxfmt"];
+        yaml = ["oxfmt"];
+        toml = ["oxfmt"];
+        html = ["oxfmt"];
+        css = ["oxfmt"];
+        scss = ["oxfmt"];
+        markdown = ["oxfmt"];
+        nix = ["alejandra"];
       };
       format_on_save = {
         timeout_ms = 500;

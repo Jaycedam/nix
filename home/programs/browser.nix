@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{pkgs, ...}: {
   programs.brave = {
     package = pkgs.brave-origin;
     enable = true;

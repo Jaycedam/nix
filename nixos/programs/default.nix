@@ -3,27 +3,27 @@
   lib,
   user,
   ...
-}:
-{
+}: {
   programs = {
     niri.enable = true;
     fish.enable = true;
     gamemode.enable = true;
     virt-manager.enable = true;
+
     nh = {
       enable = true;
+      flake = "/home/${user}/Projects/nix-config";
+
       clean = {
         enable = true;
         extraArgs = "--keep 2";
       };
-      flake = "/home/${user}/Projects/nix-config";
     };
+
     steam = lib.mkIf pkgs.stdenv.hostPlatform.isx86_64 {
       enable = true;
       protontricks.enable = true;
-      extraCompatPackages = with pkgs; [
-        proton-ge-bin
-      ];
+      extraCompatPackages = with pkgs; [proton-ge-bin];
     };
   };
 

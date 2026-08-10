@@ -1,12 +1,14 @@
-{ pkgs, ... }:
+{pkgs, ...}:
 pkgs.writeShellApplication {
   name = "tmux-sessions";
+
   runtimeInputs = with pkgs; [
     fd
     fzf
     tmux
     neovim
   ];
+
   text = ''
     paths="$HOME/Projects"
 

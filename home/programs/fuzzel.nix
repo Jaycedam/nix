@@ -1,6 +1,7 @@
-{ config, ... }: {
+{config, ...}: {
   programs.fuzzel = {
     enable = true;
+
     settings = {
       main = {
         terminal = "kitty --app-id '{cmd}' -T '{cmd}' {cmd}";
@@ -17,8 +18,6 @@
 
   stylix.targets.fuzzel.fonts.override = {
     sansSerif = config.stylix.fonts.monospace;
-    sizes = {
-      popups = config.stylix.fonts.sizes.terminal;
-    };
+    sizes.popups = config.stylix.fonts.sizes.terminal;
   };
 }

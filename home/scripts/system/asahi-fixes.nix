@@ -1,6 +1,7 @@
-{ pkgs, ... }:
+{pkgs, ...}:
 pkgs.writeShellApplication {
   name = "asahi-fixes";
+
   text = ''
     [[ "$(uname -n)" != "asahi" ]] && exit 0
 

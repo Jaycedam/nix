@@ -1,4 +1,5 @@
 {
+  # todo: use more hm opts, add stylix
   programs.tmux = {
     enable = true;
     newSession = true;
@@ -6,6 +7,7 @@
     escapeTime = 0;
     focusEvents = true;
     mouse = true;
+
     extraConfig = ''
       set -g default-terminal "$TERM"
       set -ag terminal-overrides ",$TERM:Tc"

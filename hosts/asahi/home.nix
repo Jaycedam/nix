@@ -1,7 +1,5 @@
 {
-  imports = [
-    ../../home/default.nix
-  ];
+  imports = [../../home/default.nix];
 
   # todo: add userSettings
 }

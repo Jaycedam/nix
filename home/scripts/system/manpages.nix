@@ -1,9 +1,8 @@
-{ pkgs, ... }:
+{pkgs, ...}:
 pkgs.writeShellApplication {
   name = "manpages";
-  runtimeInputs = with pkgs; [
-    fzf
-  ];
+  runtimeInputs = with pkgs; [fzf];
+
   text = ''
     selection=$(man -k . | fzf --preview='MANPAGER=cat man {1} 2>/dev/null | col -bx')
 

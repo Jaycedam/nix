@@ -1,9 +1,8 @@
-{ pkgs, ... }:
+{pkgs, ...}:
 pkgs.writeShellApplication {
   name = "launch-or-focus";
-  runtimeInputs = with pkgs; [
-    jq
-  ];
+  runtimeInputs = with pkgs; [jq];
+
   text = ''
     usage() {
         echo "Launch or focus windows on niri"

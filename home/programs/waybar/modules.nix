@@ -1,8 +1,7 @@
 {
+  # todo: simplify config or look for alternative
   programs.waybar.settings.mainBar = {
-    "niri/workspaces#main" = {
-      format = "{index}";
-    };
+    "niri/workspaces#main".format = "{index}";
 
     "niri/workspaces#taskbar" = {
       current-only = true;
@@ -24,6 +23,7 @@
     privacy = {
       icon-spacing = 10;
       transition-duration = 250;
+      ignore-monitor = true;
       modules = [
         {
           type = "screenshare";
@@ -34,7 +34,6 @@
           tooltip = true;
         }
       ];
-      ignore-monitor = true;
       ignore = [
         {
           type = "audio-in";
@@ -47,15 +46,15 @@
       interval = 1;
       format = "{:%A, %b %d  %H:%M}";
       tooltip-format = "<tt>{calendar}</tt>";
-      calendar = {
-        format = {
-          months = "<span color='#ffead3'><b>{}</b></span>";
-          days = "<span color='#ecc6d9'><b>{}</b></span>";
-          weeks = "<span color='#99ffdd'><b>W{}</b></span>";
-          weekdays = "<span color='#ffcc66'><b>{}</b></span>";
-          today = "<span color='#ff6699'><b><u>{}</u></b></span>";
-        };
+
+      calendar.format = {
+        months = "<span color='#ffead3'><b>{}</b></span>";
+        days = "<span color='#ecc6d9'><b>{}</b></span>";
+        weeks = "<span color='#99ffdd'><b>W{}</b></span>";
+        weekdays = "<span color='#ffcc66'><b>{}</b></span>";
+        today = "<span color='#ff6699'><b><u>{}</u></b></span>";
       };
+
       actions = {
         on-click-right = "shift_reset";
         on-scroll-up = "shift_up";
@@ -70,54 +69,29 @@
         headphone = "󰋋";
         hands-free = "󰋋";
         headset = "󰋋";
-        default = [
-          "󰕿"
-          "󰖀"
-          "󰕾"
-        ];
+        default = ["󰕿" "󰖀" "󰕾"];
       };
       on-click = "pavucontrol -t 3";
       on-click-right = "pactl --set-sink-mute 0 toggle";
     };
 
     battery = {
-      states = {
-        warning = 30;
-        critical = 20;
-      };
+      tooltip = true;
       format = "{icon} {capacity}%";
       format-charging = "󱐋 {capacity}%";
       format-critical = "LOW BATTERY {icon} {capacity}%";
       interval = 1;
-      format-icons = {
-        default = [
-          "󰂎"
-          "󰁺"
-          "󰁻"
-          "󰁼"
-          "󰁽"
-          "󰁾"
-          "󰁿"
-          "󰂀"
-          "󰂁"
-          "󰂂"
-          "󰁹"
-        ];
-        charging = [
-          "󰢟"
-          "󰢜"
-          "󰂆"
-          "󰂇"
-          "󰂈"
-          "󰢝"
-          "󰂉"
-          "󰢞"
-          "󰂊"
-          "󰂋"
-          "󰂅"
-        ];
+
+      states = {
+        warning = 30;
+        critical = 20;
       };
-      tooltip = true;
+
+      format-icons = {
+        # todo: use only 5 icons
+        default = ["󰂎" "󰁺" "󰁻" "󰁼" "󰁽" "󰁾" "󰁿" "󰂀" "󰂁" "󰂂" "󰁹"];
+        charging = ["󰢟" "󰢜" "󰂆" "󰂇" "󰂈" "󰢝" "󰂉" "󰢞" "󰂊" "󰂋" "󰂅"];
+      };
     };
 
     network = {

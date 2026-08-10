@@ -4,14 +4,10 @@
   inputs,
   lib,
   ...
-}:
-let
+}: let
   theme = import (./themes + "/${config.userSettings.theme.name}.nix");
-in
-{
-  imports = [
-    inputs.stylix.homeModules.stylix
-  ];
+in {
+  imports = [inputs.stylix.homeModules.stylix];
 
   options.userSettings.theme = {
     name = lib.mkOption {
@@ -19,6 +15,7 @@ in
       default = "gruvbox-material-dark-hard";
       description = "Name of the theme file in home/programs/stylix/themes";
     };
+
     opacity = lib.mkOption {
       type = lib.types.float;
       default = 1.0;
@@ -28,12 +25,10 @@ in
 
   config.stylix = {
     enable = true;
-    # qt is not enabled on hm standalone
-    targets.qt.enable = true;
-
+    targets.qt.enable = true; # not enabled by default on hm
     base16Scheme = theme.base16Scheme;
     polarity = theme.polarity;
-    image = pkgs.fetchurl { inherit (theme.image) url hash; };
+    image = pkgs.fetchurl {inherit (theme.image) url hash;};
 
     opacity = {
       applications = config.userSettings.theme.opacity;

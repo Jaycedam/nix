@@ -1,23 +1,16 @@
 {
   boot = {
+    plymouth.enable = true; # boot animation
+    initrd.systemd.enable = true; # luks gui support
+    consoleLogLevel = 0; # silent boot
+    initrd.verbose = false;
+    kernelModules = ["ntsync"];
+
     loader = {
-      # Bootloader.
       systemd-boot.enable = true;
       efi.canTouchEfiVariables = true;
-      # Hide the OS choice for bootloaders.
-      # It's still possible to open the bootloader list by pressing any key
-      # It will just not appear on screen unless a key is pressed
-      timeout = 2;
     };
 
-    # silent boot with animation
-    plymouth.enable = true;
-
-    # Enable "Silent boot"
-    consoleLogLevel = 0;
-    initrd.verbose = false;
-    initrd.systemd.enable = true; # luks gui support
-    kernelModules = [ "ntsync" ];
     kernelParams = [
       "quiet"
       "splash"

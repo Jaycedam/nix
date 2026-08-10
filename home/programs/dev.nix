@@ -1,10 +1,11 @@
-{ pkgs, ... }: {
+{pkgs, ...}: {
   programs = {
     lazygit.enable = true;
     devenv.enable = true;
     antigravity-cli.enable = true;
     codex.enable = true;
     gh.enable = true;
+
     git = {
       enable = true;
       lfs.enable = true;
@@ -16,6 +17,7 @@
         };
       };
     };
+
     opencode = {
       enable = true;
       tui.attention = {
@@ -23,6 +25,7 @@
         sound = false;
       };
     };
+
     npm = {
       enable = true;
       settings.min-release-age = 30;

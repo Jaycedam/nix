@@ -1,10 +1,8 @@
-{ pkgs, ... }:
+{pkgs, ...}:
 pkgs.writeShellApplication {
   name = "dmenu-power";
-  runtimeInputs = with pkgs; [
-    fuzzel
-    swaylock
-  ];
+  runtimeInputs = with pkgs; [fuzzel swaylock];
+
   text = ''
     declare -A items=(
         [lock]=" Lock"
