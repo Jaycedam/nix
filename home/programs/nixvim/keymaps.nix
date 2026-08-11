@@ -7,23 +7,14 @@ in {
     # global keymaps
     (mkKeymap "t" "<esc>" ''<C-\><C-n>'' {desc = "Exit terminal mode";})
     (mkKeymap "n" "<Esc>" "<cmd>nohlsearch<CR>" {desc = "Clear search highlights";})
-    (mkKeymap "n" "<leader>l" ":buffer #<CR>" {
-      silent = true;
-      desc = "Last buffer";
-    })
-    (mkKeymap "n" "<C-c>" ":bwipeout<CR>" {
-      silent = true;
-      desc = "Close current buffer";
-    })
+    (mkKeymap "n" "<leader>l" "<cmd>buffer #<cr>" {desc = "Last buffer";})
+    (mkKeymap "n" "<C-c>" "<cmd>bwipeout<cr>" {desc = "Close current buffer";})
 
     # clipboard and registers
     (mkKeymap ["n" "v"] "<leader>y" ''"+y'' {desc = "Yank to system clipboard";})
 
     # tab management
-    (mkKeymap "n" "<leader>vt" ":tabnew<CR>" {
-      silent = true;
-      desc = "New tab";
-    })
+    (mkKeymap "n" "<leader>vt" "<cmd>tabnew<cr>" {desc = "New tab";})
 
     # navigation
     (mkKeymap "n" "<C-h>" "<C-w>h" {desc = "Move to left window";})

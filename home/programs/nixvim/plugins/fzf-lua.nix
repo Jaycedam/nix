@@ -1,4 +1,5 @@
 let
+  mkKeymap = (import ../lib/binds.nix).mkKeymap;
   mkPluginKeymap = (import ../lib/binds.nix).mkPluginKeymap;
 in {
   plugins.fzf-lua = {
@@ -36,5 +37,7 @@ in {
     (mkPluginKeymap "n" "<leader>fa" ["fzf-lua" "lsp_code_actions"] {desc = "Code actions";})
     # Neovim
     (mkPluginKeymap "n" "<leader>fm" ["fzf-lua" "marks"] {desc = "Find marks";})
+
+    (mkKeymap "n" "<leader>fp" "<cmd>FindProject<cr>" {desc = "Find Project (cd)";})
   ];
 }

@@ -90,7 +90,7 @@
     };
     "Mod+N" = {
       _props.hotkey-overlay-title = "Neovim";
-      "spawn" = ["launch-or-focus" "--id" "neovim" "dmenu-neovim"];
+      "spawn" = ["launch-or-focus" "--tui" "neovim"];
     };
     "Mod+E" = {
       _props.hotkey-overlay-title = "File manager";
@@ -115,7 +115,7 @@
     };
     "Mod+Slash" = {
       _props.hotkey-overlay-title = "Quick access terminal";
-      "spawn" = ["kitten" "quick-access-terminal"];
+      "spawn" = ["kitten" "quick-access-terminal" "tmux" "a"];
     };
     "Mod+G" = {
       _props.hotkey-overlay-title = "Toggle global window (pin)";
