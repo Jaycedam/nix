@@ -1,6 +1,6 @@
 # Nix Config
 
-My setup for NixOS and Home Manager standalone.
+My setup for NixOS, Home Manager (standalone) and Nixvim
 
 I use Colemak-DH-ISO keyboard layout by default, you can change this in [keyboard.nix](./nixos/services/default.nix) and [niri.kdl](./home/programs/niri/default.nix).
 
