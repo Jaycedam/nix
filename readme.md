@@ -4,8 +4,6 @@ NixOS flake config
 
 I use Colemak-DH-ISO keyboard layout by default, modify in [keyboard.nix](./nixos/keyboard.nix) and [niri.kdl](./home/niri/config.kdl)
 
-![Screenshot](./assets/screenshot.avif)
-
 ## Install
 
 > [!WARNING]
