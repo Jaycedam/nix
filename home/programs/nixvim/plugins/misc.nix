@@ -38,7 +38,7 @@ in {
   keymaps = [
     (mkKeymap "n" "<leader>g" "<cmd>Neogit<cr>" {desc = "Open Neogit";})
     (mkKeymap "n" "<leader>e" "<cmd>Oil<cr>" {desc = "Open File Explorer";})
-    (mkPluginKeymap ["n" "x" "o"] "gw" ["flash" "jump"] {desc = "Go to word";})
-    (mkPluginKeymap ["n" "x" "o"] "gW" ["flash" "treesitter"] {desc = "Go to word (treesitter)";})
+    (mkPluginKeymap ["n" "x" "o"] "gw" ["flash" "jump()"] {desc = "Go to word";})
+    (mkPluginKeymap ["n" "x" "o"] "gW" ["flash" "treesitter()"] {desc = "Go to word (treesitter)";})
   ];
 }

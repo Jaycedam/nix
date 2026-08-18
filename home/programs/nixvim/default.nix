@@ -16,7 +16,7 @@
       ./commands.nix
       # plugins
       ./plugins/misc.nix # small or no config
-      ./plugins/fzf-lua.nix
+      ./plugins/picker.nix
       ./plugins/blink.nix
       ./plugins/conform.nix
     ];
