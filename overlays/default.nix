@@ -12,6 +12,7 @@
     "tinty"
     "opencode"
     "brave-origin"
+    "ccextractor" # broken on stable 0.94-unstable-2025-05-20
   ];
 in {
   nixpkgs.overlays = [

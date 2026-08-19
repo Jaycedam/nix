@@ -1,7 +1,7 @@
 {
   imports = [
+    ./options
     ./programs
     ./services
-    ./options
   ];
 }
