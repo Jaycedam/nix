@@ -9,6 +9,7 @@
     "grok-build"
     "neovim"
     "codex"
+    "tinty"
     "opencode"
     "brave-origin"
   ];

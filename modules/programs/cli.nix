@@ -25,6 +25,7 @@
     ddcutil
     exfatprogs
     eza
+    tinty
     fastfetch
     fd
     ffmpeg
