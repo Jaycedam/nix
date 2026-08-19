@@ -18,6 +18,8 @@
     inputs.waybar.packages.${pkgs.stdenv.hostPlatform.system}.default
     jellyfin-desktop
     kitty
+    foot
+    ghostty
     kopuz
     libreoffice
     localsend
