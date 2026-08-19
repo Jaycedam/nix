@@ -1,13 +1,11 @@
-{ pkgs, ... }:
-{
-  # use xkb config for tty, early for luks prompt
+{pkgs, ...}: {
+  # use xkb config early to load in luks prompt
   console = {
     useXkbConfig = true;
     earlySetup = true;
   };
 
   services = {
-    # colemak-dh keyboard layout xkb
     xserver.xkb = {
       layout = "us";
       variant = "colemak_dh_iso";
@@ -101,5 +99,4 @@
     MatchName=keyd*keyboard
     AttrKeyboardIntegration=internal
   '';
-
 }

@@ -1,8 +1,5 @@
-{ pkgs, ... }:
-{
-  environment.systemPackages = with pkgs; [
-    brave-origin
-  ];
+{pkgs, ...}: {
+  environment.systemPackages = with pkgs; [brave-origin];
 
   # Manage brave via the chromium policy module (writes
   # /etc/brave/policies/managed/*.json, incl. ExtensionInstallForcelist)

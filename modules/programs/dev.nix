@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{pkgs, ...}: {
   environment.systemPackages = with pkgs; [
     # ai
     antigravity-cli
@@ -65,7 +65,9 @@
 
     # Nix
     nil
+    nixd
     nixfmt
+    alejandra
     statix
 
     # Django

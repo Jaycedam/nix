@@ -3,8 +3,7 @@
   inputs,
   pkgs-unstable,
   ...
-}:
-let
+}: let
   asahiUnstable = [
     "linux-asahi"
     "uboot-asahi"
@@ -14,22 +13,23 @@ let
     "speakersafetyd"
     "mesa"
   ];
-in
-{
+in {
   nixpkgs.overlays = [
     # apple-silicon input uses unstable nixpkgs so we need an overlay
     (
       final: prev:
-      lib.genAttrs asahiUnstable (
-        name: (pkgs-unstable.extend inputs.apple-silicon.overlays.default).${name}
-      )
+        lib.genAttrs asahiUnstable (
+          name: (pkgs-unstable.extend inputs.apple-silicon.overlays.default).${name}
+        )
     )
     # fix scaling for ryubing
     (final: prev: {
       ryubing = prev.ryubing.overrideAttrs (old: {
-        makeWrapperArgs = (old.makeWrapperArgs or [ ]) ++ [
-          "--set AVALONIA_GLOBAL_SCALE_FACTOR 2"
-        ];
+        makeWrapperArgs =
+          (old.makeWrapperArgs or [])
+          ++ [
+            "--set AVALONIA_GLOBAL_SCALE_FACTOR 2"
+          ];
       });
     })
   ];

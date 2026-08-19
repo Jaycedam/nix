@@ -1,7 +1,11 @@
-{ pkgs, lib, ... }:
 {
+  pkgs,
+  lib,
+  ...
+}: {
   programs = {
     gamemode.enable = true;
+
     steam = lib.mkIf pkgs.stdenv.hostPlatform.isx86_64 {
       enable = true;
       protontricks.enable = true;
@@ -11,8 +15,7 @@
     };
   };
 
-  environment.systemPackages =
-    with pkgs;
+  environment.systemPackages = with pkgs;
     [
       mangohud
       duckstation
@@ -21,7 +24,7 @@
       ryubing
       dolphin-emu
       gopher64
-      rpcs3
+      # rpcs3
     ]
     ++ lib.optionals pkgs.stdenv.hostPlatform.isx86_64 [
       pcsx2

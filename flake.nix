@@ -17,55 +17,56 @@
     ];
   };
 
-  outputs =
-    { nixpkgs, ... }@inputs:
-    let
-      inherit (nixpkgs) lib;
+  outputs = {nixpkgs, ...} @ inputs: let
+    inherit (nixpkgs) lib;
 
-      user = "jay";
-      systems = {
-        linux-arm = "aarch64-linux";
-        linux = "x86_64-linux";
-      };
+    user = "jay";
+    systems = {
+      linux-arm = "aarch64-linux";
+      linux = "x86_64-linux";
+    };
 
-      commonArgs = {
-        inherit inputs user;
-        # you can override these per profile bellow
-        system = systems.linux;
-        desktop = true;
-        # used to import the host config, needs to be set in profiles
-        host = throw "host must be set in the current profile";
-      };
+    commonArgs = {
+      inherit inputs user;
+      # you can override these per profile bellow
+      system = systems.linux;
+      desktop = true;
+      # used to import the host config, needs to be set in profiles
+      host = throw "host must be set in the current profile";
+    };
 
-      profiles = {
-        desktop.host = "desktop";
-        asahi = {
-          host = "asahi";
-          system = systems.linux-arm;
-          desktop = false;
-        };
+    profiles = {
+      desktop.host = "desktop";
+      asahi = {
+        host = "asahi";
+        system = systems.linux-arm;
+        desktop = false;
       };
-    in
-    {
-      nixosConfigurations = lib.mapAttrs (
-        name: overrides:
-        let
+    };
+  in {
+    nixosConfigurations =
+      lib.mapAttrs (
+        name: overrides: let
           baseArgs = commonArgs // overrides;
-          args = baseArgs // {
-            pkgs-unstable = import inputs.nixpkgs-unstable {
-              system = baseArgs.system;
-              config.allowUnfree = true;
+          args =
+            baseArgs
+            // {
+              pkgs-unstable = import inputs.nixpkgs-unstable {
+                system = baseArgs.system;
+                config.allowUnfree = true;
+              };
             };
-          };
           hostModule = ./hosts/${args.host};
         in
-        nixpkgs.lib.nixosSystem {
-          specialArgs = args;
-          modules = [
-            hostModule
-            ./modules
-          ];
-        }
-      ) profiles;
-    };
+          nixpkgs.lib.nixosSystem {
+            specialArgs = args;
+            modules = [
+              hostModule
+              ./modules
+              ./overlays
+            ];
+          }
+      )
+      profiles;
+  };
 }

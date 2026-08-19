@@ -1,6 +1,8 @@
-{ user, pkgs, ... }:
 {
-  # Define a user account. Don't forget to set a password with ‘passwd’.
+  user,
+  pkgs,
+  ...
+}: {
   users.users.${user} = {
     isNormalUser = true;
     shell = pkgs.fish;
@@ -12,8 +14,7 @@
       "podman"
       "libvirtd"
       "kvm"
-      "gamemode" # allows gamemode to change power screme
+      "gamemode" # allows gamemode to change power scheme
     ];
-    # packages = with pkgs; [ ];
   };
 }
