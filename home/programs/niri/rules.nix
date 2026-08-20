@@ -97,7 +97,7 @@
     # dev workspace
     {
       window-rule._children = [
-        {match._props.app-id = "neovim";}
+        {match._props.app-id = "nvim";}
         {match._props.app-id = "opencode";}
         {match._props.app-id = "kitty";}
         {match._props.app-id = "com.mitchellh.ghostty";}

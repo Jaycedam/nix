@@ -8,14 +8,15 @@
       insert-hint.color = "${base0C}80";
 
       focus-ring = {
-        off = {};
+        on = {};
+        width = 3;
         active-color = base0D;
         inactive-color = base02;
         urgent-color = base08;
       };
 
       border = {
-        on = {};
+        off = {};
         width = 3;
         active-color = base0D;
         inactive-color = base02;
