@@ -15,8 +15,7 @@
     marksman.enable = true;
     taplo.enable = true;
     yamlls.enable = true;
-    # nixd.enable = true;
-    nil_ls.enable = true;
+    nixd.enable = true;
     statix.enable = true;
   };
 }
