@@ -4,7 +4,7 @@
     (import ./dmenu/dmenu-power.nix {inherit pkgs;})
     (import ./dmenu/dmenu-opencode.nix {inherit pkgs;})
     (import ./dmenu/dmenu-projects.nix {inherit pkgs;})
-    (import ./dmenu/neovim.nix {inherit pkgs;})
+    (import ./dmenu/dmenu-nvim.nix {inherit pkgs;})
     (import ./programs/launch-or-focus.nix {inherit pkgs;})
     (import ./system/brightness.nix {inherit pkgs;})
     (import ./system/volume.nix {inherit pkgs;})

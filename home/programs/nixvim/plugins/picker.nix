@@ -24,7 +24,6 @@ in {
     (mkKeymap "n" "<leader>gc" "<cmd>Pick git_commits<cr>" {desc = "Git commits";})
     (mkKeymap "n" "<leader>fb" "<cmd>Pick buffers<cr>" {desc = "Find buffers";})
     (mkKeymap "n" "<leader>ff" "<cmd>Pick files<cr>" {desc = "Find files";})
-    (mkKeymap "n" "<leader>fp" "<cmd>Projects<cr>" {desc = "Find files";})
     (mkKeymap "n" "<leader>fg" "<cmd>Pick grep<cr>" {desc = "Grep";})
     (mkKeymap "n" "<leader>/" "<cmd>Pick grep_live<cr>" {desc = "Grep project";})
     (mkKeymap "n" "<leader>fk" "<cmd>Pick keymaps<cr>" {desc = "Find keymaps";})

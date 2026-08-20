@@ -13,7 +13,6 @@
       ./keymaps.nix
       ./autocmds.nix
       ./lsp.nix
-      ./commands.nix
       # plugins
       ./plugins/misc.nix # small or no config
       ./plugins/picker.nix

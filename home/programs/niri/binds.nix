@@ -88,9 +88,17 @@
       _props.hotkey-overlay-title = "AI (OpenCode)";
       "spawn" = ["launch-or-focus" "--id" "opencode" "dmenu-opencode"];
     };
+    "Mod+Shift+A" = {
+      _props.hotkey-overlay-title = "AI (OpenCode new instance)";
+      "spawn" = ["dmenu-opencode"];
+    };
     "Mod+N" = {
       _props.hotkey-overlay-title = "Neovim";
-      "spawn" = ["launch-or-focus" "--tui" "neovim"];
+      "spawn" = ["launch-or-focus" "--id" "nvim" "dmenu-nvim"];
+    };
+    "Mod+Shift+N" = {
+      _props.hotkey-overlay-title = "Neovim (new instance)";
+      "spawn" = ["dmenu-nvim"];
     };
     "Mod+E" = {
       _props.hotkey-overlay-title = "File manager";
