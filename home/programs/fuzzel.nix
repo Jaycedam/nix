@@ -1,12 +1,12 @@
 {config, ...}: {
   programs.fuzzel = {
     enable = true;
-
     settings = {
       main = {
         terminal = "kitty --app-id '{cmd}' -T '{cmd}' {cmd}";
-        width = 60;
+        width = 40;
         lines = 20;
+        line-height = 20;
       };
       border = {
         width = 2;
