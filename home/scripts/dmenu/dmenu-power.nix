@@ -9,6 +9,7 @@ pkgs.writeShellApplication {
         [suspend]=" Suspend"
         [reboot]=" Reboot"
         [shutdown]=" Shutdown"
+        [display]="󰍹 Power off monitors"
     )
 
     selected=$(printf '%s\n' "''${items[@]}" | fuzzel --dmenu)
@@ -17,6 +18,9 @@ pkgs.writeShellApplication {
         for key in "''${!items[@]}"; do
             if [[ "''${items[$key]}" == "$selected" ]]; then
                 case $key in
+                display)
+                    niri msg action power-off-monitors
+                    ;;
                 lock)
                     swaylock
                     ;;
