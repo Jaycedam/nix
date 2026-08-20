@@ -4,10 +4,12 @@
     settings = {
       signature.enabled = true;
       keymap.preset = "default";
-
       completion = {
         ghost_text.enabled = false;
-
+        documentation = {
+          auto_show = true; # show function signature/docs
+          auto_show_delay_ms = 300;
+        };
         menu.draw.columns = [
           {
             __unkeyed-1 = "kind_icon";
@@ -17,11 +19,6 @@
           }
           ["kind"]
         ];
-
-        documentation = {
-          auto_show = true; # show function signature/docs
-          auto_show_delay_ms = 300;
-        };
       };
     };
   };

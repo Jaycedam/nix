@@ -7,14 +7,20 @@ in {
     treesitter.enable = true;
     treesitter-context.enable = true;
     mini-diff.enable = true;
-    mini-icons.enable = true;
-    mini-git.enable = true;
-    mini-statusline.enable = true;
     mini-pairs.enable = true;
     mini-surround.enable = true;
     neogit.enable = true;
     highlight-colors.enable = true;
     copilot-vim.enable = true;
+
+    mini-sessions = {
+      enable = true;
+      settings = {autoread = true;};
+    };
+    mini-icons = {
+      enable = true;
+      mockDevIcons = true;
+    };
 
     flash = {
       enable = true;

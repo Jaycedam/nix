@@ -52,7 +52,7 @@ in {
     '' {desc = "Replace word under cursor";})
 
     # copy file path / selection reference
-    (mkRawKeymap "n" "<leader>vc" ''
+    (mkRawKeymap "n" "<leader>vp" ''
       function()
         local path = vim.fn.expand("%:.")
         vim.fn.setreg("+", path)
@@ -60,6 +60,6 @@ in {
       end
     '' {desc = "Copy file path";})
 
-    (mkKeymap ("n" "<leader>vc" "<cmd>mksession<cr>" {desc = "Create session";}))
+    (mkKeymap "n" "<leader>vc" "<cmd>mksession<cr>" {desc = "Create session";})
   ];
 }

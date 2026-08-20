@@ -7,19 +7,6 @@
         component_separators = "";
       };
       sections = {
-        lualine_a = ["mode"];
-        lualine_b = [
-          {
-            __unkeyed-1.__raw = ''
-              function()
-                  return "%#Directory#󰉋 " .. vim.fn.fnamemodify(vim.fn.getcwd(), ":t") .. "%*"
-              end
-            '';
-          }
-          "branch"
-          "diff"
-        ];
-        lualine_c = ["filename" "diagnostics"];
         lualine_x = [
           {
             __unkeyed-1.__raw = ''
@@ -28,15 +15,19 @@
                   if reg == "" then
                       return ""
                   end
-                  return "%#@Macro#󰝥 rec: " .. reg .. "%*"
+                  return "󰝥 rec: " .. reg
               end
             '';
           }
-
           "filetype"
+          {
+            __unkeyed-1.__raw = ''
+              function()
+                  return "󰉋 " .. vim.fn.fnamemodify(vim.fn.getcwd(), ":t")
+              end
+            '';
+          }
         ];
-        lualine_y = ["progress"];
-        lualine_z = ["location"];
       };
     };
   };
