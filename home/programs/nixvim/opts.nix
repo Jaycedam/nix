@@ -1,5 +1,7 @@
 {
-  globals.mapleader = " ";
+  extraConfigLua = ''
+    require("vim._core.ui2").enable({ enable = true, msg = { target = "msg" } })
+  '';
 
   opts = {
     showmode = false;
@@ -20,8 +22,7 @@
     cursorline = true;
     laststatus = 3;
     signcolumn = "yes";
-    # todo: add macro to statusline to enable this
-    # cmdheight = 0;
+    cmdheight = 0;
     ignorecase = true;
     smartcase = true;
     swapfile = false;

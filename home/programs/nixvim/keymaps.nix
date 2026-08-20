@@ -2,6 +2,13 @@ let
   mkKeymap = (import ./lib/binds.nix).mkKeymap;
   mkRawKeymap = (import ./lib/binds.nix).mkRawKeymap;
 in {
+  globals.mapleader = " ";
+
+  extraConfigLua = ''
+    vim.cmd("packadd nvim.undotree")
+    vim.keymap.set("n", "<leader>u", require("undotree").open, { desc = "Toggle undotree" })
+  '';
+
   keymaps = [
     # https://nix-community.github.io/nixvim/keymaps/index.html
     # global keymaps
@@ -52,5 +59,7 @@ in {
         vim.notify("Copied: " .. path)
       end
     '' {desc = "Copy file path";})
+
+    (mkKeymap ("n" "<leader>vc" "<cmd>mksession<cr>" {desc = "Create session";}))
   ];
 }
