@@ -43,6 +43,7 @@
       };
 
       input = {
+        focus-follows-mouse._props = {max-scroll-amount = "10%";};
         keyboard.xkb = {
           layout = "us";
           variant = "colemak_dh_iso";
@@ -58,7 +59,7 @@
 
       layout = {
         gaps = 10;
-        default-column-width.proportion = 0.8;
+        default-column-width.proportion = 0.5;
         always-center-single-column = {};
 
         preset-column-widths._children = [
