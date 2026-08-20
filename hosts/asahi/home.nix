@@ -1,5 +1,10 @@
 {
   imports = [../../home/default.nix];
 
-  # todo: add userSettings
+  userSettings = {
+    theme = {
+      name = "gruvbox-dark-medium";
+      # opacity = 0.95;
+    };
+  };
 }
