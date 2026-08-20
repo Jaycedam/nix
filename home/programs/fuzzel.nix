@@ -10,8 +10,8 @@
       };
       border = {
         width = 2;
-        radius = 0;
-        selection-radius = 0;
+        radius = config.userSettings.borderRadius;
+        selection-radius = config.userSettings.borderRadius;
       };
     };
   };

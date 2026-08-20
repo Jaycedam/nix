@@ -1,10 +1,10 @@
-{
+{config, ...}: {
   wayland.windowManager.niri.settings._children = [
     # disable xray for blur: fuzzel, kitty quick-access-terminal
     {
       layer-rule._children = [
         {match._props.namespace = "^launcher$";}
-        {geometry-corner-radius = 0;}
+        {geometry-corner-radius = config.userSettings.borderRadius;}
         {shadow.on = {};}
         {
           background-effect = {
@@ -35,10 +35,9 @@
     }
 
     # rounded corners
-    # todo: use arg
     {
       window-rule._children = [
-        {geometry-corner-radius = 0;}
+        {geometry-corner-radius = config.userSettings.borderRadius;}
         {clip-to-geometry = true;}
       ];
     }

@@ -6,6 +6,7 @@
 }: {
   imports = [
     ../shared/overlays.nix
+    ./user-settings.nix
     ./programs
     ./services
     ./scripts

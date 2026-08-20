@@ -2,8 +2,9 @@
   imports = [../../home/default.nix];
 
   userSettings = {
+    # borderRadius = 10;
     theme = {
-      name = "catppuccin-mocha";
+      name = "rose-pine";
       opacity = 0.9;
     };
   };
