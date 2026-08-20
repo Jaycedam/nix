@@ -1,4 +1,10 @@
-{
+{hmConfig, ...}: let
+  # TODO: move this or leave a default for when it's used as standalone
+  border =
+    if hmConfig.userSettings.borderRadius == 0
+    then "single"
+    else "rounded";
+in {
   extraConfigLua = ''
     require("vim._core.ui2").enable({ enable = true, msg = { target = "msg" } })
   '';
@@ -16,8 +22,8 @@
     tabstop = 4;
     shiftwidth = 4;
     softtabstop = 4;
-    winborder = "single";
-    pumborder = "single";
+    winborder = border;
+    pumborder = border;
     termguicolors = true;
     cursorline = true;
     laststatus = 3;
