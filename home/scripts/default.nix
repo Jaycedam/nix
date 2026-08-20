@@ -1,5 +1,5 @@
 {pkgs, ...}: {
-  # todo: move whole logic to each script to avoid passing pkg
+  # TODO: move whole logic to each script to avoid passing pkg
   home.packages = [
     (import ./dmenu/dmenu-power.nix {inherit pkgs;})
     (import ./dmenu/dmenu-opencode.nix {inherit pkgs;})

@@ -1,5 +1,5 @@
 {inputs, ...}: {
-  # todo: move import to make nixvim optionally standalone
+  # TODO: move import to make nixvim optionally standalone
   imports = [inputs.nixvim.homeModules.nixvim];
 
   programs.nixvim = {

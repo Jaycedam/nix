@@ -31,7 +31,7 @@
     stateVersion = "26.05";
   };
 
-  # todo: move this
+  # TODO: move this
   home.activation = {
     reloadRunningApps = lib.hm.dag.entryAfter ["writeBoundary"] ''
       run --silence ${lib.getExe' pkgs.procps "pkill"} -USR2 opencode || true

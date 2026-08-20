@@ -6,7 +6,7 @@
         scrolloff = 10;
         cursorline = true;
         popup-border = "all";
-        # todo: adjust for colemak-dh
+        # TODO: adjust for colemak-dh
         jump-label-alphabet = "abcdefghijklmnopqrstuvwxyz";
         soft-wrap.enable = true;
         end-of-line-diagnostics = "hint";

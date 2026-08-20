@@ -3,7 +3,7 @@
   lib,
   ...
 }: {
-  # todo: override stylix instead of defining everything
+  # TODO: override stylix instead of defining everything
   stylix.targets.waybar.addCss = false;
 
   programs.waybar.style = lib.mkAfter ''
@@ -63,7 +63,8 @@
     }
 
     #workspaces.main button.active {
-      color: @base0D;
+      background-color: @base0D;
+      color: @base00;
     }
 
     #workspaces.taskbar button .niri-taskbar-btn {

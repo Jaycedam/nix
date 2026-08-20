@@ -1,5 +1,5 @@
 {
-  # todo: use more hm opts, add stylix
+  # TODO: use more hm opts, add stylix
   programs.tmux = {
     enable = true;
     newSession = true;

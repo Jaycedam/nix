@@ -1,5 +1,5 @@
 {
-  # todo: simplify config or look for alternative
+  # TODO: simplify config or look for alternative
   programs.waybar.settings.mainBar = {
     "niri/workspaces#main".format = "{value}";
 
@@ -88,7 +88,7 @@
       };
 
       format-icons = {
-        # todo: use only 5 icons
+        # TODO: use only 5 icons
         default = ["󰂎" "󰁺" "󰁻" "󰁼" "󰁽" "󰁾" "󰁿" "󰂀" "󰂁" "󰂂" "󰁹"];
         charging = ["󰢟" "󰢜" "󰂆" "󰂇" "󰂈" "󰢝" "󰂉" "󰢞" "󰂊" "󰂋" "󰂅"];
       };

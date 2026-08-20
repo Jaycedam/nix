@@ -25,7 +25,7 @@
 
     ghostty = {
       enable = true;
-      # todo: add settings
+      # TODO: add settings
     };
   };
 }
