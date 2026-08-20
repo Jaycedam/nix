@@ -20,7 +20,19 @@
 
   programs = {
     home-manager.enable = true;
-    fzf.enable = true;
+    fzf = {
+      enable = true;
+      fileWidget.options = [
+        "--walker-skip"
+        ".cache,.codeium,.codex,.gemini,.grok,.icons,.local,.nix-profile,.npm,.git,node_modules"
+        "--preview"
+        "'bat -n --color=always {}'"
+      ];
+      changeDirWidget.options = [
+        "--walker-skip"
+        ".cache,.codeium,.codex,.gemini,.grok,.icons,.local,.nix-profile,.npm,.git,node_modules"
+      ];
+    };
     zoxide.enable = true;
     bat.enable = true;
     btop.enable = true;
