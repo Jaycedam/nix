@@ -12,7 +12,7 @@ in {
   options.userSettings.theme = {
     name = lib.mkOption {
       type = lib.types.str;
-      default = "gruvbox-material-dark-hard";
+      default = "rose-pine";
       description = "Name of the theme file in home/programs/stylix/themes";
     };
 
