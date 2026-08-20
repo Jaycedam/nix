@@ -1,7 +1,7 @@
 {
   # todo: simplify config or look for alternative
   programs.waybar.settings.mainBar = {
-    "niri/workspaces#main".format = "{index}";
+    "niri/workspaces#main".format = "{value}";
 
     "niri/workspaces#taskbar" = {
       current-only = true;

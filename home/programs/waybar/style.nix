@@ -13,10 +13,10 @@
       border-radius: ${toString config.userSettings.borderRadius};
     }
 
-    window#waybar,
-    tooltip {
+    window#waybar {
       background-color: ${config.stylix.targets.waybar.background};
       color: @base05;
+      border-radius: 0;
     }
 
     #idle_inhibitor.activated,
@@ -63,9 +63,7 @@
     }
 
     #workspaces.main button.active {
-      background-color: @base0D;
-      color: @base00;
-      border-bottom: 2px solid @base0D;
+      color: @base0D;
     }
 
     #workspaces.taskbar button .niri-taskbar-btn {
