@@ -1,19 +1,24 @@
 {
-  programs = {
-    # needed to propagate home.sessionVariables
-    bash.enable = true;
-    fish = {
-      enable = true;
-      binds."ctrl-z".command = "fzf-cd-widget";
-      interactiveShellInit = "set fish_greeting ''";
+  home.shellAliases = {
+    v = "nvim";
+    n = "nvim";
+    gp = "git pull";
+    gs = "git status";
+    gP = "git push";
+    oc = "opencode";
+    gc = "git commit -m";
+  };
 
-      shellAbbrs = {
-        v = "nvim";
-        n = "nvim";
-        ll = "ls -lA";
-        oc = "opencode";
-        gp = "git pull";
-        gs = "git status";
+  programs = {
+    carapace.enable = true; # completions
+    bash.enable = true; # needed to load sessionVariables in compositor
+    nushell = {
+      enable = true;
+      environmentVariables.PROMPT_COMMAND_RIGHT = "";
+      settings = {
+        show_banner = false;
+        edit_mode = "vi";
+        completions.external.enable = true;
       };
     };
   };

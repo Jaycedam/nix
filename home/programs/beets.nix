@@ -12,7 +12,6 @@
         "lastgenre"
         "lyrics"
         "missing"
-        "fish"
         "permissions"
       ];
 

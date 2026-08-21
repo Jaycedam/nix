@@ -1,5 +1,9 @@
-{hmConfig, ...}: let
-  # TODO: move this or leave a default for when it's used as standalone
+{
+  hmConfig,
+  pkgs,
+  lib,
+  ...
+}: let
   border =
     if hmConfig.userSettings.borderRadius == 0
     then "single"
@@ -10,6 +14,7 @@ in {
   '';
 
   opts = {
+    shell = "${lib.getExe pkgs.nushell}";
     showmode = false;
     number = true;
     relativenumber = true;

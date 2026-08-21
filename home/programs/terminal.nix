@@ -1,4 +1,9 @@
-{config, ...}: {
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}: {
   programs = {
     kitty = {
       enable = true;
@@ -6,6 +11,7 @@
       quickAccessTerminalConfig.background_opacity = config.stylix.opacity.terminal;
 
       settings = {
+        shell = "${lib.getExe pkgs.nushell}";
         cursor_trail = 1;
         tab_bar_edge = "top";
         background_blur = 1;
@@ -25,7 +31,12 @@
 
     ghostty = {
       enable = true;
-      # TODO: add settings
+      settings.command = "${lib.getExe pkgs.nushell}";
+    };
+
+    foot = {
+      enable = true;
+      settings.main.shell = "${lib.getExe pkgs.nushell}";
     };
   };
 }
