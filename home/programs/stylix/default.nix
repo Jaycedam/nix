@@ -57,13 +57,13 @@ in {
       };
 
       sansSerif = {
-        package = pkgs.dejavu_fonts;
-        name = "DejaVu Sans";
+        package = pkgs.geist-font;
+        name = "Geist Sans";
       };
 
       monospace = {
-        package = pkgs.jetbrains-mono;
-        name = "JetBrains Mono";
+        package = pkgs.geist-font;
+        name = "Geist Mono";
       };
 
       emoji = {

@@ -77,6 +77,7 @@
     dejavu_fonts
     font-awesome
     jetbrains-mono
+    geist-font
     liberation_ttf
     nerd-fonts.symbols-only
     noto-fonts
