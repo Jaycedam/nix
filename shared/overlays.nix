@@ -27,7 +27,7 @@
             hash = "sha256-2i30TQrRknlSJ2bl5z9I8olag5EQEwdWeY+7P5TIK0Y=";
           }
         );
-        extracted = prev.appimageTools.extractType2 {
+        extracted = prev.appimageTools.extract {
           pname = "duckstation";
           version = v;
           inherit src;
