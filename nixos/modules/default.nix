@@ -7,6 +7,8 @@
     ./virtualization.nix
   ];
 
+  hardware.enableAllFirmware = true;
+
   # use xkb config for tty, early for luks prompt
   console = {
     useXkbConfig = true;
