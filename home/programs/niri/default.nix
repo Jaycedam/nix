@@ -64,11 +64,11 @@
 
         preset-column-widths._children = [
           {proportion = 0.5;}
-          {proportion = 0.8;}
+          {proportion = 0.66667;}
         ];
         preset-window-heights._children = [
-          {proportion = 1.0 / 2.0;}
-          {proportion = 1.0 / 3.0;}
+          {proportion = 0.5;}
+          {proportion = 0.33333;}
         ];
       };
     };

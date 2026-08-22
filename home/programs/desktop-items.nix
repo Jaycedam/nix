@@ -40,12 +40,6 @@
       exec = "kitty --app-id impala impala";
       icon = "nm-device-wireless";
     };
-    "neovim" = {
-      name = "Neovim";
-      exec = "kitty --app-id neovim neovim";
-      icon = "nvim";
-      noDisplay = true;
-    };
     "opencode" = {
       name = "OpenCode";
       exec = "kitty --app-id opencode opencode";
