@@ -16,7 +16,34 @@ in {
   keymaps = [
     (mkKeymap "n" "<leader>gb" "<cmd>Pick git_branches<cr>" {desc = "Git branches";})
     (mkKeymap "n" "<leader>gc" "<cmd>Pick git_commits<cr>" {desc = "Git commits";})
-    (mkKeymap "n" "<leader>fb" "<cmd>Pick buffers<cr>" {desc = "Buffers";})
+    (mkPluginKeymap "n" "<leader>fb" [
+      "mini.pick"
+      ''
+        builtin.buffers(nil, { mappings = {
+          wipeout = {
+            char = '<C-d>',
+            func = function()
+              local matches = MiniPick.get_picker_matches()
+              local buffers = vim.tbl_map(function(m) return m.bufnr end, matches.marked)
+              if #buffers == 0 then
+                table.insert(buffers, matches.current.bufnr)
+              end
+              for _, bufnr in ipairs(buffers) do
+                if vim.api.nvim_buf_is_valid(bufnr) then
+                  vim.api.nvim_buf_delete(bufnr, { force = true })
+                end
+              end
+              -- Re-fetch buffer list with full item structure (preserves names)
+              local new_items = vim.fn.getbufinfo({ buflisted = 1 })
+              local items = vim.tbl_map(function(b)
+                return { bufnr = b.bufnr, text = vim.fn.bufname(b.bufnr) }
+              end, new_items)
+              MiniPick.set_picker_items(items, { do_match = true })
+            end,
+          },
+        } })
+      ''
+    ] {desc = "Buffers";})
     (mkKeymap "n" "<leader>ff" "<cmd>Pick files<cr>" {desc = "Files";})
     (mkKeymap "n" "<leader>fg" "<cmd>Pick grep<cr>" {desc = "Grep";})
     (mkKeymap "n" "<leader>/" "<cmd>Pick grep_live<cr>" {desc = "Live grep";})
