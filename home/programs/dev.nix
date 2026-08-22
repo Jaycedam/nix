@@ -24,6 +24,19 @@
         enabled = true;
         sound = false;
       };
+      settings = {
+        permission = {
+          external_directory = {
+            "/nix/store/**" = "allow";
+            "/tmp/**" = "allow";
+            "~/.config/**" = "allow";
+          };
+          edit = {
+            "/nix/store/**" = "deny";
+            "~/.config/**" = "ask";
+          };
+        };
+      };
     };
 
     npm = {
