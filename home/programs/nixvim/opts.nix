@@ -39,5 +39,6 @@ in {
     swapfile = false;
     backup = false;
     undofile = true;
+    fillchars.eob = " ";
   };
 }

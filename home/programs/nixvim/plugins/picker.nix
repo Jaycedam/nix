@@ -19,7 +19,8 @@ in {
     (mkPluginKeymap "n" "<leader>fb" [
       "mini.pick"
       ''
-        builtin.buffers(nil, { mappings = {
+        builtin.buffers({ include_current = false }, {
+        mappings = {
           wipeout = {
             char = '<C-d>',
             func = function()
