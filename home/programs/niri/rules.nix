@@ -1,19 +1,6 @@
 {config, ...}: {
   wayland.windowManager.niri.settings._children = [
-    # disable xray for blur: fuzzel, kitty quick-access-terminal
-    {
-      layer-rule._children = [
-        {match._props.namespace = "^launcher$";}
-        {geometry-corner-radius = config.userSettings.borderRadius;}
-        {shadow.on = {};}
-        {
-          background-effect = {
-            blur = true;
-            xray = false;
-          };
-        }
-      ];
-    }
+    # disable xray for blur
     {
       layer-rule._children = [
         {match._props.namespace = "^kitty-quick-access$";}
@@ -24,13 +11,6 @@
             xray = false;
           };
         }
-      ];
-    }
-
-    {
-      layer-rule._children = [
-        {match._props.namespace = "^waybar$";}
-        {background-effect.blur = true;}
       ];
     }
 
