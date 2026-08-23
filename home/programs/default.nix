@@ -7,7 +7,6 @@
     ./browser.nix
     ./desktop-items.nix
     ./dev.nix
-    ./fuzzel.nix
     ./gaming.nix
     ./sh.nix
     ./terminal.nix
