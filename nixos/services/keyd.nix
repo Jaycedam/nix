@@ -5,15 +5,15 @@
     # but the config is on qwerty so some combos won't make much sense
     keyboards.default.settings = {
       main = {
-        a = "overloadt(alt, a, 200)";
-        s = "overloadt(meta, s, 200)";
-        d = "overloadt(shift, d, 200)";
-        f = "overloadt(control, f, 200)";
+        a = "overloadt(alt, a, 150)";
+        s = "overloadt(meta, s, 150)";
+        d = "overloadt(shift, d, 150)";
+        f = "overloadt(control, f, 150)";
         g = "altgr";
-        j = "overloadt(control, j, 200)";
-        k = "overloadt(shift, k, 200)";
-        l = "overloadt(meta, l, 200)";
-        ";" = "overloadt(alt, ;, 200)";
+        j = "overloadt(control, j, 150)";
+        k = "overloadt(shift, k, 150)";
+        l = "overloadt(meta, l, 150)";
+        ";" = "overloadt(alt, ;, 150)";
 
         # Brightness
         f1 = "brightnessdown";
@@ -31,11 +31,11 @@
 
         # Chords
         "w+e" = "esc";
-        "i+o" = "backspace";
+        "i+o" = "enter";
         "z+x" = "tab";
-        "comma+dot" = "enter";
+        "comma+dot" = "backspace";
 
-        space = "overloadt(extend, space, 200)";
+        space = "overloadt(extend, space, 150)";
       };
 
       extend = {
