@@ -8,11 +8,18 @@
     home-manager.url = "github:nix-community/home-manager";
     stylix.url = "github:nix-community/stylix";
     nixvim.url = "github:nix-community/nixvim";
+    noctalia.url = "github:noctalia-dev/noctalia/cachix";
   };
 
   nixConfig = {
-    extra-substituters = ["https://nix-community.cachix.org"];
-    extra-trusted-public-keys = ["nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="];
+    extra-substituters = [
+      "https://nix-community.cachix.org"
+      "https://noctalia.cachix.org"
+    ];
+    extra-trusted-public-keys = [
+      "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+      "noctalia.cachix.org-1:pCOR47nnMEo5thcxNDtzWpOxNFQsBRglJzxWPp3dkU4="
+    ];
   };
 
   outputs = {nixpkgs, ...} @ inputs: let
