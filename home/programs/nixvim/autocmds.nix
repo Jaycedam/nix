@@ -6,14 +6,6 @@
 
   autoCmd = [
     # https://nix-community.github.io/nixvim/NeovimOptions/autoCmd/index.html
-    # reload config on SIGUSR1 (sent by home activation on switch)
-    {
-      event = "Signal";
-      pattern = "SIGUSR1";
-      group = "reload-config";
-      callback.__raw = ''function() vim.cmd("source $MYVIMRC") end'';
-    }
-
     {
       event = "TextYankPost";
       desc = "Highlight when yanking (copying) text";
