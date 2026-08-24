@@ -9,38 +9,22 @@
         s = "overloadt(meta, s, 180)";
         d = "overloadt(shift, d, 180)";
         f = "overloadt(control, f, 180)";
-        g = "altgr";
+        g = "overloadt(altgr, g, 180)";
         j = "overloadt(control, j, 180)";
         k = "overloadt(shift, k, 180)";
         l = "overloadt(meta, l, 180)";
         ";" = "overloadt(alt, ;, 180)";
 
-        # Brightness
-        f1 = "brightnessdown";
-        f2 = "brightnessup";
-
-        # Media
-        f7 = "previoussong";
-        f8 = "playpause";
-        f9 = "nextsong";
-
-        # Volume
-        f10 = "mute";
-        f11 = "volumedown";
-        f12 = "volumeup";
-
         # Chords
-        "w+e" = "esc";
+        "w+e" = "backspace";
         "i+o" = "enter";
-        "z+x" = "tab";
-        "comma+dot" = "backspace";
 
         space = "overloadt(extend, space, 180)";
       };
 
       extend = {
-        q = "esc";
-        w = "tab";
+        # q = "";
+        # w = "";
         # e = "";
         # r = "";
         # t = "";
@@ -61,19 +45,15 @@
         l = "right";
         ";" = "enter";
 
-        # reset fkeys
-        f1 = "f1";
-        f2 = "f2";
-        f3 = "f3";
-        f4 = "f4";
-        f5 = "f5";
-        f6 = "f6";
-        f7 = "f7";
-        f8 = "f8";
-        f9 = "f9";
-        f10 = "f10";
-        f11 = "f11";
-        f12 = "f12";
+        "102nd" = "brightnessdown";
+        z = "brightnessup";
+        x = "volumedown";
+        c = "volumeup";
+        v = "mute";
+        n = "micmute";
+        m = "previoussong";
+        comma = "playpause";
+        dot = "nextsong";
       };
     };
   };
