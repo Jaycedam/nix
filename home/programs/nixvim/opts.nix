@@ -5,7 +5,7 @@
   ...
 }: let
   border =
-    if hmConfig.userSettings.borderRadius == 0
+    if hmConfig.userSettings.theme.borderRadius == 0
     then "single"
     else "rounded";
 in {

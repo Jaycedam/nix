@@ -21,6 +21,12 @@ in {
       default = 1.0;
       description = "Opacity applied to applications, terminal, popups and desktop";
     };
+
+    borderRadius = lib.mkOption {
+      type = lib.types.int;
+      default = 0;
+      description = "Border radius in pixels applied to corners across modules";
+    };
   };
 
   config.stylix = {

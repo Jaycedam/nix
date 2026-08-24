@@ -10,7 +10,7 @@
     * {
       font-family: "${config.stylix.fonts.monospace.name}", "Symbols Nerd Font Mono";
       font-weight: bold;
-      border-radius: ${toString config.userSettings.borderRadius};
+      border-radius: ${toString config.userSettings.theme.borderRadius};
     }
 
     window#waybar {
