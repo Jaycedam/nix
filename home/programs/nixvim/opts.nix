@@ -14,7 +14,7 @@ in {
   '';
 
   opts = {
-    shell = "${lib.getExe pkgs.nushell}";
+    shell = "${lib.getExe pkgs.zsh}";
     showmode = false;
     number = true;
     relativenumber = true;

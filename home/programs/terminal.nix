@@ -11,7 +11,7 @@
       quickAccessTerminalConfig.background_opacity = config.stylix.opacity.terminal;
 
       settings = {
-        shell = "${lib.getExe pkgs.nushell}";
+        shell = "${lib.getExe pkgs.zsh}";
         cursor_trail = 1;
         tab_bar_edge = "top";
         background_blur = 1;
@@ -31,12 +31,12 @@
 
     ghostty = {
       enable = true;
-      settings.command = "${lib.getExe pkgs.nushell}";
+      settings.command = "${lib.getExe pkgs.zsh}";
     };
 
     foot = {
       enable = true;
-      settings.main.shell = "${lib.getExe pkgs.nushell}";
+      settings.main.shell = "${lib.getExe pkgs.zsh}";
     };
   };
 }

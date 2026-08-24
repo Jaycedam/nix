@@ -10,15 +10,24 @@
   };
 
   programs = {
-    carapace.enable = true; # completions
     bash.enable = true; # needed to load sessionVariables in compositor
-    nushell = {
+    carapace = {
       enable = true;
-      environmentVariables.PROMPT_COMMAND_RIGHT = "";
-      settings = {
-        show_banner = false;
-        edit_mode = "vi";
-        completions.external.enable = true;
+      ignoreCase = true;
+    };
+    starship.enable = true;
+    zsh = {
+      enable = true;
+      defaultKeymap = "viins";
+      historySubstringSearch.enable = true;
+      syntaxHighlighting.enable = true;
+      autosuggestion = {
+        enable = true;
+        strategy = ["completion" "history"];
+      };
+      history = {
+        ignoreDups = true;
+        saveNoDups = true;
       };
     };
   };
