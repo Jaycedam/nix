@@ -4,6 +4,7 @@
   lib,
   ...
 }: let
+  # stylix themes can define a colorscheme plugin instead of base16
   theme = import (./../stylix/themes + "/${config.userSettings.theme.name}.nix");
 in {
   # TODO: move import to make nixvim optionally standalone
