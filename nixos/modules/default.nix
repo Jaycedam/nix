@@ -8,6 +8,7 @@
   ];
 
   hardware.enableAllFirmware = true;
+  fonts.enableDefaultPackages = true;
 
   # use xkb config for tty, early for luks prompt
   console = {
