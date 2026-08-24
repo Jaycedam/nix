@@ -12,11 +12,13 @@ in {
     neogit.enable = true;
     highlight-colors.enable = true;
     copilot-vim.enable = true;
+    render-markdown.enable = true;
 
     mini-sessions = {
       enable = true;
       settings = {autoread = true;};
     };
+
     mini-icons = {
       enable = true;
       mockDevIcons = true;
