@@ -5,7 +5,6 @@ in {
   plugins = {
     lspconfig.enable = true;
     treesitter.enable = true;
-    treesitter-context.enable = true;
     mini-diff.enable = true;
     mini-pairs.enable = true;
     mini-ai.enable = true;

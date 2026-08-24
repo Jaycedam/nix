@@ -22,4 +22,12 @@
     url = "https://rose-pine-wallpapers.pages.dev/wallpapers/mix/xavier-cuenca-w4-3.jpg";
     hash = "sha256-67TRNxMCNlOAy/EzlXQqDzYqXKY0QCIwUrJMWbLvtTo=";
   };
+
+  nixvim.colorschemes.catppuccin = {
+    enable = true;
+    settings = {
+      flavour = "mocha";
+      transparent_background = true;
+    };
+  };
 }

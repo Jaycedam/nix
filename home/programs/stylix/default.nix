@@ -25,10 +25,14 @@ in {
 
   config.stylix = {
     enable = true;
-    targets.qt.enable = true; # not enabled by default on hm
     base16Scheme = theme.base16Scheme;
     polarity = theme.polarity;
     image = pkgs.fetchurl {inherit (theme.image) url hash;};
+
+    targets = {
+      qt.enable = true; # disabled on hm standalone
+      nixvim.enable = !(theme ? nixvim); # use nixvim colorscheme when set
+    };
 
     opacity = {
       applications = config.userSettings.theme.opacity;
