@@ -123,7 +123,7 @@
     };
     "Mod+Slash" = {
       _props.hotkey-overlay-title = "Quick access terminal";
-      "spawn" = ["kitten" "quick-access-terminal" "tmux" "a"];
+      "spawn" = ["kitten" "quick-access-terminal"];
     };
     "Mod+G" = {
       _props.hotkey-overlay-title = "Toggle global window (pin)";
