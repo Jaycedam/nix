@@ -22,6 +22,7 @@
     zsh = {
       enable = true;
       defaultKeymap = "viins";
+      localVariables.KEYTIMEOUT = "1";
       historySubstringSearch.enable = true;
       syntaxHighlighting.enable = true;
       autosuggestion = {
