@@ -15,7 +15,10 @@
       enable = true;
       ignoreCase = true;
     };
-    starship.enable = true;
+    starship = {
+      enable = true;
+      presets = ["pure-preset"];
+    };
     zsh = {
       enable = true;
       defaultKeymap = "viins";
