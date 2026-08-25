@@ -33,10 +33,8 @@
     "XF86AudioNext"."spawn" = ["playerctl" "next"];
     "XF86MonBrightnessUp"."spawn" = ["brightness" "up"];
     "XF86MonBrightnessDown"."spawn" = ["brightness" "down"];
-    "Ctrl+XF86MonBrightnessUp"."spawn" = ["brightness" "up" "2"];
-    "Ctrl+XF86MonBrightnessDown"."spawn" = ["brightness" "down" "2"];
-    "Shift+XF86MonBrightnessUp"."spawn" = ["brightness" "up" "20"];
-    "Shift+XF86MonBrightnessDown"."spawn" = ["brightness" "down" "20"];
+    "Ctrl+XF86MonBrightnessUp"."spawn" = ["brightness" "up" "1"];
+    "Ctrl+XF86MonBrightnessDown"."spawn" = ["brightness" "down" "1"];
     "Mod+XF86MonBrightnessUp"."spawn" = ["brightnessctl" "-q" "-d" "kbd_backlight" "s" "+25%"];
     "Mod+XF86MonBrightnessDown"."spawn" = ["brightnessctl" "-q" "-d" "kbd_backlight" "s" "25%-"];
 
