@@ -11,14 +11,17 @@
 
   programs = {
     bash.enable = true; # needed to load sessionVariables in compositor
+
     carapace = {
       enable = true;
       ignoreCase = true;
     };
+
     starship = {
       enable = true;
-      presets = ["pure-preset"];
+      presets = ["no-runtime-versions"];
     };
+
     zsh = {
       enable = true;
       defaultKeymap = "viins";
