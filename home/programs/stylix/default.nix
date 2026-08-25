@@ -82,4 +82,7 @@ in {
       };
     };
   };
+
+  # stylix themes can optionally define a nixvim colorscheme instead of base16
+  config.programs.nixvim = lib.optionalAttrs (theme ? nixvim) theme.nixvim;
 }
