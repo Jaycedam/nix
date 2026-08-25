@@ -3,6 +3,7 @@ pkgs.writeShellApplication {
   name = "volume";
   runtimeInputs = with pkgs; [libnotify wireplumber];
 
+  # TODO: simplify this or use an osd service
   text = ''
     help() {
         cat <<EOF

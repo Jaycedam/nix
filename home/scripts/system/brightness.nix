@@ -8,6 +8,7 @@ pkgs.writeShellApplication {
     ddcutil
   ];
 
+  # TODO: simplify this or use an osd service
   text = ''
     help() {
         cat <<EOF
