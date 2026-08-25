@@ -15,6 +15,8 @@
         cursor_trail = 1;
         tab_bar_edge = "top";
         background_blur = 1;
+        enable_audio_bell = false;
+        update_check_interval = 0;
       };
 
       actionAliases = {
@@ -27,11 +29,6 @@
         "kitty_mod+g" = "launch_window --os-window-class git lazygit";
         "kitty_mod+a" = "launch_window --os-window-class opencode opencode";
       };
-    };
-
-    ghostty = {
-      enable = true;
-      settings.command = "${lib.getExe pkgs.zsh}";
     };
 
     foot = {
