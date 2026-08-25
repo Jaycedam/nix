@@ -36,7 +36,7 @@
     }
 
     #tray {
-      background-color: @base02;
+      background-color: @base01;
       padding: 0 10px;
     }
 
@@ -73,7 +73,7 @@
 
     #workspaces.taskbar button .niri-taskbar-btn.focused {
       -gtk-icon-effect: highlight;
-      background-color: @base02;
+      background-color: @base01;
     }
   '';
 }
