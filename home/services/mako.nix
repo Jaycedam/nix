@@ -9,6 +9,7 @@
     settings = {
       width = 400;
       padding = 10;
+      margin = 15;
       border-size = 2;
       border-radius = config.userSettings.theme.borderRadius;
       layer = "overlay";
