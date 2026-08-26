@@ -18,10 +18,10 @@
     "brave-drive.proton.me__-Default" = {
       name = "Proton Drive";
       exec = "brave-origin --app=https://drive.proton.me";
-      icon = (builtins.fetchurl {
+      icon = builtins.fetchurl {
         url = "https://cdn.jsdelivr.net/gh/selfhst/icons/svg/proton-drive.svg";
         sha256 = "sha256-9ADprNlzvqDcsMp4BLm/MRFGyCLtvuEPsHBZARS/agE=";
-      });
+      };
     };
     "brave-www.youtube.com__-Default" = {
       name = "YouTube";
@@ -46,10 +46,10 @@
     "opencode" = {
       name = "OpenCode";
       exec = "kitty --app-id opencode opencode";
-      icon = (builtins.fetchurl {
+      icon = builtins.fetchurl {
         url = "https://opencode.ai/favicon.svg";
         sha256 = "sha256-4pu+MzgK0cGtqRNLUvIp0w6XdtYEgVEsnYHyu2833vk=";
-      });
+      };
       noDisplay = true;
     };
   };
