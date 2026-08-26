@@ -14,7 +14,7 @@
       layer = "top";
       position = "top";
       spacing = 15;
-      height = 25;
+      height = 30;
 
       modules-left = [
         "niri/workspaces#main"
