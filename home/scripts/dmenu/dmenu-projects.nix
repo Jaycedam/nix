@@ -38,7 +38,7 @@ pkgs.writeShellApplication {
     if [[ -n "$selected" ]]; then
         for dir in "''${dirs[@]}"; do
             if [[ "$(basename "$dir")" == "$selected" ]]; then
-                kitty --app-id "$id" --working-directory "$dir" "$cmd"
+                kitty -1 --app-id "$id" --working-directory "$dir" "$cmd"
                 break
             fi
         done

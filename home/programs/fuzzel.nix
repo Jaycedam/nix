@@ -3,7 +3,7 @@
     enable = true;
     settings = {
       main = {
-        terminal = "kitty --app-id '{cmd}' -T '{cmd}' {cmd}";
+        terminal = "kitty -1 --app-id '{cmd}' -T '{cmd}' {cmd}";
         width = 40;
         lines = 20;
         line-height = 20;

@@ -41,7 +41,7 @@ pkgs.writeShellApplication {
                 exit 1
             }
             MODE=tui
-            CMD_ARGS=(kitty --app-id "''${ID:-$2}" "$2")
+            CMD_ARGS=(kitty -1 --app-id "''${ID:-$2}" "$2")
             [ -z "$ID" ] && ID="$2"
             shift 2
             ;;
@@ -63,8 +63,8 @@ pkgs.writeShellApplication {
                 exit 1
             }
             MODE=default
-            CMD_ARGS=("$1")
-            shift
+            CMD_ARGS=("$@")
+            break
             ;;
         esac
     done
