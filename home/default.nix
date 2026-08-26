@@ -20,17 +20,10 @@
     homeDirectory = "/home/${user}";
     pointerCursor.enable = true;
     sessionPath = ["$HOME/.local/bin"];
-    sessionVariables = {
-      EDITOR = "nvim";
-      TERMINAL = "kitty";
-      PAGER = "nvim +Man!";
-      BROWSER = "brave-origin";
-    };
     # don't change this!
     stateVersion = "26.05";
   };
 
-  # TODO: move this
   home.activation = {
     reloadRunningApps = lib.hm.dag.entryAfter ["writeBoundary"] ''
       run --silence ${lib.getExe' pkgs.procps "pkill"} -USR2 opencode || true

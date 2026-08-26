@@ -1,12 +1,21 @@
-{
-  home.shellAliases = {
-    v = "nvim";
-    n = "nvim";
-    gp = "git pull";
-    gs = "git status";
-    gP = "git push";
-    oc = "opencode";
-    gc = "git commit -m";
+{lib, ...}: {
+  home = {
+    sessionVariables = {
+      EDITOR = "nvim";
+      TERMINAL = "kitty -1";
+      PAGER = "nvim +Man!";
+      BROWSER = "brave-origin";
+    };
+
+    shellAliases = {
+      v = "nvim";
+      n = "nvim";
+      gp = "git pull";
+      gs = "git status";
+      gP = "git push";
+      oc = "opencode";
+      gc = "git commit -m";
+    };
   };
 
   programs = {
@@ -19,6 +28,7 @@
 
     starship = {
       enable = true;
+      settings.package.disabled = true;
       presets = ["no-runtime-versions"];
     };
 
@@ -30,7 +40,7 @@
       syntaxHighlighting.enable = true;
       autosuggestion = {
         enable = true;
-        strategy = ["completion" "history"];
+        strategy = ["completion"];
       };
       history = {
         ignoreDups = true;
