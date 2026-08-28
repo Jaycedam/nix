@@ -1,4 +1,4 @@
-{
+{pkgs, ...}: {
   services.keyd = {
     enable = true;
     # remaps are based on colemak-dh,
@@ -57,4 +57,12 @@
       };
     };
   };
+
+  environment.etc."libinput/local-overrides.quirks".text = pkgs.lib.mkForce ''
+    [Serial Keyboards]
+
+    MatchUdevType=keyboard
+    MatchName=keyd*keyboard
+    AttrKeyboardIntegration=internal
+  '';
 }

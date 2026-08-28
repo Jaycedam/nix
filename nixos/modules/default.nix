@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{
   imports = [
     ./boot.nix
     ./network.nix
@@ -15,12 +15,4 @@
     useXkbConfig = true;
     earlySetup = true;
   };
-
-  environment.etc."libinput/local-overrides.quirks".text = pkgs.lib.mkForce ''
-    [Serial Keyboards]
-
-    MatchUdevType=keyboard
-    MatchName=keyd*keyboard
-    AttrKeyboardIntegration=internal
-  '';
 }
