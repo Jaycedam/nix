@@ -20,7 +20,6 @@
     moonlight-qt
     nautilus
     nicotine-plus
-    nirius
     pavucontrol
     seahorse
     signal-desktop

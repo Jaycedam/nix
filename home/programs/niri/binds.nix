@@ -123,10 +123,6 @@
       _props.hotkey-overlay-title = "Quick access terminal";
       "spawn" = ["kitten" "quick-access-terminal"];
     };
-    "Mod+G" = {
-      _props.hotkey-overlay-title = "Toggle global window (pin)";
-      "spawn" = ["nirius" "toggle-follow-mode"];
-    };
 
     # todo: loop this
     "Mod+1"."focus-workspace" = 1;

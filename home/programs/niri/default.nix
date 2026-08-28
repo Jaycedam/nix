@@ -15,8 +15,7 @@
       gestures.hot-corners.off = {};
 
       _children = [
-        {spawn-at-startup = ["niriusd"];}
-        {spawn-at-startup = "asahi-fixes";}
+        {spawn-at-startup = "asahi-fixes";} # TODO: move to asahi host
         {workspace._args = ["browser"];}
         {workspace._args = ["dev"];}
         {workspace._args = ["media"];}
