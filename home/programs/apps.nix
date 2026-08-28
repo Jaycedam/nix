@@ -18,12 +18,20 @@
     localsend
     lollypop
     moonlight-qt
-    nautilus
     nicotine-plus
+    file-roller # archive manager used by thunar-archive-plugin
     pavucontrol
     seahorse
     signal-desktop
     transmission_4-gtk
+
+    # file manager
+    (thunar.override {
+      thunarPlugins = with pkgs; [
+        thunar-archive-plugin
+        thunar-volman
+      ];
+    })
 
     # fonts
     font-awesome

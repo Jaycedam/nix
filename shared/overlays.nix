@@ -1,17 +1,5 @@
 {
   nixpkgs.overlays = [
-    # gstreamer fix for nautilus, prevents installing the plugins manually
-    (final: prev: {
-      nautilus = prev.nautilus.overrideAttrs (nprev: {
-        buildInputs =
-          nprev.buildInputs
-          ++ (with final.gst_all_1; [
-            gst-plugins-good
-            gst-plugins-bad
-          ]);
-      });
-    })
-
     # Duckstation appimage
     (
       final: prev: let

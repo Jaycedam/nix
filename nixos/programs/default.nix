@@ -5,14 +5,17 @@
   ...
 }: {
   programs = {
-    niri.enable = true;
     gamemode.enable = true;
     virt-manager.enable = true;
+
+    niri = {
+      enable = true;
+      useNautilus = false;
+    };
 
     nh = {
       enable = true;
       flake = "/home/${user}/Projects/nix-config";
-
       clean = {
         enable = true;
         extraArgs = "--keep 2";
@@ -29,16 +32,5 @@
   environment.systemPackages = with pkgs; [
     # libvirt networking
     dnsmasq
-    # https://wiki.nixos.org/wiki/Thumbnails
-    # thumbnails
-    f3d
-    ffmpeg-headless
-    ffmpegthumbnailer
-    gdk-pixbuf
-    libavif
-    libheif.bin
-    libheif.out
-    libjxl
-    webp-pixbuf-loader
   ];
 }
