@@ -14,6 +14,15 @@
   nixpkgs.config.allowUnfree = true;
   fonts.fontconfig.enable = true;
 
+  # TODO: move this
+  gtk.gtk3.bookmarks = [
+    "file:///home/${user}/Projects"
+    "file:///home/${user}/Pictures"
+    "file:///home/${user}/Music"
+    "file:///home/${user}/Documents"
+    "file:///home/${user}/Downloads"
+  ];
+
   home = {
     preferXdgDirectories = true;
     username = user;
