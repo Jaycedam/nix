@@ -56,7 +56,7 @@
       };
 
       layout = {
-        gaps = 10;
+        gaps = 5;
         default-column-width.proportion = 0.5;
         always-center-single-column = {};
 

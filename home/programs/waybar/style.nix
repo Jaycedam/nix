@@ -43,7 +43,7 @@
     .modules-left,
     .modules-center,
     .modules-right {
-      padding: 0 10px;
+      padding: 0 5px;
     }
 
     #workspaces.taskbar button {
