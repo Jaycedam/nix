@@ -1,4 +1,4 @@
-{
+{lib, ...}: {
   home = {
     sessionVariables = {
       EDITOR = "nvim";
@@ -28,8 +28,22 @@
 
     starship = {
       enable = true;
-      settings.package.disabled = true;
-      presets = ["no-runtime-versions"];
+      settings = {
+        format = lib.concatStrings [
+          "$username"
+          "$hostname"
+          "$directory"
+          "$git_branch"
+          "$git_state"
+          "$git_status"
+          "$cmd_duration"
+          "$line_break"
+          "$python"
+          "$nix_shell"
+          "$character"
+        ];
+      };
+      presets = ["pure-preset"];
     };
 
     zsh = {
