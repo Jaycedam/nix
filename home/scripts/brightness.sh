@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 step=${2:-5}
+ext_step=10
 
 if [ "$1" = "up" ]; then
     ext_op="+"
@@ -12,7 +13,7 @@ else
     exit 1
 fi
 
-if ddcutil setvcp 10 "$ext_op" "$step" --sleep-multiplier 0.1 >/dev/null 2>&1; then
+if ddcutil setvcp 10 "$ext_op" "$ext_step" --sleep-multiplier 0.1 >/dev/null 2>&1; then
     vcp_output=$(ddcutil getvcp 10 --sleep-multiplier 0.1)
     current=$(echo "$vcp_output" | grep -oP 'current value =\s*\K\d+')
     max=$(echo "$vcp_output" | grep -oP 'max value =\s*\K\d+')
