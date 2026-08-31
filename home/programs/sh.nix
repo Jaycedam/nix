@@ -1,4 +1,4 @@
-{lib, ...}: {
+{
   home = {
     sessionVariables = {
       EDITOR = "nvim";
@@ -15,11 +15,15 @@
       gP = "git push";
       oc = "opencode";
       gc = "git commit -m";
+      rm = "trash";
+      cp = "cp -i";
+      mv = "mv -i";
+      mkdir = "mkdir -p";
     };
   };
 
   programs = {
-    bash.enable = true; # needed to load sessionVariables in compositor
+    bash.enable = true; # needed to load env in compositor
 
     carapace = {
       enable = true;
@@ -28,22 +32,8 @@
 
     starship = {
       enable = true;
-      settings = {
-        format = lib.concatStrings [
-          "$username"
-          "$hostname"
-          "$directory"
-          "$git_branch"
-          "$git_state"
-          "$git_status"
-          "$cmd_duration"
-          "$line_break"
-          "$python"
-          "$nix_shell"
-          "$character"
-        ];
-      };
-      presets = ["pure-preset"];
+      presets = [ "no-runtime-versions" ];
+      settings.package.disabled = true;
     };
 
     zsh = {
@@ -54,7 +44,7 @@
       syntaxHighlighting.enable = true;
       autosuggestion = {
         enable = true;
-        strategy = ["completion"];
+        strategy = [ "completion" ];
       };
       history = {
         ignoreDups = true;
