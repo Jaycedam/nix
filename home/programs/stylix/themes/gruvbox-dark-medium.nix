@@ -28,6 +28,12 @@
       enable = true;
       settings = {
         transparent_mode = true;
+        italic = {
+          strings = false;
+          emphasis = false;
+          comments = false;
+          folds = false;
+        };
       };
     };
   };
