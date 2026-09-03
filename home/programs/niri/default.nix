@@ -21,6 +21,8 @@
         {workspace._args = ["chat"];}
         {workspace._args = ["gaming"];}
 
+        {spawn-at-startup = ["kitty" "--start-as=hidden"];}
+
         {
           output = {
             _args = ["HDMI-A-1"];

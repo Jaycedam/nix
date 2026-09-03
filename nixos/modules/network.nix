@@ -14,7 +14,7 @@
       trustedInterfaces = ["virbr0"]; # libvirt network
       allowedTCPPorts = [
         53317 # localsend
-        8384 # syncthing gui, fixme: do i need this?
+        8384 # syncthing gui, FIXME: do i need this?
       ];
       allowedUDPPorts = [
         53317 # localsend

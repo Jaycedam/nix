@@ -7,7 +7,7 @@
 
   programs.waybar = {
     enable = true;
-    # todo: move this to an overlay
+    # TODO: move this to an overlay
     package = inputs.waybar.packages.${pkgs.stdenv.hostPlatform.system}.default;
     systemd.enable = true;
     settings.mainBar = {

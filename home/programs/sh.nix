@@ -32,7 +32,7 @@
 
     starship = {
       enable = true;
-      presets = [ "no-runtime-versions" ];
+      presets = ["no-runtime-versions"];
       settings.package.disabled = true;
     };
 
@@ -44,7 +44,7 @@
       syntaxHighlighting.enable = true;
       autosuggestion = {
         enable = true;
-        strategy = [ "completion" ];
+        strategy = ["completion"];
       };
       history = {
         ignoreDups = true;
