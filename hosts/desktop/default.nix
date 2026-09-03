@@ -3,6 +3,7 @@
     ./hardware-configuration.nix
     ./filesystem.nix
     ../../nixos
+    ./bluetooth.nix
   ];
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
