@@ -87,6 +87,23 @@
         "type": "github"
       }
     },
+    "caveman": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1788480809,
+        "narHash": "sha256-tEQDv0sIsCzdzaq/tdUSN8nb2xmQJkmjPtq8wKChqvQ=",
+        "owner": "JuliusBrussee",
+        "repo": "caveman",
+        "rev": "b82c0ad42c2bedc1f2cd78e414dadfaffbaaeec3",
+        "type": "github"
+      },
+      "original": {
+        "owner": "JuliusBrussee",
+        "ref": "v2.6.0",
+        "repo": "caveman",
+        "type": "github"
+      }
+    },
     "firefox-gnome-theme": {
       "flake": false,
       "locked": {
@@ -371,6 +388,7 @@
     "root": {
       "inputs": {
         "apple-silicon": "apple-silicon",
+        "caveman": "caveman",
         "home-manager": "home-manager",
         "nixpkgs": "nixpkgs_3",
         "nixvim": "nixvim",

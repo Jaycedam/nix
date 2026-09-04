@@ -1,22 +1,15 @@
-{pkgs, ...}: {
+{
+  inputs,
+  pkgs,
+  ...
+}: {
+  home.packages = with pkgs; [
+    grok-build
+  ];
+
   programs = {
-    lazygit.enable = true;
-    devenv.enable = true;
     antigravity-cli.enable = true;
     codex.enable = true;
-    gh.enable = true;
-
-    git = {
-      enable = true;
-      lfs.enable = true;
-      settings = {
-        pull.rebase = true;
-        user = {
-          name = "Jay";
-          email = "45575946+jaycem-dev@users.noreply.github.com";
-        };
-      };
-    };
 
     opencode = {
       enable = true;
@@ -37,16 +30,7 @@
           };
         };
       };
-    };
-
-    npm = {
-      enable = true;
-      settings.min-release-age = 30;
+      skills.caveman = "${inputs.caveman}/skills/caveman";
     };
   };
-
-  home.packages = with pkgs; [
-    android-tools
-    grok-build
-  ];
 }

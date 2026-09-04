@@ -8,6 +8,10 @@
     home-manager.url = "github:nix-community/home-manager";
     stylix.url = "github:nix-community/stylix";
     nixvim.url = "github:nix-community/nixvim";
+    caveman = {
+      url = "github:JuliusBrussee/caveman/v2.6.0";
+      flake = false;
+    };
   };
 
   nixConfig = {

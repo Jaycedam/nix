@@ -10,37 +10,35 @@
     parallel.enable = true;
     ripgrep.enable = true;
     yt-dlp.enable = true;
+    lazygit.enable = true;
+    devenv.enable = true;
+    gh.enable = true;
+    fzf.enable = true;
+    npm.enable = true;
+
+    git = {
+      enable = true;
+      lfs.enable = true;
+      settings = {
+        pull.rebase = true;
+        user = {
+          name = "Jay";
+          email = "45575946+jaycem-dev@users.noreply.github.com";
+        };
+      };
+    };
 
     eza = {
       enable = true;
       icons = "auto";
       extraOptions = ["--group-directories-first"];
     };
-
-    fzf = let
-      dirs = builtins.concatStringsSep "," [
-        ".cache"
-        ".icons"
-        ".local"
-        ".nix-profile"
-        ".npm"
-        ".codex"
-        ".gemini"
-        ".grok"
-        ".copilot"
-        ".gnupg"
-        ".cargo"
-      ];
-    in {
-      enable = true;
-      defaultOptions = ["--walker-skip ${dirs}"];
-      fileWidget.options = ["--preview 'bat -n {}'"];
-    };
   };
 
   home.packages = with pkgs; [
     bluetui
     brightnessctl
+    android-tools
     ddcutil
     exfatprogs
     ffmpeg

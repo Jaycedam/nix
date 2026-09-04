@@ -4,11 +4,10 @@
     ./niri
     ./stylix
     ./waybar
+    ./fuzzel.nix
     ./beets.nix
     ./browser.nix
     ./desktop-items.nix
-    ./dev.nix
-    ./fuzzel.nix
     ./gaming.nix
     ./sh.nix
     ./swaylock.nix
@@ -17,5 +16,6 @@
     ./yazi.nix
     ./apps.nix
     ./cli.nix
+    ./ai.nix
   ];
 }
