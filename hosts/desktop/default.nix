@@ -11,6 +11,13 @@
   networking.hostName = "desktop";
   system.stateVersion = "25.11";
 
+  # FIXME: move this and add opt
+  services.sunshine = {
+    enable = true;
+    openFirewall = true;
+    capSysAdmin = true; # KMS/DRM capture, no portal needed
+  };
+
   hardware = {
     amdgpu.initrd.enable = true;
     bluetooth.enable = true;

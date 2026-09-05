@@ -41,12 +41,5 @@
       enable = true;
       settings.dynamic_tuning = true;
     };
-
-    # fixme: enable with opt
-    sunshine = {
-      enable = false;
-      openFirewall = true;
-      capSysAdmin = true; # KMS/DRM capture, no portal needed
-    };
   };
 }
