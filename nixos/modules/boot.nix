@@ -4,7 +4,7 @@
     initrd.systemd.enable = true; # luks gui support
     consoleLogLevel = 0; # silent boot
     initrd.verbose = false;
-    kernelModules = ["ntsync"];
+    kernelModules = [ "ntsync" ];
 
     loader = {
       systemd-boot.enable = true;

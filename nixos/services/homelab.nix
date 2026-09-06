@@ -3,7 +3,8 @@
   user,
   lib,
   ...
-}: {
+}:
+{
   options.systemSettings.homelab = lib.mkOption {
     type = lib.types.bool;
     default = false;
@@ -11,7 +12,7 @@
   };
 
   config = lib.mkIf config.systemSettings.homelab {
-    users.groups.media = {};
+    users.groups.media = { };
 
     services = {
       radarr = {
@@ -109,8 +110,12 @@
         navidrome.serviceConfig.ProtectHome = lib.mkForce "tmpfs";
         # Tdarr node needs write access to /DATA
         # Without this, ProtectSystem=strict blocks all writes outside the node's dataDir
-        "tdarr-node-main".serviceConfig = {ReadWritePaths = ["/DATA"];};
-        "tdarr-server".serviceConfig = {ReadWritePaths = ["/DATA"];};
+        "tdarr-node-main".serviceConfig = {
+          ReadWritePaths = [ "/DATA" ];
+        };
+        "tdarr-server".serviceConfig = {
+          ReadWritePaths = [ "/DATA" ];
+        };
       };
     };
   };

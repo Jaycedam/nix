@@ -8,7 +8,10 @@
       require_dnssec = true;
       require_nolog = true;
       require_nofilter = true;
-      server_names = ["mullvad-adblock-doh" "adguard-dns-doh"];
+      server_names = [
+        "mullvad-adblock-doh"
+        "adguard-dns-doh"
+      ];
 
       sources.public-resolvers = {
         urls = [

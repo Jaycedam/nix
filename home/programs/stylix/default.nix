@@ -4,10 +4,12 @@
   inputs,
   lib,
   ...
-}: let
+}:
+let
   theme = import (./themes + "/${config.userSettings.theme.name}.nix");
-in {
-  imports = [inputs.stylix.homeModules.stylix];
+in
+{
+  imports = [ inputs.stylix.homeModules.stylix ];
 
   options.userSettings.theme = {
     name = lib.mkOption {
@@ -33,7 +35,7 @@ in {
     enable = true;
     base16Scheme = theme.base16Scheme;
     polarity = theme.polarity;
-    image = pkgs.fetchurl {inherit (theme.image) url hash;};
+    image = pkgs.fetchurl { inherit (theme.image) url hash; };
 
     targets = {
       qt.enable = true; # disabled on hm standalone

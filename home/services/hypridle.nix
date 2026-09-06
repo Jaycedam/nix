@@ -1,8 +1,10 @@
-{lib, pkgs, ...}: let
+{ lib, pkgs, ... }:
+let
   monitorOn = "niri msg action power-on-monitors";
   monitorOff = "niri msg action power-off-monitors";
   lockCmd = lib.getExe pkgs.swaylock;
-in {
+in
+{
   services.hypridle = {
     enable = true;
 

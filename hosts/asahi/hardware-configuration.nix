@@ -7,22 +7,24 @@
   pkgs,
   modulesPath,
   ...
-}: {
+}:
+{
   imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
   ];
 
-  boot.initrd.availableKernelModules = ["usb_storage"];
-  boot.initrd.kernelModules = [];
-  boot.kernelModules = [];
-  boot.extraModulePackages = [];
+  boot.initrd.availableKernelModules = [ "usb_storage" ];
+  boot.initrd.kernelModules = [ ];
+  boot.kernelModules = [ ];
+  boot.extraModulePackages = [ ];
 
   fileSystems."/" = {
     device = "/dev/mapper/cryptroot";
     fsType = "ext4";
   };
 
-  boot.initrd.luks.devices."cryptroot".device = "/dev/disk/by-uuid/ee5b4f24-5a46-4663-82f3-3ff09b0af0f4";
+  boot.initrd.luks.devices."cryptroot".device =
+    "/dev/disk/by-uuid/ee5b4f24-5a46-4663-82f3-3ff09b0af0f4";
 
   fileSystems."/boot" = {
     device = "/dev/disk/by-uuid/7E2A-0D02";
@@ -33,7 +35,7 @@
     ];
   };
 
-  swapDevices = [];
+  swapDevices = [ ];
 
   nixpkgs.hostPlatform = lib.mkDefault "aarch64-linux";
 }

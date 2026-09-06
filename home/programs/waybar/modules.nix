@@ -69,7 +69,11 @@
         headphone = "󰋋";
         hands-free = "󰋋";
         headset = "󰋋";
-        default = ["󰕿" "󰖀" "󰕾"];
+        default = [
+          "󰕿"
+          "󰖀"
+          "󰕾"
+        ];
       };
       on-click = "pavucontrol -t 3";
       on-click-right = "pactl --set-sink-mute 0 toggle";
@@ -89,8 +93,32 @@
 
       format-icons = {
         # TODO: use only 5 icons
-        default = ["󰂎" "󰁺" "󰁻" "󰁼" "󰁽" "󰁾" "󰁿" "󰂀" "󰂁" "󰂂" "󰁹"];
-        charging = ["󰢟" "󰢜" "󰂆" "󰂇" "󰂈" "󰢝" "󰂉" "󰢞" "󰂊" "󰂋" "󰂅"];
+        default = [
+          "󰂎"
+          "󰁺"
+          "󰁻"
+          "󰁼"
+          "󰁽"
+          "󰁾"
+          "󰁿"
+          "󰂀"
+          "󰂁"
+          "󰂂"
+          "󰁹"
+        ];
+        charging = [
+          "󰢟"
+          "󰢜"
+          "󰂆"
+          "󰂇"
+          "󰂈"
+          "󰢝"
+          "󰂉"
+          "󰢞"
+          "󰂊"
+          "󰂋"
+          "󰂅"
+        ];
       };
     };
 

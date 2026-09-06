@@ -1,5 +1,5 @@
 {
-  imports = [../../home/default.nix];
+  imports = [ ../../home/default.nix ];
 
   userSettings = {
     theme = {
@@ -11,6 +11,6 @@
 
   # workaraound for asahi issues like brightness desync on boot
   wayland.windowManager.niri.settings._children = [
-    {spawn-sh-at-startup = "niri msg action power-off-monitors && niri msg action power-on-monitors";}
+    { spawn-sh-at-startup = "niri msg action power-off-monitors && niri msg action power-on-monitors"; }
   ];
 }

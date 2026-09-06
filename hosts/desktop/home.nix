@@ -1,5 +1,5 @@
 {
-  imports = [../../home/default.nix];
+  imports = [ ../../home/default.nix ];
 
   userSettings = {
     theme = {

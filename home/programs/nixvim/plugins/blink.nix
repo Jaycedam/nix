@@ -17,7 +17,7 @@
             __unkeyed-3 = "label_description";
             gap = 1;
           }
-          ["kind"]
+          [ "kind" ]
         ];
       };
     };

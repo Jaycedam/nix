@@ -2,7 +2,8 @@
   config,
   lib,
   ...
-}: {
+}:
+{
   # TODO: override stylix instead of defining everything
   stylix.targets.waybar.addCss = false;
 

@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{ pkgs, ... }: {
   services.keyd = {
     enable = true;
     # remaps are based on colemak-dh,

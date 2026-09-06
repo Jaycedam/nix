@@ -3,12 +3,11 @@
   pkgs,
   lib,
   ...
-}: let
-  border =
-    if hmConfig.userSettings.theme.borderRadius == 0
-    then "single"
-    else "rounded";
-in {
+}:
+let
+  border = if hmConfig.userSettings.theme.borderRadius == 0 then "single" else "rounded";
+in
+{
   extraConfigLua = ''
     require("vim._core.ui2").enable({ enable = true, msg = { target = "msg" } })
   '';

@@ -1,5 +1,5 @@
-{pkgs, ...}: {
-  extraPackages = with pkgs; [shellcheck];
+{ pkgs, ... }: {
+  extraPackages = with pkgs; [ shellcheck ];
 
   lsp.servers = {
     html.enable = true;

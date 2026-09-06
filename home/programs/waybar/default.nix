@@ -2,8 +2,12 @@
   inputs,
   pkgs,
   ...
-}: {
-  imports = [./style.nix ./modules.nix];
+}:
+{
+  imports = [
+    ./style.nix
+    ./modules.nix
+  ];
 
   programs.waybar = {
     enable = true;

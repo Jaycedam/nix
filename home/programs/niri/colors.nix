@@ -1,4 +1,4 @@
-{config, ...}: {
+{ config, ... }: {
   wayland.windowManager.niri.settings = with config.lib.stylix.colors.withHashtag; {
     overview.backdrop-color = base00;
 
@@ -8,7 +8,7 @@
       insert-hint.color = "${base0C}80";
 
       focus-ring = {
-        off = {};
+        off = { };
         width = 2;
         active-color = base0D;
         inactive-color = base02;
@@ -16,7 +16,7 @@
       };
 
       border = {
-        on = {};
+        on = { };
         width = 2;
         active-color = base0D;
         inactive-color = base02;

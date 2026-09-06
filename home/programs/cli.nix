@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{ pkgs, ... }: {
   programs = {
     home-manager.enable = true;
     zoxide.enable = true;
@@ -31,7 +31,7 @@
     eza = {
       enable = true;
       icons = "auto";
-      extraOptions = ["--group-directories-first"];
+      extraOptions = [ "--group-directories-first" ];
     };
   };
 
