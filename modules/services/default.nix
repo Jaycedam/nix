@@ -15,9 +15,10 @@
   services = {
     playerctld.enable = true;
     userdbd.enable = lib.mkDefault false; # avoids systemd's age verification change
-    gvfs.enable = true; # needed for nautilus
+    gvfs.enable = true; # Mount, trash, and other functionalities
     udisks2.enable = true; # this is necessary for udiskie to work
     hardware.openrgb.enable = true;
+    tumbler.enable = true; # Thumbnail support for images
 
     displayManager = {
       ly.enable = true;

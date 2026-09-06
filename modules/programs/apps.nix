@@ -3,10 +3,20 @@
   inputs,
   ...
 }: {
-  programs.virt-manager.enable = true;
+  programs = {
+    virt-manager.enable = true;
+    thunar = {
+      enable = true;
+      plugins = with pkgs; [
+        thunar-archive-plugin
+        thunar-volman
+      ];
+    };
+  };
 
   environment.systemPackages = with pkgs; [
     anki
+    file-roller # thunar dep
     dnsmasq # libvirt networking
     beets
     ente-auth
@@ -27,7 +37,6 @@
     mako
     moonlight-qt
     mpv
-    nautilus
     nicotine-plus
     nirius
     pavucontrol
