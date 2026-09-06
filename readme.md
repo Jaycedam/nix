@@ -2,7 +2,7 @@
 
 NixOS flake config
 
-I use Colemak-DH-ISO keyboard layout by default, modify in [keyboard.nix](./nixos/keyboard.nix) and [niri.kdl](./home/niri/config.kdl)
+I use Colemak-DH-ISO keyboard layout by default, modify in [keyboard-remaps.nix](modules/services/keyboard-remaps.nix).
 
 ## Install
 
@@ -32,8 +32,3 @@ My dotfiles are managed with Stow in [this repo](https://github.com/jaycem-dev/d
 ```bash
 git clone https://github.com/jaycem-dev/dotfiles
 ```
-
-## Software
-
-- Compositor and tools: Niri, Waybar, Fuzzel, Hypridle, Swaybg, Swaylock
-- Main programs: Kitty, Neovim, Yazi
