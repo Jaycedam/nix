@@ -7,7 +7,7 @@
       require_dnssec = true;
       require_nolog = true;
       require_nofilter = true;
-      server_names = ["mullvad-adblock-doh" "adguard-dns-doh"];
+      server_names = ["controld-block-malware-ad" "adguard-dns-doh"];
 
       sources.public-resolvers = {
         minisign_key = "RWQf6LRCGA9i53mlYecO4IzT51TGPpvWucNSCh1CBM0QTaLn73Y7GFO3";
