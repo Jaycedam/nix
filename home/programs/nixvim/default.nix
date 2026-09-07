@@ -23,7 +23,6 @@
       ./lsp.nix
       # plugins
       ./plugins/misc.nix # small or no config
-      ./plugins/statusline.nix
       ./plugins/picker.nix
       ./plugins/blink.nix
       ./plugins/conform.nix

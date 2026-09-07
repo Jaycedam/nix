@@ -9,7 +9,7 @@ let
 in
 {
   extraConfigLua = ''
-    require("vim._core.ui2").enable({ enable = true, msg = { target = "msg" } })
+    require("vim._core.ui2").enable({ enable = true, msg = { target = "cmd" } })
   '';
 
   opts = {
@@ -32,7 +32,7 @@ in
     cursorline = true;
     laststatus = 3;
     signcolumn = "yes";
-    cmdheight = 0;
+    # cmdheight = 0;
     ignorecase = true;
     smartcase = true;
     swapfile = false;

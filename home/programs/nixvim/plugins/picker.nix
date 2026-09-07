@@ -1,76 +1,40 @@
 let
   mkKeymap = (import ../lib/binds.nix).mkKeymap;
-  mkPluginKeymap = (import ../lib/binds.nix).mkPluginKeymap;
 in
 {
   plugins = {
     mini-extra.enable = true;
     mini-pick = {
       enable = true;
-      settings = {
-        window.config.__raw = "function() return { width = vim.o.columns } end";
-        mappings.choose_marked = "<C-q>";
-      };
+      settings.mappings.choose_marked = "<C-q>";
     };
   };
 
   keymaps = [
     (mkKeymap "n" "<leader>gb" "<cmd>Pick git_branches<cr>" { desc = "Git branches"; })
     (mkKeymap "n" "<leader>gc" "<cmd>Pick git_commits<cr>" { desc = "Git commits"; })
-    (mkPluginKeymap "n" "<leader>fb" [
-      "mini.pick"
-      ''
-        builtin.buffers({ include_current = false }, {
-        mappings = {
-          wipeout = {
-            char = '<C-d>',
-            func = function()
-              local matches = MiniPick.get_picker_matches()
-              local buffers = vim.tbl_map(function(m) return m.bufnr end, matches.marked)
-              if #buffers == 0 then
-                table.insert(buffers, matches.current.bufnr)
-              end
-              for _, bufnr in ipairs(buffers) do
-                if vim.api.nvim_buf_is_valid(bufnr) then
-                  vim.api.nvim_buf_delete(bufnr, { force = true })
-                end
-              end
-              -- Re-fetch buffer list with full item structure (preserves names)
-              local new_items = vim.fn.getbufinfo({ buflisted = 1 })
-              local items = vim.tbl_map(function(b)
-                return { bufnr = b.bufnr, text = vim.fn.bufname(b.bufnr) }
-              end, new_items)
-              MiniPick.set_picker_items(items, { do_match = true })
-            end,
-          },
-        } })
-      ''
-    ] { desc = "Buffers"; })
+    (mkKeymap "n" "<leader>fb" "<cmd>Pick buffers<cr>" { desc = "Buffers"; })
     (mkKeymap "n" "<leader>ff" "<cmd>Pick files<cr>" { desc = "Files"; })
     (mkKeymap "n" "<leader>fg" "<cmd>Pick grep<cr>" { desc = "Grep"; })
     (mkKeymap "n" "<leader>/" "<cmd>Pick grep_live<cr>" { desc = "Live grep"; })
     (mkKeymap "n" "<leader><leader>" "<cmd>Pick resume<cr>" { desc = "Resume"; })
     # lsp
     (mkKeymap "n" "<leader>fa" "<cmd>lua vim.lsp.buf.code_action()<cr>" { desc = "LSP code actions"; })
-    (mkPluginKeymap "n" "<leader>fr" [ "mini.extra" "pickers.lsp({ scope = 'references' })" ] {
-      desc = "LSP references";
-    })
-    (mkPluginKeymap "n" "<leader>fi" [ "mini.extra" "pickers.lsp({ scope = 'implementation' })" ] {
+    (mkKeymap "n" "<leader>fr" "<cmd>Pick lsp scope=[[references]]<cr>" { desc = "LSP references"; })
+    (mkKeymap "n" "<leader>fi" "<cmd>Pick lsp scope=[[implementation]]<cr>" {
       desc = "LSP implementations";
     })
-    (mkPluginKeymap "n" "<leader>ft" [ "mini.extra" "pickers.lsp({ scope = 'type_definition' })" ] {
+    (mkKeymap "n" "<leader>ft" "<cmd>Pick lsp scope=[[type_definition]]<cr>" {
       desc = "LSP Type definition";
     })
-    (mkPluginKeymap "n" "<leader>fD" [ "mini.extra" "pickers.diagnostic({ scope = 'all' })" ] {
+    (mkKeymap "n" "<leader>fD" "<cmd>Pick diagnostic scope=[[all]]<cr>" {
       desc = "LSP workspace diagnostics";
     })
-    (mkPluginKeymap "n" "<leader>fd" [ "mini.extra" "pickers.diagnostic({ scope = 'current' })" ] {
+    (mkKeymap "n" "<leader>fd" "<cmd>Pick diagnostic scope=[[current]]<cr>" {
       desc = "LSP diagnostics";
     })
-    (mkPluginKeymap "n" "<leader>fs" [ "mini.extra" "pickers.lsp({ scope = 'document_symbol' })" ] {
-      desc = "LSP symbols";
-    })
-    (mkPluginKeymap "n" "<leader>fS" [ "mini.extra" "pickers.lsp({ scope = 'workspace_symbol' })" ] {
+    (mkKeymap "n" "<leader>fs" "<cmd>Pick lsp scope=[[document_symbol]]<cr>" { desc = "LSP symbols"; })
+    (mkKeymap "n" "<leader>fS" "<cmd>Pick lsp scope=[[workspace_symbol]]<cr>" {
       desc = "LSP workspace symbols";
     })
     # vim

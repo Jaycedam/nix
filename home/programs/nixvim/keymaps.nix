@@ -44,15 +44,7 @@ in
       end
     '' { desc = "Toggle Quickfix List"; })
 
-    # search and replace
-    (mkRawKeymap "n" "<leader>vs" ''
-      function()
-        local word = vim.fn.expand("<cword>")
-        vim.api.nvim_feedkeys(vim.keycode(":%s/" .. word .. "//gc<Left><Left><Left>"), "n", false)
-      end
-    '' { desc = "Replace word under cursor"; })
-
-    # copy file path / selection reference
+    # copy file path
     (mkRawKeymap "n" "<leader>vp" ''
       function()
         local path = vim.fn.expand("%:.")
@@ -60,7 +52,5 @@ in
         vim.notify("Copied: " .. path)
       end
     '' { desc = "Copy file path"; })
-
-    (mkKeymap "n" "<leader>vc" "<cmd>mksession<cr>" { desc = "Create session"; })
   ];
 }

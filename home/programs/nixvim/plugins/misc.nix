@@ -9,6 +9,7 @@ in
     mini-diff.enable = true;
     mini-pairs.enable = true;
     mini-ai.enable = true;
+    mini-statusline.enable = true;
     mini-surround.enable = true;
     neogit.enable = true;
     highlight-colors.enable = true;
