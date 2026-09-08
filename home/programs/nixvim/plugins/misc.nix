@@ -1,6 +1,6 @@
 let
   mkKeymap = (import ../lib/binds.nix).mkKeymap;
-  mkPluginKeymap = (import ../lib/binds.nix).mkPluginKeymap;
+  mkRawKeymap = (import ../lib/binds.nix).mkRawKeymap;
 in
 {
   plugins = {
@@ -43,8 +43,8 @@ in
   keymaps = [
     (mkKeymap "n" "<leader>gg" "<cmd>Neogit<cr>" { desc = "Open Neogit"; })
     (mkKeymap "n" "<leader>e" "<cmd>Oil<cr>" { desc = "Open File Explorer"; })
-    (mkPluginKeymap [ "n" "x" "o" ] "gw" [ "flash" "jump()" ] { desc = "Go to word"; })
-    (mkPluginKeymap [ "n" "x" "o" ] "gW" [ "flash" "treesitter()" ] {
+    (mkRawKeymap [ "n" "x" "o" ] "gw" "function() require('flash').jump() end" { desc = "Go to word"; })
+    (mkRawKeymap [ "n" "x" "o" ] "gW" "function() require('flash').treesitter() end" {
       desc = "Go to word (treesitter)";
     })
   ];
